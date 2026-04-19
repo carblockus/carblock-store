@@ -1,0 +1,131 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+const STORAGE_KEY = "carblock-welcome-popup-dismissed";
+const DELAY_MS = 1500;
+
+export function WelcomePopup() {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const dismissed = localStorage.getItem(STORAGE_KEY);
+    if (dismissed) return;
+    const t = setTimeout(() => setOpen(true), DELAY_MS);
+    return () => clearTimeout(t);
+  }, []);
+
+  function dismiss() {
+    setOpen(false);
+    localStorage.setItem(STORAGE_KEY, "1");
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email || !email.includes("@")) return;
+    // TODO: POST to /api/newsletter → store + send coupon email
+    setSubmitted(true);
+    localStorage.setItem(STORAGE_KEY, "1");
+    setTimeout(() => setOpen(false), 2600);
+  }
+
+  return (
+    <Dialog
+      open={open}
+      onOpenChange={(v) => (v ? setOpen(true) : dismiss())}
+    >
+      <DialogContent
+        className="overflow-hidden bg-black border-[var(--gold)]/40 p-0 sm:max-w-[520px] text-white"
+        showCloseButton
+      >
+        {/* Gold glow decorations */}
+        <div className="pointer-events-none absolute -top-20 -right-20 h-60 w-60 rounded-full bg-[radial-gradient(circle_at_center,rgba(242,201,76,0.45),transparent_60%)] blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.35),transparent_60%)] blur-2xl" />
+
+        <div className="relative p-8 md:p-10 text-center">
+          <span className="inline-block text-[10px] tracking-[0.32em] uppercase text-[var(--gold)] mb-4">
+            Welcome to CarBlock
+          </span>
+
+          {!submitted ? (
+            <>
+              <DialogTitle asChild>
+                <h2 className="font-display text-4xl md:text-5xl uppercase font-bold leading-[0.95]">
+                  Get <span className="text-gold-gradient">15% OFF</span>
+                  <br />
+                  your first order
+                </h2>
+              </DialogTitle>
+              <DialogDescription asChild>
+                <p className="mt-4 text-sm text-white/70 max-w-sm mx-auto leading-relaxed">
+                  Join the club. Drop your email and we&apos;ll send your code
+                  straight to your inbox — free shipping always included.
+                </p>
+              </DialogDescription>
+
+              <form
+                onSubmit={handleSubmit}
+                className="mt-7 flex flex-col gap-3"
+              >
+                <Input
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-12 bg-[var(--surface)] border-[var(--border-strong)] text-white placeholder:text-[var(--muted-2)] rounded-full px-5 text-center"
+                />
+                <Button
+                  type="submit"
+                  className="h-12 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs"
+                >
+                  Claim My 15% Off
+                </Button>
+              </form>
+
+              <button
+                type="button"
+                onClick={dismiss}
+                className="mt-5 text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] hover:text-white transition-colors"
+              >
+                No thanks, I&apos;ll pay full price
+              </button>
+
+              <p className="mt-4 text-[10px] text-[var(--muted-2)]">
+                By subscribing you agree to our privacy policy. Unsubscribe
+                anytime.
+              </p>
+            </>
+          ) : (
+            <div className="py-10">
+              <div className="mx-auto h-16 w-16 rounded-full bg-[var(--gold)] text-black flex items-center justify-center text-3xl mb-5">
+                ✓
+              </div>
+              <h3 className="font-display text-3xl md:text-4xl uppercase font-bold">
+                You&apos;re <span className="text-gold-gradient">in</span>
+              </h3>
+              <p className="mt-3 text-sm text-white/70 max-w-xs mx-auto">
+                Check your inbox for your{" "}
+                <span className="text-[var(--gold)] font-semibold">
+                  15% OFF
+                </span>{" "}
+                code. See you soon.
+              </p>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
