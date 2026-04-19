@@ -54,3 +54,4 @@ src/
 ## Deploy
 
 Optimized for **Vercel**. Push to `main` → automatic preview/production deploys.
+
