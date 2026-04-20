@@ -53,7 +53,7 @@ export function Stats() {
           {/* Application photo */}
           <div className="relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-square shadow-[0_20px_60px_-20px_rgba(212,175,55,0.4)]">
             <Image
-              src="/products/how-to-apply.jpg"
+              src="/products/pour-under-mat.jpg"
               alt="Pouring CarBlock under the floor mat"
               fill
               sizes="(max-width: 768px) 100vw, 600px"

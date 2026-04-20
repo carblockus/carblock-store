@@ -4,15 +4,13 @@ import { useEffect, useState } from "react";
 
 const slides = [
   "/hero/1.jpg",
-  "/hero/2.jpg",
   "/hero/3.jpg",
-  "/hero/4.jpg",
   "/hero/5.jpg",
   "/hero/6.jpg",
   "/hero/7.jpg",
 ];
 
-const INTERVAL = 4500;
+const INTERVAL = 5000;
 
 /**
  * Auto-rotating background slideshow for the Hero section.

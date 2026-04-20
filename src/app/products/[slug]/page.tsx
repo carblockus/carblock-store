@@ -7,10 +7,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
 import { products } from "@/lib/mock-products";
 import { AddToCart } from "@/components/site/add-to-cart";
 import { ProductCard } from "@/components/site/product-card";
+import { ProductGallery } from "@/components/site/product-gallery";
 
 export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -63,30 +63,13 @@ export default async function ProductPage({
       {/* Main content — 2 columns */}
       <section className="container-x py-12 md:py-16">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-          {/* Left — Image */}
-          <div className="relative aspect-square rounded-lg overflow-hidden bg-[var(--surface)] border border-[var(--border)]">
-            <div
-              className="absolute inset-0 bg-center bg-no-repeat"
-              style={{
-                backgroundImage: `url('${product.image}')`,
-                backgroundSize:
-                  product.category === "bundle" ? "contain" : "cover",
-              }}
-            />
-            {product.badge && (
-              <Badge
-                className={`absolute top-5 left-5 rounded-sm px-3 py-1.5 text-[10px] tracking-[0.2em] uppercase font-semibold ${
-                  product.badge === "BESTSELLER"
-                    ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
-                    : product.badge === "NEW"
-                      ? "bg-white text-black hover:bg-white"
-                      : "bg-black text-[var(--gold)] border border-[var(--gold)] hover:bg-black"
-                }`}
-              >
-                {product.badge}
-              </Badge>
-            )}
-          </div>
+          {/* Left — Image gallery */}
+          <ProductGallery
+            images={[product.image, ...(product.gallery ?? [])]}
+            alt={product.name}
+            badge={product.badge}
+            imageFit={product.category === "bundle" ? "contain" : "cover"}
+          />
 
           {/* Right — Info */}
           <div className="flex flex-col gap-6">

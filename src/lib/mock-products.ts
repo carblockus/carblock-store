@@ -7,7 +7,10 @@ export type Product = {
   shortDescription: string;
   price: number;
   badge?: "NEW" | "BESTSELLER" | "BUNDLE";
+  /** Primary image used in cards. */
   image: string;
+  /** Additional gallery images shown on the product detail page (in order). */
+  gallery?: string[];
   scents?: string[];
   sizes?: string[];
 };
@@ -55,6 +58,13 @@ export const products: Product[] = [
     price: 35,
     badge: "BESTSELLER",
     image: "/products/carblock-perfume-main.jpg",
+    gallery: [
+      "/products/carblock-cat-1.jpg",
+      "/products/carblock-cat-2.jpg",
+      "/products/carblock-cat-3.jpg",
+      "/products/carblock-cat-4.jpg",
+      "/products/carblock-cat-5.jpg",
+    ],
     sizes: ["150ml"],
   },
   {
@@ -66,6 +76,13 @@ export const products: Product[] = [
     price: 35,
     badge: "NEW",
     image: "/products/wipes-main.png",
+    gallery: [
+      "/products/wipes-cat-1.png",
+      "/products/wipes-cat-2.png",
+      "/products/wipes-cat-3.png",
+      "/products/wipes-cat-4.png",
+      "/products/wipes-cat-5.png",
+    ],
     sizes: ["30 wipes", "60 wipes"],
   },
   {
@@ -77,6 +94,10 @@ export const products: Product[] = [
     price: 60,
     badge: "BUNDLE",
     image: "/products/bundle-kit.png",
+    gallery: [
+      "/products/carblock-cat-1.jpg",
+      "/products/wipes-cat-1.png",
+    ],
   },
   {
     slug: "carblock-2-pack",
@@ -87,6 +108,10 @@ export const products: Product[] = [
     price: 60,
     badge: "BUNDLE",
     image: "/products/bundle-2pack.png",
+    gallery: [
+      "/products/carblock-cat-1.jpg",
+      "/products/carblock-cat-2.jpg",
+    ],
   },
   {
     slug: "woman-block-pheromone",
@@ -94,8 +119,13 @@ export const products: Product[] = [
     category: "personal",
     shortDescription:
       "Pheromone perfume for lingerie and bed linens. The scent that stays.",
-    price: 35,
-    image: "/products/woman-block-main.png",
+    price: 40,
+    image: "/products/woman-block-cat-1.png",
+    gallery: [
+      "/products/woman-block-cat-2.png",
+      "/products/woman-block-cat-3.png",
+      "/products/woman-block-cat-4.jpg",
+    ],
   },
 ];
 
