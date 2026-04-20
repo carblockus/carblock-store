@@ -130,33 +130,33 @@ export const products: Product[] = [
 
 export const testimonials = [
   {
-    name: "Marcus T.",
-    car: "BMW M8",
-    text: "Smells incredible 3 months in. Game changer.",
-    photo: "/social/IMG_2715.jpg",
-  },
-  {
-    name: "Daniela R.",
-    car: "Mercedes-AMG",
-    text: "Finally a car scent that doesn't feel cheap.",
-    photo: "/social/IMG_2774.jpg",
+    name: "Kevin S.",
+    car: "Audi S6",
+    text: "Worth every dollar. Subtle, sophisticated, lasts forever.",
+    photo: "/social/IMG_6323.jpg",
   },
   {
     name: "Jordan P.",
     car: "Range Rover Sport",
     text: "My passengers always ask what fragrance I use.",
-    photo: "/social/IMG_1134.jpg",
+    photo: "/social/IMG_1125.jpg",
+  },
+  {
+    name: "Marcus T.",
+    car: "Jeep Grand Cherokee",
+    text: "Smells incredible 3 months in. Game changer.",
+    photo: "/social/IMG_0382.jpg",
+  },
+  {
+    name: "Daniela R.",
+    car: "Mazda CX-5",
+    text: "Finally a car scent that doesn't feel cheap.",
+    photo: "/social/IMG_1197.jpg",
   },
   {
     name: "Ana L.",
     car: "Mercedes GLE",
     text: "The wipes brought my leather seats back to life.",
     photo: "/social/att.Iq5h3Q4IrywgGk7YzoBOfKaDYCO5bWI52h638QtfKpw.jpg",
-  },
-  {
-    name: "Kevin S.",
-    car: "Ferrari Purosangue",
-    text: "Worth every dollar. Subtle, sophisticated, lasts forever.",
-    photo: "/social/IMG_2812.jpg",
   },
 ];

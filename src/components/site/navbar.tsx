@@ -20,7 +20,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-black/85 backdrop-blur border-b border-[var(--border)]">
-      <div className="container-x flex h-20 items-center justify-between gap-4 md:gap-8">
+      <div className="container-x flex h-28 items-center justify-between gap-4 md:gap-8">
         {/* Mobile hamburger */}
         <button
           aria-label="Open menu"
@@ -85,7 +85,7 @@ export function Navbar() {
           onClick={() => setMobileOpen(false)}
         >
           <div
-            className="container-x flex h-20 items-center justify-between border-b border-[var(--border)]"
+            className="container-x flex h-28 items-center justify-between border-b border-[var(--border)]"
             onClick={(e) => e.stopPropagation()}
           >
             <Logo />

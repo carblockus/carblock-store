@@ -14,7 +14,7 @@ type LogoProps = {
  *
  * Falls back to a typographic wordmark if the image fails to load.
  */
-export function Logo({ className = "", height = 64 }: LogoProps) {
+export function Logo({ className = "", height = 100 }: LogoProps) {
   const [imgOk, setImgOk] = useState(true);
 
   return (
