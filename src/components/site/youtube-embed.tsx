@@ -20,7 +20,7 @@ export function YouTubeEmbed({ videoId, title }: Props) {
   // Empty state — video hasn't been uploaded yet
   if (!videoId) {
     return (
-      <div className="relative aspect-video rounded-lg overflow-hidden bg-[var(--surface)] border border-dashed border-[var(--border-strong)] grid place-items-center">
+      <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-[var(--surface)] border border-dashed border-[var(--border-strong)] grid place-items-center">
         <div className="text-center px-6">
           <div className="mx-auto h-14 w-14 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/40 grid place-items-center mb-3">
             <Play className="h-6 w-6 text-[var(--gold)]" />
@@ -39,7 +39,7 @@ export function YouTubeEmbed({ videoId, title }: Props) {
   // Activated — render real iframe
   if (active) {
     return (
-      <div className="relative aspect-video rounded-lg overflow-hidden bg-black border border-[var(--border)]">
+      <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-black border border-[var(--border)]">
         <iframe
           src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
           title={title}
@@ -51,14 +51,16 @@ export function YouTubeEmbed({ videoId, title }: Props) {
     );
   }
 
-  // Thumbnail mode — click to load actual video
-  const thumb = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  // Thumbnail mode — click to load actual video.
+  // For Shorts (vertical), maxresdefault gives a high-res landscape frame
+  // we can crop to fit the 9:16 frame nicely with object-cover.
+  const thumb = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
   return (
     <button
       type="button"
       onClick={() => setActive(true)}
       aria-label={`Play ${title}`}
-      className="group relative aspect-video w-full rounded-lg overflow-hidden bg-black border border-[var(--border)] hover:border-[var(--gold)]/60 transition-colors"
+      className="group relative aspect-[9/16] w-full rounded-lg overflow-hidden bg-black border border-[var(--border)] hover:border-[var(--gold)]/60 transition-colors"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

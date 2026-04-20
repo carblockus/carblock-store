@@ -105,9 +105,9 @@ export default function HowToUsePage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12 max-w-3xl mx-auto">
               {/* CarBlock video */}
-              <article className="space-y-4">
+              <article className="space-y-4 mx-auto w-full max-w-[320px]">
                 <YouTubeEmbed
                   videoId={videos[lang.key].carblock.videoId}
                   title={videos[lang.key].carblock.title}
@@ -130,7 +130,7 @@ export default function HowToUsePage() {
               </article>
 
               {/* WipesBlock video */}
-              <article className="space-y-4">
+              <article className="space-y-4 mx-auto w-full max-w-[320px]">
                 <YouTubeEmbed
                   videoId={videos[lang.key].wipes.videoId}
                   title={videos[lang.key].wipes.title}
