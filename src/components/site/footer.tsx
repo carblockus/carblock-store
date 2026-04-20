@@ -1,12 +1,33 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { Instagram, Facebook, Youtube } from "lucide-react";
+import { Instagram } from "lucide-react";
 
-// Set href to a real URL when each profile is live. Empty href hides the icon.
+/** TikTok inline icon (lucide-react doesn't ship one). */
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z" />
+    </svg>
+  );
+}
+
+// IMPORTANT: replace placeholder URLs below with the real handles when ready.
 const socials = [
-  { label: "Instagram", icon: Instagram, href: "" as string },
-  { label: "Facebook", icon: Facebook, href: "" as string },
-  { label: "YouTube", icon: Youtube, href: "" as string },
+  {
+    label: "Instagram",
+    icon: Instagram,
+    href: "https://www.instagram.com/carblockmillonario/",
+  },
+  {
+    label: "TikTok",
+    icon: TikTokIcon,
+    href: "https://www.tiktok.com/@carblockperfumecarro",
+  },
 ];
 
 const cols = [
@@ -49,21 +70,29 @@ export function Footer() {
             Premium car interior care — designed for drivers who care about
             every detail.
           </p>
-          <div className="mt-6 flex gap-3">
-            {socials
-              .filter((s) => s.href)
-              .map((s) => (
+
+          {/* Follow us — prominent */}
+          <div className="mt-7">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
+              Follow us
+            </p>
+            <div className="flex gap-3">
+              {socials.map((s) => (
                 <a
                   key={s.label}
-                  href={s.href!}
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="h-9 w-9 grid place-items-center rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                  className="group inline-flex items-center gap-2.5 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 px-4 py-2.5 transition-colors"
                 >
-                  <s.icon className="h-4 w-4" />
+                  <s.icon className="h-4 w-4 text-white group-hover:text-[var(--gold)] transition-colors" />
+                  <span className="text-xs uppercase tracking-[0.18em] font-medium text-white group-hover:text-[var(--gold)] transition-colors">
+                    {s.label}
+                  </span>
                 </a>
               ))}
+            </div>
           </div>
         </div>
         {cols.map((col) => (

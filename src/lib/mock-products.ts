@@ -128,35 +128,38 @@ export const products: Product[] = [
   },
 ];
 
+// Order intentionally alternates "steering wheel" shots with "exterior /
+// packaging" shots so no two visually similar photos appear back-to-back
+// in the marquee.
 export const testimonials = [
   {
     name: "Kevin S.",
     car: "Audi S6",
     text: "Worth every dollar. Subtle, sophisticated, lasts forever.",
-    photo: "/social/IMG_6323.jpg",
+    photo: "/social/IMG_6323.jpg", // steering wheel
+  },
+  {
+    name: "Tyler M.",
+    car: "Mazda CX-5",
+    text: "Finally a car scent that doesn't feel cheap.",
+    photo: "/social/IMG_1197.jpg", // exterior + packaging
   },
   {
     name: "Jordan P.",
     car: "Range Rover Sport",
     text: "My passengers always ask what fragrance I use.",
-    photo: "/social/IMG_1125.jpg",
+    photo: "/social/IMG_1125.jpg", // steering wheel
   },
   {
-    name: "Marcus T.",
-    car: "Jeep Grand Cherokee",
-    text: "Smells incredible 3 months in. Game changer.",
-    photo: "/social/IMG_0382.jpg",
-  },
-  {
-    name: "Daniela R.",
-    car: "Mazda CX-5",
-    text: "Finally a car scent that doesn't feel cheap.",
-    photo: "/social/IMG_1197.jpg",
-  },
-  {
-    name: "Ana L.",
+    name: "Brandon K.",
     car: "Mercedes GLE",
     text: "The wipes brought my leather seats back to life.",
-    photo: "/social/att.Iq5h3Q4IrywgGk7YzoBOfKaDYCO5bWI52h638QtfKpw.jpg",
+    photo: "/social/att.Iq5h3Q4IrywgGk7YzoBOfKaDYCO5bWI52h638QtfKpw.jpg", // exterior
+  },
+  {
+    name: "Maria Jose V.",
+    car: "Jeep Grand Cherokee",
+    text: "Smells incredible 3 months in. Game changer.",
+    photo: "/social/IMG_0382.jpg", // steering wheel
   },
 ];
