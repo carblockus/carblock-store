@@ -1,30 +1,72 @@
 import Link from "next/link";
-import { ChevronRight, Sparkles, Leaf, ShieldCheck } from "lucide-react";
+import {
+  ChevronRight,
+  Sparkles,
+  Wind,
+  Heart,
+  Truck,
+  ShieldCheck,
+  Headphones,
+  Award,
+  Instagram,
+  Globe,
+  MapPin,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "About — CarBlock",
   description:
-    "CarBlock — premium car interior fragrance and cleaning wipes. Operated by Tepew LLC, a registered company in New Jersey.",
+    "Block CarBlock Millonario is a Colombian fragrance house. We don't make air fresheners — we make car perfumes. Operated in the US by Tepew LLC.",
 };
 
-const pillars = [
+const lineup = [
   {
     icon: Sparkles,
-    title: "Sophistication",
-    body: "Every fragrance is designed to feel like a perfume — not a generic air freshener — for drivers who care about every detail of their image.",
+    name: "CarBlock",
+    tagline: "150ml",
+    body: "The original car perfume. Smells like new.",
   },
   {
-    icon: Leaf,
-    title: "Long-lasting",
-    body: "One application of CarBlock Millonario lasts up to three months. WipesBlock leaves a fresh scent every time you clean.",
+    icon: Wind,
+    name: "WipesBlock",
+    tagline: "Premium wipes",
+    body: "Clean, restore, and deodorize your interior in 30 seconds.",
+  },
+  {
+    icon: Heart,
+    name: "Woman Block",
+    tagline: "Pheromone perfume",
+    body: "For lingerie and bed linens. The scent that stays.",
+  },
+];
+
+const numbers = [
+  { icon: Award, label: "Amazon's Choice" },
+  { icon: Instagram, label: "109K+ on Instagram" },
+  { icon: Globe, label: "14+ countries" },
+  { icon: MapPin, label: "Proudly made in Colombia" },
+];
+
+const promise = [
+  {
+    icon: Truck,
+    title: "Free shipping",
+    body: "On every US order, no minimum required.",
   },
   {
     icon: ShieldCheck,
-    title: "Premium quality",
-    body: "Tested across thousands of cars. From Range Rovers and Ferraris to family SUVs, the result is the same — a refined interior, every drive.",
+    title: "30-day guarantee",
+    body: "If you don't feel the difference, we refund your order. No paperwork.",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 support",
+    body: "Real humans, ready when you need them.",
   },
 ];
+
+const channels = ["Amazon", "TikTok Shop", "Walmart"];
 
 export default function AboutPage() {
   return (
@@ -40,86 +82,207 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Hero */}
+      {/* Hero — opening punch */}
       <section className="relative bg-black overflow-hidden border-b border-[var(--border)]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,55,0.18),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,130,27,0.15),transparent_55%)]" />
 
-        <div className="container-x relative z-10 py-20 md:py-28 max-w-3xl text-center">
+        <div className="container-x relative z-10 py-20 md:py-28 max-w-3xl">
           <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
             Our story
           </span>
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl uppercase font-bold mt-3 text-white leading-[1.05]">
-            More than a{" "}
-            <span className="text-gold-gradient italic">scent</span>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl uppercase font-bold mt-3 text-white leading-[1.05]">
+            Most car fresheners smell like a{" "}
+            <span className="text-gold-gradient italic">gas station</span>.
           </h1>
           <p className="mt-6 text-base md:text-lg text-[var(--muted)] leading-relaxed">
-            CarBlock began with a simple belief: the inside of your car deserves
-            the same care as your home. We turned car fragrance into a craft —
-            elegant, lasting and unmistakably premium.
+            Pine trees. Fake vanilla. Chemicals that fade in a week.
+          </p>
+          <p className="mt-3 text-xl md:text-2xl text-white font-medium">
+            We build something else.
           </p>
         </div>
       </section>
 
-      {/* Story */}
+      {/* Origin story */}
       <section className="container-x py-16 md:py-24 max-w-3xl">
         <div className="space-y-6 text-[var(--muted)] leading-relaxed text-base md:text-lg">
           <p>
             <strong className="text-white">Block CarBlock Millonario</strong>{" "}
-            was born to replace the cheap car fresheners that fade in days. We
-            wanted a scent that would last months — and feel as refined as the
-            cars our customers drive.
+            is a <strong className="text-white">Colombian fragrance house</strong>
+            , founded in 2021. We don&apos;t make air fresheners.
           </p>
           <p>
-            Today CarBlock is the choice of drivers across the United States,
-            from luxury garages to daily commuters. Over{" "}
-            <strong className="text-white">100,000 satisfied drivers</strong>{" "}
-            have made their interiors smell like new again.
-          </p>
-          <p>
-            Alongside our signature perfume, our{" "}
-            <strong className="text-white">WipesBlock</strong> interior wipes
-            keep leather, vinyl and fabric looking pristine — biodegradable and
-            safe for every surface.
+            We make <strong className="text-white">car perfumes</strong> — with
+            the same weight and permanence as a luxury personal fragrance,
+            engineered to live inside your vehicle.
           </p>
         </div>
       </section>
 
-      {/* Pillars */}
+      {/* What makes us different */}
       <section className="border-y border-[var(--border)] bg-[var(--surface)]">
         <div className="container-x py-16 md:py-20">
           <div className="text-center mb-12">
             <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
-              What we stand for
+              Why it&apos;s different
             </span>
-            <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white">
-              Built for those who{" "}
-              <span className="text-gold-gradient">care</span>
+            <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white leading-tight">
+              What makes us{" "}
+              <span className="text-gold-gradient">different</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {pillars.map((p) => (
-              <article
-                key={p.title}
-                className="rounded-lg border border-[var(--border)] bg-black p-6 text-center"
-              >
-                <div className="mx-auto h-12 w-12 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/40 grid place-items-center mb-5">
-                  <p.icon className="h-5 w-5 text-[var(--gold)]" />
-                </div>
-                <h3 className="font-display text-lg uppercase tracking-[0.15em] text-white">
-                  {p.title}
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <article className="rounded-lg border border-[var(--border)] bg-black p-8">
+              <h3 className="font-display text-xl uppercase tracking-[0.12em] text-white">
+                It&apos;s a perfume. Not a freshener.
+              </h3>
+              <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+                Vent clips fade. Hanging trees smell like a cab. CarBlock bonds
+                to your interior fibers and releases scent slowly — for{" "}
+                <span className="text-white font-semibold">months</span>.
+              </p>
+            </article>
+
+            <article className="rounded-lg border border-[var(--border)] bg-black p-8">
+              <h3 className="font-display text-xl uppercase tracking-[0.12em] text-white">
+                One application. Up to{" "}
+                <span className="text-gold-gradient">3 months</span>.
+              </h3>
+              <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+                Pour it under your mats once.{" "}
+                <span className="text-white font-semibold">
+                  Forget about it.
+                </span>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Lineup */}
+      <section className="container-x py-16 md:py-20">
+        <div className="text-center mb-12">
+          <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
+            The lineup
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white">
+            Engineered for <span className="text-gold-gradient">scent</span>
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {lineup.map((p) => (
+            <article
+              key={p.name}
+              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-7 flex flex-col gap-4"
+            >
+              <div className="h-12 w-12 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/40 grid place-items-center">
+                <p.icon className="h-5 w-5 text-[var(--gold)]" />
+              </div>
+              <div>
+                <h3 className="font-display text-lg uppercase tracking-[0.12em] text-white">
+                  {p.name}
                 </h3>
-                <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
-                  {p.body}
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--gold)] mt-1">
+                  {p.tagline}
                 </p>
-              </article>
+              </div>
+              <p className="text-sm text-[var(--muted)] leading-relaxed">
+                {p.body}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* The numbers */}
+      <section className="border-y border-[var(--border)] bg-black overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.12),transparent_70%)]" />
+        <div className="container-x relative z-10 py-16 md:py-20">
+          <div className="text-center mb-12">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
+              The numbers
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white">
+              Trusted across{" "}
+              <span className="text-gold-gradient">14+ countries</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {numbers.map((n) => (
+              <div
+                key={n.label}
+                className="flex flex-col items-center text-center gap-3 p-4"
+              >
+                <div className="h-12 w-12 rounded-full bg-[var(--gold)]/15 border border-[var(--gold)]/50 grid place-items-center">
+                  <n.icon className="h-5 w-5 text-[var(--gold)]" />
+                </div>
+                <span className="text-sm md:text-base font-medium text-white tracking-tight">
+                  {n.label}
+                </span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Company info */}
+      {/* Our promise */}
+      <section className="container-x py-16 md:py-20">
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
+            Our promise
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white leading-tight">
+            If you don&apos;t feel the{" "}
+            <span className="text-gold-gradient italic">difference</span>, we
+            refund your order.
+          </h2>
+          <p className="mt-4 text-sm text-[var(--muted)]">No paperwork.</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {promise.map((p) => (
+            <article
+              key={p.title}
+              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-7 text-center"
+            >
+              <div className="mx-auto h-12 w-12 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/40 grid place-items-center mb-5">
+                <p.icon className="h-5 w-5 text-[var(--gold)]" />
+              </div>
+              <h3 className="font-display text-lg uppercase tracking-[0.12em] text-white">
+                {p.title}
+              </h3>
+              <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+                {p.body}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Available on */}
+      <section className="border-y border-[var(--border)] bg-[var(--surface)]">
+        <div className="container-x py-14 md:py-16 text-center">
+          <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
+            Also available on
+          </span>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 md:gap-5">
+            {channels.map((c) => (
+              <span
+                key={c}
+                className="px-6 py-3 rounded-full border border-[var(--border-strong)] bg-black text-sm uppercase tracking-[0.18em] text-white font-medium"
+              >
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tepew LLC + CTA */}
       <section className="container-x py-16 md:py-20 max-w-3xl text-center">
         <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
           The company behind it
