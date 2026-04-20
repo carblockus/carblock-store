@@ -29,7 +29,6 @@ const videos = {
 
 type LangSection = {
   key: "en" | "es";
-  flag: string;
   title: string;
   subtitle: string;
 };
@@ -37,13 +36,11 @@ type LangSection = {
 const languageSections: LangSection[] = [
   {
     key: "en",
-    flag: "🇺🇸",
     title: "English",
     subtitle: "Step-by-step tutorials in English.",
   },
   {
     key: "es",
-    flag: "🇨🇴",
     title: "Español",
     subtitle: "Tutoriales paso a paso en español.",
   },
@@ -96,8 +93,7 @@ export default function HowToUsePage() {
               <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
                 Tutorials
               </span>
-              <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white flex items-center justify-center gap-3">
-                <span aria-hidden>{lang.flag}</span>
+              <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white">
                 {lang.title}
               </h2>
               <p className="mt-3 text-sm text-[var(--muted)]">
