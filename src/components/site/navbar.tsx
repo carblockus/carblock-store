@@ -11,6 +11,7 @@ const navLinks = [
   { label: "CarBlock", href: "/products?category=perfume" },
   { label: "Wipes", href: "/products?category=wipes" },
   { label: "Bundles", href: "/products?category=bundle" },
+  { label: "How to Use", href: "/how-to-use" },
   { label: "About", href: "/about" },
 ];
 

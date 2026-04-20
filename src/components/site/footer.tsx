@@ -43,9 +43,9 @@ const cols = [
   {
     title: "Help",
     links: [
+      { label: "How to use", href: "/how-to-use" },
       { label: "Contact us", href: "/contact" },
       { label: "Refund policy", href: "/legal/refunds" },
-      { label: "Shipping info", href: "/legal/refunds#shipping" },
       { label: "FAQ", href: "/contact#faq" },
     ],
   },
