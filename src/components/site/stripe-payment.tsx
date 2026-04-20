@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import type { CartItem } from "@/lib/cart-context";
 
 const publishable = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const isTestMode = publishable?.startsWith("pk_test_") ?? false;
 let stripePromise: Promise<Stripe | null> | null = null;
 function getStripe() {
   if (!publishable) return Promise.resolve(null);
@@ -24,11 +25,19 @@ type Props = {
   items: CartItem[];
   email: string;
   total: number;
+  shippingMethod: "standard" | "express";
   onBack: () => void;
   onSucceeded: (paymentIntentId: string) => void;
 };
 
-export function StripePayment({ items, email, total, onBack, onSucceeded }: Props) {
+export function StripePayment({
+  items,
+  email,
+  total,
+  shippingMethod,
+  onBack,
+  onSucceeded,
+}: Props) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,6 +50,7 @@ export function StripePayment({ items, email, total, onBack, onSucceeded }: Prop
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             items: items.map((i) => ({ slug: i.slug, qty: i.qty })),
+            shippingMethod,
           }),
         });
         const data = await res.json();
@@ -82,19 +92,30 @@ export function StripePayment({ items, email, total, onBack, onSucceeded }: Prop
         Payment
       </h2>
 
-      <div className="rounded-md border border-[var(--border-strong)] bg-[var(--surface)] p-3 flex items-start gap-2 text-xs text-[var(--muted)]">
-        <Lock className="h-4 w-4 text-[var(--gold)] shrink-0 mt-0.5" />
-        <div>
-          <p className="text-white font-medium">Test mode — no real charges</p>
-          <p>
-            Use card{" "}
-            <span className="font-mono text-[var(--gold)]">
-              4242 4242 4242 4242
-            </span>
-            , any future date, any CVC.
+      {isTestMode ? (
+        <div className="rounded-md border border-[var(--border-strong)] bg-[var(--surface)] p-3 flex items-start gap-2 text-xs text-[var(--muted)]">
+          <Lock className="h-4 w-4 text-[var(--gold)] shrink-0 mt-0.5" />
+          <div>
+            <p className="text-white font-medium">Test mode — no real charges</p>
+            <p>
+              Use card{" "}
+              <span className="font-mono text-[var(--gold)]">
+                4242 4242 4242 4242
+              </span>
+              , any future date, any CVC.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="rounded-md border border-[var(--border-strong)] bg-[var(--surface)] p-3 flex items-start gap-2 text-xs text-[var(--muted)]">
+          <Lock className="h-4 w-4 text-[var(--gold)] shrink-0 mt-0.5" />
+          <p className="text-[var(--muted)]">
+            Your payment is encrypted and processed securely by{" "}
+            <span className="text-white font-medium">Stripe</span>. We never see
+            or store your full card number.
           </p>
         </div>
-      </div>
+      )}
 
       {error && (
         <div className="rounded-md border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-300">

@@ -31,13 +31,30 @@ export function WelcomePopup() {
     localStorage.setItem(STORAGE_KEY, "1");
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email || !email.includes("@")) return;
-    // TODO: POST to /api/newsletter → store + send coupon email
-    setSubmitted(true);
-    localStorage.setItem(STORAGE_KEY, "1");
-    setTimeout(() => setOpen(false), 2600);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "welcome-popup" }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Could not subscribe");
+      setSubmitted(true);
+      localStorage.setItem(STORAGE_KEY, "1");
+      setTimeout(() => setOpen(false), 2600);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Something went wrong");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -88,10 +105,16 @@ export function WelcomePopup() {
                 />
                 <Button
                   type="submit"
-                  className="h-12 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs"
+                  disabled={submitting}
+                  className="h-12 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs disabled:opacity-50"
                 >
-                  Claim My 15% Off
+                  {submitting ? "Sending…" : "Claim My 15% Off"}
                 </Button>
+                {error && (
+                  <p className="text-xs text-red-300 text-center mt-1">
+                    {error}
+                  </p>
+                )}
               </form>
 
               <button

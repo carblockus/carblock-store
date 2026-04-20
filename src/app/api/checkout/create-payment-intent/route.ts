@@ -3,15 +3,19 @@ import { stripe } from "@/lib/stripe";
 import { products } from "@/lib/mock-products";
 
 type ClientItem = { slug: string; qty: number };
+type ShippingMethod = "standard" | "express";
 
 /**
  * Creates a Stripe PaymentIntent for the given cart.
- * Prices are recomputed from the SERVER product catalog — never trusts
+ * Prices and shipping are recomputed from the SERVER catalog — never trusts
  * client-side prices.
  */
 export async function POST(req: Request) {
   try {
-    const body = (await req.json()) as { items?: ClientItem[] };
+    const body = (await req.json()) as {
+      items?: ClientItem[];
+      shippingMethod?: ShippingMethod;
+    };
     const items = Array.isArray(body.items) ? body.items : [];
     if (items.length === 0) {
       return NextResponse.json({ error: "Empty cart" }, { status: 400 });
@@ -34,7 +38,7 @@ export async function POST(req: Request) {
     }
 
     const taxCents = Math.round(subtotalCents * 0.08); // 8% est.
-    const shippingCents = 0; // free
+    const shippingCents = body.shippingMethod === "express" ? 1500 : 0;
     const totalCents = subtotalCents + taxCents + shippingCents;
 
     const intent = await stripe.paymentIntents.create({

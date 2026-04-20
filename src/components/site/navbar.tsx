@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Search, User, ShoppingBag } from "lucide-react";
+import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { useCart } from "@/lib/cart-context";
 
@@ -15,11 +16,25 @@ const navLinks = [
 
 export function Navbar() {
   const { count, setOpen } = useCart();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 bg-black/85 backdrop-blur border-b border-[var(--border)]">
-      <div className="container-x flex h-20 items-center justify-between gap-8">
-        <Link href="/" className="text-white shrink-0">
+      <div className="container-x flex h-20 items-center justify-between gap-4 md:gap-8">
+        {/* Mobile hamburger */}
+        <button
+          aria-label="Open menu"
+          onClick={() => setMobileOpen(true)}
+          className="md:hidden p-2 -ml-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+
+        <Link
+          href="/"
+          className="text-white shrink-0"
+          onClick={() => setMobileOpen(false)}
+        >
           <Logo />
         </Link>
 
@@ -38,13 +53,13 @@ export function Navbar() {
         <div className="flex items-center gap-1">
           <button
             aria-label="Search"
-            className="p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+            className="hidden md:inline-flex p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
             <Search className="h-5 w-5" />
           </button>
           <button
             aria-label="Account"
-            className="p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+            className="hidden md:inline-flex p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
             <User className="h-5 w-5" />
           </button>
@@ -62,6 +77,59 @@ export function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-50 bg-black"
+          onClick={() => setMobileOpen(false)}
+        >
+          <div
+            className="container-x flex h-20 items-center justify-between border-b border-[var(--border)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Logo />
+            <button
+              aria-label="Close menu"
+              onClick={() => setMobileOpen(false)}
+              className="p-2 -mr-2 text-white"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+          <nav
+            className="container-x py-8 flex flex-col gap-1"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {navLinks.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="block py-4 text-base tracking-[0.18em] uppercase text-white border-b border-[var(--border)] hover:text-[var(--gold)] transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="block py-4 text-base tracking-[0.18em] uppercase text-white border-b border-[var(--border)] hover:text-[var(--gold)] transition-colors"
+            >
+              Contact
+            </Link>
+            <div className="flex gap-3 mt-6">
+              <Link
+                href="/products"
+                onClick={() => setMobileOpen(false)}
+                className="flex-1 text-center rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 leading-[3rem] transition-colors"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

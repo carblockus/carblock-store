@@ -24,14 +24,26 @@ export function ContactForm() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
-    // TODO: POST to /api/contact (will wire up to email service)
-    await new Promise((r) => setTimeout(r, 600));
-    setSubmitting(false);
-    setDone(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Could not send message");
+      setDone(true);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Something went wrong");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (done) {
@@ -127,11 +139,15 @@ export function ContactForm() {
       <Button
         type="submit"
         disabled={submitting}
-        className="w-full sm:w-auto rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 px-8"
+        className="w-full sm:w-auto rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 px-8 disabled:opacity-50"
       >
         <Send className="h-4 w-4 mr-2" />
         {submitting ? "Sending…" : "Send Message"}
       </Button>
+
+      {error && (
+        <p className="text-xs text-red-300">{error}</p>
+      )}
 
       <p className="text-[10px] uppercase tracking-[0.22em] text-[var(--muted-2)]">
         We typically respond within 1 business day

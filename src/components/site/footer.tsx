@@ -2,6 +2,13 @@ import Link from "next/link";
 import { Logo } from "./logo";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 
+// Set href to a real URL when each profile is live. Empty href hides the icon.
+const socials = [
+  { label: "Instagram", icon: Instagram, href: "" as string },
+  { label: "Facebook", icon: Facebook, href: "" as string },
+  { label: "YouTube", icon: Youtube, href: "" as string },
+];
+
 const cols = [
   {
     title: "Shop",
@@ -43,16 +50,20 @@ export function Footer() {
             every detail.
           </p>
           <div className="mt-6 flex gap-3">
-            {[Instagram, Facebook, Youtube].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="h-9 w-9 grid place-items-center rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
-                aria-label="social"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+            {socials
+              .filter((s) => s.href)
+              .map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="h-9 w-9 grid place-items-center rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                >
+                  <s.icon className="h-4 w-4" />
+                </a>
+              ))}
           </div>
         </div>
         {cols.map((col) => (

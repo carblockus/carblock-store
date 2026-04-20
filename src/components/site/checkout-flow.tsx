@@ -54,7 +54,7 @@ export function CheckoutFlow() {
     setTimeout(() => clear(), 100);
   }
 
-  const shipping = subtotal > 0 ? 0 : 0; // free always
+  const shipping = ship.method === "express" ? 15 : 0;
   const tax = Math.round(subtotal * 0.08 * 100) / 100;
   const total = subtotal + shipping + tax;
 
@@ -214,6 +214,7 @@ export function CheckoutFlow() {
               items={items}
               email={ship.email}
               total={total}
+              shippingMethod={ship.method as "standard" | "express"}
               onBack={() => setStep(1)}
               onSucceeded={handlePaymentSuccess}
             />
@@ -294,7 +295,13 @@ export function CheckoutFlow() {
             </div>
             <div className="border-t border-[var(--border)] pt-4 space-y-2 text-sm">
               <Row label="Subtotal" value={`$${subtotal.toFixed(2)}`} />
-              <Row label="Shipping" value="Free" highlight />
+              <Row
+                label={
+                  ship.method === "express" ? "Shipping (Express)" : "Shipping"
+                }
+                value={shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}
+                highlight={shipping === 0}
+              />
               <Row label="Tax (est.)" value={`$${tax.toFixed(2)}`} />
               <div className="border-t border-[var(--border)] pt-3 flex items-center justify-between">
                 <span className="text-xs uppercase tracking-[0.22em] text-white">
