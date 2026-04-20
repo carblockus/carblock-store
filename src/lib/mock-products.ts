@@ -145,7 +145,7 @@ export const testimonials = [
     photo: "/social/IMG_1197.jpg", // exterior + packaging
   },
   {
-    name: "Jordan P.",
+    name: "David R.",
     car: "Range Rover Sport",
     text: "My passengers always ask what fragrance I use.",
     photo: "/social/IMG_1125.jpg", // steering wheel
