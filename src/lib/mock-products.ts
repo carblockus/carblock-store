@@ -1,4 +1,4 @@
-export type Category = "perfume" | "wipes" | "bundle";
+export type Category = "perfume" | "wipes" | "bundle" | "personal";
 
 export type Product = {
   slug: string;
@@ -87,6 +87,15 @@ export const products: Product[] = [
     price: 60,
     badge: "BUNDLE",
     image: "/products/bundle-2pack.png",
+  },
+  {
+    slug: "woman-block-pheromone",
+    name: "Woman Block",
+    category: "personal",
+    shortDescription:
+      "Pheromone perfume for lingerie and bed linens. The scent that stays.",
+    price: 35,
+    image: "/products/woman-block-main.png",
   },
 ];
 

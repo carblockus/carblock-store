@@ -12,10 +12,13 @@ const categoryLabels: Record<Category | "all", string> = {
   perfume: "CarBlock Perfume",
   wipes: "WipesBlock",
   bundle: "Bundles",
+  personal: "Woman Block",
 };
 
 function isCategory(v: string | undefined): v is Category {
-  return v === "perfume" || v === "wipes" || v === "bundle";
+  return (
+    v === "perfume" || v === "wipes" || v === "bundle" || v === "personal"
+  );
 }
 
 function sortProducts(items: Product[], sort: string): Product[] {
@@ -54,6 +57,7 @@ export default async function ProductsPage({
     perfume: products.filter((p) => p.category === "perfume").length,
     wipes: products.filter((p) => p.category === "wipes").length,
     bundle: products.filter((p) => p.category === "bundle").length,
+    personal: products.filter((p) => p.category === "personal").length,
   };
 
   const filters = [
@@ -61,6 +65,7 @@ export default async function ProductsPage({
     { label: "CarBlock", value: "perfume" as const, count: counts.perfume },
     { label: "WipesBlock", value: "wipes" as const, count: counts.wipes },
     { label: "Bundles", value: "bundle" as const, count: counts.bundle },
+    { label: "Woman Block", value: "personal" as const, count: counts.personal },
   ];
 
   return (

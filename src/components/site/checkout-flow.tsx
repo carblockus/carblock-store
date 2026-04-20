@@ -164,11 +164,9 @@ export function CheckoutFlow() {
                   onChange={(v) => setShip({ ...ship, city: v })}
                   required
                 />
-                <Field
-                  label="State"
+                <StateField
                   value={ship.state}
                   onChange={(v) => setShip({ ...ship, state: v })}
-                  required
                 />
                 <Field
                   label="ZIP"
@@ -347,6 +345,68 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         className="h-12 bg-[var(--surface)] border-[var(--border-strong)] text-white placeholder:text-[var(--muted-2)] rounded-md px-4"
       />
+    </div>
+  );
+}
+
+// 48 contiguous US states only — Alaska, Hawaii and Puerto Rico are
+// intentionally excluded because we don't ship there.
+const CONTIGUOUS_STATES: { code: string; name: string }[] = [
+  { code: "AL", name: "Alabama" }, { code: "AZ", name: "Arizona" },
+  { code: "AR", name: "Arkansas" }, { code: "CA", name: "California" },
+  { code: "CO", name: "Colorado" }, { code: "CT", name: "Connecticut" },
+  { code: "DE", name: "Delaware" }, { code: "DC", name: "District of Columbia" },
+  { code: "FL", name: "Florida" }, { code: "GA", name: "Georgia" },
+  { code: "ID", name: "Idaho" }, { code: "IL", name: "Illinois" },
+  { code: "IN", name: "Indiana" }, { code: "IA", name: "Iowa" },
+  { code: "KS", name: "Kansas" }, { code: "KY", name: "Kentucky" },
+  { code: "LA", name: "Louisiana" }, { code: "ME", name: "Maine" },
+  { code: "MD", name: "Maryland" }, { code: "MA", name: "Massachusetts" },
+  { code: "MI", name: "Michigan" }, { code: "MN", name: "Minnesota" },
+  { code: "MS", name: "Mississippi" }, { code: "MO", name: "Missouri" },
+  { code: "MT", name: "Montana" }, { code: "NE", name: "Nebraska" },
+  { code: "NV", name: "Nevada" }, { code: "NH", name: "New Hampshire" },
+  { code: "NJ", name: "New Jersey" }, { code: "NM", name: "New Mexico" },
+  { code: "NY", name: "New York" }, { code: "NC", name: "North Carolina" },
+  { code: "ND", name: "North Dakota" }, { code: "OH", name: "Ohio" },
+  { code: "OK", name: "Oklahoma" }, { code: "OR", name: "Oregon" },
+  { code: "PA", name: "Pennsylvania" }, { code: "RI", name: "Rhode Island" },
+  { code: "SC", name: "South Carolina" }, { code: "SD", name: "South Dakota" },
+  { code: "TN", name: "Tennessee" }, { code: "TX", name: "Texas" },
+  { code: "UT", name: "Utah" }, { code: "VT", name: "Vermont" },
+  { code: "VA", name: "Virginia" }, { code: "WA", name: "Washington" },
+  { code: "WV", name: "West Virginia" }, { code: "WI", name: "Wisconsin" },
+  { code: "WY", name: "Wyoming" },
+];
+
+function StateField({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="space-y-2">
+      <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
+        State
+      </Label>
+      <select
+        required
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-12 w-full bg-[var(--surface)] border border-[var(--border-strong)] text-white rounded-md px-4 cursor-pointer focus:outline-none focus:border-[var(--gold)]/70"
+      >
+        <option value="">Select…</option>
+        {CONTIGUOUS_STATES.map((s) => (
+          <option key={s.code} value={s.code}>
+            {s.code} — {s.name}
+          </option>
+        ))}
+      </select>
+      <p className="text-[10px] text-[var(--muted-2)]">
+        We don&apos;t ship to AK, HI or PR at this time.
+      </p>
     </div>
   );
 }

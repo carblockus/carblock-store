@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Where do you ship?",
-    a: "Currently US-only, including Alaska and Hawaii. Standard shipping is free.",
+    a: "We ship to the contiguous United States only — the lower 48 states. We do not ship to Alaska, Hawaii or Puerto Rico at this time. Standard shipping is free.",
   },
   {
     q: "What's your return policy?",

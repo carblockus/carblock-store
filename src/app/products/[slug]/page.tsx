@@ -34,7 +34,9 @@ export default async function ProductPage({
       ? "CarBlock"
       : product.category === "wipes"
         ? "WipesBlock"
-        : "Bundles";
+        : product.category === "personal"
+          ? "Woman Block"
+          : "Bundles";
 
   return (
     <div className="bg-background">
@@ -131,7 +133,7 @@ export default async function ProductPage({
                 {
                   icon: Truck,
                   label: "Free Shipping",
-                  sub: "On all US orders",
+                  sub: "Lower 48 states",
                 },
                 {
                   icon: Clock,
@@ -198,7 +200,8 @@ export default async function ProductPage({
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-[var(--muted)] leading-relaxed pb-4">
                   <ul className="list-disc pl-4 space-y-1.5">
-                    <li>Free shipping on all US orders.</li>
+                    <li>Free shipping to the contiguous US (lower 48 states).</li>
+                    <li>We don&apos;t ship to Alaska, Hawaii or Puerto Rico.</li>
                     <li>Orders ship within 1-2 business days.</li>
                     <li>Standard delivery: 3-7 business days.</li>
                     <li>30-day return policy for unused products.</li>

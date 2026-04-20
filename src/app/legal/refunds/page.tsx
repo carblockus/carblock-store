@@ -28,9 +28,9 @@ export default function RefundsPage() {
       <ul>
         <li>
           The product must be <strong>unused</strong>, <strong>unopened</strong>{" "}
-          and in its original packaging;
+          and in its original packaging.
         </li>
-        <li>You must provide the order number or proof of purchase;</li>
+        <li>You must provide the order number or proof of purchase.</li>
         <li>
           Items marked &ldquo;Final Sale&rdquo; or sold as part of a
           promotional bundle (when explicitly noted) cannot be returned.
@@ -42,11 +42,11 @@ export default function RefundsPage() {
         <li>
           Email{" "}
           <a href="mailto:info@carblock.us">info@carblock.us</a> with
-          your order number and the reason for the return;
+          your order number and the reason for the return.
         </li>
         <li>
           We&apos;ll reply within <strong>2 business days</strong> with a
-          return authorization (RMA) and shipping instructions;
+          return authorization (RMA) and shipping instructions.
         </li>
         <li>
           Ship the item back using a trackable method. Return shipping is the
@@ -75,8 +75,8 @@ export default function RefundsPage() {
         <a href="mailto:info@carblock.us">info@carblock.us</a> with:
       </p>
       <ul>
-        <li>Your order number;</li>
-        <li>Photos clearly showing the damage or defect;</li>
+        <li>Your order number.</li>
+        <li>Photos clearly showing the damage or defect.</li>
         <li>A short description of the issue.</li>
       </ul>
       <p>
@@ -105,8 +105,8 @@ export default function RefundsPage() {
         the package, please:
       </p>
       <ol>
-        <li>Check with neighbors and your local mail facility;</li>
-        <li>File a claim with the carrier (USPS, UPS or FedEx);</li>
+        <li>Check with neighbors and your local mail facility.</li>
+        <li>File a claim with the carrier (USPS, UPS or FedEx).</li>
         <li>
           Email us at{" "}
           <a href="mailto:info@carblock.us">info@carblock.us</a> — we
@@ -118,8 +118,10 @@ export default function RefundsPage() {
       <h2 id="shipping">8. Shipping</h2>
       <h3>Where we ship</h3>
       <p>
-        We currently ship within the <strong>United States</strong> only,
-        including Alaska and Hawaii (additional fees may apply).
+        We currently ship to the <strong>contiguous United States</strong>{" "}
+        only — the lower 48 states. We do{" "}
+        <strong>not ship to Alaska, Hawaii, or Puerto Rico</strong> at this
+        time. We don&apos;t ship outside the US.
       </p>
 
       <h3>Processing time</h3>
@@ -132,7 +134,7 @@ export default function RefundsPage() {
       <ul>
         <li>
           <strong>Standard (Free)</strong> — 3 to 7 business days after
-          processing;
+          processing.
         </li>
         <li>
           <strong>Express ($15)</strong> — 1 to 3 business days after

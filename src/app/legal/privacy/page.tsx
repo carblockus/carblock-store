@@ -25,14 +25,14 @@ export default function PrivacyPage() {
       <ul>
         <li>
           <strong>Contact &amp; account details:</strong> name, email address,
-          phone number;
+          phone number.
         </li>
         <li>
-          <strong>Shipping &amp; billing address;</strong>
+          <strong>Shipping &amp; billing address.</strong>
         </li>
         <li>
           <strong>Order information:</strong> the products you purchase, order
-          history, and any communication regarding your orders;
+          history, and any communication regarding your orders.
         </li>
         <li>
           <strong>Customer service messages</strong> sent through our Contact
@@ -42,9 +42,9 @@ export default function PrivacyPage() {
 
       <h3>Information collected automatically</h3>
       <ul>
-        <li>Device information (browser, OS, screen size);</li>
-        <li>IP address and approximate location;</li>
-        <li>Pages visited, time on site, referral source;</li>
+        <li>Device information (browser, OS, screen size).</li>
+        <li>IP address and approximate location.</li>
+        <li>Pages visited, time on site, referral source.</li>
         <li>
           Cookies and similar technologies (see{" "}
           <a href="#cookies">Cookies</a> below).
@@ -69,14 +69,14 @@ export default function PrivacyPage() {
 
       <h2>2. How We Use Your Information</h2>
       <ul>
-        <li>To process and fulfill your orders;</li>
+        <li>To process and fulfill your orders.</li>
         <li>
           To communicate about your order, send shipping notifications and
-          respond to customer service inquiries;
+          respond to customer service inquiries.
         </li>
-        <li>To send marketing emails (only if you opt in);</li>
-        <li>To prevent fraud and enforce our Terms;</li>
-        <li>To improve our products, Site and customer experience;</li>
+        <li>To send marketing emails (only if you opt in).</li>
+        <li>To prevent fraud and enforce our Terms.</li>
+        <li>To improve our products, Site and customer experience.</li>
         <li>To comply with legal obligations.</li>
       </ul>
 
@@ -88,19 +88,19 @@ export default function PrivacyPage() {
       </p>
       <ul>
         <li>
-          <strong>Stripe</strong> — payment processing;
+          <strong>Stripe</strong> — payment processing.
         </li>
         <li>
           <strong>Shipping carriers</strong> (USPS, UPS, FedEx) — to deliver
-          your orders;
+          your orders.
         </li>
         <li>
           <strong>Email service providers</strong> — to send transactional and
-          (opt-in) marketing emails;
+          (opt-in) marketing emails.
         </li>
         <li>
           <strong>Analytics providers</strong> (Vercel Analytics, Google
-          Analytics) — to understand site usage in aggregate;
+          Analytics) — to understand site usage in aggregate.
         </li>
         <li>
           <strong>Legal authorities</strong> — when required by law, subpoena
@@ -111,8 +111,8 @@ export default function PrivacyPage() {
       <h2 id="cookies">4. Cookies</h2>
       <p>We use cookies and similar technologies to:</p>
       <ul>
-        <li>Keep your shopping cart between visits;</li>
-        <li>Remember your preferences;</li>
+        <li>Keep your shopping cart between visits.</li>
+        <li>Remember your preferences.</li>
         <li>Measure traffic and improve the Site.</li>
       </ul>
       <p>
@@ -131,10 +131,10 @@ export default function PrivacyPage() {
       <h2>6. Your Rights</h2>
       <p>Depending on where you live, you may have the right to:</p>
       <ul>
-        <li>Access the personal information we hold about you;</li>
-        <li>Correct inaccurate information;</li>
-        <li>Delete your information (subject to legal exceptions);</li>
-        <li>Opt out of marketing emails (every email has an unsubscribe link);</li>
+        <li>Access the personal information we hold about you.</li>
+        <li>Correct inaccurate information.</li>
+        <li>Delete your information (subject to legal exceptions).</li>
+        <li>Opt out of marketing emails (every email has an unsubscribe link).</li>
         <li>Lodge a complaint with a data protection authority.</li>
       </ul>
       <p>

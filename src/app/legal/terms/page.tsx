@@ -86,16 +86,16 @@ export default function TermsPage() {
       <h2>7. User Conduct</h2>
       <p>You agree not to:</p>
       <ul>
-        <li>Use the Site for any unlawful purpose;</li>
+        <li>Use the Site for any unlawful purpose.</li>
         <li>
           Attempt to gain unauthorized access to any portion of the Site or
-          related systems;
+          related systems.
         </li>
         <li>
           Interfere with the operation of the Site, including by transmitting
-          viruses, scraping, or excessive automated requests;
+          viruses, scraping, or excessive automated requests.
         </li>
-        <li>Misrepresent your identity or affiliation;</li>
+        <li>Misrepresent your identity or affiliation.</li>
         <li>
           Use any product purchased from us in a manner inconsistent with its
           intended use or label instructions.

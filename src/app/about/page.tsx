@@ -52,7 +52,7 @@ const promise = [
   {
     icon: Truck,
     title: "Free shipping",
-    body: "On every US order, no minimum required.",
+    body: "On every order to the lower 48 US states. No minimum required.",
   },
   {
     icon: ShieldCheck,
@@ -66,7 +66,20 @@ const promise = [
   },
 ];
 
-const channels = ["Amazon", "TikTok Shop", "Walmart"];
+const channels = [
+  {
+    name: "Amazon",
+    href: "https://www.amazon.com/dp/B0BJZQFTYQ",
+  },
+  {
+    name: "TikTok Shop",
+    href: "https://www.tiktok.com/shop/store/carblock-perfume-carro/7494142720595428782",
+  },
+  {
+    name: "Walmart",
+    href: "https://www.walmart.com/ip/Carblock-Premium-Car-Perfume-Long-Lasting-Odor-Eliminator-Up-3-Months-Neutralizes-Bad-Odors-Humidity-Pet-Smoke-Smells-150-ml-Residue-Car-Interior-Fra/19323606705",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -271,12 +284,15 @@ export default function AboutPage() {
           </span>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 md:gap-5">
             {channels.map((c) => (
-              <span
-                key={c}
-                className="px-6 py-3 rounded-full border border-[var(--border-strong)] bg-black text-sm uppercase tracking-[0.18em] text-white font-medium"
+              <a
+                key={c.name}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-full border border-[var(--border-strong)] bg-black text-sm uppercase tracking-[0.18em] text-white font-medium hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
               >
-                {c}
-              </span>
+                {c.name}
+              </a>
             ))}
           </div>
         </div>
@@ -293,8 +309,9 @@ export default function AboutPage() {
         <p className="mt-4 text-[var(--muted)] leading-relaxed">
           Block CarBlock Millonario is operated in the United States by{" "}
           <span className="text-white font-medium">Tepew LLC</span>, a
-          registered company in New Jersey. We ship across all 50 states with
-          free standard shipping on every order.
+          registered company in New Jersey. We ship across the contiguous US
+          (lower 48 states) with free standard shipping on every order.
+          Currently not available in Alaska, Hawaii or Puerto Rico.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
