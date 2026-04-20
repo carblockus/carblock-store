@@ -76,7 +76,7 @@ export function Stats() {
                 key={d.label}
                 className="flex items-center gap-5 rounded-lg border border-[var(--border)] bg-[var(--surface)] px-6 py-5"
               >
-                <span className="font-display text-4xl md:text-5xl font-bold text-gold-gradient leading-none shrink-0 w-20">
+                <span className="font-display text-4xl md:text-5xl font-bold text-gold-gradient leading-none shrink-0 min-w-[7rem] tabular-nums whitespace-nowrap">
                   {d.value}
                 </span>
                 <div className="flex-1 min-w-0">

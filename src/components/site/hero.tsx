@@ -43,10 +43,9 @@ export function Hero() {
         </p>
 
         {/* Pill: up to 3 months of fragrance */}
-        <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-[var(--gold)]/50 bg-[var(--gold)]/15 backdrop-blur px-5 py-2.5">
-          <span className="h-2 w-2 rounded-full bg-[var(--gold-bright)] animate-pulse" />
-          <span className="text-xs md:text-sm tracking-[0.22em] uppercase text-[var(--gold-bright)] font-semibold">
-            Up to <span className="text-white">3 months</span> of fragrance
+        <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 backdrop-blur px-6 py-3">
+          <span className="font-display text-base md:text-xl tracking-[0.18em] uppercase font-bold text-gold-gradient">
+            Up to <span className="italic">3 months</span> of fragrance
           </span>
         </div>
 

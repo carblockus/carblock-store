@@ -23,21 +23,35 @@ export function Testimonials() {
           {loop.map((t, i) => (
             <article
               key={`${t.name}-${i}`}
-              className="w-80 shrink-0 rounded-lg bg-black border border-[var(--border)] p-6"
+              className="w-80 shrink-0 rounded-lg bg-black border border-[var(--border)] overflow-hidden flex flex-col"
             >
-              <div className="flex gap-0.5 mb-3 text-[var(--gold)]">
-                {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star key={idx} className="h-4 w-4 fill-current" />
-                ))}
+              {/* Photo on top */}
+              <div className="relative aspect-[4/3] overflow-hidden bg-[var(--surface-2)]">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${t.photo}')` }}
+                  role="img"
+                  aria-label={`${t.name}'s ${t.car}`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
-              <p className="text-sm text-white/90 leading-relaxed">
-                &ldquo;{t.text}&rdquo;
-              </p>
-              <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-baseline justify-between">
-                <span className="text-sm font-medium text-white">{t.name}</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
-                  {t.car}
-                </span>
+
+              {/* Text below */}
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex gap-0.5 mb-3 text-[var(--gold)]">
+                  {Array.from({ length: 5 }).map((_, idx) => (
+                    <Star key={idx} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+                <p className="text-sm text-white/90 leading-relaxed flex-1">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-baseline justify-between">
+                  <span className="text-sm font-medium text-white">{t.name}</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
+                    {t.car}
+                  </span>
+                </div>
               </div>
             </article>
           ))}

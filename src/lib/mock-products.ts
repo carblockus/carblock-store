@@ -59,7 +59,6 @@ export const products: Product[] = [
     badge: "BESTSELLER",
     image: "/products/carblock-perfume-main.jpg",
     gallery: [
-      "/products/carblock-cat-1.jpg",
       "/products/carblock-cat-2.jpg",
       "/products/carblock-cat-3.jpg",
       "/products/carblock-cat-4.jpg",
@@ -130,9 +129,34 @@ export const products: Product[] = [
 ];
 
 export const testimonials = [
-  { name: "Marcus T.", car: "BMW M3", text: "Smells incredible 3 months in. Game changer." },
-  { name: "Daniela R.", car: "Tesla Model Y", text: "Finally a car scent that doesn't feel cheap." },
-  { name: "Jordan P.", car: "Range Rover Sport", text: "My passengers always ask what fragrance I use." },
-  { name: "Ana L.", car: "Mercedes GLE", text: "The wipes brought my leather seats back to life." },
-  { name: "Kevin S.", car: "Audi RS6", text: "Worth every dollar. Subtle, sophisticated, lasts forever." },
+  {
+    name: "Marcus T.",
+    car: "BMW M8",
+    text: "Smells incredible 3 months in. Game changer.",
+    photo: "/social/IMG_2715.jpg",
+  },
+  {
+    name: "Daniela R.",
+    car: "Mercedes-AMG",
+    text: "Finally a car scent that doesn't feel cheap.",
+    photo: "/social/IMG_2774.jpg",
+  },
+  {
+    name: "Jordan P.",
+    car: "Range Rover Sport",
+    text: "My passengers always ask what fragrance I use.",
+    photo: "/social/IMG_1134.jpg",
+  },
+  {
+    name: "Ana L.",
+    car: "Mercedes GLE",
+    text: "The wipes brought my leather seats back to life.",
+    photo: "/social/att.Iq5h3Q4IrywgGk7YzoBOfKaDYCO5bWI52h638QtfKpw.jpg",
+  },
+  {
+    name: "Kevin S.",
+    car: "Ferrari Purosangue",
+    text: "Worth every dollar. Subtle, sophisticated, lasts forever.",
+    photo: "/social/IMG_2812.jpg",
+  },
 ];
