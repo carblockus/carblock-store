@@ -1,21 +1,26 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaNeon } from "@prisma/adapter-neon";
+import { neonConfig } from "@neondatabase/serverless";
+import ws from "ws";
 
 /**
- * Prisma client singleton with the Neon serverless adapter.
+ * Prisma client singleton with the Neon serverless driver.
  *
- * Why the adapter: on Vercel serverless + Neon free tier, the compute
- * branch auto-suspends after 5 minutes of inactivity. A plain TCP
- * connection from a cold lambda often times out before Neon can wake
- * the compute back up, producing "Can't reach database server" errors
- * (the failure mode we hit on the first paid order).
- *
- * The Neon adapter speaks HTTP/WebSocket and handles the wake-up
+ * On Vercel serverless + Neon free tier, the compute branch auto-suspends
+ * after 5 minutes of inactivity. A plain TCP connection from a cold lambda
+ * often times out before Neon can wake the compute back up. The Neon
+ * serverless driver speaks HTTP/WebSocket and handles the wake-up
  * gracefully, so the first webhook after idle time succeeds.
  *
- * In dev, Next's HMR can spawn many clients which exhausts the pool —
- * we cache one on globalThis to reuse.
+ * In Node runtimes we have to hand the driver a WebSocket constructor —
+ * the `ws` package — because there's no global WebSocket. Edge runtimes
+ * already have WebSocket built in, so this is a no-op there.
  */
+
+if (typeof WebSocket === "undefined") {
+  neonConfig.webSocketConstructor = ws as unknown as typeof WebSocket;
+}
+
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 function makeClient(): PrismaClient {
