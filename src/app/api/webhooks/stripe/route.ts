@@ -208,6 +208,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: msg }, { status: 400 });
   }
 
+  console.log(`[webhook] received event ${event.type} (id=${event.id})`);
+
   try {
     switch (event.type) {
       case "payment_intent.succeeded":
@@ -217,18 +219,19 @@ export async function POST(req: Request) {
         await handleChargeRefunded(event.data.object as Stripe.Charge);
         break;
       default:
-        // Other events accepted but not processed
+        console.log(`[webhook] ignoring event type ${event.type}`);
         break;
     }
     return NextResponse.json({ received: true });
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Handler error";
-    console.error(`[webhook] ${event.type} handler failed`, msg);
-    // Return 200 so Stripe doesn't retry forever on persistent errors —
-    // but we log loudly so we notice.
-    return NextResponse.json(
-      { received: true, error: msg },
-      { status: 200 },
+    const stack = err instanceof Error ? err.stack : undefined;
+    console.error(
+      `[webhook] ${event.type} handler FAILED:`,
+      msg,
+      stack ? "\n" + stack : "",
     );
+    // Return 500 so Stripe retries — gives us a window to fix and replay.
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
