@@ -1,0 +1,95 @@
+// Prisma schema for CarBlock store.
+// Run `npx prisma generate` after editing.
+// Run `npx prisma db push` to sync schema to your Neon Postgres DB.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+/// One row per buyer. Looked up by email; we don't currently authenticate
+/// customers, so this is a lightweight contact record built from checkout.
+model Customer {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  firstName String?
+  lastName  String?
+  phone     String?
+  orders    Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// Snapshot of a paid order. Status moves PAID -> SHIPPED -> DELIVERED -> REFUNDED.
+/// Created by the Stripe webhook on payment_intent.succeeded.
+model Order {
+  id                    String      @id @default(cuid())
+  /// Human-readable order number shown to customers (CB-XXXXX).
+  orderNumber           String      @unique
+  customerId            String
+  customer              Customer    @relation(fields: [customerId], references: [id])
+
+  // Stripe references
+  stripePaymentIntentId String      @unique
+  stripeChargeId        String?
+
+  // Money — stored in cents to avoid float drift
+  subtotalCents         Int
+  shippingCents         Int
+  taxCents              Int
+  totalCents            Int
+  currency              String      @default("usd")
+
+  // Shipping snapshot (denormalized so we keep history even if customer edits)
+  shippingMethod        String      @default("standard") // "standard" | "express"
+  shipName              String
+  shipAddress           String
+  shipCity              String
+  shipState             String
+  shipZip               String
+  shipPhone             String?
+
+  // Fulfillment
+  status                OrderStatus @default(PAID)
+  trackingNumber        String?
+  trackingCarrier       String?     // "USPS" | "UPS" | "FedEx"
+  shippedAt             DateTime?
+  deliveredAt           DateTime?
+
+  items                 OrderItem[]
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+
+  @@index([customerId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+/// One row per line item in an order. Stores a snapshot of name and price
+/// at the moment of purchase so historical orders don't change if the
+/// catalog later does.
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productSlug String
+  productName String
+  unitPriceCents Int
+  quantity    Int
+
+  @@index([orderId])
+}
+
+enum OrderStatus {
+  PAID
+  SHIPPED
+  DELIVERED
+  REFUNDED
+  CANCELLED
+}

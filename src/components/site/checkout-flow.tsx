@@ -37,6 +37,7 @@ export function CheckoutFlow() {
     city: "",
     state: "",
     zip: "",
+    phone: "",
     method: "standard",
   });
 
@@ -213,6 +214,16 @@ export function CheckoutFlow() {
               email={ship.email}
               total={total}
               shippingMethod={ship.method as "standard" | "express"}
+              shipping={{
+                email: ship.email,
+                firstName: ship.firstName,
+                lastName: ship.lastName,
+                address: ship.address,
+                city: ship.city,
+                state: ship.state,
+                zip: ship.zip,
+                phone: ship.phone,
+              }}
               onBack={() => setStep(1)}
               onSucceeded={handlePaymentSuccess}
             />

@@ -21,11 +21,23 @@ function getStripe() {
   return stripePromise;
 }
 
+export type ShippingInfo = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  phone?: string;
+};
+
 type Props = {
   items: CartItem[];
   email: string;
   total: number;
   shippingMethod: "standard" | "express";
+  shipping: ShippingInfo;
   onBack: () => void;
   onSucceeded: (paymentIntentId: string) => void;
 };
@@ -35,6 +47,7 @@ export function StripePayment({
   email,
   total,
   shippingMethod,
+  shipping,
   onBack,
   onSucceeded,
 }: Props) {
@@ -51,6 +64,7 @@ export function StripePayment({
           body: JSON.stringify({
             items: items.map((i) => ({ slug: i.slug, qty: i.qty })),
             shippingMethod,
+            shipping,
           }),
         });
         const data = await res.json();
