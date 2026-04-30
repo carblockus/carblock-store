@@ -125,6 +125,73 @@ ${wrapperFoot}`;
   });
 }
 
+type ShippedEmailData = {
+  orderNumber: string;
+  email: string;
+  firstName: string;
+  trackingNumber: string;
+  trackingCarrier: string;
+  trackingUrl?: string;
+};
+
+/**
+ * Notify the customer that their order has shipped, with a tracking
+ * number/link. Triggered from the admin "Mark as shipped" action.
+ */
+export async function sendShippedEmail(o: ShippedEmailData) {
+  const resend = getResend();
+  if (!resend) {
+    console.warn("[order-emails] RESEND_API_KEY missing — skipping shipped email");
+    return;
+  }
+
+  const carrierTrackingUrls: Record<string, (n: string) => string> = {
+    USPS: (n) => `https://tools.usps.com/go/TrackConfirmAction?tLabels=${n}`,
+    UPS: (n) => `https://www.ups.com/track?tracknum=${n}`,
+    FedEx: (n) => `https://www.fedex.com/fedextrack/?trknbr=${n}`,
+  };
+  const trackingLink =
+    o.trackingUrl ??
+    carrierTrackingUrls[o.trackingCarrier]?.(o.trackingNumber) ??
+    null;
+
+  const html = `${wrapperOpen}
+  <p style="color:#a1a1a1;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;margin:0 0 24px;text-align:center;">Your order has shipped</p>
+
+  <h2 style="font-size:28px;line-height:1.2;margin:0 0 8px;text-align:center;text-transform:uppercase;font-weight:700;">
+    On its way, ${escapeHtml(o.firstName)}.
+  </h2>
+  <p style="color:#a1a1a1;font-size:14px;text-align:center;margin:0 0 28px;">
+    Order <span style="color:#fff;font-weight:600;">${escapeHtml(o.orderNumber)}</span> is in transit.
+  </p>
+
+  <div style="background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:20px;margin:0 0 24px;">
+    <p style="margin:0 0 8px;color:#a1a1a1;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;">${escapeHtml(o.trackingCarrier)} tracking</p>
+    <p style="margin:0;font-family:monospace;color:#fff;font-size:16px;letter-spacing:0.04em;">${escapeHtml(o.trackingNumber)}</p>
+  </div>
+
+  ${
+    trackingLink
+      ? `<p style="text-align:center;margin:32px 0;">
+           <a href="${trackingLink}" style="display:inline-block;background:#d4af37;color:#000;padding:14px 32px;border-radius:999px;text-decoration:none;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;font-size:12px;">Track package</a>
+         </p>`
+      : ""
+  }
+
+  <p style="color:#a1a1a1;font-size:14px;line-height:1.6;text-align:center;">
+    Apply CarBlock once on your floor mats, seat edges and floor — and you&rsquo;re
+    set for up to 3 months. <a href="https://carblock.us/how-to-use" style="color:#d4af37;">Watch how here.</a>
+  </p>
+${wrapperFoot}`;
+
+  await resend.emails.send({
+    from: FROM,
+    to: o.email,
+    subject: `Order ${o.orderNumber} shipped — ${o.trackingCarrier} ${o.trackingNumber}`,
+    html,
+  });
+}
+
 /**
  * Internal alert sent to info@carblock.us with the new order details so
  * fulfillment can start. Reply-to set to the customer email so the team
