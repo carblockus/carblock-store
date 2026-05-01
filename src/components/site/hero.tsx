@@ -17,8 +17,8 @@ export function Hero() {
       <div className="pointer-events-none absolute -left-20 bottom-0 h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.22),transparent_60%)] blur-3xl" />
 
       <div className="container-x relative z-10 py-28 md:py-40 max-w-4xl">
-        <div className="mb-4">
-          <span className="font-display text-gold-gradient text-6xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[0.18em] leading-none block">
+        <div className="mb-6">
+          <span className="font-display text-gold-gradient text-8xl md:text-9xl lg:text-[10rem] font-bold uppercase tracking-[0.12em] leading-none block">
             CarBlock
           </span>
         </div>
