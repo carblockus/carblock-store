@@ -5,28 +5,72 @@ import { Instagram } from "lucide-react";
 /** TikTok inline icon (lucide-react doesn't ship one). */
 function TikTokIcon({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden
-    >
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z" />
     </svg>
   );
 }
 
-// IMPORTANT: replace placeholder URLs below with the real handles when ready.
-const socials = [
+/** Amazon "smile" arrow — recognizable mark without using the wordmark. */
+function AmazonIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M3 16c2.5 2 5.6 3 9 3s6.5-1 9-3"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 17.5c.5.5 1.2 1 2 1.2"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/** Walmart "spark" — six-pointed mark. */
+function WalmartIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      <g>
+        {[0, 60, 120, 180, 240, 300].map((deg) => (
+          <ellipse
+            key={deg}
+            cx="12"
+            cy="6"
+            rx="1.5"
+            ry="4"
+            transform={`rotate(${deg} 12 12)`}
+          />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+const channels = [
   {
     label: "Instagram",
     icon: Instagram,
-    href: "https://www.instagram.com/carblockmillonario/",
+    href: "https://www.instagram.com/carblock.us",
   },
   {
     label: "TikTok",
     icon: TikTokIcon,
-    href: "https://www.tiktok.com/@carblockperfumecarro",
+    href: "https://www.tiktok.com/shop/store/carblock-perfume-carro/7494142720595428782",
+  },
+  {
+    label: "Amazon",
+    icon: AmazonIcon,
+    href: "https://www.amazon.com/Carblock-Premium-Car-Perfume-Long-Lasting/dp/B0BJZQFTYQ?ref_=ast_sto_dp",
+  },
+  {
+    label: "Walmart",
+    icon: WalmartIcon,
+    href: "https://www.walmart.com/ip/Carblock-Premium-Car-Perfume-Long-Lasting-Odor-Eliminator-Up-3-Months-Neutralizes-Bad-Odors-Humidity-Pet-Smoke-Smells-150-ml-Residue-Car-Interior-Fra/19323606705",
   },
 ];
 
@@ -70,24 +114,24 @@ export function Footer() {
             every detail.
           </p>
 
-          {/* Follow us — prominent */}
+          {/* Find us & shop on */}
           <div className="mt-7">
             <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
-              Follow us
+              Follow us · Also on
             </p>
-            <div className="flex gap-3">
-              {socials.map((s) => (
+            <div className="flex flex-wrap gap-2.5">
+              {channels.map((c) => (
                 <a
-                  key={s.label}
-                  href={s.href}
+                  key={c.label}
+                  href={c.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="group inline-flex items-center gap-2.5 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 px-4 py-2.5 transition-colors"
+                  aria-label={c.label}
+                  className="group inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 px-3.5 py-2 transition-colors"
                 >
-                  <s.icon className="h-4 w-4 text-white group-hover:text-[var(--gold)] transition-colors" />
-                  <span className="text-xs uppercase tracking-[0.18em] font-medium text-white group-hover:text-[var(--gold)] transition-colors">
-                    {s.label}
+                  <c.icon className="h-4 w-4 text-white group-hover:text-[var(--gold)] transition-colors" />
+                  <span className="text-[11px] uppercase tracking-[0.16em] font-medium text-white group-hover:text-[var(--gold)] transition-colors">
+                    {c.label}
                   </span>
                 </a>
               ))}

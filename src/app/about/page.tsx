@@ -62,7 +62,7 @@ const promise = [
 const channels = [
   {
     name: "Amazon",
-    href: "https://www.amazon.com/dp/B0BJZQFTYQ",
+    href: "https://www.amazon.com/Carblock-Premium-Car-Perfume-Long-Lasting/dp/B0BJZQFTYQ?ref_=ast_sto_dp",
   },
   {
     name: "TikTok Shop",
