@@ -65,7 +65,7 @@ function WalmartIcon({ className }: { className?: string }) {
   );
 }
 
-const channels = [
+const followUs = [
   {
     label: "Instagram",
     icon: Instagram,
@@ -73,6 +73,14 @@ const channels = [
   },
   {
     label: "TikTok",
+    icon: TikTokIcon,
+    href: "https://www.tiktok.com/@carblock.us?_r=1&_t=ZP-95zCyUTK3dm",
+  },
+];
+
+const findAlso = [
+  {
+    label: "TikTok Shop",
     icon: TikTokIcon,
     href: "https://www.tiktok.com/shop/store/carblock-perfume-carro/7494142720595428782",
   },
@@ -128,26 +136,26 @@ export function Footer() {
             every detail.
           </p>
 
-          {/* Find us & shop on */}
+          {/* Follow us */}
           <div className="mt-7">
             <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
               Follow us
             </p>
             <div className="flex flex-wrap gap-2.5">
-              {channels.map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={c.label}
-                  className="group inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 px-3.5 py-2 transition-colors"
-                >
-                  <c.icon className="h-4 w-4 text-white group-hover:text-[var(--gold)] transition-colors" />
-                  <span className="text-[11px] uppercase tracking-[0.16em] font-medium text-white group-hover:text-[var(--gold)] transition-colors">
-                    {c.label}
-                  </span>
-                </a>
+              {followUs.map((c) => (
+                <ChannelPill key={c.label} {...c} />
+              ))}
+            </div>
+          </div>
+
+          {/* Find us also */}
+          <div className="mt-6">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
+              Find us also
+            </p>
+            <div className="flex flex-wrap gap-2.5">
+              {findAlso.map((c) => (
+                <ChannelPill key={c.label} {...c} />
               ))}
             </div>
           </div>
@@ -173,7 +181,7 @@ export function Footer() {
         ))}
       </div>
 
-      {/* Legal attribution bar */}
+      {/* Legal attribution bar — */}
       <div className="border-t border-[var(--border)]">
         <div className="container-x py-6 flex flex-col gap-3 items-center text-center text-xs text-[var(--muted-2)]">
           <p className="text-[var(--muted)] max-w-2xl leading-relaxed">
@@ -192,5 +200,32 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+type IconComponent = React.ComponentType<{ className?: string }>;
+
+function ChannelPill({
+  label,
+  icon: Icon,
+  href,
+}: {
+  label: string;
+  icon: IconComponent;
+  href: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="group inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 px-3.5 py-2 transition-colors"
+    >
+      <Icon className="h-4 w-4 text-white group-hover:text-[var(--gold)] transition-colors" />
+      <span className="text-[11px] uppercase tracking-[0.16em] font-medium text-white group-hover:text-[var(--gold)] transition-colors">
+        {label}
+      </span>
+    </a>
   );
 }
