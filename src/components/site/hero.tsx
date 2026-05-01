@@ -17,12 +17,10 @@ export function Hero() {
       <div className="pointer-events-none absolute -left-20 bottom-0 h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.22),transparent_60%)] blur-3xl" />
 
       <div className="container-x relative z-10 py-28 md:py-40 max-w-4xl">
-        <div className="flex items-center gap-4 mb-6">
-          <span className="h-px w-10 bg-[var(--gold)]/60" />
-          <span className="font-label text-gold-gradient text-3xl md:text-4xl lg:text-5xl font-bold uppercase">
+        <div className="mb-4">
+          <span className="font-display text-gold-gradient text-6xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[0.18em] leading-none block">
             CarBlock
           </span>
-          <span className="h-px flex-1 max-w-[80px] bg-[var(--gold)]/60" />
         </div>
 
         <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] uppercase font-bold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
