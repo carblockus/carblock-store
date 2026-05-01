@@ -11,21 +11,35 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-/** Amazon "smile" arrow — recognizable mark without using the wordmark. */
+/** Amazon mark — bold lowercase 'a' with the signature smile arrow. */
 function AmazonIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <text
+        x="12"
+        y="14"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontWeight="900"
+        fontSize="14"
+        fill="currentColor"
+      >
+        a
+      </text>
       <path
-        d="M3 16c2.5 2 5.6 3 9 3s6.5-1 9-3"
+        d="M4 18 Q12 22.5 20 18"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="2"
         strokeLinecap="round"
+        fill="none"
       />
       <path
-        d="M18 17.5c.5.5 1.2 1 2 1.2"
+        d="M17.5 16.5 L20 18 L18.5 20.4"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="2"
         strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
       />
     </svg>
   );
