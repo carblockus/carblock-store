@@ -2,6 +2,7 @@ import { Hero } from "@/components/site/hero";
 import { CategoryCard } from "@/components/site/category-card";
 import { PainPoints } from "@/components/site/pain-points";
 import { Stats } from "@/components/site/stats";
+import { WipesBanner } from "@/components/site/wipes-banner";
 import { Testimonials } from "@/components/site/testimonials";
 import { Newsletter } from "@/components/site/newsletter";
 import { categories } from "@/lib/mock-products";
@@ -41,6 +42,7 @@ export default function Home() {
 
       <PainPoints />
       <Stats />
+      <WipesBanner />
       <Testimonials />
       <Newsletter />
     </>
