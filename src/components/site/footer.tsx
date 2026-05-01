@@ -117,7 +117,7 @@ export function Footer() {
           {/* Find us & shop on */}
           <div className="mt-7">
             <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
-              Follow us · Also on
+              Follow us
             </p>
             <div className="flex flex-wrap gap-2.5">
               {channels.map((c) => (
