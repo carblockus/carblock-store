@@ -11,32 +11,35 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-/** Amazon mark — bold lowercase 'a' with the signature smile arrow. */
+/** Amazon mark — bold lowercase 'a' (currentColor) with the signature
+ *  gold smile arrow underneath, matching the brand's recognizable look. */
 function AmazonIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      {/* Bold lowercase 'a' */}
       <text
-        x="12"
-        y="14"
+        x="16"
+        y="20"
         textAnchor="middle"
-        fontFamily="Arial, Helvetica, sans-serif"
+        fontFamily="Arial Black, Arial, Helvetica, sans-serif"
         fontWeight="900"
-        fontSize="14"
+        fontSize="22"
         fill="currentColor"
       >
         a
       </text>
+      {/* Smile arrow swooping under, ending in an arrowhead */}
       <path
-        d="M4 18 Q12 22.5 20 18"
-        stroke="currentColor"
-        strokeWidth="2"
+        d="M5 24 Q16 30 25 25"
+        stroke="#f2c94c"
+        strokeWidth="2.4"
         strokeLinecap="round"
         fill="none"
       />
       <path
-        d="M17.5 16.5 L20 18 L18.5 20.4"
-        stroke="currentColor"
-        strokeWidth="2"
+        d="M22 23.5 L25 25 L23.5 28"
+        stroke="#f2c94c"
+        strokeWidth="2.4"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
