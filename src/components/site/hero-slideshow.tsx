@@ -35,12 +35,9 @@ export function HeroSlideshow() {
       {slides.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 bg-no-repeat bg-center transition-opacity duration-[1500ms] ease-in-out"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out"
           style={{
             backgroundImage: `url('${src}')`,
-            // "contain" so the full photo is visible (no aggressive crop);
-            // black background fills the rest of the hero frame.
-            backgroundSize: "contain",
             opacity: active === i ? 1 : 0,
             animation: active === i ? "kenburns 9s ease-out forwards" : "none",
           }}
@@ -64,7 +61,7 @@ export function HeroSlideshow() {
       <style jsx>{`
         @keyframes kenburns {
           0% { transform: scale(1); }
-          100% { transform: scale(1.025); }
+          100% { transform: scale(1.05); }
         }
       `}</style>
     </div>

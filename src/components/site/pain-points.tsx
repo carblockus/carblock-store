@@ -8,9 +8,9 @@ import Image from "next/image";
  */
 export function PainPoints() {
   return (
-    <section className="bg-black border-y border-[var(--border)] py-12 md:py-16">
+    <section className="bg-black border-y border-[var(--border)] py-8 md:py-10">
       <div className="container-x">
-        <div className="relative w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-[var(--border)] shadow-2xl">
+        <div className="relative w-full max-w-6xl mx-auto rounded-lg overflow-hidden border border-[var(--border)] shadow-2xl">
           <Image
             src="/products/banner-seccion-01.jpg"
             alt="Say goodbye to unpleasant odors — CarBlock effectively eliminates smoke, mildew, pet and food odors, leaving a fresh and elegant scent."
@@ -18,7 +18,7 @@ export function PainPoints() {
             height={1100}
             priority={false}
             className="w-full h-auto block"
-            sizes="(min-width: 1024px) 56rem, 100vw"
+            sizes="(min-width: 1024px) 72rem, 100vw"
           />
         </div>
       </div>
