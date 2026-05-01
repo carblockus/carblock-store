@@ -18,6 +18,21 @@ const distribution = [
   },
 ];
 
+const techniques = [
+  {
+    src: "/products/pour-under-mat.jpg",
+    eyebrow: "Technique 1",
+    title: "Lift the mat. Pour underneath. Replace.",
+    body: "Best for an even, long-lasting diffusion across the cabin.",
+  },
+  {
+    src: "/products/pour-floor-edge.png",
+    eyebrow: "Technique 2",
+    title: "Pour along the floor edge.",
+    body: "For a stronger, more concentrated scent right from day one.",
+  },
+];
+
 export function Stats() {
   return (
     <section
@@ -53,42 +68,52 @@ export function Stats() {
           </p>
         </div>
 
-        {/* Photo + stats split */}
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
-          {/* Application photo */}
-          <div className="relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-square shadow-[0_20px_60px_-20px_rgba(212,175,55,0.4)]">
-            <Image
-              src="/products/pour-under-mat.jpg"
-              alt="Pouring CarBlock under the floor mat"
-              fill
-              sizes="(max-width: 768px) 100vw, 600px"
-              className="object-cover"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-1">
-                The technique
-              </p>
-              <p className="text-sm md:text-base text-white font-medium leading-snug">
-                Lift the mat. Pour underneath. Replace.
-              </p>
+        {/* Two application photos side by side */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-12">
+          {techniques.map((t) => (
+            <div
+              key={t.eyebrow}
+              className="relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-[3/4] shadow-[0_20px_60px_-20px_rgba(212,175,55,0.35)]"
+            >
+              <Image
+                src={t.src}
+                alt={t.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 500px"
+                className="object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-5">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-1">
+                  {t.eyebrow}
+                </p>
+                <p className="text-sm md:text-base text-white font-medium leading-snug">
+                  {t.title}
+                </p>
+                <p className="text-xs text-white/70 mt-1.5">{t.body}</p>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Stats column */}
-          <div className="space-y-5">
+        {/* 25 / 25 / 50 distribution row */}
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-5">
+            Recommended distribution
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
             {distribution.map((d) => (
               <div
                 key={d.label}
                 className="flex items-center gap-5 rounded-lg border border-[var(--border)] bg-[var(--surface)] px-6 py-5"
               >
-                <span className="font-display text-4xl md:text-5xl font-bold text-gold-gradient leading-none shrink-0 min-w-[7rem] tabular-nums whitespace-nowrap">
+                <span className="font-display text-4xl md:text-5xl font-bold text-gold-gradient leading-none shrink-0 min-w-[5rem] tabular-nums whitespace-nowrap">
                   {d.value}
                 </span>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs md:text-sm tracking-[0.22em] uppercase text-white font-semibold">
                     {d.label}
                   </p>
-                  <p className="text-xs md:text-sm text-[var(--muted)] leading-relaxed mt-1">
+                  <p className="text-xs text-[var(--muted)] leading-relaxed mt-1">
                     {d.where}
                   </p>
                 </div>
