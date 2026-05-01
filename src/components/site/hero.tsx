@@ -18,7 +18,7 @@ export function Hero() {
 
       <div className="container-x relative z-10 py-28 md:py-40 max-w-4xl">
         <div className="mb-6">
-          <span className="font-display text-gold-gradient text-8xl md:text-9xl lg:text-[10rem] font-bold uppercase tracking-[0.12em] leading-none block">
+          <span className="font-display text-gold-gradient text-[3.25rem] sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
             CarBlock
           </span>
         </div>
