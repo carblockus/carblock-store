@@ -40,11 +40,16 @@ export function Stats() {
             application.
           </h2>
           <p className="mt-4 text-[var(--muted)] max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-            Apply the liquid directly on the{" "}
-            <span className="text-white font-semibold">floor mats</span>,{" "}
-            <span className="text-white font-semibold">seat edges</span> and the{" "}
-            <span className="text-white font-semibold">floor</span>. Distribute
-            it across your car like this:
+            Apply the liquid directly{" "}
+            <span className="text-white font-semibold">
+              under the floor mats
+            </span>
+            , or along the{" "}
+            <span className="text-white font-semibold">floor edges</span> for a{" "}
+            <span className="text-[var(--gold)] font-semibold">
+              stronger fragrance
+            </span>
+            .
           </p>
         </div>
 
