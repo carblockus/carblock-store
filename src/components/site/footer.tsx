@@ -80,11 +80,6 @@ const followUs = [
 
 const findAlso = [
   {
-    label: "TikTok Shop",
-    icon: TikTokIcon,
-    href: "https://www.tiktok.com/shop/store/carblock-perfume-carro/7494142720595428782",
-  },
-  {
     label: "Amazon",
     icon: AmazonIcon,
     href: "https://www.amazon.com/Carblock-Premium-Car-Perfume-Long-Lasting/dp/B0BJZQFTYQ?ref_=ast_sto_dp",
@@ -93,6 +88,11 @@ const findAlso = [
     label: "Walmart",
     icon: WalmartIcon,
     href: "https://www.walmart.com/ip/Carblock-Premium-Car-Perfume-Long-Lasting-Odor-Eliminator-Up-3-Months-Neutralizes-Bad-Odors-Humidity-Pet-Smoke-Smells-150-ml-Residue-Car-Interior-Fra/19323606705",
+  },
+  {
+    label: "TikTok Shop",
+    icon: TikTokIcon,
+    href: "https://www.tiktok.com/shop/store/carblock-perfume-carro/7494142720595428782",
   },
 ];
 
@@ -153,9 +153,9 @@ export function Footer() {
             <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
               Find us also
             </p>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 -mx-1 px-1">
               {findAlso.map((c) => (
-                <ChannelPill key={c.label} {...c} />
+                <ChannelPill key={c.label} {...c} compact />
               ))}
             </div>
           </div>
@@ -209,10 +209,12 @@ function ChannelPill({
   label,
   icon: Icon,
   href,
+  compact = false,
 }: {
   label: string;
   icon: IconComponent;
   href: string;
+  compact?: boolean;
 }) {
   return (
     <a
@@ -220,10 +222,20 @@ function ChannelPill({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="group inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 px-3.5 py-2 transition-colors"
+      className={`group inline-flex items-center gap-2 shrink-0 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 transition-colors ${
+        compact ? "px-3 py-1.5" : "px-3.5 py-2"
+      }`}
     >
-      <Icon className="h-4 w-4 text-white group-hover:text-[var(--gold)] transition-colors" />
-      <span className="text-[11px] uppercase tracking-[0.16em] font-medium text-white group-hover:text-[var(--gold)] transition-colors">
+      <Icon
+        className={`text-white group-hover:text-[var(--gold)] transition-colors ${
+          compact ? "h-3.5 w-3.5" : "h-4 w-4"
+        }`}
+      />
+      <span
+        className={`uppercase tracking-[0.16em] font-medium text-white group-hover:text-[var(--gold)] transition-colors whitespace-nowrap ${
+          compact ? "text-[10px]" : "text-[11px]"
+        }`}
+      >
         {label}
       </span>
     </a>
