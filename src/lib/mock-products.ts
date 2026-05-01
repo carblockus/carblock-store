@@ -35,7 +35,7 @@ export const categories = [
     slug: "car-wipes",
     label: "WipesBlock",
     description:
-      "Luxury extra-thick interior wipes — clean every surface and restore deep black on leather, vinyl & plastic.",
+      "Premium extra-thick interior wipes — clean every surface and restore deep black on leather, vinyl & plastic.",
     image: "/products/wipes-main.png",
     badge: "NEW" as const,
     price: 35,
@@ -98,11 +98,11 @@ export const products: Product[] = [
     name: "WipesBlock Interior Wipes",
     category: "wipes",
     shortDescription:
-      "Luxury extra-thick wipes that clean every interior surface and restore deep black on leather, vinyl & plastic. 75 wipes per pack.",
+      "Premium extra-thick wipes that clean every interior surface and restore deep black on leather, vinyl & plastic. 75 wipes per pack.",
     longDescription: [
       {
-        title: "Luxury Car Interior Wipes That Do More Than Clean",
-        body: "Not all wipes are equal. WipesBlock luxury car interior wipes feature an extra-thick, oversized premium texture engineered to lift dirt, grease and grime. Unlike standard car cleaning wipes, each wipe is infused with the signature CarBlock fragrance, leaving your interior smelling as sharp as it looks. These are car detailing wipes for people with standards.",
+        title: "Premium Car Interior Wipes That Do More Than Clean",
+        body: "Not all wipes are equal. WipesBlock premium car interior wipes feature an extra-thick, oversized texture engineered to lift dirt, grease and grime. Unlike standard car cleaning wipes, each wipe is infused with the signature CarBlock fragrance, leaving your interior smelling as sharp as it looks. These are car detailing wipes for people with standards.",
       },
       {
         title: "Helps Restore Deep Black Color",
@@ -118,7 +118,7 @@ export const products: Product[] = [
       },
       {
         title: "75 Premium Car Wipes — More Than Most. Better Than All.",
-        body: "While most auto interior wipes come in 25–30 count, WipesBlock delivers 75 premium car wipes in a resealable pouch that keeps every wipe fresh and moist from the first use to the last. More car care wipes, more value — keep one set in the car, one at home. The complete car detailing solution by Block CarBlock Millonario, the brand behind the luxury car interior experience.",
+        body: "While most auto interior wipes come in 25–30 count, WipesBlock delivers 75 premium car wipes in a resealable pouch that keeps every wipe fresh and moist from the first use to the last. More car care wipes, more value — keep one set in the car, one at home. The complete car detailing solution by Block CarBlock Millonario, the brand behind the premium car interior experience.",
       },
     ],
     price: 35,

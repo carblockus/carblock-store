@@ -52,7 +52,7 @@ export default async function ProductsPage({
           For Your <span className="text-gold-gradient">Car</span>
         </h1>
         <p className="mt-4 max-w-xl mx-auto text-sm md:text-base text-[var(--muted)]">
-          Premium interior care — long-lasting car perfume and luxury wipes
+          Premium interior care — long-lasting car perfume and premium wipes
           designed for drivers who care about every detail.
         </p>
       </section>
