@@ -35,9 +35,13 @@ export function HeroSlideshow() {
       {slides.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out"
+          className="absolute inset-0 bg-no-repeat bg-cover transition-opacity duration-[1500ms] ease-in-out"
           style={{
             backgroundImage: `url('${src}')`,
+            // Position biased toward the lower-center so the bottle/product
+            // (held in the lower half of the photo) stays in frame instead
+            // of being cropped off by the default centered crop.
+            backgroundPosition: "50% 65%",
             opacity: active === i ? 1 : 0,
             animation: active === i ? "kenburns 9s ease-out forwards" : "none",
           }}

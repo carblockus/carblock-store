@@ -147,30 +147,29 @@ export default async function ProductPage({
                   Description
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-[var(--muted)] leading-relaxed pb-4">
-                  {product.category === "perfume" ? (
-                    <>
-                      CarBlock Millonario is a premium car perfume that
-                      transforms your vehicle&apos;s interior with a
-                      sophisticated, long-lasting fragrance. Unlike generic air
-                      fresheners, CarBlock eliminates smoke, pet, mildew and
-                      food odors — leaving a fresh and elegant scent that lasts
-                      up to 3 months with a single application. Apply the liquid
-                      directly on the floor mats, seat edges and the floor.
-                    </>
+                  {product.longDescription ? (
+                    <ul className="space-y-3">
+                      {product.longDescription.map((d) => (
+                        <li key={d.title}>
+                          <p className="text-white font-semibold">{d.title}</p>
+                          <p className="mt-1">{d.body}</p>
+                        </li>
+                      ))}
+                    </ul>
                   ) : product.category === "wipes" ? (
-                    <>
+                    <p>
                       WipesBlock biodegradable interior wipes clean, revitalize
                       and protect leather, vinyl, fabric and all interior
                       surfaces. One wipe is enough to remove dust, fingerprints
-                      and light stains while leaving a subtle fresh scent.
-                      Safe for all materials including luxury leather.
-                    </>
+                      and light stains while leaving a subtle fresh scent. Safe
+                      for all materials including luxury leather.
+                    </p>
                   ) : (
-                    <>
+                    <p>
                       Save when you bundle CarBlock products. Each bundle
                       includes everything you need to keep your car&apos;s
                       interior looking, feeling and smelling like new.
-                    </>
+                    </p>
                   )}
                 </AccordionContent>
               </AccordionItem>

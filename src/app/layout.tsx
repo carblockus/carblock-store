@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CarBlock — Premium Car Perfume & Interior Wipes",
     description:
-      "Sophisticated, long-lasting fragrance and biodegradable wipes for your vehicle interior.",
+      "Sophisticated long-lasting car perfume and luxury interior wipes that restore deep black on leather, vinyl and plastic.",
     type: "website",
   },
 };
