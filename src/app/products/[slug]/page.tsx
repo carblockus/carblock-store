@@ -34,9 +34,7 @@ export default async function ProductPage({
       ? "CarBlock"
       : product.category === "wipes"
         ? "WipesBlock"
-        : product.category === "personal"
-          ? "Woman Block"
-          : "Bundles";
+        : "Bundles";
 
   return (
     <div className="bg-background">

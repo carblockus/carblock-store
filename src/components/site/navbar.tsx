@@ -8,9 +8,6 @@ import { useCart } from "@/lib/cart-context";
 
 const navLinks = [
   { label: "Shop", href: "/products" },
-  { label: "CarBlock", href: "/products?category=perfume" },
-  { label: "Wipes", href: "/products?category=wipes" },
-  { label: "Bundles", href: "/products?category=bundle" },
   { label: "How to Use", href: "/how-to-use" },
   { label: "About", href: "/about" },
 ];

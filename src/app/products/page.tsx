@@ -1,25 +1,10 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { products, type Category, type Product } from "@/lib/mock-products";
+import { products, type Product } from "@/lib/mock-products";
 import { ProductCard } from "@/components/site/product-card";
-import { ProductFilters } from "@/components/site/product-filters";
 import { ProductSort } from "@/components/site/product-sort";
 
-type SearchParams = { category?: string; sort?: string };
-
-const categoryLabels: Record<Category | "all", string> = {
-  all: "All Products",
-  perfume: "CarBlock Perfume",
-  wipes: "WipesBlock",
-  bundle: "Bundles",
-  personal: "Woman Block",
-};
-
-function isCategory(v: string | undefined): v is Category {
-  return (
-    v === "perfume" || v === "wipes" || v === "bundle" || v === "personal"
-  );
-}
+type SearchParams = { sort?: string };
 
 function sortProducts(items: Product[], sort: string): Product[] {
   const arr = [...items];
@@ -41,32 +26,8 @@ export default async function ProductsPage({
   searchParams: Promise<SearchParams>;
 }) {
   const sp = await searchParams;
-  const activeCategory: Category | "all" = isCategory(sp.category)
-    ? sp.category
-    : "all";
   const sort = sp.sort ?? "featured";
-
-  const filtered =
-    activeCategory === "all"
-      ? products
-      : products.filter((p) => p.category === activeCategory);
-  const sorted = sortProducts(filtered, sort);
-
-  const counts = {
-    all: products.length,
-    perfume: products.filter((p) => p.category === "perfume").length,
-    wipes: products.filter((p) => p.category === "wipes").length,
-    bundle: products.filter((p) => p.category === "bundle").length,
-    personal: products.filter((p) => p.category === "personal").length,
-  };
-
-  const filters = [
-    { label: "All Products", value: "all" as const, count: counts.all },
-    { label: "CarBlock", value: "perfume" as const, count: counts.perfume },
-    { label: "WipesBlock", value: "wipes" as const, count: counts.wipes },
-    { label: "Bundles", value: "bundle" as const, count: counts.bundle },
-    { label: "Woman Block", value: "personal" as const, count: counts.personal },
-  ];
+  const sorted = sortProducts(products, sort);
 
   return (
     <div className="bg-background">
@@ -77,7 +38,7 @@ export default async function ProductsPage({
             Home
           </Link>
           <ChevronRight className="h-3 w-3" />
-          <span className="text-white">{categoryLabels[activeCategory]}</span>
+          <span className="text-white">Shop</span>
         </div>
       </div>
 
@@ -87,15 +48,7 @@ export default async function ProductsPage({
           Shop
         </span>
         <h1 className="font-display text-5xl md:text-6xl uppercase font-bold mt-3 text-white">
-          {activeCategory === "all" ? (
-            <>
-              For Your <span className="text-gold-gradient">Car</span>
-            </>
-          ) : (
-            <span className="text-gold-gradient">
-              {categoryLabels[activeCategory]}
-            </span>
-          )}
+          For Your <span className="text-gold-gradient">Car</span>
         </h1>
         <p className="mt-4 max-w-xl mx-auto text-sm md:text-base text-[var(--muted)]">
           Premium interior care — sophisticated fragrance and biodegradable
@@ -103,44 +56,35 @@ export default async function ProductsPage({
         </p>
       </section>
 
-      {/* Results */}
+      {/* Toolbar + grid */}
       <section className="container-x pb-20">
-        <div className="grid md:grid-cols-[220px_1fr] gap-8 md:gap-10">
-          <ProductFilters filters={filters} activeCategory={activeCategory} />
-
-          <div>
-            {/* Toolbar */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-[var(--border)] mb-6">
-              <p className="text-xs text-[var(--muted)] uppercase tracking-[0.22em]">
-                {sorted.length}{" "}
-                {sorted.length === 1 ? "product" : "products"}
-              </p>
-              <ProductSort value={sort} />
-            </div>
-
-            {/* Grid */}
-            {sorted.length === 0 ? (
-              <div className="py-20 text-center text-[var(--muted)]">
-                <p>No products in this category yet.</p>
-              </div>
-            ) : (
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {sorted.map((p) => (
-                  <ProductCard
-                    key={p.slug}
-                    product={p}
-                    imageFit={
-                      p.slug === "carblock-bundle-kit" ||
-                      p.slug === "carblock-2-pack"
-                        ? "contain"
-                        : "cover"
-                    }
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-[var(--border)] mb-6">
+          <p className="text-xs text-[var(--muted)] uppercase tracking-[0.22em]">
+            {sorted.length} {sorted.length === 1 ? "product" : "products"}
+          </p>
+          <ProductSort value={sort} />
         </div>
+
+        {sorted.length === 0 ? (
+          <div className="py-20 text-center text-[var(--muted)]">
+            <p>No products available right now.</p>
+          </div>
+        ) : (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {sorted.map((p) => (
+              <ProductCard
+                key={p.slug}
+                product={p}
+                imageFit={
+                  p.slug === "carblock-bundle-kit" ||
+                  p.slug === "carblock-2-pack"
+                    ? "contain"
+                    : "cover"
+                }
+              />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

@@ -10,32 +10,39 @@ const slides = [
   "/hero/7.jpg",
 ];
 
-const INTERVAL = 5000;
+// First slide flashes briefly then advances; the rest stay 5s each.
+const FIRST_SLIDE_MS = 1000;
+const REGULAR_INTERVAL_MS = 5000;
 
 /**
  * Auto-rotating background slideshow for the Hero section.
- * Crossfades every 5s, gentle ken-burns zoom for subtle motion.
+ * Crossfades between slides; very subtle ken-burns so the photos never
+ * feel like they're zooming in on the visitor.
  */
 export function HeroSlideshow() {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => {
+    const delay = active === 0 ? FIRST_SLIDE_MS : REGULAR_INTERVAL_MS;
+    const id = setTimeout(() => {
       setActive((i) => (i + 1) % slides.length);
-    }, INTERVAL);
-    return () => clearInterval(id);
-  }, []);
+    }, delay);
+    return () => clearTimeout(id);
+  }, [active]);
 
   return (
     <div className="absolute inset-0 overflow-hidden">
       {slides.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
+          className="absolute inset-0 bg-no-repeat bg-center transition-opacity duration-[1500ms] ease-in-out"
           style={{
             backgroundImage: `url('${src}')`,
+            // "contain" so the full photo is visible (no aggressive crop);
+            // black background fills the rest of the hero frame.
+            backgroundSize: "contain",
             opacity: active === i ? 1 : 0,
-            animation: active === i ? "kenburns 8s ease-out forwards" : "none",
+            animation: active === i ? "kenburns 9s ease-out forwards" : "none",
           }}
         />
       ))}
@@ -57,7 +64,7 @@ export function HeroSlideshow() {
       <style jsx>{`
         @keyframes kenburns {
           0% { transform: scale(1); }
-          100% { transform: scale(1.08); }
+          100% { transform: scale(1.025); }
         }
       `}</style>
     </div>

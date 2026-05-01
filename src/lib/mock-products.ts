@@ -1,4 +1,4 @@
-export type Category = "perfume" | "wipes" | "bundle" | "personal";
+export type Category = "perfume" | "wipes" | "bundle";
 
 export type Product = {
   slug: string;
@@ -24,7 +24,7 @@ export const categories = [
     image: "/products/carblock-perfume-main.jpg",
     badge: "BESTSELLER" as const,
     price: 35,
-    href: "/products?category=perfume",
+    href: "/products",
   },
   {
     slug: "car-wipes",
@@ -34,7 +34,7 @@ export const categories = [
     image: "/products/wipes-main.png",
     badge: "NEW" as const,
     price: 35,
-    href: "/products?category=wipes",
+    href: "/products",
   },
   {
     slug: "bundles",
@@ -44,7 +44,7 @@ export const categories = [
     image: "/products/bundle-kit.png",
     badge: "BUNDLE" as const,
     price: 60,
-    href: "/products?category=bundle",
+    href: "/products",
   },
 ];
 
@@ -110,20 +110,6 @@ export const products: Product[] = [
     gallery: [
       "/products/carblock-cat-1.jpg",
       "/products/carblock-cat-2.jpg",
-    ],
-  },
-  {
-    slug: "woman-block-pheromone",
-    name: "Woman Block",
-    category: "personal",
-    shortDescription:
-      "Pheromone perfume for lingerie and bed linens. The scent that stays.",
-    price: 40,
-    image: "/products/woman-block-cat-1.png",
-    gallery: [
-      "/products/woman-block-cat-2.png",
-      "/products/woman-block-cat-3.png",
-      "/products/woman-block-cat-4.jpg",
     ],
   },
 ];

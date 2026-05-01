@@ -3,7 +3,6 @@ import {
   ChevronRight,
   Sparkles,
   Wind,
-  Heart,
   Truck,
   ShieldCheck,
   Headphones,
@@ -32,12 +31,6 @@ const lineup = [
     name: "WipesBlock",
     tagline: "Premium wipes",
     body: "Clean, restore, and deodorize your interior in 30 seconds.",
-  },
-  {
-    icon: Heart,
-    name: "Woman Block",
-    tagline: "Pheromone perfume",
-    body: "For lingerie and bed linens. The scent that stays.",
   },
 ];
 
@@ -185,7 +178,7 @@ export default function AboutPage() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {lineup.map((p) => (
             <article
               key={p.name}

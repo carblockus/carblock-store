@@ -34,10 +34,9 @@ const cols = [
   {
     title: "Shop",
     links: [
-      { label: "CarBlock Perfume", href: "/products?category=perfume" },
-      { label: "WipesBlock", href: "/products?category=wipes" },
-      { label: "Bundles", href: "/products?category=bundle" },
       { label: "All products", href: "/products" },
+      { label: "How to use", href: "/how-to-use" },
+      { label: "About", href: "/about" },
     ],
   },
   {

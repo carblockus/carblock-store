@@ -11,12 +11,12 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* Categories grid (Drift-style 3 cards on dark) */}
+      {/* Featured product cards */}
       <section className="bg-background py-20 md:py-28">
         <div className="container-x">
           <div className="text-center mb-12">
             <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
-              Shop by category
+              Shop
             </span>
             <h2 className="font-display text-4xl md:text-5xl uppercase font-bold mt-3 text-white">
               For Your <span className="text-gold-gradient">Car</span>
