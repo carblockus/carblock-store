@@ -73,7 +73,7 @@ export const externalRetailers = [
   {
     label: "Amazon",
     icon: AmazonIcon,
-    href: "https://www.amazon.com/Carblock-Premium-Car-Perfume-Long-Lasting/dp/B0BJZQFTYQ?ref_=ast_sto_dp",
+    href: "https://www.amazon.com/Carblock-Premium-Car-Perfume-Long-Lasting/dp/B0BJZQFTYQ/ref=pd_rhf_dp_s_ci_mcx_mr__d_sccl_1_1/143-9051780-5013300?pd_rd_w=zTpxA&content-id=amzn1.sym.c2ce25da-4d17-4f37-af20-bde98a9f0bcd:amzn1.symc.d3391730-f670-41da-8b34-61787b3edb82&pf_rd_p=c2ce25da-4d17-4f37-af20-bde98a9f0bcd&pf_rd_r=6WV8WH8KB749ZT4671JV&pd_rd_wg=DEXmn&pd_rd_r=77d3dc21-c719-45f5-afb8-58f8241dbb41&pd_rd_i=B0BJZQFTYQ&psc=1",
   },
   {
     label: "Walmart",
