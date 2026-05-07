@@ -27,6 +27,7 @@ const cols = [
       { label: "All products", href: "/products" },
       { label: "How to use", href: "/how-to-use" },
       { label: "About", href: "/about" },
+      { label: "Wholesale", href: "/wholesale" },
     ],
   },
   {
