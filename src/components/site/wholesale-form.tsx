@@ -180,8 +180,10 @@ export function WholesaleForm() {
         <span className="text-xs md:text-sm text-[var(--muted)] leading-relaxed">
           I&apos;ve read and accept the wholesale program rules:{" "}
           <span className="text-white">100-unit minimum</span>, no reselling on{" "}
-          <span className="text-white">Amazon or Walmart</span>, distributor
-          pays shipping (~$60 per 100 units, varies by location).
+          <span className="text-white">Amazon or Walmart</span>, will respect
+          the <span className="text-white">MAP (minimum advertised price)</span>{" "}
+          policy, distributor pays shipping (~$60 per 100 units, varies by
+          location).
         </span>
       </label>
 

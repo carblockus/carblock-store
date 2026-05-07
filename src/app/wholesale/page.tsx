@@ -6,6 +6,7 @@ import {
   Truck,
   Sparkles,
   CheckCircle2,
+  Tag,
 } from "lucide-react";
 import { WholesaleForm } from "@/components/site/wholesale-form";
 
@@ -27,6 +28,12 @@ const rules = [
     tone: "red" as const,
     title: "No Amazon or Walmart resale",
     body: "Distributors agree NOT to resell CarBlock products on Amazon or Walmart. We protect those channels for our official US storefront.",
+  },
+  {
+    icon: Tag,
+    tone: "amber" as const,
+    title: "Respect the MAP policy",
+    body: "MAP (Minimum Advertised Price) keeps our brand consistent across every channel. Distributors agree not to advertise CarBlock products below the MAP we share at onboarding. Repeat violations end the partnership.",
   },
   {
     icon: Truck,
@@ -53,6 +60,11 @@ const toneClasses = {
     bg: "bg-red-500/5",
     icon: "text-red-300 bg-red-500/15 border-red-500/40",
   },
+  amber: {
+    border: "border-amber-500/40",
+    bg: "bg-amber-500/5",
+    icon: "text-amber-300 bg-amber-500/15 border-amber-500/40",
+  },
   blue: {
     border: "border-blue-500/40",
     bg: "bg-blue-500/5",
@@ -69,6 +81,7 @@ const checklist = [
   "Have a real selling channel (store, online, social)",
   "Comfortable starting at 100 units",
   "Willing to skip Amazon and Walmart channels",
+  "Will respect the MAP (minimum advertised price) policy",
   "Excited to grow CarBlock in your market",
 ];
 
@@ -115,7 +128,7 @@ export default function WholesalePage() {
             Program <span className="text-gold-gradient">rules</span>
           </h2>
           <p className="mt-3 text-sm md:text-base text-[var(--muted)]">
-            Plain and simple. Apply only if all four work for your business —
+            Plain and simple. Apply only if all of them work for your business —
             this saves you and us time.
           </p>
         </div>
@@ -155,7 +168,8 @@ export default function WholesalePage() {
               Quick fit check
             </span>
             <h2 className="font-display text-2xl md:text-3xl uppercase font-bold mt-3 text-white">
-              Apply if all four are <span className="text-gold-gradient">true</span>
+              Apply if all of them are{" "}
+              <span className="text-gold-gradient">true</span>
             </h2>
           </div>
           <ul className="space-y-3">

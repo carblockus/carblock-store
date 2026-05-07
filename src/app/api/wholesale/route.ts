@@ -84,7 +84,7 @@ export async function POST(req: Request) {
           }
 
           <p style="margin-top:18px;color:#0a8a3a;font-size:13px;font-weight:600;">
-            ✓ Applicant agreed to: 100-unit minimum · No selling on Amazon or Walmart · Pays shipping to their state
+            ✓ Applicant agreed to: 100-unit minimum · No selling on Amazon or Walmart · MAP policy · Pays shipping to their state
           </p>
           <p style="color:#777;font-size:12px;margin-top:18px;">Reply directly to this email to respond.</p>
         </div>
@@ -114,6 +114,7 @@ export async function POST(req: Request) {
             <ul style="color:#fff;font-size:13px;line-height:1.7;padding-left:18px;margin:0;">
               <li>100-unit minimum per order</li>
               <li>No reselling on Amazon or Walmart</li>
+              <li>Respect the MAP (minimum advertised price) policy</li>
               <li>Distributor covers shipping to their state (~$60 per 100 units, varies by location)</li>
               <li>Marketing assets (creatives + videos) included</li>
             </ul>
