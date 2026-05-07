@@ -6,6 +6,7 @@ import { AnnouncementBar } from "@/components/site/announcement-bar";
 import { Footer } from "@/components/site/footer";
 import { WelcomePopup } from "@/components/site/welcome-popup";
 import { CartProvider } from "@/lib/cart-context";
+import { LangProvider } from "@/lib/lang-context";
 import { CartDrawer } from "@/components/site/cart-drawer";
 
 const inter = Inter({
@@ -52,14 +53,16 @@ export default function RootLayout({
       className={`${inter.variable} ${oswald.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <CartProvider>
-          <AnnouncementBar />
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WelcomePopup />
-          <CartDrawer />
-        </CartProvider>
+        <LangProvider>
+          <CartProvider>
+            <AnnouncementBar />
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <WelcomePopup />
+            <CartDrawer />
+          </CartProvider>
+        </LangProvider>
       </body>
     </html>
   );

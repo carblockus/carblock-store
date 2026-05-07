@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HeroSlideshow } from "./hero-slideshow";
+import { useT } from "@/lib/lang-context";
 
 export function Hero() {
+  const t = useT();
+
   return (
     <section className="relative overflow-hidden bg-black min-h-[640px] md:min-h-[720px]">
       {/* Auto-rotating social-proof slideshow */}
@@ -19,31 +24,31 @@ export function Hero() {
       <div className="container-x relative z-10 py-28 md:py-40 max-w-4xl">
         <div className="mb-6">
           <span className="font-display text-gold-gradient text-[3.25rem] sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
-            CarBlock
+            {t("hero.eyebrow")}
           </span>
         </div>
 
         <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] uppercase font-bold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
-          <span className="block">It&apos;s not an air freshener,</span>
+          <span className="block">{t("hero.title.line1")}</span>
           <span className="block mt-1">
-            it&apos;s a{" "}
+            {t("hero.title.line2.before")}{" "}
             <span className="text-gold-gradient italic pr-2 inline-block">
-              perfume
+              {t("hero.title.line2.highlight")}
             </span>{" "}
-            for your car.
+            {t("hero.title.line2.after")}
           </span>
         </h1>
 
         <p className="mt-7 max-w-xl text-base md:text-lg text-white/85 leading-relaxed drop-shadow-md">
-          CarBlock transforms the interior of your vehicle with a sophisticated,
-          long-lasting fragrance designed for those who take care of every
-          detail of their image.
+          {t("hero.paragraph")}
         </p>
 
         {/* Pill: up to 3 months of fragrance */}
         <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 backdrop-blur px-6 py-3">
           <span className="font-display text-base md:text-xl tracking-[0.18em] uppercase font-bold text-gold-gradient">
-            Up to <span className="italic">3 months</span> of fragrance
+            {t("hero.pill.upto")}{" "}
+            <span className="italic">{t("hero.pill.duration")}</span>{" "}
+            {t("hero.pill.suffix")}
           </span>
         </div>
 
@@ -53,7 +58,7 @@ export function Hero() {
             size="lg"
             className="rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs px-8 h-12"
           >
-            <Link href="/products">Shop Now</Link>
+            <Link href="/products">{t("hero.cta.shop")}</Link>
           </Button>
           <Button
             asChild
@@ -61,7 +66,7 @@ export function Hero() {
             size="lg"
             className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.18em] uppercase text-xs px-8 h-12"
           >
-            <Link href="#how-it-works">How it Works</Link>
+            <Link href="#how-it-works">{t("hero.cta.howItWorks")}</Link>
           </Button>
         </div>
       </div>

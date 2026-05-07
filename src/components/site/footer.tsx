@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "./logo";
 import { Instagram } from "lucide-react";
@@ -6,6 +8,8 @@ import {
   externalRetailers,
   type IconComponent,
 } from "./external-channels";
+import { useT } from "@/lib/lang-context";
+import type { TranslationKey } from "@/lib/i18n";
 
 const followUs = [
   {
@@ -20,51 +24,54 @@ const followUs = [
   },
 ];
 
-const cols = [
+const cols: {
+  titleKey: TranslationKey;
+  links: { labelKey: TranslationKey; href: string }[];
+}[] = [
   {
-    title: "Shop",
+    titleKey: "footer.col.shop",
     links: [
-      { label: "All products", href: "/products" },
-      { label: "How to use", href: "/how-to-use" },
-      { label: "About", href: "/about" },
-      { label: "Wholesale", href: "/wholesale" },
+      { labelKey: "footer.link.allProducts", href: "/products" },
+      { labelKey: "footer.link.howToUse", href: "/how-to-use" },
+      { labelKey: "footer.link.about", href: "/about" },
+      { labelKey: "footer.link.wholesale", href: "/wholesale" },
     ],
   },
   {
-    title: "Help",
+    titleKey: "footer.col.help",
     links: [
-      { label: "How to use", href: "/how-to-use" },
-      { label: "Contact us", href: "/contact" },
-      { label: "Refund policy", href: "/legal/refunds" },
-      { label: "FAQ", href: "/contact#faq" },
+      { labelKey: "footer.link.howToUse", href: "/how-to-use" },
+      { labelKey: "footer.link.contact", href: "/contact" },
+      { labelKey: "footer.link.refund", href: "/legal/refunds" },
+      { labelKey: "footer.link.faq", href: "/contact#faq" },
     ],
   },
   {
-    title: "Legal",
+    titleKey: "footer.col.legal",
     links: [
-      { label: "Terms & Conditions", href: "/legal/terms" },
-      { label: "Privacy Policy", href: "/legal/privacy" },
-      { label: "Refund Policy", href: "/legal/refunds" },
-      { label: "Cookie Settings", href: "/legal/privacy#cookies" },
+      { labelKey: "footer.link.terms", href: "/legal/terms" },
+      { labelKey: "footer.link.privacy", href: "/legal/privacy" },
+      { labelKey: "footer.link.refund", href: "/legal/refunds" },
+      { labelKey: "footer.link.cookies", href: "/legal/privacy#cookies" },
     ],
   },
 ];
 
 export function Footer() {
+  const t = useT();
   return (
     <footer className="bg-black border-t border-[var(--border)] text-white/80">
       <div className="container-x py-16 grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div>
           <Logo />
           <p className="mt-5 max-w-xs text-sm text-[var(--muted)] leading-relaxed">
-            Premium car interior care — designed for drivers who care about
-            every detail.
+            {t("footer.tagline")}
           </p>
 
           {/* Follow us */}
           <div className="mt-7">
             <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
-              Follow us
+              {t("footer.followUs")}
             </p>
             <div className="flex flex-wrap gap-2.5">
               {followUs.map((c) => (
@@ -76,7 +83,7 @@ export function Footer() {
           {/* Find us also */}
           <div className="mt-6">
             <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3">
-              Find us also
+              {t("footer.findUsAlso")}
             </p>
             <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 -mx-1 px-1">
               {externalRetailers.map((c) => (
@@ -86,18 +93,18 @@ export function Footer() {
           </div>
         </div>
         {cols.map((col) => (
-          <div key={col.title}>
+          <div key={col.titleKey}>
             <h4 className="font-display uppercase tracking-[0.18em] text-sm text-white mb-4">
-              {col.title}
+              {t(col.titleKey)}
             </h4>
             <ul className="space-y-2.5 text-sm">
               {col.links.map((l) => (
-                <li key={l.href}>
+                <li key={`${col.titleKey}-${l.href}`}>
                   <Link
                     href={l.href}
                     className="text-[var(--muted)] hover:text-[var(--gold)] transition-colors"
                   >
-                    {l.label}
+                    {t(l.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -110,16 +117,22 @@ export function Footer() {
       <div className="border-t border-[var(--border)]">
         <div className="container-x py-6 flex flex-col gap-3 items-center text-center text-xs text-[var(--muted-2)]">
           <p className="text-[var(--muted)] max-w-2xl leading-relaxed">
-            Block CarBlock Millonario is operated in the US by{" "}
-            <span className="text-white font-medium">Tepew LLC</span>, a
-            registered company in New Jersey.
+            {t("footer.attribution.before")}{" "}
+            <span className="text-white font-medium">
+              {t("footer.attribution.entity")}
+            </span>
+            , {t("footer.attribution.after")}
           </p>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
-            <p>© {new Date().getFullYear()} Tepew LLC. All rights reserved.</p>
+            <p>
+              © {new Date().getFullYear()} Tepew LLC.{" "}
+              {t("footer.copyright")}
+            </p>
             <span className="hidden sm:inline">·</span>
             <p className="tracking-[0.18em] uppercase">
-              Made with <span className="text-[var(--gold)]">★</span> for
-              drivers
+              {t("footer.madeWith")}{" "}
+              <span className="text-[var(--gold)]">★</span>{" "}
+              {t("footer.forDrivers")}
             </p>
           </div>
         </div>

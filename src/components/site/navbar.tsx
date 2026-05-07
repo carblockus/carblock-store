@@ -5,24 +5,27 @@ import Link from "next/link";
 import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { useCart } from "@/lib/cart-context";
+import { useT } from "@/lib/lang-context";
+import type { TranslationKey } from "@/lib/i18n";
 
-const navLinks = [
-  { label: "Shop", href: "/products" },
-  { label: "How to Use", href: "/how-to-use" },
-  { label: "About", href: "/about" },
-  { label: "Wholesale", href: "/wholesale" },
+const navLinks: { key: TranslationKey; href: string }[] = [
+  { key: "nav.shop", href: "/products" },
+  { key: "nav.howToUse", href: "/how-to-use" },
+  { key: "nav.about", href: "/about" },
+  { key: "nav.wholesale", href: "/wholesale" },
 ];
 
 export function Navbar() {
   const { count, setOpen } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const t = useT();
 
   return (
     <header className="sticky top-0 z-40 bg-black/85 backdrop-blur border-b border-[var(--border)]">
       <div className="container-x flex h-28 items-center justify-between gap-4 md:gap-8">
         {/* Mobile hamburger */}
         <button
-          aria-label="Open menu"
+          aria-label={t("nav.openMenu")}
           onClick={() => setMobileOpen(true)}
           className="md:hidden p-2 -ml-2 text-white/80 hover:text-[var(--gold)] transition-colors"
         >
@@ -44,26 +47,26 @@ export function Navbar() {
               href={l.href}
               className="text-[11px] tracking-[0.22em] uppercase text-white/80 hover:text-[var(--gold)] transition-colors"
             >
-              {l.label}
+              {t(l.key)}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-1">
           <button
-            aria-label="Search"
+            aria-label={t("nav.search")}
             className="hidden md:inline-flex p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
             <Search className="h-5 w-5" />
           </button>
           <button
-            aria-label="Account"
+            aria-label={t("nav.account")}
             className="hidden md:inline-flex p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
             <User className="h-5 w-5" />
           </button>
           <button
-            aria-label="Cart"
+            aria-label={t("nav.cart")}
             onClick={() => setOpen(true)}
             className="relative p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
@@ -89,7 +92,7 @@ export function Navbar() {
           >
             <Logo />
             <button
-              aria-label="Close menu"
+              aria-label={t("nav.closeMenu")}
               onClick={() => setMobileOpen(false)}
               className="p-2 -mr-2 text-white"
             >
@@ -107,7 +110,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="block py-4 text-base tracking-[0.18em] uppercase text-white border-b border-[var(--border)] hover:text-[var(--gold)] transition-colors"
               >
-                {l.label}
+                {t(l.key)}
               </Link>
             ))}
             <Link
@@ -115,7 +118,7 @@ export function Navbar() {
               onClick={() => setMobileOpen(false)}
               className="block py-4 text-base tracking-[0.18em] uppercase text-white border-b border-[var(--border)] hover:text-[var(--gold)] transition-colors"
             >
-              Contact
+              {t("nav.contact")}
             </Link>
             <div className="flex gap-3 mt-6">
               <Link
@@ -123,7 +126,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="flex-1 text-center rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 leading-[3rem] transition-colors"
               >
-                Shop Now
+                {t("hero.cta.shop")}
               </Link>
             </div>
           </nav>

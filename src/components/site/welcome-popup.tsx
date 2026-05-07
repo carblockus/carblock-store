@@ -9,11 +9,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useT } from "@/lib/lang-context";
 
 const STORAGE_KEY = "carblock-welcome-popup-dismissed";
 const DELAY_MS = 1500;
 
 export function WelcomePopup() {
+  const t = useT();
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -22,8 +24,8 @@ export function WelcomePopup() {
     if (typeof window === "undefined") return;
     const dismissed = localStorage.getItem(STORAGE_KEY);
     if (dismissed) return;
-    const t = setTimeout(() => setOpen(true), DELAY_MS);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setOpen(true), DELAY_MS);
+    return () => clearTimeout(timer);
   }, []);
 
   function dismiss() {
@@ -72,22 +74,24 @@ export function WelcomePopup() {
 
         <div className="relative p-8 md:p-10 text-center">
           <span className="inline-block text-[10px] tracking-[0.32em] uppercase text-[var(--gold)] mb-4">
-            Welcome to CarBlock
+            {t("popup.welcome")}
           </span>
 
           {!submitted ? (
             <>
               <DialogTitle asChild>
                 <h2 className="font-display text-4xl md:text-5xl uppercase font-bold leading-[0.95]">
-                  Get <span className="text-gold-gradient">15% OFF</span>
+                  {t("popup.title.before")}{" "}
+                  <span className="text-gold-gradient">
+                    {t("popup.title.discount")}
+                  </span>
                   <br />
-                  your first order
+                  {t("popup.title.suffix")}
                 </h2>
               </DialogTitle>
               <DialogDescription asChild>
                 <p className="mt-4 text-sm text-white/70 max-w-sm mx-auto leading-relaxed">
-                  Join the club. Drop your email and we&apos;ll send your code
-                  straight to your inbox — free shipping always included.
+                  {t("popup.body")}
                 </p>
               </DialogDescription>
 
@@ -98,7 +102,7 @@ export function WelcomePopup() {
                 <Input
                   type="email"
                   required
-                  placeholder="your@email.com"
+                  placeholder={t("popup.emailPlaceholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="h-12 bg-[var(--surface)] border-[var(--border-strong)] text-white placeholder:text-[var(--muted-2)] rounded-full px-5 text-center"
@@ -108,7 +112,7 @@ export function WelcomePopup() {
                   disabled={submitting}
                   className="h-12 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs disabled:opacity-50"
                 >
-                  {submitting ? "Sending…" : "Claim My 15% Off"}
+                  {submitting ? "…" : t("popup.cta")}
                 </Button>
                 {error && (
                   <p className="text-xs text-red-300 text-center mt-1">
@@ -122,12 +126,11 @@ export function WelcomePopup() {
                 onClick={dismiss}
                 className="mt-5 text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] hover:text-white transition-colors"
               >
-                No thanks, I&apos;ll pay full price
+                {t("popup.dismiss")}
               </button>
 
               <p className="mt-4 text-[10px] text-[var(--muted-2)]">
-                By subscribing you agree to our privacy policy. Unsubscribe
-                anytime.
+                {t("popup.legal")}
               </p>
             </>
           ) : (
@@ -136,14 +139,17 @@ export function WelcomePopup() {
                 ✓
               </div>
               <h3 className="font-display text-3xl md:text-4xl uppercase font-bold">
-                You&apos;re <span className="text-gold-gradient">in</span>
+                {t("popup.success.title")}{" "}
+                <span className="text-gold-gradient">
+                  {t("popup.success.title.highlight")}
+                </span>
               </h3>
               <p className="mt-3 text-sm text-white/70 max-w-xs mx-auto">
-                Check your inbox for your{" "}
+                {t("popup.success.body.before")}{" "}
                 <span className="text-[var(--gold)] font-semibold">
-                  15% OFF
+                  {t("popup.success.body.code")}
                 </span>{" "}
-                code. See you soon.
+                {t("popup.success.body.after")}
               </p>
             </div>
           )}
