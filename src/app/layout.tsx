@@ -8,6 +8,7 @@ import { WelcomePopup } from "@/components/site/welcome-popup";
 import { CartProvider } from "@/lib/cart-context";
 import { LangProvider } from "@/lib/lang-context";
 import { CartDrawer } from "@/components/site/cart-drawer";
+import { MetaPixel } from "@/components/analytics/meta-pixel";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -53,6 +54,7 @@ export default function RootLayout({
       className={`${inter.variable} ${oswald.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <MetaPixel />
         <LangProvider>
           <CartProvider>
             <AnnouncementBar />

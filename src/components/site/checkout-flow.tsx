@@ -12,6 +12,7 @@ import {
   RadioGroupItem,
 } from "@/components/ui/radio-group";
 import { useCart } from "@/lib/cart-context";
+import { pixel } from "@/lib/meta-pixel";
 import { StripePayment } from "./stripe-payment";
 
 type Step = 1 | 2 | 3;
@@ -48,16 +49,35 @@ export function CheckoutFlow() {
     }
   }, [hydrated, count, step, router]);
 
-  function handlePaymentSuccess(paymentIntentId: string) {
-    // Use Stripe payment-intent ID (pi_...) as our order reference
-    setOrderId(paymentIntentId.toUpperCase());
-    setStep(3);
-    setTimeout(() => clear(), 100);
-  }
-
   const shipping = ship.method === "express" ? 15 : 0;
   const tax = Math.round(subtotal * 0.08 * 100) / 100;
   const total = subtotal + shipping + tax;
+
+  // Fire InitiateCheckout once when user reaches the payment step.
+  useEffect(() => {
+    if (step === 2 && items.length > 0) {
+      pixel.initiateCheckout(
+        items.map((i) => ({ id: i.slug, qty: i.qty, price: i.price })),
+        total,
+      );
+    }
+    // We deliberately only depend on step to avoid double-firing as
+    // shipping/tax recompute. items+total at step==2 are stable enough.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
+  function handlePaymentSuccess(paymentIntentId: string) {
+    // Use Stripe payment-intent ID (pi_...) as our order reference
+    setOrderId(paymentIntentId.toUpperCase());
+    // Fire Meta Pixel Purchase BEFORE clearing the cart so we still have items.
+    pixel.purchase({
+      orderId: paymentIntentId,
+      items: items.map((i) => ({ id: i.slug, qty: i.qty, price: i.price })),
+      total,
+    });
+    setStep(3);
+    setTimeout(() => clear(), 100);
+  }
 
   // Wait until cart hydrates from localStorage before rendering
   if (!hydrated) {

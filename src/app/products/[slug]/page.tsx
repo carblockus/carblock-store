@@ -11,6 +11,7 @@ import { products } from "@/lib/mock-products";
 import { AddToCart } from "@/components/site/add-to-cart";
 import { ProductCard } from "@/components/site/product-card";
 import { ProductGallery } from "@/components/site/product-gallery";
+import { ProductViewTracker } from "@/components/analytics/product-view-tracker";
 
 export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -38,6 +39,12 @@ export default async function ProductPage({
 
   return (
     <div className="bg-background">
+      <ProductViewTracker
+        id={product.slug}
+        name={product.name}
+        category={product.category}
+        price={product.price}
+      />
       {/* Breadcrumb */}
       <div className="border-b border-[var(--border)]">
         <div className="container-x py-4 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">

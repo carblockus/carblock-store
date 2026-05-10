@@ -5,6 +5,7 @@ import { ShoppingBag, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QuantitySelector } from "./quantity-selector";
 import { useCart } from "@/lib/cart-context";
+import { pixel } from "@/lib/meta-pixel";
 import type { Product } from "@/lib/mock-products";
 
 export function AddToCart({ product }: { product: Product }) {
@@ -14,6 +15,13 @@ export function AddToCart({ product }: { product: Product }) {
 
   function handleAdd() {
     add(product, qty);
+    pixel.addToCart({
+      id: product.slug,
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      qty,
+    });
     setAdded(true);
     setTimeout(() => setAdded(false), 2200);
   }
