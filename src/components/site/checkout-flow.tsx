@@ -42,11 +42,19 @@ export function CheckoutFlow() {
     method: "standard",
   });
 
-  // Redirect to /products if cart is empty (only after hydration, and not on confirmation)
+  // Redirect to /products if cart is empty (only after hydration, and not on confirmation).
+  // Wait one tick so the MetaCartHydrator (which reads ?products=... from the
+  // URL when traffic arrives from a Meta Shop) gets a chance to populate the
+  // cart before we bounce the user away.
   useEffect(() => {
-    if (hydrated && count === 0 && step !== 3) {
+    if (!hydrated || step === 3 || count > 0) return;
+    const t = setTimeout(() => {
+      // Re-check via the live store on the timeout firing — by then the
+      // hydrator (if any) will have replaced state.
+      // We rely on the next render cycle to short-circuit if count > 0.
       router.replace("/products");
-    }
+    }, 200);
+    return () => clearTimeout(t);
   }, [hydrated, count, step, router]);
 
   const shipping = ship.method === "express" ? 15 : 0;

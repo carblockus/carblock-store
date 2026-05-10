@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { CheckoutFlow } from "@/components/site/checkout-flow";
+import { MetaCartHydrator } from "@/components/site/meta-cart-hydrator";
 
 export const metadata = {
   title: "Checkout — CarBlock",
@@ -6,5 +8,12 @@ export const metadata = {
 };
 
 export default function CheckoutPage() {
-  return <CheckoutFlow />;
+  return (
+    <>
+      <Suspense fallback={null}>
+        <MetaCartHydrator />
+      </Suspense>
+      <CheckoutFlow />
+    </>
+  );
 }
