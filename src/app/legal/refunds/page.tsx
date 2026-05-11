@@ -142,8 +142,8 @@ export default function RefundsPage() {
         </li>
       </ul>
       <p>
-        <strong>Free shipping</strong> applies to all standard US orders, no
-        minimum required.
+        <strong>Free standard shipping</strong> applies to US orders of $50 or
+        more. Orders below $50 carry a flat $7 standard shipping fee.
       </p>
 
       <h3>Tracking</h3>

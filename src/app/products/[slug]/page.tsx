@@ -120,8 +120,8 @@ export default async function ProductPage({
               {[
                 {
                   icon: Truck,
-                  label: "Free Shipping",
-                  sub: "Lower 48 states",
+                  label: "Free Ship $50+",
+                  sub: "$7 flat below",
                 },
                 {
                   icon: Clock,
@@ -187,7 +187,9 @@ export default async function ProductPage({
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-[var(--muted)] leading-relaxed pb-4">
                   <ul className="list-disc pl-4 space-y-1.5">
-                    <li>Free shipping to the contiguous US (lower 48 states).</li>
+                    <li>Free standard shipping on orders of $50 or more.</li>
+                    <li>Flat $7 shipping on orders under $50.</li>
+                    <li>Ships to the contiguous US (lower 48 states) only.</li>
                     <li>We don&apos;t ship to Alaska, Hawaii or Puerto Rico.</li>
                     <li>Orders ship within 1-2 business days.</li>
                     <li>Standard delivery: 3-7 business days.</li>

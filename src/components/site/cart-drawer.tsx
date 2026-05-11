@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart-context";
 
-const FREE_SHIPPING_THRESHOLD = 0; // already free on all orders
+const FREE_SHIPPING_THRESHOLD = 50; // free shipping at $50+ subtotal
 
 export function CartDrawer() {
   const { items, count, subtotal, open, setOpen, remove, setQty } = useCart();
@@ -138,9 +138,17 @@ export function CartDrawer() {
                   ${subtotal}
                 </span>
               </div>
-              {subtotal >= FREE_SHIPPING_THRESHOLD && (
+              {subtotal >= FREE_SHIPPING_THRESHOLD ? (
                 <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--gold)] text-center">
-                  ★ Free shipping included
+                  ★ Free shipping unlocked
+                </p>
+              ) : (
+                <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--muted)] text-center">
+                  Add{" "}
+                  <span className="text-[var(--gold)] font-semibold">
+                    ${(FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2)}
+                  </span>{" "}
+                  more for free shipping
                 </p>
               )}
               <Button

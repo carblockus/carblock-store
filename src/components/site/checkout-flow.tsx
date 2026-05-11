@@ -57,7 +57,10 @@ export function CheckoutFlow() {
     return () => clearTimeout(t);
   }, [hydrated, count, step, router]);
 
-  const shipping = ship.method === "express" ? 15 : 0;
+  // Standard shipping is $7 for orders under $50, free at $50+.
+  // Express keeps the flat $15 surcharge regardless of subtotal.
+  const standardShipping = subtotal >= 50 ? 0 : 7;
+  const shipping = ship.method === "express" ? 15 : standardShipping;
   const tax = Math.round(subtotal * 0.08 * 100) / 100;
   const total = subtotal + shipping + tax;
 

@@ -44,8 +44,8 @@ const numbers = [
 const promise = [
   {
     icon: Truck,
-    title: "Free shipping",
-    body: "On every order to the lower 48 US states. No minimum required.",
+    title: "Free shipping at $50+",
+    body: "Free standard shipping on orders of $50 or more to the lower 48 US states. Flat $7 below that.",
   },
   {
     icon: ShieldCheck,

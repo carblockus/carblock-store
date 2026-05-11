@@ -59,7 +59,11 @@ export async function POST(req: Request) {
     const taxCents = Math.round(subtotalCents * 0.08); // 8% est.
     const shippingMethod: ShippingMethod =
       body.shippingMethod === "express" ? "express" : "standard";
-    const shippingCents = shippingMethod === "express" ? 1500 : 0;
+    // Standard shipping: $7 flat, free at $50+ subtotal.
+    // Express: flat $15 regardless of subtotal.
+    const standardShippingCents = subtotalCents >= 5000 ? 0 : 700;
+    const shippingCents =
+      shippingMethod === "express" ? 1500 : standardShippingCents;
     const totalCents = subtotalCents + taxCents + shippingCents;
 
     // Pack items into a compact JSON string we can re-parse server-side.
