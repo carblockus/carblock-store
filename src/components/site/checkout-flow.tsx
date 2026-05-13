@@ -337,8 +337,8 @@ export function CheckoutFlow() {
                 label={
                   ship.method === "express" ? "Shipping (Express)" : "Shipping"
                 }
-                value={shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}
-                highlight={shipping === 0}
+                value="Free"
+                highlight
               />
               <Row label="Tax (est.)" value={`$${tax.toFixed(2)}`} />
               <div className="border-t border-[var(--border)] pt-3 flex items-center justify-between">
