@@ -33,6 +33,9 @@ export async function POST(req: Request) {
       items?: ClientItem[];
       shippingMethod?: ShippingMethod;
       shipping?: Shipping;
+      /** Meta browser cookies forwarded from the client — used by CAPI for match. */
+      fbp?: string;
+      fbc?: string;
     };
     const items = Array.isArray(body.items) ? body.items : [];
     if (items.length === 0) {
@@ -87,6 +90,15 @@ export async function POST(req: Request) {
       zip: "",
     };
 
+    // Capture browser signals so the Stripe webhook can fire a CAPI Purchase
+    // event with a high match quality. The webhook itself runs in Stripe's
+    // context (no user IP/UA), so we have to stash these now.
+    const xff = req.headers.get("x-forwarded-for") ?? "";
+    const clientIp = xff.split(",")[0]?.trim() || "";
+    const userAgent = req.headers.get("user-agent") ?? "";
+    const fbp = body.fbp ?? "";
+    const fbc = body.fbc ?? "";
+
     const intent = await stripe.paymentIntents.create({
       amount: totalCents,
       currency: "usd",
@@ -107,6 +119,10 @@ export async function POST(req: Request) {
         state: shorten(ship.state, MAX_META),
         zip: shorten(ship.zip, MAX_META),
         phone: shorten(ship.phone ?? "", MAX_META),
+        capi_fbp: shorten(fbp, MAX_META),
+        capi_fbc: shorten(fbc, MAX_META),
+        capi_ip: shorten(clientIp, MAX_META),
+        capi_ua: shorten(userAgent, MAX_META),
       },
     });
 

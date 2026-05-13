@@ -12,6 +12,14 @@ import { ChevronLeft, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { CartItem } from "@/lib/cart-context";
 
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const m = document.cookie.match(
+    new RegExp("(?:^|;\\s*)" + name + "=([^;]+)"),
+  );
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
 const publishable = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const isTestMode = publishable?.startsWith("pk_test_") ?? false;
 let stripePromise: Promise<Stripe | null> | null = null;
@@ -58,6 +66,11 @@ export function StripePayment({
     let cancelled = false;
     (async () => {
       try {
+        // Meta browser cookies — used by CAPI for ad-impression match quality.
+        // _fbp is the Pixel's first-party cookie, set on every visit.
+        // _fbc is set when the visitor arrives with an fbclid in the URL.
+        const fbp = readCookie("_fbp") ?? "";
+        const fbc = readCookie("_fbc") ?? "";
         const res = await fetch("/api/checkout/create-payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -65,6 +78,8 @@ export function StripePayment({
             items: items.map((i) => ({ slug: i.slug, qty: i.qty })),
             shippingMethod,
             shipping,
+            fbp,
+            fbc,
           }),
         });
         const data = await res.json();

@@ -6,6 +6,7 @@ import {
   sendCustomerConfirmation,
   sendInternalOrderAlert,
 } from "@/lib/order-emails";
+import { sendPurchaseEvent } from "@/lib/meta-capi";
 
 /**
  * Stripe webhook receiver. Configure on the Stripe Dashboard:
@@ -159,6 +160,33 @@ async function handlePaymentSucceeded(intent: Stripe.PaymentIntent) {
     ),
     sendInternalOrderAlert(emailData).catch((e) =>
       console.error("[webhook] internal email failed", e),
+    ),
+    // Meta Conversions API — server-side Purchase event. event_id matches the
+    // one fired by the browser Pixel on the confirmation step so Meta dedupes.
+    sendPurchaseEvent({
+      eventId: intent.id,
+      eventSourceUrl: "https://carblock.us/checkout",
+      value: totalCents / 100,
+      currency: intent.currency,
+      contents: cart.map((c) => ({
+        id: c.s,
+        quantity: c.q,
+        item_price: c.p / 100,
+      })),
+      email,
+      phone: m.phone || null,
+      firstName: m.firstName || null,
+      lastName: m.lastName || null,
+      city: m.city || null,
+      state: m.state || null,
+      zip: m.zip || null,
+      country: "us",
+      fbp: m.capi_fbp || null,
+      fbc: m.capi_fbc || null,
+      clientIpAddress: m.capi_ip || null,
+      clientUserAgent: m.capi_ua || null,
+    }).catch((e) =>
+      console.error("[webhook] meta-capi Purchase failed", e),
     ),
   ]);
 }

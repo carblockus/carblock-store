@@ -17,15 +17,26 @@ export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
 declare global {
   interface Window {
     fbq?: (
-      ...args: [string, string, Record<string, unknown>?]
+      ...args: [
+        string,
+        string,
+        Record<string, unknown>?,
+        { eventID?: string }?,
+      ]
     ) => void;
   }
 }
 
-function track(event: string, params?: Record<string, unknown>) {
+function track(
+  event: string,
+  params?: Record<string, unknown>,
+  eventID?: string,
+) {
   if (typeof window === "undefined") return;
   if (!window.fbq) return;
-  if (params) {
+  if (params && eventID) {
+    window.fbq("track", event, params, { eventID });
+  } else if (params) {
     window.fbq("track", event, params);
   } else {
     window.fbq("track", event);
@@ -91,18 +102,25 @@ export const pixel = {
     items: { id: string; qty: number; price: number }[];
     total: number;
   }) {
-    track("Purchase", {
-      content_ids: p.items.map((i) => i.id),
-      contents: p.items.map((i) => ({
-        id: i.id,
-        quantity: i.qty,
-        item_price: i.price,
-      })),
-      content_type: "product",
-      num_items: p.items.reduce((s, i) => s + i.qty, 0),
-      value: p.total,
-      currency: "USD",
-      order_id: p.orderId,
-    });
+    // The orderId is also passed as `eventID` so the server-side CAPI Purchase
+    // (fired from the Stripe webhook with the same Stripe PaymentIntent id)
+    // is deduplicated against this browser event by Meta.
+    track(
+      "Purchase",
+      {
+        content_ids: p.items.map((i) => i.id),
+        contents: p.items.map((i) => ({
+          id: i.id,
+          quantity: i.qty,
+          item_price: i.price,
+        })),
+        content_type: "product",
+        num_items: p.items.reduce((s, i) => s + i.qty, 0),
+        value: p.total,
+        currency: "USD",
+        order_id: p.orderId,
+      },
+      p.orderId,
+    );
   },
 };
