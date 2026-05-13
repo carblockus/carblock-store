@@ -137,13 +137,13 @@ export default function RefundsPage() {
           processing.
         </li>
         <li>
-          <strong>Express ($15)</strong> — 1 to 3 business days after
+          <strong>Express (Free)</strong> — 1 to 3 business days after
           processing.
         </li>
       </ul>
       <p>
-        <strong>Free standard shipping</strong> applies to US orders of $50 or
-        more. Orders below $50 carry a flat $7 standard shipping fee.
+        <strong>Free shipping</strong> applies to every US order. There is no
+        minimum order value.
       </p>
 
       <h3>Tracking</h3>

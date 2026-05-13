@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Where do you ship?",
-    a: "We ship to the contiguous United States only — the lower 48 states. We do not ship to Alaska, Hawaii or Puerto Rico at this time. Standard shipping is free on orders of $50 or more, and a flat $7 on orders below $50.",
+    a: "We ship to the contiguous United States only — the lower 48 states. We do not ship to Alaska, Hawaii or Puerto Rico at this time. Standard shipping is free on every order.",
   },
   {
     q: "What's your return policy?",

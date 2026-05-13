@@ -14,7 +14,7 @@ export const dictionaries = {
   en: {
     /* ---------- Announcement bar ---------- */
     "announcement.text":
-      "Free shipping on orders $50+ — Premium fragrance for your car, guaranteed.",
+      "Free shipping on every US order — Premium fragrance for your car, guaranteed.",
 
     /* ---------- Navbar ---------- */
     "nav.shop": "Shop",
@@ -48,7 +48,7 @@ export const dictionaries = {
     "popup.title.discount": "15% OFF",
     "popup.title.suffix": "your first order",
     "popup.body":
-      "Join the club. Drop your email and we'll send your code straight to your inbox — free shipping on orders $50+.",
+      "Join the club. Drop your email and we'll send your code straight to your inbox — free shipping on every US order.",
     "popup.emailPlaceholder": "your@email.com",
     "popup.cta": "Claim My 15% Off",
     "popup.dismiss": "No thanks, I'll pay full price",
@@ -93,7 +93,7 @@ export const dictionaries = {
   es: {
     /* ---------- Announcement bar ---------- */
     "announcement.text":
-      "Envío gratis en órdenes de $50+ — Fragancia premium para tu auto, garantizada.",
+      "Envío gratis en toda orden de EE. UU. — Fragancia premium para tu auto, garantizada.",
 
     /* ---------- Navbar ---------- */
     "nav.shop": "Tienda",
@@ -127,7 +127,7 @@ export const dictionaries = {
     "popup.title.discount": "15% DE DESCUENTO",
     "popup.title.suffix": "en tu primera compra",
     "popup.body":
-      "Únete al club. Déjanos tu correo y te enviamos el código directo a tu inbox — envío gratis en órdenes de $50+.",
+      "Únete al club. Déjanos tu correo y te enviamos el código directo a tu inbox — envío gratis en toda orden de EE. UU.",
     "popup.emailPlaceholder": "tu@correo.com",
     "popup.cta": "Reclamar mi 15% OFF",
     "popup.dismiss": "No gracias, prefiero pagar el precio completo",

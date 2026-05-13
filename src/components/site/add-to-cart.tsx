@@ -58,7 +58,7 @@ export function AddToCart({ product }: { product: Product }) {
       </Button>
 
       <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] text-center">
-        Free shipping on orders $50+
+        Free shipping on all US orders
       </p>
     </div>
   );

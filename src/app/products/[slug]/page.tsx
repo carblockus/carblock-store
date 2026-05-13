@@ -187,8 +187,7 @@ export default async function ProductPage({
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-[var(--muted)] leading-relaxed pb-4">
                   <ul className="list-disc pl-4 space-y-1.5">
-                    <li>Free standard shipping on orders of $50 or more.</li>
-                    <li>Flat $7 shipping on orders under $50.</li>
+                    <li>Free standard shipping on every order — no minimum.</li>
                     <li>Ships to the contiguous US (lower 48 states) only.</li>
                     <li>We don&apos;t ship to Alaska, Hawaii or Puerto Rico.</li>
                     <li>Orders ship within 1-2 business days.</li>

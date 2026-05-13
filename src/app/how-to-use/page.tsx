@@ -162,7 +162,7 @@ export default function HowToUsePage() {
           <span className="text-gold-gradient">feel the difference</span>
         </h2>
         <p className="mt-4 text-[var(--muted)]">
-          Free shipping on orders $50+. 30-day money-back guarantee.
+          Free shipping on all US orders. 30-day money-back guarantee.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
