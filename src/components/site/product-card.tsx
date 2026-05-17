@@ -15,9 +15,22 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
   return (
     <Link
       href={`/products/${slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--gold)]/60 transition-all duration-300 hover:-translate-y-0.5"
+      className="group relative flex flex-col rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--gold)]/60 transition-all duration-300 hover:-translate-y-0.5"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-white/[0.02]">
+      {badge && (
+        <Badge
+          className={`absolute -top-2 left-3 z-10 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md ${
+            badge === "BESTSELLER"
+              ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
+              : badge === "NEW"
+                ? "bg-white text-black hover:bg-white"
+                : "bg-black text-[var(--gold)] border border-[var(--gold)] hover:bg-black"
+          }`}
+        >
+          {badge}
+        </Badge>
+      )}
+      <div className="relative aspect-[4/5] overflow-hidden rounded-t-lg bg-white/[0.02]">
         <div
           className="absolute inset-0 bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
           style={{
@@ -26,19 +39,6 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-        {badge && (
-          <Badge
-            className={`absolute bottom-4 left-4 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold ${
-              badge === "BESTSELLER"
-                ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
-                : badge === "NEW"
-                  ? "bg-white text-black hover:bg-white"
-                  : "bg-black text-[var(--gold)] border border-[var(--gold)] hover:bg-black"
-            }`}
-          >
-            {badge}
-          </Badge>
-        )}
       </div>
 
       <div className="p-5 flex flex-col gap-2">

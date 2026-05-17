@@ -38,6 +38,18 @@ export default async function ProductPage({
         ? "WipesBlock"
         : "Bundles";
 
+  // Build the gallery with per-image fit overrides. The CarBlock perfume
+  // catalog has infographic-style photos at positions 2, 3, 4 (the comparison
+  // chart, the durability stamp, the floor-application diagram) where text
+  // is part of the image — those must render with `contain` so nothing gets
+  // cropped. The hero product shots (positions 0, 1, 5) look better at the
+  // default fill behavior.
+  const galleryImages = [product.image, ...(product.gallery ?? [])];
+  const galleryFits: ("cover" | "contain")[] =
+    product.slug === "carblock-millonario-150ml"
+      ? ["cover", "cover", "contain", "contain", "contain", "cover"]
+      : galleryImages.map(() => "cover");
+
   return (
     <div className="bg-background">
       <ProductViewTracker
@@ -71,10 +83,15 @@ export default async function ProductPage({
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Left — Image gallery */}
           <ProductGallery
-            images={[product.image, ...(product.gallery ?? [])]}
+            images={galleryImages}
             alt={product.name}
             badge={product.badge}
             imageFit={product.category === "bundle" ? "contain" : "cover"}
+            // Per-image override — CarBlock catalog photos #3, #4 (and #5)
+            // are infographic-style shots whose text reads off-frame when
+            // cropped with `cover`. Force `contain` for those specifically
+            // while leaving the hero product photos at the default fit.
+            imageFits={galleryFits}
           />
 
           {/* Right — Info */}

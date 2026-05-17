@@ -42,9 +42,10 @@ export function Hero() {
           </span>
         </h1>
 
-        {/* Pill: up to 3 months of fragrance */}
-        <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 backdrop-blur px-6 py-3">
-          <span className="font-display text-base md:text-xl tracking-[0.18em] uppercase font-bold text-gold-gradient">
+        {/* Pill: up to 3 months of fragrance — small accent under the
+            subtitle, sized to stay within the title's visual line length */}
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 backdrop-blur px-4 py-1.5">
+          <span className="font-display text-[11px] md:text-sm tracking-[0.16em] uppercase font-bold text-gold-gradient">
             {t("hero.pill.upto")}{" "}
             <span className="italic">{t("hero.pill.duration")}</span>{" "}
             {t("hero.pill.suffix")}

@@ -3,12 +3,18 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 
+type Fit = "cover" | "contain";
+
 type Props = {
   images: string[];
   alt: string;
   badge?: "NEW" | "BESTSELLER" | "BUNDLE";
-  /** "cover" crops to fill (default). "contain" fits whole image. */
-  imageFit?: "cover" | "contain";
+  /** Default fit applied to every image. "cover" crops, "contain" fits whole. */
+  imageFit?: Fit;
+  /** Per-image override. Same length as `images`. Each entry takes precedence
+   *  over `imageFit`. Use this when some shots are infographics that must
+   *  not be cropped while hero shots look better filling the frame. */
+  imageFits?: Fit[];
 };
 
 export function ProductGallery({
@@ -16,15 +22,17 @@ export function ProductGallery({
   alt,
   badge,
   imageFit = "cover",
+  imageFits,
 }: Props) {
   const [active, setActive] = useState(0);
   const safe = images.length > 0 ? images : ["/products/carblock-perfume-main.jpg"];
   const current = safe[active];
 
-  const fitStyle =
-    imageFit === "contain"
-      ? { backgroundSize: "contain" as const }
-      : { backgroundSize: "cover" as const };
+  function fitFor(i: number): Fit {
+    return imageFits?.[i] ?? imageFit;
+  }
+
+  const fitStyle = { backgroundSize: fitFor(active) };
 
   return (
     <div className="space-y-4">
@@ -80,7 +88,7 @@ export function ProductGallery({
                 className="absolute inset-0 bg-center bg-no-repeat bg-[var(--surface)]"
                 style={{
                   backgroundImage: `url('${src}')`,
-                  ...fitStyle,
+                  backgroundSize: fitFor(i),
                 }}
               />
             </button>
