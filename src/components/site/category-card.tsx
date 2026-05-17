@@ -37,7 +37,7 @@ export function CategoryCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
         {badge && (
           <Badge
-            className={`absolute top-4 left-4 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold ${
+            className={`absolute bottom-4 left-4 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold ${
               badge === "BESTSELLER"
                 ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
                 : badge === "NEW"
