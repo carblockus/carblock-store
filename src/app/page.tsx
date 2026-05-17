@@ -1,4 +1,5 @@
 import { Hero } from "@/components/site/hero";
+import { HeroMenu } from "@/components/site/hero-menu";
 import { SaveBanner } from "@/components/site/save-banner";
 import { CategoryCard } from "@/components/site/category-card";
 import { PainPoints } from "@/components/site/pain-points";
@@ -16,13 +17,17 @@ export default function Home() {
   return (
     <>
       <Hero />
+      {/* Drift-style horizontal menu tabs directly below the banner —
+          replaces the CTA buttons that used to live in the hero. */}
+      <HeroMenu />
 
       {/* Featured product cards — first card sits flush with the hero,
-          no section title above it */}
-      <section className="bg-background py-4 md:py-8">
-        <div className="container-x">
+          no section title above it. Cards get a px-4 inset so they have
+          breathing room on mobile instead of touching the screen edges. */}
+      <section className="bg-background py-6 md:py-10">
+        <div className="container-x px-6 sm:px-8">
           {/* CarBlock alone first, then marquee, then remaining cards */}
-          <div className="mb-6">
+          <div className="mb-6 max-w-md mx-auto md:max-w-none">
             <CategoryCard
               label={first.label}
               description={first.description}
@@ -40,8 +45,8 @@ export default function Home() {
           <SaveBanner />
         </div>
 
-        <div className="container-x">
-          <div className="grid gap-6 md:grid-cols-2">
+        <div className="container-x px-6 sm:px-8">
+          <div className="grid gap-6 md:grid-cols-2 max-w-md mx-auto md:max-w-none">
             {rest.map((c) => (
               <CategoryCard
                 key={c.slug}

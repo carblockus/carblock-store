@@ -29,7 +29,9 @@ export const categories = [
     image: "/products/carblock-new-1.png",
     badge: "BESTSELLER" as const,
     price: 35,
-    href: "/products",
+    // Deep-links directly to the product detail page so the home → detail
+    // → checkout path is 3 clicks max (Shop Now → Add to Cart → Pay).
+    href: "/products/carblock-millonario-150ml",
   },
   {
     slug: "car-wipes",
@@ -39,7 +41,7 @@ export const categories = [
     image: "/products/wipes-main.png",
     badge: "NEW" as const,
     price: 35,
-    href: "/products",
+    href: "/products/wipesblock-interior-60",
   },
   {
     slug: "bundles",
@@ -49,7 +51,7 @@ export const categories = [
     image: "/products/bundle-kit.png",
     badge: "BUNDLE" as const,
     price: 60,
-    href: "/products",
+    href: "/products/carblock-bundle-kit",
   },
 ];
 

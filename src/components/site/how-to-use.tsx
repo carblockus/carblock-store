@@ -11,10 +11,7 @@ export function HowToUse({ id = "how-to-use" }: { id?: string }) {
   return (
     <section id={id} className="space-y-6">
       <div className="text-center">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)]">
-          Two-step ritual
-        </span>
-        <h3 className="font-display text-2xl md:text-3xl uppercase font-bold mt-1 text-white">
+        <h3 className="font-display text-2xl md:text-3xl uppercase font-bold text-white">
           How to Use
         </h3>
       </div>

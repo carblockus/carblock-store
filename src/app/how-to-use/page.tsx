@@ -4,6 +4,9 @@ import { YouTubeEmbed } from "@/components/site/youtube-embed";
 import { Button } from "@/components/ui/button";
 import { Stats } from "@/components/site/stats";
 import { HowToUse } from "@/components/site/how-to-use";
+import { AmazonIcon, externalRetailers } from "@/components/site/external-channels";
+
+const amazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
 export const metadata = {
   title: "How to Use — CarBlock",
@@ -68,10 +71,7 @@ export default function HowToUsePage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,130,27,0.15),transparent_55%)]" />
 
         <div className="container-x relative z-10 py-20 md:py-24 max-w-3xl text-center">
-          <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
-            Tutorials
-          </span>
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl uppercase font-bold mt-3 text-white leading-[1.05]">
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl uppercase font-bold text-white leading-[1.05]">
             How to <span className="text-gold-gradient italic">use it</span>
           </h1>
           <p className="mt-6 text-base md:text-lg text-[var(--muted)] leading-relaxed">
@@ -180,12 +180,27 @@ export default function HowToUsePage() {
         <p className="mt-4 text-[var(--muted)]">
           Free shipping on all US orders. 30-day money-back guarantee.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
           <Button
             asChild
             className="rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 px-8"
           >
             <Link href="/products">Shop now</Link>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            className="rounded-full border-white/30 bg-transparent hover:bg-[var(--gold)] hover:text-black text-white tracking-[0.18em] uppercase text-xs h-12 px-6"
+          >
+            <a
+              href={amazonHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <AmazonIcon className="h-4 w-4 shrink-0" />
+              <span>Shop on Amazon</span>
+            </a>
           </Button>
           <Button
             asChild

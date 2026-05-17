@@ -7,6 +7,9 @@ import { Logo } from "./logo";
 import { useCart } from "@/lib/cart-context";
 import { useT } from "@/lib/lang-context";
 import type { TranslationKey } from "@/lib/i18n";
+import { AmazonIcon, externalRetailers } from "./external-channels";
+
+const amazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
 const navLinks: { key: TranslationKey; href: string }[] = [
   { key: "nav.shop", href: "/products" },
@@ -65,6 +68,17 @@ export function Navbar() {
           >
             <User className="h-5 w-5" />
           </button>
+          {/* Quick shortcut to the Amazon listing — alongside the on-site cart
+              so visitors who prefer Amazon don't have to scroll to the footer. */}
+          <a
+            href={amazonHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Shop on Amazon"
+            className="p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+          >
+            <AmazonIcon className="h-5 w-5" />
+          </a>
           <button
             aria-label={t("nav.cart")}
             onClick={() => setOpen(true)}
