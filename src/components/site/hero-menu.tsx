@@ -32,7 +32,7 @@ export function HeroMenu() {
             <li key={it.href} className="shrink-0">
               <Link
                 href={it.href}
-                className="block text-[11px] sm:text-xs tracking-[0.22em] uppercase text-white/85 hover:text-[var(--gold)] py-1 border-b-2 border-transparent hover:border-[var(--gold)] transition-colors"
+                className="block text-[9px] sm:text-[11px] tracking-[0.18em] uppercase text-white/85 hover:text-[var(--gold)] py-1 border-b-2 border-transparent hover:border-[var(--gold)] transition-colors"
               >
                 {t(it.key)}
               </Link>

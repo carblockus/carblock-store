@@ -75,9 +75,9 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Shop on Amazon"
-            className="p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+            className="p-1.5 text-white/85 hover:text-[var(--gold)] transition-colors"
           >
-            <AmazonIcon className="h-5 w-5" />
+            <AmazonIcon className="h-7 w-7" />
           </a>
           <button
             aria-label={t("nav.cart")}
