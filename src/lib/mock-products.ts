@@ -191,7 +191,7 @@ export const testimonials = [
     name: "Daniel",
     car: "Kit completo",
     text: "Compré el kit completo y vale cada peso. La diferencia con un ambientador normal es brutal.",
-    photo: "/social/IMG_0729.png", // bottle + wipes pack on car hood
+    photo: "/social/IMG_2065.png", // wipes pack + carblock bottle on snowy car hood
   },
   {
     name: "Maria Jose V.",
@@ -203,6 +203,6 @@ export const testimonials = [
     name: "Robin",
     car: "Honda Civic",
     text: "Lo aplico una vez y dura meses. Mi familia ya no se queja del olor del carro.",
-    photo: "/social/IMG_2065.png", // bottle in front of Honda steering wheel
+    photo: "/social/IMG_0729.png", // bottle in front of Honda steering wheel
   },
 ];
