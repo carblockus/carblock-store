@@ -51,10 +51,12 @@ export function CategoryCard({
         </Badge>
       )}
 
-      {/* Clickable image → product detail */}
+      {/* Clickable image → product detail. Square frame on mobile so the
+          card doesn't dominate the viewport; portrait at md+ for desktop
+          looks where vertical space is cheap. */}
       <Link
         href={href}
-        className="relative aspect-[4/5] overflow-hidden rounded-t-lg bg-white/[0.02]"
+        className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-t-lg bg-white/[0.02]"
         aria-label={`Shop ${label}`}
       >
         <div
