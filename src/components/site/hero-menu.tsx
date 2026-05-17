@@ -27,7 +27,7 @@ export function HeroMenu() {
       className="bg-black border-b border-[var(--border)]"
     >
       <div className="container-x">
-        <ul className="flex items-center justify-between sm:justify-center gap-4 sm:gap-10 overflow-x-auto py-3 sm:py-4">
+        <ul className="flex items-center justify-between sm:justify-center gap-4 sm:gap-10 overflow-x-auto py-2 sm:py-3">
           {items.map((it) => (
             <li key={it.href} className="shrink-0">
               <Link
