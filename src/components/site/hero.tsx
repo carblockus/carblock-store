@@ -24,9 +24,9 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-24 top-1/4 h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle_at_center,rgba(242,201,76,0.2),transparent_60%)] blur-3xl" />
       <div className="pointer-events-none absolute -left-16 bottom-0 h-[200px] w-[200px] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.2),transparent_60%)] blur-3xl" />
 
-      {/* mt-auto pushes the text block down to the bottom of the hero
-          banner instead of sitting at the top. */}
-      <div className="container-x relative z-10 max-w-4xl mt-auto pt-6 pb-6 md:pb-12">
+      {/* mb-auto pushes the text block up to the top of the hero banner,
+          keeping the product photo visible in the lower portion. */}
+      <div className="container-x relative z-10 max-w-4xl mb-auto pt-6 md:pt-10">
         <div className="mb-2 md:mb-4">
           <span className="font-display text-gold-gradient text-[1.85rem] sm:text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
             {t("hero.eyebrow")}
