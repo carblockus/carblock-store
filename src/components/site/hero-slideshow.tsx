@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 
 const slides = [
-  "/hero/page-1.png",
+  "/hero/page-1.jpg",
   "/hero/page-2.png",
   "/hero/page-3.png",
   "/hero/page-4.png",
+  "/hero/page-5.png",
+  "/hero/page-6.png",
 ];
 
 // Quick 2s rotation between slides so all three photos cycle through
