@@ -154,7 +154,8 @@ export const products: Product[] = [
 
 // Order intentionally alternates "steering wheel" shots with "exterior /
 // packaging" shots so no two visually similar photos appear back-to-back
-// in the marquee.
+// in the marquee. Per request, after every two English testimonials we
+// insert one Spanish testimonial.
 export const testimonials = [
   {
     name: "Kevin S.",
@@ -169,6 +170,12 @@ export const testimonials = [
     photo: "/social/IMG_1197.jpg", // exterior + packaging
   },
   {
+    name: "Erica",
+    car: "Mercedes GLE",
+    text: "Por fin un aroma que se siente premium. Mi auto huele igual de lujoso que se ve.",
+    photo: "/social/IMG_2891.png", // hand holding bottle in luxury interior
+  },
+  {
     name: "David R.",
     car: "Range Rover Sport",
     text: "My passengers always ask what fragrance I use.",
@@ -181,9 +188,21 @@ export const testimonials = [
     photo: "/social/att.Iq5h3Q4IrywgGk7YzoBOfKaDYCO5bWI52h638QtfKpw.jpg", // exterior
   },
   {
+    name: "Daniel",
+    car: "Kit completo",
+    text: "Compré el kit completo y vale cada peso. La diferencia con un ambientador normal es brutal.",
+    photo: "/social/IMG_0729.png", // bottle + wipes pack on car hood
+  },
+  {
     name: "Maria Jose V.",
     car: "Jeep Grand Cherokee",
     text: "Smells incredible 3 months in. Game changer.",
     photo: "/social/IMG_0382.jpg", // steering wheel
+  },
+  {
+    name: "Robin",
+    car: "Honda Civic",
+    text: "Lo aplico una vez y dura meses. Mi familia ya no se queja del olor del carro.",
+    photo: "/social/IMG_2065.png", // bottle in front of Honda steering wheel
   },
 ];
