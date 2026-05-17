@@ -26,7 +26,7 @@ export const categories = [
     label: "CarBlock",
     description:
       "Premium liquid car perfume — neutralizes smoke, pet & humidity odors and lasts up to 3 months.",
-    image: "/products/carblock-perfume-main.jpg",
+    image: "/products/carblock-new-1.png",
     badge: "BESTSELLER" as const,
     price: 35,
     href: "/products",
@@ -84,12 +84,13 @@ export const products: Product[] = [
     ],
     price: 35,
     badge: "BESTSELLER",
-    image: "/products/carblock-perfume-main.jpg",
+    image: "/products/carblock-new-1.png",
     gallery: [
-      "/products/carblock-cat-2.jpg",
-      "/products/carblock-cat-3.jpg",
-      "/products/carblock-cat-4.jpg",
-      "/products/carblock-cat-5.jpg",
+      "/products/carblock-new-2.jpg",
+      "/products/carblock-new-3.png",
+      "/products/carblock-new-4.png",
+      "/products/carblock-new-5.png",
+      "/products/carblock-new-6.jpg",
     ],
     sizes: ["150ml"],
   },
@@ -143,22 +144,8 @@ export const products: Product[] = [
     badge: "BUNDLE",
     image: "/products/bundle-kit.png",
     gallery: [
-      "/products/carblock-cat-1.jpg",
+      "/products/carblock-new-1.png",
       "/products/wipes-cat-1.png",
-    ],
-  },
-  {
-    slug: "carblock-2-pack",
-    name: "CarBlock 2-Pack",
-    category: "bundle",
-    shortDescription:
-      "Two bottles of CarBlock Millonario — stock up or gift one.",
-    price: 60,
-    badge: "BUNDLE",
-    image: "/products/bundle-2pack.png",
-    gallery: [
-      "/products/carblock-cat-1.jpg",
-      "/products/carblock-cat-2.jpg",
     ],
   },
 ];

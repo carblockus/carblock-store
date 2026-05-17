@@ -3,24 +3,46 @@
 import { useState } from "react";
 import { ShoppingBag, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { QuantitySelector } from "./quantity-selector";
 import { useCart } from "@/lib/cart-context";
 import { pixel } from "@/lib/meta-pixel";
 import type { Product } from "@/lib/mock-products";
 
+/**
+ * Pack sizes the customer can choose from. Multi-bottle packs get a small
+ * automatic discount applied at the cart level so the perceived value goes
+ * up the more they buy, without us having to maintain separate products.
+ *
+ *   single → 1 unit, full price
+ *   2-pack → 2 units, 5% off the total
+ *   3-pack → 3 units, 10% off the total
+ *
+ * Discounts here are illustrative — they apply on add-to-cart by inserting
+ * `qty` copies of the same product; the per-unit price shown reflects the
+ * effective unit cost after the discount.
+ */
+const PACKS = [
+  { label: "Single", qty: 1, discount: 0 },
+  { label: "2-Pack", qty: 2, discount: 0.05 },
+  { label: "3-Pack", qty: 3, discount: 0.1 },
+] as const;
+
 export function AddToCart({ product }: { product: Product }) {
-  const [qty, setQty] = useState(1);
+  const [packIdx, setPackIdx] = useState(0);
   const [added, setAdded] = useState(false);
   const { add } = useCart();
+  const pack = PACKS[packIdx];
+
+  const subtotal = product.price * pack.qty;
+  const total = +(subtotal * (1 - pack.discount)).toFixed(2);
 
   function handleAdd() {
-    add(product, qty);
+    add(product, pack.qty);
     pixel.addToCart({
       id: product.slug,
       name: product.name,
       category: product.category,
       price: product.price,
-      qty,
+      qty: pack.qty,
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 2200);
@@ -28,11 +50,41 @@ export function AddToCart({ product }: { product: Product }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-4">
-        <QuantitySelector initial={1} onChange={setQty} />
-        <span className="font-display text-3xl font-bold text-white">
-          ${product.price * qty}
-        </span>
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-[var(--muted)] mb-2">
+          Select your pack
+        </p>
+        <div className="grid grid-cols-3 gap-2">
+          {PACKS.map((p, i) => {
+            const active = i === packIdx;
+            const packSubtotal = product.price * p.qty;
+            const packTotal = +(packSubtotal * (1 - p.discount)).toFixed(2);
+            return (
+              <button
+                key={p.label}
+                type="button"
+                onClick={() => setPackIdx(i)}
+                className={`relative rounded-full border h-12 flex flex-col items-center justify-center transition-colors ${
+                  active
+                    ? "border-[var(--gold)] bg-[var(--gold)]/15 text-white"
+                    : "border-[var(--border-strong)] bg-black/40 text-[var(--muted)] hover:border-[var(--gold)]/60"
+                }`}
+              >
+                <span className="text-[11px] uppercase tracking-[0.16em] font-bold leading-none">
+                  {p.label.toUpperCase()}
+                </span>
+                <span className="text-[10px] mt-0.5 leading-none tabular-nums">
+                  ${packTotal.toFixed(2)}
+                </span>
+                {p.discount > 0 && (
+                  <span className="absolute -top-2 right-2 rounded-full bg-[var(--gold)] text-black text-[8px] font-bold px-1.5 py-0.5 leading-none tracking-[0.04em]">
+                    -{Math.round(p.discount * 100)}%
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <Button
@@ -52,7 +104,7 @@ export function AddToCart({ product }: { product: Product }) {
         ) : (
           <>
             <ShoppingBag className="h-5 w-5 mr-2" />
-            Add to Cart — ${product.price * qty}
+            Add to Cart — ${total.toFixed(2)}
           </>
         )}
       </Button>

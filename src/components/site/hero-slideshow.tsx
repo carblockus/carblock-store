@@ -3,11 +3,9 @@
 import { useEffect, useState } from "react";
 
 const slides = [
-  "/hero/1.jpg",
-  "/hero/3.jpg",
-  "/hero/5.jpg",
-  "/hero/6.jpg",
-  "/hero/7.jpg",
+  "/hero/page-1.png",
+  "/hero/page-2.png",
+  "/hero/page-3.png",
 ];
 
 // First slide flashes briefly then advances; the rest stay 5s each.

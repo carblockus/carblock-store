@@ -67,14 +67,13 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.05em] sm:tracking-[0.18em] uppercase text-[9px] sm:text-xs px-1.5 sm:px-6 h-11 sm:h-12"
+            className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-[var(--gold)] hover:text-black text-white tracking-[0.14em] sm:tracking-[0.18em] uppercase text-[10px] sm:text-xs px-3 sm:px-6 h-11 sm:h-12"
           >
-            <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col sm:flex-row items-center justify-center gap-0 sm:gap-1.5 whitespace-nowrap leading-none">
-              {/* Mobile: Amazon mark on top, "Shop on Amazon" on the line below
-                  with no gap — looks like a single composite stamp.
-                  Desktop: icon left, text right (single row). */}
-              <AmazonIcon className="h-5 w-5 sm:h-6 sm:w-6 shrink-0 -mb-0.5 sm:mb-0" />
-              <span className="text-[8px] sm:text-xs">Shop on Amazon</span>
+            {/* Matches the footer ChannelPill style: small 'a' mark on the
+                left and a single "Amazon" caption — no two-line stacking. */}
+            <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 whitespace-nowrap">
+              <AmazonIcon className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
+              <span>Amazon</span>
             </a>
           </Button>
           <Button
