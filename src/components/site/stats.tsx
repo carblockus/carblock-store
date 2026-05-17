@@ -81,13 +81,14 @@ export function Stats() {
           </p>
         </div>
 
-        {/* Technique cards — clicking either scrolls down to the HowToUse
-            video at #how-to-use. */}
+        {/* Technique cards — each links to the CarBlock product page,
+            where the actual How To Use video lives, since the inline
+            video on /how-to-use itself was removed. */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-12">
           {techniques.map((tech) => (
             <Link
               key={tech.eyebrow}
-              href="#how-to-use"
+              href="/products/carblock-millonario-150ml#how-to-use"
               aria-label={`${t("stats.watchTutorial")}: ${t(tech.title)}`}
               className="group relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-[3/4] shadow-[0_20px_60px_-20px_rgba(212,175,55,0.35)] block"
             >

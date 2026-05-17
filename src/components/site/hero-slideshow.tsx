@@ -34,11 +34,11 @@ export function HeroSlideshow() {
       {slides.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 bg-no-repeat bg-contain bg-center transition-opacity duration-[800ms] ease-in-out"
+          className="absolute inset-0 bg-no-repeat bg-cover bg-center transition-opacity duration-[800ms] ease-in-out"
           style={{
             backgroundImage: `url('${src}')`,
-            // `contain` keeps the whole product visible — no zoom-in crop
-            // that was clipping image #2's bottle on the right edge.
+            // Photos are already prepared at 4:3 to match the hero box so
+            // `cover` fills cleanly without cropping the subject.
             opacity: active === i ? 1 : 0,
           }}
         />

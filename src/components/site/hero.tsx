@@ -12,7 +12,7 @@ export function Hero() {
   const t = useT();
 
   return (
-    <section className="relative overflow-hidden bg-black min-h-[240px] md:min-h-[440px] flex flex-col">
+    <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-h-[560px] flex flex-col">
       {/* Auto-rotating social-proof slideshow */}
       <HeroSlideshow />
 
