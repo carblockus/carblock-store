@@ -12,7 +12,7 @@ export function Hero() {
   const t = useT();
 
   return (
-    <section className="relative overflow-hidden bg-black min-h-[640px] md:min-h-[720px]">
+    <section className="relative overflow-hidden bg-black min-h-[520px] md:min-h-[720px]">
       {/* Auto-rotating social-proof slideshow */}
       <HeroSlideshow />
 
@@ -24,7 +24,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-32 top-1/4 h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle_at_center,rgba(242,201,76,0.22),transparent_60%)] blur-3xl" />
       <div className="pointer-events-none absolute -left-20 bottom-0 h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.22),transparent_60%)] blur-3xl" />
 
-      <div className="container-x relative z-10 py-28 md:py-40 max-w-4xl">
+      <div className="container-x relative z-10 py-12 md:py-40 max-w-4xl">
         <div className="mb-6">
           <span className="font-display text-gold-gradient text-[3.25rem] sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
             {t("hero.eyebrow")}

@@ -120,8 +120,8 @@ export default async function ProductPage({
               {[
                 {
                   icon: Truck,
-                  label: "Free Ship $50+",
-                  sub: "$7 flat below",
+                  label: "Free Shipping",
+                  sub: "Every US order",
                 },
                 {
                   icon: Clock,
