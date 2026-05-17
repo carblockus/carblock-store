@@ -4,6 +4,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HeroSlideshow } from "./hero-slideshow";
 import { useT } from "@/lib/lang-context";
+import { AmazonIcon, externalRetailers } from "./external-channels";
+
+const amazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
 export function Hero() {
   const t = useT();
@@ -52,11 +55,15 @@ export function Hero() {
           </span>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-4">
+        {/* 3-button CTA row — always on a single line (mobile too).
+            Mobile uses tight padding and small text so they fit at ~390px;
+            desktop expands. The Amazon button shows the lowercase 'a' mark
+            beside the label as a recognizable trust signal. */}
+        <div className="mt-10 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-4">
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs px-8 h-12"
+            className="rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.14em] sm:tracking-[0.18em] uppercase text-[10px] sm:text-xs px-3 sm:px-8 h-11 sm:h-12"
           >
             <Link href="/products">{t("hero.cta.shop")}</Link>
           </Button>
@@ -64,7 +71,18 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.18em] uppercase text-xs px-8 h-12"
+            className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.14em] sm:tracking-[0.18em] uppercase text-[10px] sm:text-xs px-2 sm:px-6 h-11 sm:h-12"
+          >
+            <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5">
+              <AmazonIcon className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" />
+              <span>Amazon</span>
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.14em] sm:tracking-[0.18em] uppercase text-[10px] sm:text-xs px-3 sm:px-8 h-11 sm:h-12"
           >
             <Link href="#how-it-works">{t("hero.cta.howItWorks")}</Link>
           </Button>

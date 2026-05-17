@@ -21,7 +21,7 @@ export function Navbar() {
   const t = useT();
 
   return (
-    <header className="sticky top-0 z-40 bg-black/85 backdrop-blur border-b border-[var(--border)]">
+    <header className="relative z-40 bg-black border-b border-[var(--border)]">
       <div className="container-x flex h-28 items-center justify-between gap-4 md:gap-8">
         {/* Mobile hamburger */}
         <button
