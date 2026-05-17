@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Oswald, Cinzel } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
+import { HeroMenu } from "@/components/site/hero-menu";
 import { AnnouncementBar } from "@/components/site/announcement-bar";
 import { Footer } from "@/components/site/footer";
 import { WelcomePopup } from "@/components/site/welcome-popup";
@@ -61,6 +62,7 @@ export default function RootLayout({
           <CartProvider>
             <AnnouncementBar />
             <Navbar />
+            <HeroMenu />
             <main className="flex-1">{children}</main>
             <Footer />
             <WelcomePopup />

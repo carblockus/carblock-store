@@ -1,5 +1,4 @@
 import { Hero } from "@/components/site/hero";
-import { HeroMenu } from "@/components/site/hero-menu";
 import { SaveBanner } from "@/components/site/save-banner";
 import { CategoryCard } from "@/components/site/category-card";
 import { PainPoints } from "@/components/site/pain-points";
@@ -17,9 +16,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* Drift-style horizontal menu tabs directly below the banner —
-          replaces the CTA buttons that used to live in the hero. */}
-      <HeroMenu />
 
       {/* Featured product cards — first card sits flush with the hero,
           no section title above it. Cards get a px-4 inset so they have

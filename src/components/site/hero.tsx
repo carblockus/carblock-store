@@ -40,8 +40,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Photo banner — clean, no overlays, no decorations */}
-      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-h-[560px]">
+      {/* Photo banner — clean, no overlays. Aspect is wider/shorter than
+          the source 4:3 photos so the product peeks above the fold sooner;
+          bg-cover crops the top/bottom edges only. */}
+      <section className="relative overflow-hidden bg-black aspect-[16/9] md:aspect-[21/9] md:max-h-[440px]">
         <HeroSlideshow />
       </section>
     </>
