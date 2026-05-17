@@ -169,3 +169,14 @@ body {
 .animate-marquee {
   animation: marquee 40s linear infinite;
 }
+
+/* "Pop" — subtle continuous pulse that scales the element slightly
+   so it draws the eye without being annoying. Used on the hero
+   "Up to 3 months" pill to make it stand out. */
+@keyframes pop {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+.animate-pop {
+  animation: pop 1.6s ease-in-out infinite;
+}

@@ -29,8 +29,10 @@ export function Hero() {
               {t("hero.title.line2.after")}
             </span>
           </h1>
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 px-2 py-0.5">
-            <span className="font-display text-[8px] md:text-[10px] tracking-[0.14em] uppercase font-bold text-gold-gradient">
+          {/* Gold-on-black pill with a continuous "pop" pulse so it draws
+              the eye against the dark strip behind it. */}
+          <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-[var(--gold)] shadow-[0_4px_14px_rgba(212,175,55,0.35)] px-3 py-1 animate-pop">
+            <span className="font-display text-[9px] md:text-xs tracking-[0.16em] uppercase font-extrabold text-black">
               {t("hero.pill.upto")}{" "}
               <span className="italic">{t("hero.pill.duration")}</span>{" "}
               {t("hero.pill.suffix")}
@@ -39,8 +41,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Photo banner — clean, no overlays */}
-      <section className="relative overflow-hidden bg-black aspect-[21/9] md:aspect-[21/9] md:max-h-[360px]">
+      {/* Photo banner — clean, no overlays. Aspect matches the source
+          4:3 photos exactly so nothing gets cropped (bg-cover renders the
+          full image edge-to-edge). */}
+      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-h-[480px]">
         <HeroSlideshow />
       </section>
     </>
