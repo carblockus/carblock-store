@@ -69,10 +69,11 @@ export function Hero() {
             size="lg"
             className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.05em] sm:tracking-[0.18em] uppercase text-[9px] sm:text-xs px-1.5 sm:px-6 h-11 sm:h-12"
           >
-            <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 whitespace-nowrap leading-none">
-              {/* Mobile: Amazon mark on top, "Shop on Amazon" on the line below.
+            <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col sm:flex-row items-center justify-center gap-0 sm:gap-1.5 whitespace-nowrap leading-none">
+              {/* Mobile: Amazon mark on top, "Shop on Amazon" on the line below
+                  with no gap — looks like a single composite stamp.
                   Desktop: icon left, text right (single row). */}
-              <AmazonIcon className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" />
+              <AmazonIcon className="h-5 w-5 sm:h-6 sm:w-6 shrink-0 -mb-0.5 sm:mb-0" />
               <span className="text-[8px] sm:text-xs">Shop on Amazon</span>
             </a>
           </Button>
