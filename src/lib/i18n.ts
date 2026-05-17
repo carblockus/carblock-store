@@ -15,6 +15,8 @@ export const dictionaries = {
     /* ---------- Announcement bar ---------- */
     "announcement.text":
       "Free shipping on every US order — Premium fragrance for your car, guaranteed.",
+    /** Short variant used on phones where the full sentence doesn't fit. */
+    "announcement.short": "Free shipping on every US order",
 
     /* ---------- Navbar ---------- */
     "nav.shop": "Shop",
@@ -94,6 +96,8 @@ export const dictionaries = {
     /* ---------- Announcement bar ---------- */
     "announcement.text":
       "Envío gratis en toda orden de EE. UU. — Fragancia premium para tu auto, garantizada.",
+    /** Short variant used on phones where the full sentence doesn't fit. */
+    "announcement.short": "Envío gratis en toda orden de EE. UU.",
 
     /* ---------- Navbar ---------- */
     "nav.shop": "Tienda",
