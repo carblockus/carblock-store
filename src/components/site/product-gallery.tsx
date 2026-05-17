@@ -35,9 +35,24 @@ export function ProductGallery({
   const fitStyle = { backgroundSize: fitFor(active) };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 relative">
+      {/* Badge sits OUTSIDE the image frame, in the dark margin above the
+          gallery — so it never overlaps the photo's own text/labels. */}
+      {badge && (
+        <Badge
+          className={`absolute -top-3 left-4 z-20 rounded-sm px-3 py-1.5 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md ${
+            badge === "BESTSELLER"
+              ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
+              : badge === "NEW"
+                ? "bg-white text-black hover:bg-white"
+                : "bg-black text-[var(--gold)] border border-[var(--gold)] hover:bg-black"
+          }`}
+        >
+          {badge}
+        </Badge>
+      )}
       {/* Main image */}
-      <div className="relative aspect-square rounded-lg overflow-hidden bg-[var(--surface)] border border-[var(--border)]">
+      <div className="relative aspect-square rounded-lg overflow-hidden bg-[var(--surface)] border border-[var(--border)] mt-3">
         <div
           className="absolute inset-0 bg-center bg-no-repeat transition-[background-image] duration-300"
           style={{
@@ -47,19 +62,6 @@ export function ProductGallery({
           role="img"
           aria-label={alt}
         />
-        {badge && (
-          <Badge
-            className={`absolute top-5 left-5 rounded-sm px-3 py-1.5 text-[10px] tracking-[0.2em] uppercase font-semibold ${
-              badge === "BESTSELLER"
-                ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
-                : badge === "NEW"
-                  ? "bg-white text-black hover:bg-white"
-                  : "bg-black text-[var(--gold)] border border-[var(--gold)] hover:bg-black"
-            }`}
-          >
-            {badge}
-          </Badge>
-        )}
 
         {/* Counter */}
         {safe.length > 1 && (

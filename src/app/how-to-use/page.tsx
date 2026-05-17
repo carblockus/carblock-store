@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ChevronRight, Sparkles, Wind } from "lucide-react";
 import { YouTubeEmbed } from "@/components/site/youtube-embed";
 import { Button } from "@/components/ui/button";
+import { Stats } from "@/components/site/stats";
+import { HowToUse } from "@/components/site/how-to-use";
 
 export const metadata = {
   title: "How to Use — CarBlock",
@@ -80,8 +82,22 @@ export default function HowToUsePage() {
         </div>
       </section>
 
-      {/* Video sections */}
-      {languageSections.map((lang) => (
+      {/* Stats / "How to Apply" with TECHNIQUE 1+2 photos linking down to
+          the tutorial video below (#how-to-use). Moved here from the home
+          page so the home stays focused on product, not application. */}
+      <Stats />
+
+      {/* English video tutorial — the vertical iPhone clip the user
+          recorded. Anchor #how-to-use so the technique cards above can
+          scroll down here on click. */}
+      <section className="container-x py-12 md:py-16 border-b border-[var(--border)]">
+        <HowToUse id="how-to-use" />
+      </section>
+
+      {/* Bonus tutorial slots (empty YouTube IDs) — fill these when more
+          videos are produced. Currently only Spanish renders since the
+          English flow is already covered by the HowToUse block above. */}
+      {languageSections.filter((l) => l.key === "es").map((lang) => (
         <section
           key={lang.key}
           className={`${

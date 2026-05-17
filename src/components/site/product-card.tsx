@@ -19,7 +19,7 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
     >
       {badge && (
         <Badge
-          className={`absolute -top-2 left-3 z-10 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md ${
+          className={`absolute -top-4 left-3 z-10 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md ${
             badge === "BESTSELLER"
               ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
               : badge === "NEW"

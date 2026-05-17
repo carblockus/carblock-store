@@ -1,20 +1,15 @@
-import { Play } from "lucide-react";
-
 /**
- * Two-step "How to Use" panel shown right under the Add-to-Cart on the
- * CarBlock perfume product page.
+ * Two-step "How to Use" panel shown under the Add-to-Cart on the perfume
+ * product page and on the /how-to-use page.
  *
- * The video element points at `/products/how-to-use.mp4` (drop the file in
- * carblock-store/public/products/ when ready) with a poster fallback so
- * the section still looks intentional before the asset is uploaded.
- *
- * Steps are intentionally short:
- *   1) Open the bottle
- *   2) Pour onto floor mats and along the floor edges
+ * The video is a vertical (portrait) clip recorded on iPhone — we use
+ * aspect-[9/16] with max-w-sm so it sits centered like a phone screen,
+ * never letterboxed or cropped. `<video>` plays the .mov directly in
+ * modern browsers since the inner codec is H.264.
  */
-export function HowToUse() {
+export function HowToUse({ id = "how-to-use" }: { id?: string }) {
   return (
-    <section className="space-y-5">
+    <section id={id} className="space-y-6">
       <div className="text-center">
         <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)]">
           Two-step ritual
@@ -24,23 +19,20 @@ export function HowToUse() {
         </h3>
       </div>
 
-      {/* Video — 16:9 frame with poster fallback while the .mp4 is missing */}
-      <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-[var(--border)] bg-black">
+      {/* Vertical video frame — phone-screen aspect, centered. Object-contain
+          guarantees the whole video shows even if the source ratio varies. */}
+      <div className="mx-auto w-full max-w-sm aspect-[9/16] rounded-2xl overflow-hidden border border-[var(--border)] bg-black">
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video
-          src="/products/how-to-use.mp4"
-          poster="/products/carblock-new-3.png"
           controls
           playsInline
           preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Play overlay only shows while controls are inactive on first paint */}
-        <div className="pointer-events-none absolute inset-0 grid place-items-center bg-gradient-to-t from-black/30 to-transparent">
-          <span className="grid place-items-center h-14 w-14 rounded-full bg-[var(--gold)]/85 text-black shadow-lg">
-            <Play className="h-6 w-6 ml-0.5" />
-          </span>
-        </div>
+          poster="/products/carblock-new-1.png"
+          className="w-full h-full object-contain bg-black"
+        >
+          <source src="/products/how-to-use.mov" type="video/mp4" />
+          <source src="/products/how-to-use.mov" type="video/quicktime" />
+        </video>
       </div>
 
       {/* Two steps */}

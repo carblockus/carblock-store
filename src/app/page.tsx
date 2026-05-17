@@ -2,7 +2,6 @@ import { Hero } from "@/components/site/hero";
 import { SaveBanner } from "@/components/site/save-banner";
 import { CategoryCard } from "@/components/site/category-card";
 import { PainPoints } from "@/components/site/pain-points";
-import { Stats } from "@/components/site/stats";
 import { WipesBanner } from "@/components/site/wipes-banner";
 import { Testimonials } from "@/components/site/testimonials";
 import { Newsletter } from "@/components/site/newsletter";
@@ -60,7 +59,6 @@ export default function Home() {
       </section>
 
       <PainPoints />
-      <Stats />
       <WipesBanner />
       <Testimonials />
       <Newsletter />

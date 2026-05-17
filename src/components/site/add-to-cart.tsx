@@ -20,10 +20,13 @@ import type { Product } from "@/lib/mock-products";
  * `qty` copies of the same product; the per-unit price shown reflects the
  * effective unit cost after the discount.
  */
+// 14.29% on 2-pack → $60.00 for a $35 unit (saves $10).
+// 19.05% on 3-pack → $85.00 for a $35 unit (saves $20). Steeper than the
+// 2-pack to reward bulk buying with a visibly bigger discount badge.
 const PACKS = [
   { label: "Single", qty: 1, discount: 0 },
-  { label: "2-Pack", qty: 2, discount: 0.05 },
-  { label: "3-Pack", qty: 3, discount: 0.1 },
+  { label: "2-Pack", qty: 2, discount: 0.1429 },
+  { label: "3-Pack", qty: 3, discount: 0.1905 },
 ] as const;
 
 export function AddToCart({ product }: { product: Product }) {

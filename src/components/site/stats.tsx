@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Play } from "lucide-react";
 
 const distribution = [
   {
@@ -68,20 +70,32 @@ export function Stats() {
           </p>
         </div>
 
-        {/* Two application photos side by side */}
+        {/* Two application photos side by side — each one is a link
+            that scrolls up to the HowToUse video at #how-to-use so the
+            visitor can watch the technique. Play overlay signals
+            clickability. */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-12">
           {techniques.map((t) => (
-            <div
+            <Link
               key={t.eyebrow}
-              className="relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-[3/4] shadow-[0_20px_60px_-20px_rgba(212,175,55,0.35)]"
+              href="#how-to-use"
+              aria-label={`Watch tutorial: ${t.title}`}
+              className="group relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-[3/4] shadow-[0_20px_60px_-20px_rgba(212,175,55,0.35)] block"
             >
               <Image
                 src={t.src}
                 alt={t.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 500px"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
+              {/* Play overlay — sits centered with a subtle dim so the
+                  card reads as "tap to play tutorial". */}
+              <span className="absolute inset-0 grid place-items-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                <span className="grid place-items-center h-16 w-16 rounded-full bg-[var(--gold)]/90 group-hover:bg-[var(--gold-bright)] text-black shadow-[0_8px_28px_rgba(0,0,0,0.6)] transition-colors">
+                  <Play className="h-7 w-7 ml-0.5" />
+                </span>
+              </span>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-5">
                 <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-1">
                   {t.eyebrow}
@@ -91,7 +105,7 @@ export function Stats() {
                 </p>
                 <p className="text-xs text-white/70 mt-1.5">{t.body}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
