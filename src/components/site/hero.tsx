@@ -71,7 +71,14 @@ export function Hero() {
           >
             <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5">
               <AmazonIcon className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" />
-              <span>Amazon</span>
+              {/* Mobile column is ~110px so "Shop on Amazon" wraps to two
+                  lines beside the icon. Desktop has plenty of room for
+                  a single line. */}
+              <span className="hidden sm:inline">Shop on Amazon</span>
+              <span className="sm:hidden flex flex-col items-start leading-[1.1] text-left">
+                <span>Shop on</span>
+                <span>Amazon</span>
+              </span>
             </a>
           </Button>
           <Button
