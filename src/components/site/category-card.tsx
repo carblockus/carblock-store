@@ -49,17 +49,20 @@ export function CategoryCard({
           </Badge>
         )}
       </div>
-      <div className="p-6 flex flex-col items-center text-center gap-3">
-        <h3 className="font-display text-2xl uppercase tracking-[0.15em] text-white">
+      <div className="p-6 sm:p-7 flex flex-col items-center text-center gap-3">
+        <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-[0.15em] text-white">
           {label}
         </h3>
         <p className="text-sm text-[var(--muted)] max-w-xs leading-relaxed">
           {description}
         </p>
-        <div className="mt-2 inline-flex items-center gap-3 rounded-full bg-[var(--gold)] group-hover:bg-[var(--gold-bright)] px-7 py-2.5 text-black text-[11px] uppercase tracking-[0.18em] font-semibold transition-colors">
+        {/* drift-style full-width CTA: chunky rounded gold pill with
+            "SHOP NOW · FROM $X" so the price is part of the action, not
+            a separate detail to scan. */}
+        <div className="mt-3 w-full flex items-center justify-center gap-3 rounded-full bg-[var(--gold)] group-hover:bg-[var(--gold-bright)] h-12 px-5 text-black text-[12px] sm:text-[13px] uppercase tracking-[0.2em] font-bold transition-colors">
           <span>Shop Now</span>
-          <span className="opacity-60">·</span>
-          <span>${price}</span>
+          <span className="opacity-60">—</span>
+          <span>From&nbsp;${price}</span>
         </div>
       </div>
     </Link>
