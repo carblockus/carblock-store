@@ -78,11 +78,13 @@ export function CategoryCard({
           {description}
         </p>
 
-        {/* Two CTAs side by side: site checkout + Amazon */}
-        <div className="mt-3 w-full grid grid-cols-2 gap-2">
+        {/* Two CTAs: full-width stacked on mobile so each pill has plenty of
+            horizontal room for its label, side-by-side on sm+ once the
+            card is wider. */}
+        <div className="mt-3 w-full flex flex-col sm:grid sm:grid-cols-2 gap-2">
           <Link
             href={href}
-            className="flex items-center justify-center rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] h-11 text-black text-[11px] sm:text-xs uppercase tracking-[0.18em] font-bold transition-colors"
+            className="flex items-center justify-center rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] h-12 text-black text-xs sm:text-sm uppercase tracking-[0.18em] font-bold transition-colors px-5"
           >
             Shop Now
           </Link>
@@ -90,9 +92,9 @@ export function CategoryCard({
             href={amazonHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-11 text-white text-[10px] sm:text-xs uppercase tracking-[0.16em] font-semibold transition-colors whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 text-white text-xs sm:text-sm uppercase tracking-[0.16em] font-semibold transition-colors whitespace-nowrap px-5"
           >
-            <AmazonIcon className="h-4 w-4 shrink-0" />
+            <AmazonIcon className="h-5 w-5 shrink-0" />
             <span>Shop on Amazon</span>
           </a>
         </div>
