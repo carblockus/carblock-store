@@ -15,7 +15,13 @@ export function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-/** Amazon mark — bold lowercase 'a' (currentColor) with the gold smile. */
+/** Amazon mark — bold lowercase 'a' (currentColor) with the gold smile.
+ *
+ *  The `textTransform: none` is critical: when this icon sits inside a
+ *  parent with `uppercase` Tailwind class (footer pill, hero CTA, navbar
+ *  shortcut) the browser would otherwise transform the SVG glyph into
+ *  capital "A", which is NOT the Amazon brand mark.
+ */
 export function AmazonIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden>
@@ -27,6 +33,7 @@ export function AmazonIcon({ className }: { className?: string }) {
         fontWeight="900"
         fontSize="22"
         fill="currentColor"
+        style={{ textTransform: "none" }}
       >
         a
       </text>

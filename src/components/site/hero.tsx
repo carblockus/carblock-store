@@ -12,7 +12,7 @@ export function Hero() {
   const t = useT();
 
   return (
-    <section className="relative overflow-hidden bg-black min-h-[360px] md:min-h-[560px]">
+    <section className="relative overflow-hidden bg-black min-h-[240px] md:min-h-[440px]">
       {/* Auto-rotating social-proof slideshow */}
       <HeroSlideshow />
 
@@ -21,17 +21,17 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30" />
 
       {/* Gold splash accents */}
-      <div className="pointer-events-none absolute -right-32 top-1/4 h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle_at_center,rgba(242,201,76,0.22),transparent_60%)] blur-3xl" />
-      <div className="pointer-events-none absolute -left-20 bottom-0 h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.22),transparent_60%)] blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 top-1/4 h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle_at_center,rgba(242,201,76,0.2),transparent_60%)] blur-3xl" />
+      <div className="pointer-events-none absolute -left-16 bottom-0 h-[200px] w-[200px] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.2),transparent_60%)] blur-3xl" />
 
-      <div className="container-x relative z-10 py-10 md:py-20 max-w-4xl">
-        <div className="mb-3 md:mb-4">
-          <span className="font-display text-gold-gradient text-[2.5rem] sm:text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
+      <div className="container-x relative z-10 py-6 md:py-16 max-w-4xl">
+        <div className="mb-2 md:mb-4">
+          <span className="font-display text-gold-gradient text-[1.85rem] sm:text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
             {t("hero.eyebrow")}
           </span>
         </div>
 
-        <h1 className="font-display text-base sm:text-xl md:text-3xl lg:text-4xl leading-tight uppercase font-semibold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] tracking-wide">
+        <h1 className="font-display text-xs sm:text-base md:text-2xl lg:text-3xl leading-tight uppercase font-semibold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] tracking-wide">
           <span className="block">{t("hero.title.line1")}</span>
           <span className="block">
             {t("hero.title.line2.before")}{" "}
@@ -43,8 +43,8 @@ export function Hero() {
         </h1>
 
         {/* Pill: up to 3 months of fragrance */}
-        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 backdrop-blur px-3 py-1">
-          <span className="font-display text-[10px] md:text-sm tracking-[0.16em] uppercase font-bold text-gold-gradient">
+        <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 backdrop-blur px-2.5 py-0.5">
+          <span className="font-display text-[9px] md:text-xs tracking-[0.14em] uppercase font-bold text-gold-gradient">
             {t("hero.pill.upto")}{" "}
             <span className="italic">{t("hero.pill.duration")}</span>{" "}
             {t("hero.pill.suffix")}
