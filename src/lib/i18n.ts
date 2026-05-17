@@ -36,8 +36,6 @@ export const dictionaries = {
     "hero.title.line2.before": "it's a",
     "hero.title.line2.highlight": "perfume",
     "hero.title.line2.after": "for your car.",
-    "hero.paragraph":
-      "CarBlock transforms the interior of your vehicle with a sophisticated, long-lasting fragrance designed for those who take care of every detail of their image.",
     "hero.pill.upto": "Up to",
     "hero.pill.duration": "3 months",
     "hero.pill.suffix": "of fragrance",
@@ -117,8 +115,6 @@ export const dictionaries = {
     "hero.title.line2.before": "es un",
     "hero.title.line2.highlight": "perfume",
     "hero.title.line2.after": "para tu auto.",
-    "hero.paragraph":
-      "CarBlock transforma el interior de tu vehículo con una fragancia sofisticada y duradera, diseñada para quienes cuidan cada detalle de su imagen.",
     "hero.pill.upto": "Hasta",
     "hero.pill.duration": "3 meses",
     "hero.pill.suffix": "de fragancia",

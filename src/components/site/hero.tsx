@@ -42,10 +42,6 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="mt-7 max-w-xl text-base md:text-lg text-white/85 leading-relaxed drop-shadow-md">
-          {t("hero.paragraph")}
-        </p>
-
         {/* Pill: up to 3 months of fragrance */}
         <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/15 backdrop-blur px-6 py-3">
           <span className="font-display text-base md:text-xl tracking-[0.18em] uppercase font-bold text-gold-gradient">
