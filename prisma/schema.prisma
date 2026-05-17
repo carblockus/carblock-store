@@ -18,14 +18,50 @@ datasource db {
 /// One row per buyer. Looked up by email; we don't currently authenticate
 /// customers, so this is a lightweight contact record built from checkout.
 model Customer {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  firstName String?
-  lastName  String?
-  phone     String?
-  orders    Order[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String         @id @default(cuid())
+  email         String         @unique
+  firstName     String?
+  lastName      String?
+  phone         String?
+  orders        Order[]
+  subscriptions Subscription[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+/// Stripe subscription for the "Subscribe & Save 20% — delivered every 6 weeks"
+/// flow. Created by the Stripe webhook on checkout.session.completed when
+/// the session was created in subscription mode. Renewals fire invoice.paid
+/// and we mirror each one as an Order so the admin/fulfillment view stays
+/// consistent across one-off and recurring purchases.
+model Subscription {
+  id                   String   @id @default(cuid())
+  customerId           String
+  customer             Customer @relation(fields: [customerId], references: [id])
+
+  stripeSubscriptionId String   @unique
+  stripeCustomerId     String
+  stripePriceId        String
+
+  productSlug          String
+  status               String   @default("active") // active | past_due | canceled | unpaid
+  intervalWeeks        Int      @default(6)
+  currentPeriodEnd     DateTime?
+
+  // Shipping snapshot — used by the webhook to populate renewal Orders
+  shipName             String
+  shipAddress          String
+  shipCity             String
+  shipState            String
+  shipZip              String
+  shipPhone            String?
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  canceledAt           DateTime?
+
+  @@index([customerId])
+  @@index([status])
 }
 
 /// Snapshot of a paid order. Status moves PAID -> SHIPPED -> DELIVERED -> REFUNDED.

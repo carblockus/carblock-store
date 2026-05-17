@@ -8,6 +8,8 @@ import { WelcomePopup } from "@/components/site/welcome-popup";
 import { CartProvider } from "@/lib/cart-context";
 import { LangProvider } from "@/lib/lang-context";
 import { CartDrawer } from "@/components/site/cart-drawer";
+import { DiscountChip } from "@/components/site/discount-chip";
+import { ChatWidget } from "@/components/site/chat-widget";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 
 const inter = Inter({
@@ -63,6 +65,8 @@ export default function RootLayout({
             <Footer />
             <WelcomePopup />
             <CartDrawer />
+            <DiscountChip />
+            <ChatWidget />
           </CartProvider>
         </LangProvider>
       </body>

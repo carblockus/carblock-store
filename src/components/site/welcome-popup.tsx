@@ -22,10 +22,19 @@ export function WelcomePopup() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    // Auto-open once on first visit, unless previously dismissed.
     const dismissed = localStorage.getItem(STORAGE_KEY);
-    if (dismissed) return;
-    const timer = setTimeout(() => setOpen(true), DELAY_MS);
-    return () => clearTimeout(timer);
+    const timer = dismissed
+      ? null
+      : setTimeout(() => setOpen(true), DELAY_MS);
+    // Allow other components (like the floating "Want 15% OFF?" chip) to
+    // re-open the popup on demand, even if the auto-open was dismissed.
+    const onOpenRequest = () => setOpen(true);
+    window.addEventListener("open-welcome-popup", onOpenRequest);
+    return () => {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener("open-welcome-popup", onOpenRequest);
+    };
   }, []);
 
   function dismiss() {
