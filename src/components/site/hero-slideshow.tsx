@@ -6,7 +6,6 @@ const slides = [
   "/hero/page-1.png",
   "/hero/page-2.png",
   "/hero/page-3.png",
-  "/hero/page-4.png",
 ];
 
 // Quick 2s rotation between slides so all three photos cycle through
