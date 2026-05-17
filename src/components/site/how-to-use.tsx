@@ -1,18 +1,19 @@
+"use client";
+
+import { useT } from "@/lib/lang-context";
+
 /**
  * Two-step "How to Use" panel shown under the Add-to-Cart on the perfume
- * product page and on the /how-to-use page.
- *
- * The video is a vertical (portrait) clip recorded on iPhone — we use
- * aspect-[9/16] with max-w-sm so it sits centered like a phone screen,
- * never letterboxed or cropped. `<video>` plays the .mov directly in
- * modern browsers since the inner codec is H.264.
+ * product page and on the /how-to-use page. Localized via useT() so the
+ * title + step text follow the global EN/ES toggle.
  */
 export function HowToUse({ id = "how-to-use" }: { id?: string }) {
+  const t = useT();
   return (
     <section id={id} className="space-y-6">
       <div className="text-center">
         <h3 className="font-display text-2xl md:text-3xl uppercase font-bold text-white">
-          How to Use
+          {t("htuse.title")}
         </h3>
       </div>
 
@@ -34,16 +35,8 @@ export function HowToUse({ id = "how-to-use" }: { id?: string }) {
 
       {/* Two steps */}
       <ol className="grid sm:grid-cols-2 gap-3">
-        <Step
-          n={1}
-          title="Open the bottle"
-          body="Twist off the cap. The liquid is concentrated — a little goes a long way."
-        />
-        <Step
-          n={2}
-          title="Pour on floor mats & edges"
-          body="Distribute along the car floor edges and underneath the mats. The fragrance slow-releases for up to 3 months."
-        />
+        <Step n={1} title={t("htuse.step1.title")} body={t("htuse.step1.body")} />
+        <Step n={2} title={t("htuse.step2.title")} body={t("htuse.step2.body")} />
       </ol>
     </section>
   );

@@ -8,9 +8,10 @@ const slides = [
   "/hero/page-3.png",
 ];
 
-// First slide flashes briefly then advances; the rest stay 5s each.
-const FIRST_SLIDE_MS = 1000;
-const REGULAR_INTERVAL_MS = 5000;
+// Quick 2s rotation between slides so all three photos cycle through
+// within ~6s, well within the average mobile attention span on landing.
+const FIRST_SLIDE_MS = 2000;
+const REGULAR_INTERVAL_MS = 2000;
 
 /**
  * Auto-rotating background slideshow for the Hero section.
@@ -33,15 +34,12 @@ export function HeroSlideshow() {
       {slides.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 bg-no-repeat bg-cover transition-opacity duration-[1500ms] ease-in-out"
+          className="absolute inset-0 bg-no-repeat bg-contain bg-center transition-opacity duration-[800ms] ease-in-out"
           style={{
             backgroundImage: `url('${src}')`,
-            // Position biased toward the lower-center so the bottle/product
-            // (held in the lower half of the photo) stays in frame instead
-            // of being cropped off by the default centered crop.
-            backgroundPosition: "50% 65%",
+            // `contain` keeps the whole product visible — no zoom-in crop
+            // that was clipping image #2's bottle on the right edge.
             opacity: active === i ? 1 : 0,
-            animation: active === i ? "kenburns 9s ease-out forwards" : "none",
           }}
         />
       ))}
@@ -60,12 +58,6 @@ export function HeroSlideshow() {
         ))}
       </div>
 
-      <style jsx>{`
-        @keyframes kenburns {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.05); }
-        }
-      `}</style>
     </div>
   );
 }

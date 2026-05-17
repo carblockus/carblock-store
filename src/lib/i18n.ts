@@ -88,6 +88,66 @@ export const dictionaries = {
 
     /* ---------- Lang switcher ---------- */
     "lang.toggle.aria": "Switch language",
+
+    /* ---------- /how-to-use page ---------- */
+    "howto.breadcrumb.home": "Home",
+    "howto.breadcrumb.current": "How to use",
+    "howto.hero.title.before": "How to",
+    "howto.hero.title.highlight": "use it",
+    "howto.hero.body":
+      "One application of CarBlock lasts up to 3 months. WipesBlock cleans and revitalizes your interior in seconds. Watch how to get the most out of every product.",
+    "howto.bonus.eyebrow": "Tutorials",
+    "howto.bonus.section.es": "Español",
+    "howto.bonus.subtitle.es": "Step-by-step tutorials in Spanish.",
+    "howto.bonus.carblock.body":
+      "How to apply the perfume for up to 3 months of fragrance.",
+    "howto.bonus.wipes.body":
+      "Clean, restore and deodorize leather, vinyl and fabric.",
+    "howto.cta.eyebrow": "Ready to try it?",
+    "howto.cta.title.before": "Get yours and",
+    "howto.cta.title.highlight": "feel the difference",
+    "howto.cta.body": "Free shipping on all US orders. 30-day money-back guarantee.",
+    "howto.cta.shopNow": "Shop now",
+    "howto.cta.shopAmazon": "Shop on Amazon",
+    "howto.cta.contact": "Have a question?",
+
+    /* ---------- Stats / How-to-Apply ---------- */
+    "stats.eyebrow": "How to apply",
+    "stats.title.before": "Lasts up to",
+    "stats.title.duration": "3 months",
+    "stats.title.after": "with a single application.",
+    "stats.body.before": "Apply the liquid directly",
+    "stats.body.under": "under the floor mats",
+    "stats.body.middle": ", or along the",
+    "stats.body.edges": "floor edges",
+    "stats.body.for": "for a",
+    "stats.body.stronger": "stronger fragrance",
+    "stats.body.dot": ".",
+    "stats.tech1.eyebrow": "Technique 1",
+    "stats.tech1.title": "Lift the mat. Pour underneath. Replace.",
+    "stats.tech1.body":
+      "Best for an even, long-lasting diffusion across the cabin.",
+    "stats.tech2.eyebrow": "Technique 2",
+    "stats.tech2.title": "Pour along the floor edge.",
+    "stats.tech2.body":
+      "For a stronger, more concentrated scent right from day one.",
+    "stats.dist.eyebrow": "Recommended distribution",
+    "stats.dist.driver.label": "Driver",
+    "stats.dist.driver.where": "On driver's floor mat & seat edges",
+    "stats.dist.passenger.label": "Passenger",
+    "stats.dist.passenger.where": "On passenger's floor mat & seat edges",
+    "stats.dist.rear.label": "Rear",
+    "stats.dist.rear.where": "On rear mats, seat edges & floor",
+    "stats.watchTutorial": "Watch tutorial",
+
+    /* ---------- HowToUse video component ---------- */
+    "htuse.title": "How to Use",
+    "htuse.step1.title": "Open the bottle",
+    "htuse.step1.body":
+      "Twist off the cap. The liquid is concentrated — a little goes a long way.",
+    "htuse.step2.title": "Pour on floor mats & edges",
+    "htuse.step2.body":
+      "Distribute along the car floor edges and underneath the mats. The fragrance slow-releases for up to 3 months.",
   },
 
   es: {
@@ -167,6 +227,70 @@ export const dictionaries = {
 
     /* ---------- Lang switcher ---------- */
     "lang.toggle.aria": "Cambiar idioma",
+
+    /* ---------- /how-to-use page ---------- */
+    "howto.breadcrumb.home": "Inicio",
+    "howto.breadcrumb.current": "Cómo usar",
+    "howto.hero.title.before": "Cómo",
+    "howto.hero.title.highlight": "usarlo",
+    "howto.hero.body":
+      "Una aplicación de CarBlock dura hasta 3 meses. WipesBlock limpia y revitaliza tu interior en segundos. Mira cómo sacarle el máximo provecho a cada producto.",
+    "howto.bonus.eyebrow": "Tutoriales",
+    "howto.bonus.section.es": "Español",
+    "howto.bonus.subtitle.es": "Tutoriales paso a paso en español.",
+    "howto.bonus.carblock.body":
+      "Cómo aplicar el perfume para hasta 3 meses de fragancia.",
+    "howto.bonus.wipes.body":
+      "Limpia, restaura y desodoriza cuero, vinilo y tela.",
+    "howto.cta.eyebrow": "¿Listo para probarlo?",
+    "howto.cta.title.before": "Pídelo y",
+    "howto.cta.title.highlight": "siente la diferencia",
+    "howto.cta.body":
+      "Envío gratis en toda orden de EE. UU. Garantía de devolución de 30 días.",
+    "howto.cta.shopNow": "Comprar ahora",
+    "howto.cta.shopAmazon": "Comprar en Amazon",
+    "howto.cta.contact": "¿Tienes una pregunta?",
+
+    /* ---------- Stats / Cómo aplicar ---------- */
+    "stats.eyebrow": "Cómo aplicar",
+    "stats.title.before": "Dura hasta",
+    "stats.title.duration": "3 meses",
+    "stats.title.after": "con una sola aplicación.",
+    "stats.body.before": "Aplica el líquido directamente",
+    "stats.body.under": "bajo los tapetes",
+    "stats.body.middle": ", o a lo largo de los",
+    "stats.body.edges": "bordes del piso",
+    "stats.body.for": "para una",
+    "stats.body.stronger": "fragancia más intensa",
+    "stats.body.dot": ".",
+    "stats.tech1.eyebrow": "Técnica 1",
+    "stats.tech1.title": "Levanta el tapete. Vierte debajo. Vuelve a colocar.",
+    "stats.tech1.body":
+      "Mejor para una difusión uniforme y duradera en toda la cabina.",
+    "stats.tech2.eyebrow": "Técnica 2",
+    "stats.tech2.title": "Vierte a lo largo del borde del piso.",
+    "stats.tech2.body":
+      "Para un aroma más intenso y concentrado desde el primer día.",
+    "stats.dist.eyebrow": "Distribución recomendada",
+    "stats.dist.driver.label": "Conductor",
+    "stats.dist.driver.where":
+      "En el tapete del conductor y bordes del asiento",
+    "stats.dist.passenger.label": "Pasajero",
+    "stats.dist.passenger.where":
+      "En el tapete del pasajero y bordes del asiento",
+    "stats.dist.rear.label": "Trasero",
+    "stats.dist.rear.where":
+      "En los tapetes traseros, bordes del asiento y piso",
+    "stats.watchTutorial": "Ver tutorial",
+
+    /* ---------- Componente HowToUse / video ---------- */
+    "htuse.title": "Cómo usarlo",
+    "htuse.step1.title": "Abre la botella",
+    "htuse.step1.body":
+      "Destornilla la tapa. El líquido es concentrado — un poco rinde mucho.",
+    "htuse.step2.title": "Vierte en tapetes y bordes",
+    "htuse.step2.body":
+      "Distribuye a lo largo de los bordes del piso del auto y debajo de los tapetes. La fragancia se libera lentamente hasta por 3 meses.",
   },
 } as const;
 
