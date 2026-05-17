@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { products } from "@/lib/mock-products";
+import { resolvePromoCode } from "@/lib/promo";
 
 type ClientItem = { slug: string; qty: number };
 type ShippingMethod = "standard" | "express";
@@ -36,6 +37,8 @@ export async function POST(req: Request) {
       /** Meta browser cookies forwarded from the client — used by CAPI for match. */
       fbp?: string;
       fbc?: string;
+      /** Stripe Promotion Code the customer typed (e.g. "AMAZON15"). */
+      promoCode?: string;
     };
     const items = Array.isArray(body.items) ? body.items : [];
     if (items.length === 0) {
@@ -59,12 +62,29 @@ export async function POST(req: Request) {
       lineSummary.push({ slug: p.slug, name: p.name, qty, priceCents });
     }
 
-    const taxCents = Math.round(subtotalCents * 0.08); // 8% est.
+    // Re-validate the promo code server-side — never trust the client's claim
+    // of "the discount is $5". We look it up against Stripe again and recompute.
+    let discountCents = 0;
+    let promoCodeApplied = "";
+    if (body.promoCode) {
+      const resolved = await resolvePromoCode(body.promoCode, subtotalCents);
+      if (resolved.ok) {
+        discountCents = resolved.discountCents;
+        promoCodeApplied = resolved.code;
+      }
+      // If the code is no longer valid (expired between UI validation and
+      // checkout, etc.), we silently charge full price rather than blocking
+      // the order. The UI already showed the discount, so this is a corner
+      // case — better than a hard 400 at the last step.
+    }
+
+    const subtotalAfterDiscountCents = subtotalCents - discountCents;
+    const taxCents = Math.round(subtotalAfterDiscountCents * 0.08); // 8% est.
     const shippingMethod: ShippingMethod =
       body.shippingMethod === "express" ? "express" : "standard";
     // Shipping is free on every order (standard and express).
     const shippingCents = 0;
-    const totalCents = subtotalCents + taxCents + shippingCents;
+    const totalCents = subtotalAfterDiscountCents + taxCents + shippingCents;
 
     // Pack items into a compact JSON string we can re-parse server-side.
     // Stripe metadata values are limited to ~500 chars per key.
@@ -110,6 +130,8 @@ export async function POST(req: Request) {
         subtotal: String(subtotalCents),
         shipping: String(shippingCents),
         tax: String(taxCents),
+        discount: String(discountCents),
+        promoCode: promoCodeApplied,
         shippingMethod,
         email: shorten(ship.email, MAX_META),
         firstName: shorten(ship.firstName, MAX_META),
@@ -130,6 +152,8 @@ export async function POST(req: Request) {
       clientSecret: intent.client_secret,
       amount: totalCents,
       subtotal: subtotalCents,
+      discount: discountCents,
+      promoCode: promoCodeApplied || null,
       tax: taxCents,
       shipping: shippingCents,
     });

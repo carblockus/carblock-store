@@ -66,6 +66,8 @@ async function handlePaymentSucceeded(intent: Stripe.PaymentIntent) {
   const subtotalCents = parseInt(m.subtotal ?? "0", 10);
   const shippingCents = parseInt(m.shipping ?? "0", 10);
   const taxCents = parseInt(m.tax ?? "0", 10);
+  const discountCents = parseInt(m.discount ?? "0", 10);
+  const promoCode = (m.promoCode ?? "") || null;
   const totalCents = intent.amount;
   const shippingMethod = m.shippingMethod === "express" ? "express" : "standard";
 
@@ -108,6 +110,8 @@ async function handlePaymentSucceeded(intent: Stripe.PaymentIntent) {
       subtotalCents,
       shippingCents,
       taxCents,
+      discountCents,
+      promoCode,
       totalCents,
       currency: intent.currency,
       shippingMethod,
@@ -146,6 +150,8 @@ async function handlePaymentSucceeded(intent: Stripe.PaymentIntent) {
     subtotalCents,
     shippingCents,
     taxCents,
+    discountCents,
+    promoCode,
     totalCents,
     items: order.items.map((i) => ({
       productName: i.productName,

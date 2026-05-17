@@ -23,6 +23,12 @@ const steps = [
   { n: 3 as Step, label: "Confirmation", icon: Check },
 ];
 
+type PromoState =
+  | { status: "idle"; code: string }
+  | { status: "validating"; code: string }
+  | { status: "applied"; code: string; discountCents: number; label: string }
+  | { status: "error"; code: string; error: string };
+
 export function CheckoutFlow() {
   const { items, subtotal, count, hydrated, clear } = useCart();
   const router = useRouter();
@@ -42,6 +48,46 @@ export function CheckoutFlow() {
     method: "standard",
   });
 
+  // Discount code state
+  const [promo, setPromo] = useState<PromoState>({ status: "idle", code: "" });
+  const discount =
+    promo.status === "applied" ? promo.discountCents / 100 : 0;
+  const appliedPromoCode =
+    promo.status === "applied" ? promo.code : undefined;
+
+  async function applyPromo() {
+    const code = promo.code.trim();
+    if (!code || items.length === 0) return;
+    setPromo({ status: "validating", code });
+    try {
+      const r = await fetch("/api/checkout/validate-promo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code,
+          items: items.map((i) => ({ slug: i.slug, qty: i.qty })),
+        }),
+      });
+      const data = await r.json();
+      if (!data.ok) {
+        setPromo({ status: "error", code, error: data.error ?? "Invalid code" });
+        return;
+      }
+      setPromo({
+        status: "applied",
+        code: data.code,
+        discountCents: data.discountCents,
+        label: data.label,
+      });
+    } catch {
+      setPromo({ status: "error", code, error: "Could not validate code" });
+    }
+  }
+
+  function removePromo() {
+    setPromo({ status: "idle", code: "" });
+  }
+
   // Redirect to /products if cart is empty (only after hydration, and not on confirmation).
   // Wait one tick so the MetaCartHydrator (which reads ?products=... from the
   // URL when traffic arrives from a Meta Shop) gets a chance to populate the
@@ -59,8 +105,9 @@ export function CheckoutFlow() {
 
   // Shipping is free on every order (standard and express).
   const shipping = 0;
-  const tax = Math.round(subtotal * 0.08 * 100) / 100;
-  const total = subtotal + shipping + tax;
+  const subtotalAfterDiscount = Math.max(0, subtotal - discount);
+  const tax = Math.round(subtotalAfterDiscount * 0.08 * 100) / 100;
+  const total = subtotalAfterDiscount + shipping + tax;
 
   // Fire InitiateCheckout once when user reaches the payment step.
   useEffect(() => {
@@ -253,6 +300,7 @@ export function CheckoutFlow() {
                 zip: ship.zip,
                 phone: ship.phone,
               }}
+              promoCode={appliedPromoCode}
               onBack={() => setStep(1)}
               onSucceeded={handlePaymentSuccess}
             />
@@ -331,8 +379,16 @@ export function CheckoutFlow() {
                 </div>
               ))}
             </div>
+            <PromoInput promo={promo} setPromo={setPromo} apply={applyPromo} remove={removePromo} />
             <div className="border-t border-[var(--border)] pt-4 space-y-2 text-sm">
               <Row label="Subtotal" value={`$${subtotal.toFixed(2)}`} />
+              {promo.status === "applied" && (
+                <Row
+                  label={`Discount (${promo.code})`}
+                  value={`-$${(promo.discountCents / 100).toFixed(2)}`}
+                  highlight
+                />
+              )}
               <Row
                 label={
                   ship.method === "express" ? "Shipping (Express)" : "Shipping"
@@ -501,6 +557,74 @@ function Row({
       >
         {value}
       </span>
+    </div>
+  );
+}
+
+function PromoInput({
+  promo,
+  setPromo,
+  apply,
+  remove,
+}: {
+  promo: PromoState;
+  setPromo: (p: PromoState) => void;
+  apply: () => void;
+  remove: () => void;
+}) {
+  if (promo.status === "applied") {
+    return (
+      <div className="rounded-md border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-3 py-2 flex items-center justify-between gap-3">
+        <div className="text-xs">
+          <span className="text-[var(--gold)] font-semibold tracking-[0.18em] uppercase">
+            {promo.code}
+          </span>
+          <span className="text-white/80 ml-2">{promo.label} applied</span>
+        </div>
+        <button
+          type="button"
+          onClick={remove}
+          className="text-[10px] uppercase tracking-[0.22em] text-[var(--muted)] hover:text-white underline-offset-2 hover:underline"
+        >
+          Remove
+        </button>
+      </div>
+    );
+  }
+
+  const validating = promo.status === "validating";
+
+  return (
+    <div className="space-y-2">
+      <div className="flex gap-2">
+        <Input
+          value={promo.code}
+          onChange={(e) =>
+            setPromo({ status: "idle", code: e.target.value.toUpperCase() })
+          }
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              apply();
+            }
+          }}
+          placeholder="Discount code"
+          className="h-10 bg-[var(--surface)] border-[var(--border-strong)] text-white placeholder:text-[var(--muted-2)] rounded-md px-3 text-sm uppercase tracking-[0.12em]"
+        />
+        <Button
+          type="button"
+          onClick={apply}
+          disabled={!promo.code.trim() || validating}
+          className="h-10 rounded-md bg-[var(--surface)] border border-[var(--border-strong)] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] text-white font-semibold tracking-[0.18em] uppercase text-[10px] px-4 disabled:opacity-50"
+        >
+          {validating ? "…" : "Apply"}
+        </Button>
+      </div>
+      {promo.status === "error" && (
+        <p className="text-[10px] uppercase tracking-[0.18em] text-red-400">
+          {promo.error}
+        </p>
+      )}
     </div>
   );
 }

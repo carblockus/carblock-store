@@ -90,6 +90,13 @@ export default async function OrderDetail({
 
             <div className="mt-4 pt-4 border-t border-[var(--border)] space-y-1.5 text-sm">
               <Row label="Subtotal" value={fmt(order.subtotalCents)} />
+              {order.discountCents > 0 && (
+                <Row
+                  label={`Discount${order.promoCode ? ` (${order.promoCode})` : ""}`}
+                  value={`−${fmt(order.discountCents)}`}
+                  goldValue
+                />
+              )}
               <Row
                 label={`Shipping ${order.shippingMethod === "express" ? "(Express)" : "(Standard)"}`}
                 value={order.shippingCents === 0 ? "Free" : fmt(order.shippingCents)}

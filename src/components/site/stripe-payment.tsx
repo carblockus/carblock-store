@@ -46,6 +46,8 @@ type Props = {
   total: number;
   shippingMethod: "standard" | "express";
   shipping: ShippingInfo;
+  /** Already-validated Stripe Promotion Code, if any. */
+  promoCode?: string;
   onBack: () => void;
   onSucceeded: (paymentIntentId: string) => void;
 };
@@ -56,6 +58,7 @@ export function StripePayment({
   total,
   shippingMethod,
   shipping,
+  promoCode,
   onBack,
   onSucceeded,
 }: Props) {
@@ -80,6 +83,7 @@ export function StripePayment({
             shipping,
             fbp,
             fbc,
+            promoCode: promoCode || undefined,
           }),
         });
         const data = await res.json();

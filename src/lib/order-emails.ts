@@ -20,6 +20,8 @@ type OrderEmailData = {
   subtotalCents: number;
   shippingCents: number;
   taxCents: number;
+  discountCents: number;
+  promoCode: string | null;
   totalCents: number;
   items: Line[];
 };
@@ -93,6 +95,7 @@ export async function sendCustomerConfirmation(o: OrderEmailData) {
 
   <table cellpadding="0" cellspacing="0" style="width:100%;border-top:1px solid #2a2a2a;padding-top:16px;margin-top:8px;">
     <tr><td style="padding:4px 0;color:#a1a1a1;font-size:13px;">Subtotal</td><td style="padding:4px 0;text-align:right;color:#fff;font-variant-numeric:tabular-nums;font-size:13px;">${fmt(o.subtotalCents)}</td></tr>
+    ${o.discountCents > 0 ? `<tr><td style="padding:4px 0;color:#d4af37;font-size:13px;">Discount${o.promoCode ? ` (${escapeHtml(o.promoCode)})` : ""}</td><td style="padding:4px 0;text-align:right;color:#d4af37;font-variant-numeric:tabular-nums;font-size:13px;font-weight:600;">−${fmt(o.discountCents)}</td></tr>` : ""}
     <tr><td style="padding:4px 0;color:#a1a1a1;font-size:13px;">Shipping ${o.shippingMethod === "express" ? "(Express)" : ""}</td><td style="padding:4px 0;text-align:right;color:#fff;font-variant-numeric:tabular-nums;font-size:13px;">${o.shippingCents === 0 ? "FREE" : fmt(o.shippingCents)}</td></tr>
     <tr><td style="padding:4px 0;color:#a1a1a1;font-size:13px;">Tax</td><td style="padding:4px 0;text-align:right;color:#fff;font-variant-numeric:tabular-nums;font-size:13px;">${fmt(o.taxCents)}</td></tr>
     <tr><td style="padding:8px 0;color:#fff;font-weight:700;font-size:15px;border-top:1px solid #2a2a2a;">Total</td><td style="padding:8px 0;text-align:right;color:#d4af37;font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;border-top:1px solid #2a2a2a;">${fmt(o.totalCents)}</td></tr>
@@ -220,6 +223,7 @@ export async function sendInternalOrderAlert(o: OrderEmailData) {
           <tr><td><strong>Email</strong></td><td><a href="mailto:${encodeURIComponent(o.email)}">${escapeHtml(o.email)}</a></td></tr>
           ${o.phone ? `<tr><td><strong>Phone</strong></td><td>${escapeHtml(o.phone)}</td></tr>` : ""}
           <tr><td><strong>Shipping</strong></td><td>${o.shippingMethod === "express" ? "Express" : "Standard"}</td></tr>
+          ${o.discountCents > 0 ? `<tr><td><strong>Discount</strong></td><td>${o.promoCode ? `${escapeHtml(o.promoCode)} — ` : ""}−${fmt(o.discountCents)}</td></tr>` : ""}
           <tr><td><strong>Total</strong></td><td><strong>${fmt(o.totalCents)}</strong></td></tr>
         </table>
 
