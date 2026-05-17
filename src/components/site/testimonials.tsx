@@ -6,8 +6,8 @@ export function Testimonials() {
   const loop = [...testimonials, ...testimonials];
 
   return (
-    <section className="bg-[var(--surface)] border-y border-[var(--border)] py-20">
-      <div className="container-x text-center mb-12">
+    <section className="bg-[var(--surface)] border-y border-[var(--border)] py-10 md:py-14">
+      <div className="container-x text-center mb-8 md:mb-10">
         <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
           Trusted by
         </span>

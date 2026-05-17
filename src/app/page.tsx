@@ -18,19 +18,10 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* Featured product cards — tight spacing so the first card peeks
-          from the hero's bottom edge on mobile */}
-      <section className="bg-background py-6 md:py-12">
+      {/* Featured product cards — first card sits flush with the hero,
+          no section title above it */}
+      <section className="bg-background py-4 md:py-8">
         <div className="container-x">
-          <div className="text-center mb-6 md:mb-10">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
-              Shop
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl uppercase font-bold mt-2 text-white">
-              For Your <span className="text-gold-gradient">Car</span>
-            </h2>
-          </div>
-
           {/* CarBlock alone first, then marquee, then remaining cards */}
           <div className="mb-6">
             <CategoryCard

@@ -43,9 +43,9 @@ export function Stats() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,55,0.15),transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,130,27,0.15),transparent_55%)]" />
 
-      <div className="container-x relative z-10 py-20 md:py-24">
+      <div className="container-x relative z-10 py-10 md:py-14">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
           <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
             How to apply
           </span>

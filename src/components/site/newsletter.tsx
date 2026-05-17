@@ -33,7 +33,7 @@ export function Newsletter() {
   }
 
   return (
-    <section className="bg-black py-20 border-b border-[var(--border)]">
+    <section className="bg-black py-10 md:py-14 border-b border-[var(--border)]">
       <div className="container-x text-center max-w-2xl">
         <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
           Join the club

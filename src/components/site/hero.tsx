@@ -31,11 +31,11 @@ export function Hero() {
           </span>
         </div>
 
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] uppercase font-bold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
+        <h1 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl leading-tight uppercase font-semibold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] tracking-wide">
           <span className="block">{t("hero.title.line1")}</span>
-          <span className="block mt-1">
+          <span className="block">
             {t("hero.title.line2.before")}{" "}
-            <span className="text-gold-gradient italic pr-2 inline-block">
+            <span className="text-gold-gradient italic pr-1 inline-block">
               {t("hero.title.line2.highlight")}
             </span>{" "}
             {t("hero.title.line2.after")}
