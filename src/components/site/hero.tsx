@@ -67,18 +67,12 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.14em] sm:tracking-[0.18em] uppercase text-[10px] sm:text-xs px-2 sm:px-6 h-11 sm:h-12"
+            className="rounded-full border-white/30 bg-black/30 backdrop-blur hover:bg-white hover:text-black text-white tracking-[0.05em] sm:tracking-[0.18em] uppercase text-[9px] sm:text-xs px-1.5 sm:px-6 h-11 sm:h-12"
           >
-            <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5">
-              <AmazonIcon className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" />
-              {/* Mobile column is ~110px so "Shop on Amazon" wraps to two
-                  lines beside the icon. Desktop has plenty of room for
-                  a single line. */}
-              <span className="hidden sm:inline">Shop on Amazon</span>
-              <span className="sm:hidden flex flex-col items-start leading-[1.1] text-left">
-                <span>Shop on</span>
-                <span>Amazon</span>
-              </span>
+            <a href={amazonHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1 sm:gap-1.5 whitespace-nowrap">
+              <AmazonIcon className="h-4 w-4 sm:h-6 sm:w-6 shrink-0" />
+              {/* One line on every viewport — text shrinks before it wraps. */}
+              <span>Shop on Amazon</span>
             </a>
           </Button>
           <Button
