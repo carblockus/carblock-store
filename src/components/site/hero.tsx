@@ -19,11 +19,13 @@ export function Hero() {
           <span className="font-display text-gold-gradient text-[1.5rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
             {t("hero.eyebrow")}
           </span>
-          <h1 className="mt-1.5 md:mt-2 font-display text-[10px] sm:text-sm md:text-lg lg:text-xl leading-tight uppercase font-semibold text-white tracking-wide">
+          {/* Subtitle uses the body font (Inter) in sentence case for
+              easier reading than the condensed all-caps `font-display`. */}
+          <h1 className="mt-1.5 md:mt-2 text-sm sm:text-base md:text-lg lg:text-xl leading-snug font-medium text-white">
             <span>{t("hero.title.line1")}</span>{" "}
             <span>
               {t("hero.title.line2.before")}{" "}
-              <span className="text-gold-gradient italic pr-1 inline-block">
+              <span className="text-gold-gradient italic font-semibold">
                 {t("hero.title.line2.highlight")}
               </span>{" "}
               {t("hero.title.line2.after")}
