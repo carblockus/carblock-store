@@ -9,10 +9,10 @@ export function WipesBanner() {
     <section className="bg-black border-y border-[var(--border)]">
       <div className="relative w-full">
         <Image
-          src="/products/banner-wipesblock.jpg"
-          alt="WipesBlock car cleaning wipes — restores black color on vinyl, leather and plastic. Use on dashboards, consoles and doors."
-          width={1537}
-          height={1023}
+          src="/products/wipes-new-6.png"
+          alt="WipesBlock vs others — restores & deep cleans, zero streaks zero effort, exclusive luxury scent. WipesBlock 75 wipes vs others 30 wipes."
+          width={1000}
+          height={1000}
           priority={false}
           className="w-full h-auto block"
           sizes="100vw"
