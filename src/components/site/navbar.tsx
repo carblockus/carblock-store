@@ -25,7 +25,7 @@ export function Navbar() {
 
   return (
     <header className="relative z-40 bg-black border-b border-[var(--border)]">
-      <div className="container-x flex h-16 items-center justify-between gap-4 md:gap-8">
+      <div className="container-x relative flex h-16 items-center justify-between gap-4 md:gap-8">
         {/* Mobile hamburger */}
         <button
           aria-label={t("nav.openMenu")}
@@ -35,15 +35,17 @@ export function Navbar() {
           <Menu className="h-5 w-5" />
         </button>
 
+        {/* Absolutely centered logo so it stays in the middle regardless of
+            how wide the left hamburger vs the right icon cluster end up. */}
         <Link
           href="/"
-          className="text-white shrink-0"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
           onClick={() => setMobileOpen(false)}
         >
           <Logo />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 ml-32">
           {navLinks.map((l) => (
             <Link
               key={l.href}
