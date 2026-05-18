@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ChevronRight, Truck, Clock, ShieldCheck } from "lucide-react";
+import { Truck, Clock, ShieldCheck } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -58,25 +57,6 @@ export default async function ProductPage({
         category={product.category}
         price={product.price}
       />
-      {/* Breadcrumb */}
-      <div className="border-b border-[var(--border)]">
-        <div className="container-x py-4 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
-          <Link href="/" className="hover:text-[var(--gold)] transition-colors">
-            Home
-          </Link>
-          <ChevronRight className="h-3 w-3" />
-          <Link
-            href={`/products?category=${product.category}`}
-            className="hover:text-[var(--gold)] transition-colors"
-          >
-            {categoryLabel}
-          </Link>
-          <ChevronRight className="h-3 w-3" />
-          <span className="text-white truncate max-w-[200px]">
-            {product.name}
-          </span>
-        </div>
-      </div>
 
       {/* Main content — 2 columns */}
       <section className="container-x py-12 md:py-16">
