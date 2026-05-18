@@ -10,10 +10,10 @@ export function PainPoints() {
     <section className="bg-black border-y border-[var(--border)]">
       <div className="relative w-full">
         <Image
-          src="/products/banner-seccion-01.jpg"
-          alt="Say goodbye to unpleasant odors — CarBlock effectively eliminates smoke, mildew, pet and food odors, leaving a fresh and elegant scent."
-          width={1940}
-          height={1100}
+          src="/products/carblock-new-3.png"
+          alt="CarBlock — the luxury evolution of car fragrance. Up to 90 days, full-cabin coverage. Comparison vs. vent clips and pine-shape air fresheners."
+          width={1480}
+          height={2071}
           priority={false}
           className="w-full h-auto block"
           sizes="100vw"

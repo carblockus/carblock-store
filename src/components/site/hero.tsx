@@ -19,17 +19,15 @@ export function Hero() {
           <span className="font-display text-gold-gradient text-[1.5rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
             {t("hero.eyebrow")}
           </span>
-          {/* Subtitle uses the body font (Inter) in sentence case for
-              easier reading than the condensed all-caps `font-display`. */}
-          <h1 className="mt-1.5 md:mt-2 text-sm sm:text-base md:text-lg lg:text-xl leading-snug font-medium text-white">
-            <span>{t("hero.title.line1")}</span>{" "}
-            <span>
-              {t("hero.title.line2.before")}{" "}
-              <span className="text-gold-gradient italic font-semibold">
-                {t("hero.title.line2.highlight")}
-              </span>{" "}
-              {t("hero.title.line2.after")}
-            </span>
+          {/* Subtitle in Inter sentence case, sized so the full phrase fits
+              on ONE line at every breakpoint (no wrap). */}
+          <h1 className="mt-1.5 md:mt-2 text-[10px] sm:text-sm md:text-base lg:text-lg leading-snug font-medium text-white whitespace-nowrap">
+            {t("hero.title.line1")}{" "}
+            {t("hero.title.line2.before")}{" "}
+            <span className="text-gold-gradient italic font-semibold">
+              {t("hero.title.line2.highlight")}
+            </span>{" "}
+            {t("hero.title.line2.after")}
           </h1>
           {/* Gold-on-black pill with a continuous "pop" pulse so it draws
               the eye against the dark strip behind it. */}
