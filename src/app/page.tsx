@@ -19,11 +19,11 @@ export default function Home() {
 
       {/* Featured product cards — narrower than the viewport on mobile so
           the card has visible side margins and doesn't feel "invasive".
-          max-w-[280px] leaves ~28px gutter on each side at 375px width. */}
+          max-w-[340px] leaves ~28px gutter on each side at 375px width. */}
       <section className="bg-background py-6 md:py-10">
         <div className="container-x px-6 sm:px-8">
           {/* CarBlock alone first, then marquee, then remaining cards */}
-          <div className="mb-6 max-w-[280px] mx-auto md:max-w-none">
+          <div className="mb-6 max-w-[340px] mx-auto md:max-w-none">
             <CategoryCard
               label={first.label}
               description={first.description}
@@ -42,7 +42,7 @@ export default function Home() {
         </div>
 
         <div className="container-x px-6 sm:px-8">
-          <div className="grid gap-6 md:grid-cols-2 max-w-[280px] mx-auto md:max-w-none">
+          <div className="grid gap-6 md:grid-cols-2 max-w-[340px] mx-auto md:max-w-none">
             {rest.map((c) => (
               <CategoryCard
                 key={c.slug}
