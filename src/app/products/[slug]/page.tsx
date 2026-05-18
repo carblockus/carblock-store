@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { products } from "@/lib/mock-products";
 import { AddToCart } from "@/components/site/add-to-cart";
-import { HowToUse } from "@/components/site/how-to-use";
+import { Stats } from "@/components/site/stats";
 import { ProductCard } from "@/components/site/product-card";
 import { ProductGallery } from "@/components/site/product-gallery";
 import { ProductViewTracker } from "@/components/analytics/product-view-tracker";
@@ -133,11 +133,6 @@ export default async function ProductPage({
               <AddToCart product={product} />
             </div>
 
-            {/* How to Use — only on the perfume product since the steps
-                ("open the bottle, pour on floor mats") are specific to it.
-                WipesBlock and bundle pages skip this section. */}
-            {product.category === "perfume" && <HowToUse />}
-
             {/* Trust badges */}
             <div className="grid grid-cols-3 gap-4">
               {[
@@ -259,6 +254,11 @@ export default async function ProductPage({
           </div>
         </div>
       </section>
+
+      {/* How to apply — the "TECHNIQUE 1+2 + 25/25/50 distribution" block.
+          Only renders on the perfume product where the application
+          technique matters. */}
+      {product.category === "perfume" && <Stats />}
 
       {/* Related products */}
       {related.length > 0 && (
