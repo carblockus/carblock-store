@@ -17,7 +17,7 @@ type SubProduct = {
 const SUB_PRODUCTS: SubProduct[] = [
   {
     slug: "carblock-millonario-150ml",
-    name: "CarBlock Millonario 150ml",
+    name: "CarBlock 150ml",
     monthly: 35,
     image: "/products/carblock-perfume-main.jpg",
   },

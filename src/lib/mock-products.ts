@@ -58,7 +58,7 @@ export const categories = [
 export const products: Product[] = [
   {
     slug: "carblock-millonario-150ml",
-    name: "CarBlock Millonario 150ml",
+    name: "CarBlock 150ml",
     category: "perfume",
     shortDescription:
       "Premium liquid car perfume that neutralizes smoke, pet & humidity odors and lasts up to 3 months.",
@@ -143,7 +143,7 @@ export const products: Product[] = [
     name: "CarBlock x WipesBlock Kit",
     category: "bundle",
     shortDescription:
-      "CarBlock Millonario perfume + WipesBlock interior wipes.",
+      "CarBlock perfume + WipesBlock interior wipes.",
     price: 60,
     badge: "BUNDLE",
     image: "/products/bundle-kit.png",

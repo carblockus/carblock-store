@@ -56,7 +56,7 @@ export async function POST(req: Request) {
             <p style="font-family:monospace;font-size:24px;color:#f2c94c;letter-spacing:0.2em;margin:0;">WELCOME15</p>
           </div>
           <p style="color:#a1a1a1;font-size:14px;line-height:1.6;">
-            One application of CarBlock Millonario lasts up to 3 months. Premium
+            One application of CarBlock lasts up to 3 months. Premium
             fragrance designed for drivers who care about every detail.
           </p>
           <p style="text-align:center;margin:32px 0;">
