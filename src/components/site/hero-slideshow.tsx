@@ -2,25 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-const slides = [
-  "/hero/page-1.jpg",
-  "/hero/page-2.png",
-  "/hero/page-3.png",
-  "/hero/page-4.png",
-  "/hero/page-5.png",
-  "/hero/page-6.png",
+/**
+ * Each slide carries its own backgroundSize. Photos that are mostly
+ * landscape with text near the edges (the marketing-style banners 1 and
+ * 3) use `contain` so nothing gets cropped — readers see the full
+ * "Say goodbye to unpleasant odors!" / "Car Cleaning Wipes" headlines.
+ * Lifestyle / product shots use `cover` to fill the banner box.
+ */
+const slides: { src: string; fit: "cover" | "contain" }[] = [
+  { src: "/hero/page-1.jpg", fit: "contain" },
+  { src: "/hero/page-2.png", fit: "cover" },
+  { src: "/hero/page-3.png", fit: "contain" },
+  { src: "/hero/page-4.png", fit: "cover" },
+  { src: "/hero/page-5.png", fit: "cover" },
+  { src: "/hero/page-6.png", fit: "cover" },
 ];
 
-// Quick 2s rotation between slides so all three photos cycle through
-// within ~6s, well within the average mobile attention span on landing.
 const FIRST_SLIDE_MS = 2000;
 const REGULAR_INTERVAL_MS = 2000;
 
-/**
- * Auto-rotating background slideshow for the Hero section.
- * Crossfades between slides; very subtle ken-burns so the photos never
- * feel like they're zooming in on the visitor.
- */
 export function HeroSlideshow() {
   const [active, setActive] = useState(0);
 
@@ -34,14 +34,13 @@ export function HeroSlideshow() {
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {slides.map((src, i) => (
+      {slides.map((slide, i) => (
         <div
-          key={src}
-          className="absolute inset-0 bg-no-repeat bg-cover bg-center transition-opacity duration-[800ms] ease-in-out"
+          key={slide.src}
+          className="absolute inset-0 bg-no-repeat bg-center transition-opacity duration-[800ms] ease-in-out"
           style={{
-            backgroundImage: `url('${src}')`,
-            // Photos are already prepared at 4:3 to match the hero box so
-            // `cover` fills cleanly without cropping the subject.
+            backgroundImage: `url('${slide.src}')`,
+            backgroundSize: slide.fit,
             opacity: active === i ? 1 : 0,
           }}
         />
@@ -60,7 +59,6 @@ export function HeroSlideshow() {
           />
         ))}
       </div>
-
     </div>
   );
 }
