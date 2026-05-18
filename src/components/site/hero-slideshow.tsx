@@ -10,12 +10,12 @@ import { useEffect, useState } from "react";
  * Lifestyle / product shots use `cover` to fill the banner box.
  */
 const slides: { src: string; fit: "cover" | "contain" }[] = [
-  { src: "/hero/page-1.jpg", fit: "contain" },
-  { src: "/hero/page-2.png", fit: "cover" },
-  { src: "/hero/page-3.png", fit: "contain" },
-  { src: "/hero/page-4.png", fit: "cover" },
-  { src: "/hero/page-5.png", fit: "cover" },
-  { src: "/hero/page-6.png", fit: "cover" },
+  { src: "/hero/page-1.jpg", fit: "contain" },  // "Say goodbye to unpleasant odors!"
+  { src: "/hero/page-2.png", fit: "cover" },    // lifestyle: pouring on floor
+  { src: "/hero/page-3.png", fit: "contain" },  // "Cleans, shines and protects" + icons
+  { src: "/hero/page-4.png", fit: "contain" },  // "Cleaned vs Without WipesBlock" comparison
+  { src: "/hero/page-5.png", fit: "cover" },    // lifestyle: pack vs Ferraris
+  { src: "/hero/page-6.png", fit: "cover" },    // lifestyle: Ferrari interior + bottle
 ];
 
 const FIRST_SLIDE_MS = 1500;
