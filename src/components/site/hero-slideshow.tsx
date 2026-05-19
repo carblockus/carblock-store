@@ -35,10 +35,12 @@ export function HeroSlideshow() {
       {slides.map((slide, i) => (
         <div
           key={slide.src}
-          /* Mobile uses the per-slide fit (some marketing banners need
-             `contain` to keep their text readable at 4:3). Desktop is wider
-             than the source images so `cover` fills the strip cleanly. */
-          className={`absolute inset-0 bg-no-repeat bg-center transition-opacity duration-[800ms] ease-in-out md:!bg-cover ${
+          /* Per-slide fit at every breakpoint. Marketing banners use
+             `contain` so their text never crops (full image visible with
+             letterbox if needed). Lifestyle shots use `cover` to fill the
+             box. The md+ banner aspect (16:9) matches the source images
+             so `contain` rarely needs letterboxing on desktop. */
+          className={`absolute inset-0 bg-no-repeat bg-center transition-opacity duration-[800ms] ease-in-out ${
             slide.fit === "contain" ? "bg-contain" : "bg-cover"
           }`}
           style={{
