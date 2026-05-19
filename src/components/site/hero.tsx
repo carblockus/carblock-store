@@ -43,10 +43,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Photo banner — clean, no overlays. 4:3 on mobile to match source
-          photos; md+ uses 16:9 (the natural ratio of the marketing banners)
-          so nothing zooms or crops dramatically. */}
-      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9]">
+      {/* Photo banner — clean, no overlays.
+          Mobile: full-width 4:3 (matches source photos).
+          Desktop: capped at max-w-4xl (896px) + 16:9 → ~504px tall, so
+          the whole banner fits in a typical laptop viewport (≤900px tall)
+          alongside the announcement bar + navbar + text strip, leaving
+          room for products without scrolling. Centered with black margins
+          on the sides on wide screens. */}
+      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-w-4xl md:mx-auto">
         <HeroSlideshow />
       </section>
     </>
