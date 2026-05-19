@@ -17,13 +17,12 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* Featured product cards — narrower than the viewport on mobile so
-          the card has visible side margins and doesn't feel "invasive".
-          max-w-[340px] leaves ~28px gutter on each side at 375px width. */}
-      <section className="bg-background py-6 md:py-10">
+      {/* Mobile-only layout: stacked CarBlock card, then marquee, then
+          the remaining cards. md:hidden so the desktop sees a different
+          (3-column) layout below — mobile structure stays untouched. */}
+      <section className="md:hidden bg-background py-6">
         <div className="container-x px-6 sm:px-8">
-          {/* CarBlock alone first, then marquee, then remaining cards */}
-          <div className="mb-6 max-w-[340px] mx-auto md:max-w-none">
+          <div className="mb-6 max-w-[340px] mx-auto">
             <CategoryCard
               label={first.label}
               description={first.description}
@@ -36,13 +35,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Full-bleed marquee sits between the first card and the rest */}
-        <div className="my-6 md:my-10">
+        <div className="my-6">
           <SaveBanner />
         </div>
 
         <div className="container-x px-6 sm:px-8">
-          <div className="grid gap-6 md:grid-cols-2 max-w-[340px] mx-auto md:max-w-none">
+          <div className="grid gap-6 max-w-[340px] mx-auto">
             {rest.map((c) => (
               <CategoryCard
                 key={c.slug}
@@ -56,6 +54,30 @@ export default function Home() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Desktop-only layout: all 3 products in a single 3-column grid
+          with the SAVE 20% marquee below. */}
+      <section className="hidden md:block bg-background py-12 lg:py-16">
+        <div className="container-x">
+          <div className="grid grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+            {categories.map((c) => (
+              <CategoryCard
+                key={c.slug}
+                label={c.label}
+                description={c.description}
+                image={c.image}
+                badge={c.badge}
+                price={c.price}
+                href={c.href}
+                imageFit={c.slug === "bundles" ? "contain" : "cover"}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="mt-12 lg:mt-16">
+          <SaveBanner />
         </div>
       </section>
 

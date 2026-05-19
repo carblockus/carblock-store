@@ -16,7 +16,7 @@ export function Hero() {
       {/* Top strip — brand copy on a solid black bg. Mobile sizes stay
           compact; md+/lg+ overrides scale everything up for desktop. */}
       <div className="bg-black border-b border-[var(--border)]">
-        <div className="container-x py-3 md:py-8 lg:py-10 max-w-4xl text-center md:text-left">
+        <div className="container-x py-3 md:py-8 lg:py-10 max-w-4xl mx-auto text-center">
           <span className="font-display text-gold-gradient text-[1.5rem] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
             {t("hero.eyebrow")}
           </span>
@@ -44,9 +44,9 @@ export function Hero() {
       </div>
 
       {/* Photo banner — clean, no overlays. 4:3 on mobile to match source
-          photos; wider 16:9 on md+ with a 600px cap so the banner reads
-          as a cinematic header on desktop. */}
-      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-h-[600px]">
+          photos; wider 2.5:1 strip on md+ so the banner spans full screen
+          width without being absurdly tall on large displays. */}
+      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[2.5/1]">
         <HeroSlideshow />
       </section>
     </>

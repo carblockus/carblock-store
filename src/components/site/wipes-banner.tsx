@@ -6,8 +6,8 @@ import Image from "next/image";
  */
 export function WipesBanner() {
   return (
-    <section className="bg-black border-y border-[var(--border)]">
-      <div className="relative w-full">
+    <section className="bg-black border-y border-[var(--border)] md:py-12 lg:py-16">
+      <div className="relative w-full md:max-w-3xl md:mx-auto md:px-8">
         <Image
           src="/products/wipes-new-6.png"
           alt="WipesBlock vs others — restores & deep cleans, zero streaks zero effort, exclusive luxury scent. WipesBlock 75 wipes vs others 30 wipes."

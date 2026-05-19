@@ -25,7 +25,7 @@ export function Navbar() {
 
   return (
     <header className="relative z-40 bg-black border-b border-[var(--border)]">
-      <div className="container-x relative flex h-16 md:h-20 items-center justify-between gap-4 md:gap-8">
+      <div className="container-x relative flex h-16 md:h-24 lg:h-28 items-center justify-between gap-4 md:gap-8">
         {/* Mobile hamburger */}
         <button
           aria-label={t("nav.openMenu")}
@@ -42,7 +42,7 @@ export function Navbar() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
           onClick={() => setMobileOpen(false)}
         >
-          <Logo imgClassName="h-[52px] md:h-16" />
+          <Logo imgClassName="h-[52px] md:h-20 lg:h-24" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 ml-32">
@@ -103,7 +103,7 @@ export function Navbar() {
           onClick={() => setMobileOpen(false)}
         >
           <div
-            className="container-x flex h-16 md:h-20 items-center justify-between border-b border-[var(--border)]"
+            className="container-x flex h-16 md:h-24 lg:h-28 items-center justify-between border-b border-[var(--border)]"
             onClick={(e) => e.stopPropagation()}
           >
             <Logo />

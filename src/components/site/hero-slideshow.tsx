@@ -35,10 +35,14 @@ export function HeroSlideshow() {
       {slides.map((slide, i) => (
         <div
           key={slide.src}
-          className="absolute inset-0 bg-no-repeat bg-center transition-opacity duration-[800ms] ease-in-out"
+          /* Mobile uses the per-slide fit (some marketing banners need
+             `contain` to keep their text readable at 4:3). Desktop is wider
+             than the source images so `cover` fills the strip cleanly. */
+          className={`absolute inset-0 bg-no-repeat bg-center transition-opacity duration-[800ms] ease-in-out md:!bg-cover ${
+            slide.fit === "contain" ? "bg-contain" : "bg-cover"
+          }`}
           style={{
             backgroundImage: `url('${slide.src}')`,
-            backgroundSize: slide.fit,
             opacity: active === i ? 1 : 0,
           }}
         />

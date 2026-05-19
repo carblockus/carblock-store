@@ -25,7 +25,7 @@ export function SaveBanner() {
     <>
       {items.map((it, i) => (
         <span key={i} className="inline-flex items-center gap-6 px-6">
-          <span className="font-display text-sm tracking-[0.22em] uppercase font-bold whitespace-nowrap">
+          <span className="font-display text-sm md:text-lg lg:text-xl tracking-[0.22em] uppercase font-bold whitespace-nowrap">
             {it}
           </span>
           <span className="text-black/50 text-xs">★</span>
@@ -40,7 +40,7 @@ export function SaveBanner() {
       className="block bg-[var(--gold)] text-black overflow-hidden border-y border-black/10 hover:bg-[var(--gold-bright)] transition-colors"
       aria-label="Subscribe and save 20% — delivered every 6 weeks"
     >
-      <div className="flex h-9 items-center">
+      <div className="flex h-9 md:h-14 lg:h-16 items-center">
         {/* Two copies side-by-side so translateX(-50%) re-aligns seamlessly. */}
         <div className="flex shrink-0 animate-marquee">
           {block}
