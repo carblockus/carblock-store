@@ -4,8 +4,11 @@ import { useState } from "react";
 
 type LogoProps = {
   className?: string;
-  /** Rendered height in px. */
+  /** Rendered height in px (fallback when imgClassName not provided). */
   height?: number;
+  /** Tailwind classes applied to the &lt;img&gt;. Overrides `height` when set —
+   *  use this when you need responsive heights (e.g. h-12 md:h-16). */
+  imgClassName?: string;
 };
 
 /**
@@ -14,7 +17,11 @@ type LogoProps = {
  *
  * Falls back to a typographic wordmark if the image fails to load.
  */
-export function Logo({ className = "", height = 52 }: LogoProps) {
+export function Logo({
+  className = "",
+  height = 52,
+  imgClassName,
+}: LogoProps) {
   const [imgOk, setImgOk] = useState(true);
 
   return (
@@ -24,8 +31,8 @@ export function Logo({ className = "", height = 52 }: LogoProps) {
         <img
           src="/logo.png"
           alt="CarBlock"
-          style={{ height }}
-          className="w-auto select-none"
+          style={imgClassName ? undefined : { height }}
+          className={`w-auto select-none ${imgClassName ?? ""}`}
           onError={() => setImgOk(false)}
         />
       ) : (
