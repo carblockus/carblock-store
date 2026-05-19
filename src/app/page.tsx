@@ -31,6 +31,7 @@ export default function Home() {
               price={first.price}
               href={first.href}
               imageFit={first.slug === "bundles" ? "contain" : "cover"}
+              amazonHref={"amazonHref" in first ? first.amazonHref : undefined}
             />
           </div>
         </div>
@@ -51,6 +52,7 @@ export default function Home() {
                 price={c.price}
                 href={c.href}
                 imageFit={c.slug === "bundles" ? "contain" : "cover"}
+                amazonHref={"amazonHref" in c ? c.amazonHref : undefined}
               />
             ))}
           </div>
@@ -72,6 +74,7 @@ export default function Home() {
                 price={c.price}
                 href={c.href}
                 imageFit={c.slug === "bundles" ? "contain" : "cover"}
+                amazonHref={"amazonHref" in c ? c.amazonHref : undefined}
               />
             ))}
           </div>

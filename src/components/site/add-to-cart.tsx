@@ -8,7 +8,7 @@ import { pixel } from "@/lib/meta-pixel";
 import type { Product } from "@/lib/mock-products";
 import { AmazonIcon, externalRetailers } from "./external-channels";
 
-const amazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
+const defaultAmazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
 /**
  * Pack sizes the customer can choose from. Multi-bottle packs get a small
@@ -116,9 +116,11 @@ export function AddToCart({ product }: { product: Product }) {
       </Button>
 
       {/* Secondary option — buy on Amazon. Same height as the primary CTA
-          but outline-style so it reads as "alternate channel" not main. */}
+          but outline-style. Uses the product's own amazonHref when set
+          (each SKU has its own Amazon listing) and falls back to the
+          default CarBlock listing otherwise. */}
       <a
-        href={amazonHref}
+        href={product.amazonHref ?? defaultAmazonHref}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 text-white text-xs uppercase tracking-[0.18em] font-semibold transition-colors"

@@ -18,6 +18,9 @@ export type Product = {
   gallery?: string[];
   scents?: string[];
   sizes?: string[];
+  /** Amazon listing URL for this specific product. When unset, callers
+   *  fall back to the default CarBlock Amazon listing (externalRetailers). */
+  amazonHref?: string;
 };
 
 export const categories = [
@@ -42,6 +45,7 @@ export const categories = [
     badge: "NEW" as const,
     price: 35,
     href: "/products/wipesblock-interior-60",
+    amazonHref: "https://www.amazon.com/dp/B0GX7QF3TT",
   },
   {
     slug: "bundles",
@@ -126,6 +130,7 @@ export const products: Product[] = [
     ],
     price: 35,
     badge: "NEW",
+    amazonHref: "https://www.amazon.com/dp/B0GX7QF3TT",
     image: "/products/wipes-new-1.png",
     gallery: [
       "/products/wipes-new-2.png",

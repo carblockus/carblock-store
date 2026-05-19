@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { AmazonIcon, externalRetailers } from "./external-channels";
 
-const amazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
+const defaultAmazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
 type Props = {
   label: string;
@@ -13,6 +13,9 @@ type Props = {
   href: string;
   /** "cover" crops to fill (default). "contain" fits the whole image. */
   imageFit?: "cover" | "contain";
+  /** Optional per-product Amazon listing. Falls back to the brand-level
+   *  CarBlock listing when omitted. */
+  amazonHref?: string;
 };
 
 /**
@@ -32,6 +35,7 @@ export function CategoryCard({
   badge,
   href,
   imageFit = "cover",
+  amazonHref,
 }: Props) {
   return (
     <div className="group relative flex flex-col rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--gold)]/60 transition-colors">
@@ -91,7 +95,7 @@ export function CategoryCard({
             Shop Now
           </Link>
           <a
-            href={amazonHref}
+            href={amazonHref ?? defaultAmazonHref}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 text-white text-xs sm:text-sm uppercase tracking-[0.16em] font-semibold transition-colors whitespace-nowrap px-5"
