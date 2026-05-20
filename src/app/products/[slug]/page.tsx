@@ -58,9 +58,12 @@ export default async function ProductPage({
         price={product.price}
       />
 
-      {/* Main content — 2 columns */}
-      <section className="container-x py-12 md:py-16">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      {/* Main content — 2 columns. Default container-x caps at 1280px, but
+          on the product page we widen it to 1600px so the gallery + info
+          panel use more of the desktop viewport and don't leave huge black
+          gutters on the sides. Mobile keeps container-x as-is. */}
+      <section className="container-x py-12 md:py-16 md:!max-w-[1600px]">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-20 lg:gap-24 items-start">
           {/* Left — Image gallery */}
           <ProductGallery
             images={galleryImages}
