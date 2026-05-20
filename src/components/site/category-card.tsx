@@ -67,7 +67,14 @@ export function CategoryCard({
           className="absolute inset-0 bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
           style={{
             backgroundImage: `url('${image}')`,
-            backgroundSize: imageFit === "contain" ? "contain" : "cover",
+            /* `cover` fills the box edge-to-edge (default for CarBlock —
+             *  the product shot already has its own framing).
+             *  `contain` is opt-in for products whose source PNG is
+             *  full-bleed (no built-in whitespace). We render at 80%
+             *  here instead of pure `contain` so the photo sits with
+             *  ~10% margin on each side and reads as a polished hero
+             *  shot rather than touching the card edges. */
+            backgroundSize: imageFit === "contain" ? "80%" : "cover",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
