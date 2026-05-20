@@ -50,11 +50,17 @@ export function Hero() {
           letterboxing inside the slideshow) capped at max-w-[1280px] so
           the banner is ~720px tall and the whole hero — navbar + menu
           row + text strip + banner — fits in a 1080p viewport without
-          scrolling. Earlier full-bleed pass made it ~1080px tall which
-          felt cramped and "too close". */}
-      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-w-[1280px] md:mx-auto">
-        <HeroSlideshow />
-      </section>
+          scrolling.
+
+          Wrapper div is bg-black so the gutters either side of the
+          1280px-capped banner are PURE #000 (not the site default
+          `--background` #0a0a0a, which read as a faint dark-grey strip
+          beside the pitch-black banner). */}
+      <div className="bg-black">
+        <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-w-[1280px] md:mx-auto">
+          <HeroSlideshow />
+        </section>
+      </div>
     </>
   );
 }
