@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { AmazonIcon, externalRetailers } from "./external-channels";
+import { PrimeBadge, externalRetailers } from "./external-channels";
 
 const defaultAmazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
@@ -137,10 +137,10 @@ export function CategoryCard({
             href={amazonHref ?? defaultAmazonHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 text-white text-xs sm:text-sm uppercase tracking-[0.16em] font-semibold transition-colors whitespace-nowrap px-5"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 bg-white text-xs sm:text-sm uppercase tracking-[0.16em] font-semibold transition-colors whitespace-nowrap px-5"
           >
-            <AmazonIcon className="h-5 w-5 shrink-0" />
-            <span>Shop on Amazon</span>
+            <PrimeBadge className="h-5 w-auto shrink-0" />
+            <span className="text-[#0F1111]">Available</span>
           </a>
         </div>
       </div>

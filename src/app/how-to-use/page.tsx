@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Stats } from "@/components/site/stats";
 import {
-  AmazonIcon,
+  PrimeBadge,
   externalRetailers,
 } from "@/components/site/external-channels";
 import { useT } from "@/lib/lang-context";
@@ -63,7 +63,7 @@ export default function HowToUsePage() {
           <Button
             asChild
             variant="outline"
-            className="rounded-full border-white/30 bg-transparent hover:bg-[var(--gold)] hover:text-black text-white tracking-[0.18em] uppercase text-xs h-12 px-6"
+            className="rounded-full border-white/30 bg-white hover:bg-white/90 text-[#0F1111] tracking-[0.18em] uppercase text-xs h-12 px-6"
           >
             <a
               href={amazonHref}
@@ -71,7 +71,7 @@ export default function HowToUsePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2"
             >
-              <AmazonIcon className="h-4 w-4 shrink-0" />
+              <PrimeBadge className="h-4 w-auto shrink-0" />
               <span>{t("howto.cta.shopAmazon")}</span>
             </a>
           </Button>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart-context";
 import { pixel } from "@/lib/meta-pixel";
 import type { Product } from "@/lib/mock-products";
-import { AmazonIcon, externalRetailers } from "./external-channels";
+import { PrimeBadge, externalRetailers } from "./external-channels";
 
 const defaultAmazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
@@ -117,18 +117,19 @@ export function AddToCart({ product }: { product: Product }) {
         )}
       </Button>
 
-      {/* Secondary option — buy on Amazon. Same height as the primary CTA
-          but outline-style. Uses the product's own amazonHref when set
-          (each SKU has its own Amazon listing) and falls back to the
-          default CarBlock listing otherwise. */}
+      {/* Secondary option — Prime Available CTA. Same height as the
+          primary CTA but white-pill outline style with the blue
+          checkmark "prime" lockup, signaling the listing is fulfilled
+          by Prime. Uses the product's own amazonHref when set, falls
+          back to the default CarBlock listing otherwise. */}
       <a
         href={product.amazonHref ?? defaultAmazonHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 text-white text-xs uppercase tracking-[0.18em] font-semibold transition-colors"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 bg-white text-xs uppercase tracking-[0.18em] font-semibold transition-colors"
       >
-        <AmazonIcon className="h-5 w-5 shrink-0" />
-        <span>Shop on Amazon</span>
+        <PrimeBadge className="h-5 w-auto shrink-0" />
+        <span className="text-[#0F1111]">Available</span>
       </a>
 
       <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] text-center">

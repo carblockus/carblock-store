@@ -108,7 +108,7 @@ export const dictionaries = {
     "howto.cta.title.highlight": "feel the difference",
     "howto.cta.body": "Free shipping on all US orders. 30-day money-back guarantee.",
     "howto.cta.shopNow": "Shop now",
-    "howto.cta.shopAmazon": "Shop on Amazon",
+    "howto.cta.shopAmazon": "Available",
     "howto.cta.contact": "Have a question?",
 
     /* ---------- Stats / How-to-Apply ---------- */
@@ -248,7 +248,7 @@ export const dictionaries = {
     "howto.cta.body":
       "Envío gratis en toda orden de EE. UU. Garantía de devolución de 30 días.",
     "howto.cta.shopNow": "Comprar ahora",
-    "howto.cta.shopAmazon": "Comprar en Amazon",
+    "howto.cta.shopAmazon": "Disponible",
     "howto.cta.contact": "¿Tienes una pregunta?",
 
     /* ---------- Stats / Cómo aplicar ---------- */

@@ -56,6 +56,41 @@ export function AmazonIcon({ className }: { className?: string }) {
   );
 }
 
+/** Prime badge — small blue checkmark + lowercase italic "prime"
+ *  wordmark, evoking the Amazon Prime "✓ prime" lockup. Used on the
+ *  Shop CTAs to signal the listing is fulfilled by Amazon Prime
+ *  rather than just "shop on Amazon". `textTransform: none` keeps the
+ *  "prime" glyphs from being uppercased by parent `.uppercase` classes
+ *  on the surrounding pill. */
+export function PrimeBadge({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 70 24" className={className} aria-hidden>
+      {/* Blue checkmark */}
+      <path
+        d="M2 13 L8 19 L19 6"
+        stroke="#00A8E1"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      {/* "prime" wordmark in italic */}
+      <text
+        x="24"
+        y="19"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontStyle="italic"
+        fontWeight="800"
+        fontSize="17"
+        fill="#00A8E1"
+        style={{ textTransform: "none" }}
+      >
+        prime
+      </text>
+    </svg>
+  );
+}
+
 /** Walmart "spark" — six-pointed mark. */
 export function WalmartIcon({ className }: { className?: string }) {
   return (
