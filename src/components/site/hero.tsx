@@ -18,7 +18,14 @@ export function Hero() {
           eat as much vertical space — banner gets the rest. */}
       <div className="bg-black border-b border-[var(--border)]">
         <div className="container-x py-3 md:py-4 lg:py-5 max-w-4xl mx-auto text-center">
-          <span className="font-display text-gold-gradient text-[1.5rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] leading-none block">
+          {/* CARBLOCK eyebrow. Per user request: bigger, but grow in
+              height not in width. Bump font-size one step up across all
+              breakpoints AND apply a vertical-only scaleY(1.35) so the
+              letters stretch upward without widening. Tracking stays
+              modest so the overall word doesn't extend beyond the
+              text strip. origin-bottom keeps the baseline anchored
+              while the tops of the letters reach higher. */}
+          <span className="font-display text-gold-gradient text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-[0.06em] sm:tracking-[0.08em] leading-none block origin-bottom [transform:scaleY(1.35)] py-2">
             {t("hero.eyebrow")}
           </span>
           {/* Subtitle in Inter sentence case. Mobile uses text-[10px] +
