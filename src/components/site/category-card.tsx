@@ -80,21 +80,26 @@ export function CategoryCard({
         aria-label={`Shop ${label}`}
       >
         <div
-          className="absolute inset-0 bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+          className={`absolute bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105 ${
+            /* For contain-mode cards we INSET the bg div from the card
+             *  edges (instead of just shrinking the bg-size). That
+             *  guarantees a real 32px / 40px white frame between the
+             *  photo edge and the card edge — works even when the
+             *  source PNG is full-bleed (like wipes-new-1.png where
+             *  the pack runs all the way to the canvas edge with no
+             *  built-in whitespace). bg-size manipulation alone wasn't
+             *  enough because the dark photo background filled almost
+             *  to the card frame regardless of scale. */
+            imageFit === "contain" ? "inset-8 md:inset-10" : "inset-0"
+          }`}
           style={{
             backgroundImage: `url('${image}')`,
-            /* `cover` fills the box edge-to-edge (default for CarBlock —
-             *  the product shot already has its own framing).
-             *  `contain` is opt-in for products whose source PNG is
-             *  full-bleed (no built-in whitespace). We render at 90%
-             *  here so the photo fills the card almost as much as a
-             *  cover-mode card does, with just a thin ~5% white margin
-             *  around the product — visually as close as CarBlock but
-             *  still framed, not edge-touching.
-             *  `imageScale` per-card overrides this when neither default
-             *  works (see prop docs above). */
+            /* Inside the inset area, fit the photo with `contain` so
+             *  the whole image is visible without crop. `imageScale`
+             *  per-card overrides this when a card needs a different
+             *  scale (see prop docs above). */
             backgroundSize:
-              imageScale ?? (imageFit === "contain" ? "85%" : "cover"),
+              imageScale ?? (imageFit === "contain" ? "contain" : "cover"),
           }}
         />
         {/* The bottom gradient was originally there to keep an overlaid
