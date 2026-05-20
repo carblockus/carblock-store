@@ -44,11 +44,13 @@ export function Hero() {
 
       {/* Photo banner — clean, no overlays.
           Mobile: full-width 4:3 (matches source photos).
-          Desktop: TRUE full-bleed (no max-w cap) at 16:9 so the banner
-          photo spans the entire viewport edge-to-edge with zero side
-          gutter. Source photos are 16:9 so `bg-contain` fills the box
-          without letterboxing. */}
-      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9]">
+          Desktop: 16:9 aspect (matches source photo aspect → no
+          letterboxing inside the slideshow) capped at max-w-[1280px] so
+          the banner is ~720px tall and the whole hero — navbar + menu
+          row + text strip + banner — fits in a 1080p viewport without
+          scrolling. Earlier full-bleed pass made it ~1080px tall which
+          felt cramped and "too close". */}
+      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-w-[1280px] md:mx-auto">
         <HeroSlideshow />
       </section>
     </>
