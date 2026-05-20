@@ -44,10 +44,9 @@ export function Hero() {
 
       {/* Photo banner — clean, no overlays.
           Mobile: full-width 4:3 (matches source photos).
-          Desktop: widened to max-w-6xl (~1152px) + 16:9 → ~648px tall.
-          That's the sweet spot — banner clearly visible, products still
-          peek above the fold on a 900px laptop viewport. */}
-      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-w-6xl md:mx-auto">
+          Desktop: nearly full-bleed at max-w-[1600px] (only ~150px gutter
+          on a 1900px screen) so the banner photo dominates the hero. */}
+      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-w-[1600px] md:mx-auto">
         <HeroSlideshow />
       </section>
     </>
