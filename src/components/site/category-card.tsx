@@ -70,11 +70,12 @@ export function CategoryCard({
             /* `cover` fills the box edge-to-edge (default for CarBlock —
              *  the product shot already has its own framing).
              *  `contain` is opt-in for products whose source PNG is
-             *  full-bleed (no built-in whitespace). We render at 80%
+             *  full-bleed (no built-in whitespace). We render at 65%
              *  here instead of pure `contain` so the photo sits with
-             *  ~10% margin on each side and reads as a polished hero
-             *  shot rather than touching the card edges. */
-            backgroundSize: imageFit === "contain" ? "80%" : "cover",
+             *  ~17% margin on each side and reads as a polished hero
+             *  shot floating in the card rather than touching the
+             *  edges. */
+            backgroundSize: imageFit === "contain" ? "65%" : "cover",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
