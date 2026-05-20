@@ -45,17 +45,11 @@ export function Navbar() {
           <Logo imgClassName="h-[52px] md:h-20 lg:h-24" />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 ml-32">
-          {navLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-[11px] tracking-[0.22em] uppercase text-white/80 hover:text-[var(--gold)] transition-colors"
-            >
-              {t(l.key)}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop nav links used to sit beside the logo here. They moved to
+            a dedicated row below the logo (see the second <nav> further
+            down) so the logo is centered on its own line with the menu
+            underneath — cleaner, more boutique. Mobile is unaffected; it
+            still uses the hamburger drawer. */}
 
         <div className="flex items-center gap-1">
           <button
@@ -95,6 +89,22 @@ export function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Desktop-only secondary nav row — sits directly below the logo so
+          the SHOP / HOW TO USE / ABOUT / WHOLESALE links read as their own
+          boutique menu line. Hidden on mobile (which uses the hamburger
+          drawer instead). */}
+      <nav className="hidden md:flex justify-center items-center gap-10 lg:gap-14 pt-1 pb-3 lg:pb-4">
+        {navLinks.map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            className="text-[11px] lg:text-xs tracking-[0.28em] uppercase text-white/85 hover:text-[var(--gold)] transition-colors"
+          >
+            {t(l.key)}
+          </Link>
+        ))}
+      </nav>
 
       {/* Mobile drawer */}
       {mobileOpen && (
