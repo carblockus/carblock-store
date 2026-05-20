@@ -94,7 +94,7 @@ export function CategoryCard({
              *  `imageScale` per-card overrides this when neither default
              *  works (see prop docs above). */
             backgroundSize:
-              imageScale ?? (imageFit === "contain" ? "90%" : "cover"),
+              imageScale ?? (imageFit === "contain" ? "85%" : "cover"),
           }}
         />
         {/* The bottom gradient was originally there to keep an overlaid

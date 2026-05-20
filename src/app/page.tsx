@@ -52,7 +52,7 @@ export default function Home() {
                 price={c.price}
                 href={c.href}
                 imageFit={c.slug === "car-wipes" || c.slug === "bundles" ? "contain" : "cover"}
-                imageScale={c.slug === "bundles" ? "auto 95%" : undefined}
+                imageScale={c.slug === "bundles" ? "100%" : undefined}
                 amazonHref={"amazonHref" in c ? c.amazonHref : undefined}
               />
             ))}
@@ -75,7 +75,7 @@ export default function Home() {
                 price={c.price}
                 href={c.href}
                 imageFit={c.slug === "car-wipes" || c.slug === "bundles" ? "contain" : "cover"}
-                imageScale={c.slug === "bundles" ? "auto 95%" : undefined}
+                imageScale={c.slug === "bundles" ? "100%" : undefined}
                 amazonHref={"amazonHref" in c ? c.amazonHref : undefined}
               />
             ))}
