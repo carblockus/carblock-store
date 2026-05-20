@@ -44,9 +44,11 @@ export function Hero() {
 
       {/* Photo banner — clean, no overlays.
           Mobile: full-width 4:3 (matches source photos).
-          Desktop: nearly full-bleed at max-w-[1600px] (only ~150px gutter
-          on a 1900px screen) so the banner photo dominates the hero. */}
-      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9] md:max-w-[1600px] md:mx-auto">
+          Desktop: TRUE full-bleed (no max-w cap) at 16:9 so the banner
+          photo spans the entire viewport edge-to-edge with zero side
+          gutter. Source photos are 16:9 so `bg-contain` fills the box
+          without letterboxing. */}
+      <section className="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/9]">
         <HeroSlideshow />
       </section>
     </>
