@@ -57,10 +57,18 @@ export function CategoryCard({
 
       {/* Clickable image → product detail. Square frame on mobile so the
           card doesn't dominate the viewport; portrait at md+ for desktop
-          looks where vertical space is cheap. */}
+          looks where vertical space is cheap.
+
+          Background: white for contain-mode cards (wipes, bundles) so the
+          17% margin around the centered product photo reads as a clean
+          studio backdrop instead of a dark gap. Cover-mode cards
+          (CarBlock) keep the near-transparent bg since their source photo
+          fills edge-to-edge anyway. */}
       <Link
         href={href}
-        className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-t-lg bg-white/[0.02]"
+        className={`relative aspect-square md:aspect-[4/5] overflow-hidden rounded-t-lg ${
+          imageFit === "contain" ? "bg-white" : "bg-white/[0.02]"
+        }`}
         aria-label={`Shop ${label}`}
       >
         <div
@@ -78,7 +86,14 @@ export function CategoryCard({
             backgroundSize: imageFit === "contain" ? "65%" : "cover",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        {/* The bottom gradient was originally there to keep an overlaid
+            title legible — titles now live below the image, so it only
+            matters for cover-mode cards where it adds a clean fade into
+            the dark card body. Skip it on contain mode so the white
+            backdrop stays uniformly white. */}
+        {imageFit !== "contain" && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        )}
       </Link>
 
       <div className="p-6 sm:p-7 flex flex-col items-center text-center gap-3">
