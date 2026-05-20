@@ -31,7 +31,9 @@ export const categories = [
       "Premium liquid car perfume — neutralizes smoke, pet & humidity odors and lasts up to 3 months.",
     image: "/products/carblock-new-1.png",
     badge: "BESTSELLER" as const,
-    price: 35,
+    // Promo: regular $35 → sale $30. Bundle dropped to $50 (was $60).
+    // Multi-pack discounts in add-to-cart.tsx scale off this base.
+    price: 30,
     // Deep-links directly to the product detail page so the home → detail
     // → checkout path is 3 clicks max (Shop Now → Add to Cart → Pay).
     href: "/products/carblock-millonario-150ml",
@@ -43,7 +45,7 @@ export const categories = [
       "Premium extra-thick interior wipes — clean every surface and restore deep black on leather, vinyl & plastic.",
     image: "/products/wipes-new-1.png",
     badge: "NEW" as const,
-    price: 35,
+    price: 30,
     href: "/products/wipesblock-interior-60",
     amazonHref: "https://www.amazon.com/dp/B0GX7QF3TT",
   },
@@ -54,7 +56,7 @@ export const categories = [
       "Pair CarBlock with wipes — or double up on our signature perfume.",
     image: "/products/bundle-kit.png",
     badge: "BUNDLE" as const,
-    price: 60,
+    price: 50,
     href: "/products/carblock-bundle-kit",
   },
 ];
@@ -88,7 +90,7 @@ export const products: Product[] = [
         body: "Proudly made in Colombia with high-quality ingredients. Each bottle contains 150ml (approx. 5 fl oz) of concentrated car fragrance — full coverage for sedans, SUVs and trucks. A level of luxury that standard car scents simply cannot match.",
       },
     ],
-    price: 35,
+    price: 30,
     badge: "BESTSELLER",
     image: "/products/carblock-new-1.png",
     gallery: [
@@ -128,7 +130,7 @@ export const products: Product[] = [
         body: "While most auto interior wipes come in 25–30 count, WipesBlock delivers 75 premium car wipes in a resealable pouch that keeps every wipe fresh and moist from the first use to the last. More car care wipes, more value — keep one set in the car, one at home. The complete car detailing solution by Block CarBlock Millonario, the brand behind the premium car interior experience.",
       },
     ],
-    price: 35,
+    price: 30,
     badge: "NEW",
     amazonHref: "https://www.amazon.com/dp/B0GX7QF3TT",
     image: "/products/wipes-new-1.png",
@@ -149,7 +151,7 @@ export const products: Product[] = [
     category: "bundle",
     shortDescription:
       "CarBlock perfume + WipesBlock interior wipes.",
-    price: 60,
+    price: 50,
     badge: "BUNDLE",
     image: "/products/bundle-kit.png",
     gallery: [

@@ -208,7 +208,7 @@ function runCannedAgent(message: string): string {
   if (has("ingredient", "chemical", "safe", "pet", "kid"))
     return "CarBlock is made with car-safe fragrance oils and contains no harmful aerosols. Safe around pets and kids — just keep the bottle out of small hands.";
   if (has("price", "cost", "how much"))
-    return "CarBlock 150ml is $35, WipesBlock 60-count is $35. Bundles are $60. Free shipping on every order. Subscribe & Save brings it to ~$28 every 6 weeks.";
+    return "Promo pricing: CarBlock 150ml is $30, WipesBlock 75-count is $30. Bundle is $50. 2-pack of CarBlock or WipesBlock is $50. Free shipping on every order. Subscribe & Save brings it to ~$24 every 6 weeks.";
   if (has("amazon", "walmart"))
     return "Yes, we're on Amazon, Walmart and TikTok Shop too. Buying directly on carblock.us gives you the best deal (subscribe & save 20%, free shipping, no marketplace fees).";
   if (has("scent", "smell", "fragrance type"))

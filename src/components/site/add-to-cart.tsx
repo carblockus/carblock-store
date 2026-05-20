@@ -23,13 +23,15 @@ const defaultAmazonHref = externalRetailers.find((r) => r.label === "Amazon")!.h
  * `qty` copies of the same product; the per-unit price shown reflects the
  * effective unit cost after the discount.
  */
-// 14.29% on 2-pack → $60.00 for a $35 unit (saves $10).
-// 19.05% on 3-pack → $85.00 for a $35 unit (saves $20). Steeper than the
-// 2-pack to reward bulk buying with a visibly bigger discount badge.
+// Promo pricing (unit = $30 sale price, set in mock-products.ts):
+//   2-pack → $50.00  (2 × $30 = $60 base, saves $10 → 16.67% off)
+//   3-pack → $70.00  (3 × $30 = $90 base, saves $20 → 22.22% off)
+// Steeper discount on the 3-pack rewards bulk buying with a visibly
+// bigger savings badge.
 const PACKS = [
   { label: "Single", qty: 1, discount: 0 },
-  { label: "2-Pack", qty: 2, discount: 0.1429 },
-  { label: "3-Pack", qty: 3, discount: 0.1905 },
+  { label: "2-Pack", qty: 2, discount: 0.1667 },
+  { label: "3-Pack", qty: 3, discount: 0.2222 },
 ] as const;
 
 export function AddToCart({ product }: { product: Product }) {
