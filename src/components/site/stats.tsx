@@ -22,6 +22,7 @@ const techniques: {
     eyebrow: "stats.tech1.eyebrow",
     title: "stats.tech1.title",
     body: "stats.tech1.body",
+    videoSrc: "/products/technique-under-mat.mov",
   },
   {
     src: "/products/pour-floor-edge.png",
