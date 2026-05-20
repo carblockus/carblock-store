@@ -31,9 +31,11 @@ export function Hero() {
             </span>{" "}
             {t("hero.title.line2.after")}
           </h1>
-          {/* Gold-on-black pill with a continuous "pop" pulse. */}
-          <div className="mt-2 md:mt-2.5 inline-flex items-center gap-2 rounded-full bg-[var(--gold)] shadow-[0_4px_14px_rgba(212,175,55,0.35)] px-3 md:px-4 py-1 animate-pop">
-            <span className="font-display text-[9px] md:text-xs lg:text-sm tracking-[0.16em] uppercase font-extrabold text-black">
+          {/* Gold-on-black "UP TO 3 MONTHS" pill — static (no pulse) per
+              user request, larger sizing so it reads clearly without
+              relying on motion to draw the eye. */}
+          <div className="mt-2.5 md:mt-3 inline-flex items-center gap-2 rounded-full bg-[var(--gold)] shadow-[0_4px_14px_rgba(212,175,55,0.35)] px-4 md:px-5 py-1.5 md:py-2">
+            <span className="font-display text-[11px] md:text-sm lg:text-base tracking-[0.16em] uppercase font-extrabold text-black">
               {t("hero.pill.upto")}{" "}
               <span className="italic">{t("hero.pill.duration")}</span>{" "}
               {t("hero.pill.suffix")}
