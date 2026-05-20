@@ -51,7 +51,8 @@ export default function Home() {
                 badge={c.badge}
                 price={c.price}
                 href={c.href}
-                imageFit={c.slug === "car-wipes" ? "contain" : "cover"}
+                imageFit={c.slug === "car-wipes" || c.slug === "bundles" ? "contain" : "cover"}
+                imageScale={c.slug === "bundles" ? "auto 95%" : undefined}
                 amazonHref={"amazonHref" in c ? c.amazonHref : undefined}
               />
             ))}
@@ -73,7 +74,8 @@ export default function Home() {
                 badge={c.badge}
                 price={c.price}
                 href={c.href}
-                imageFit={c.slug === "car-wipes" ? "contain" : "cover"}
+                imageFit={c.slug === "car-wipes" || c.slug === "bundles" ? "contain" : "cover"}
+                imageScale={c.slug === "bundles" ? "auto 95%" : undefined}
                 amazonHref={"amazonHref" in c ? c.amazonHref : undefined}
               />
             ))}

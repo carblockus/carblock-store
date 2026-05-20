@@ -13,6 +13,13 @@ type Props = {
   href: string;
   /** "cover" crops to fill (default). "contain" fits the whole image. */
   imageFit?: "cover" | "contain";
+  /** Optional override for the CSS `background-size` value. Use this for
+   *  landscape source photos sitting in a portrait card where neither
+   *  pure cover (too much side crop) nor pure contain (huge top/bottom
+   *  letterbox) looks good. e.g. `"auto 95%"` makes the photo height
+   *  fill 95% of the container, width auto, cropping only the photo's
+   *  built-in side whitespace. */
+  imageScale?: string;
   /** Optional per-product Amazon listing. Falls back to the brand-level
    *  CarBlock listing when omitted. */
   amazonHref?: string;
@@ -35,6 +42,7 @@ export function CategoryCard({
   badge,
   href,
   imageFit = "cover",
+  imageScale,
   amazonHref,
 }: Props) {
   return (
@@ -82,8 +90,11 @@ export function CategoryCard({
              *  here so the photo fills the card almost as much as a
              *  cover-mode card does, with just a thin ~5% white margin
              *  around the product — visually as close as CarBlock but
-             *  still framed, not edge-touching. */
-            backgroundSize: imageFit === "contain" ? "90%" : "cover",
+             *  still framed, not edge-touching.
+             *  `imageScale` per-card overrides this when neither default
+             *  works (see prop docs above). */
+            backgroundSize:
+              imageScale ?? (imageFit === "contain" ? "90%" : "cover"),
           }}
         />
         {/* The bottom gradient was originally there to keep an overlaid
