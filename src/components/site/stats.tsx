@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { useT } from "@/lib/lang-context";
 import type { TranslationKey } from "@/lib/i18n";
 
@@ -11,6 +12,10 @@ const techniques: {
   eyebrow: TranslationKey;
   title: TranslationKey;
   body: TranslationKey;
+  /** When present, clicking the card opens an inline video modal instead
+   *  of routing to the product detail page. Vertical iPhone clip shot by
+   *  Paola showing the exact application gesture for that technique. */
+  videoSrc?: string;
 }[] = [
   {
     src: "/products/pour-under-mat.jpg",
@@ -23,6 +28,7 @@ const techniques: {
     eyebrow: "stats.tech2.eyebrow",
     title: "stats.tech2.title",
     body: "stats.tech2.body",
+    videoSrc: "/products/technique-edge.mov",
   },
 ];
 
@@ -50,6 +56,23 @@ const distribution: {
 
 export function Stats() {
   const t = useT();
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  // Close on ESC for keyboard users; also lock body scroll while modal is open.
+  useEffect(() => {
+    if (!activeVideo) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveVideo(null);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [activeVideo]);
+
   return (
     <section
       id="how-it-works"
@@ -81,40 +104,63 @@ export function Stats() {
           </p>
         </div>
 
-        {/* Technique cards — each links to the CarBlock product page,
-            where the actual How To Use video lives, since the inline
-            video on /how-to-use itself was removed. */}
+        {/* Technique cards — when a card has a `videoSrc` it opens an
+            inline modal with that clip (Technique 2, the floor-edge
+            pour). Cards without a video keep their previous behavior:
+            link to the product page where the broader How To Use video
+            lives. */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-12">
-          {techniques.map((tech) => (
-            <Link
-              key={tech.eyebrow}
-              href="/products/carblock-millonario-150ml#how-to-use"
-              aria-label={`${t("stats.watchTutorial")}: ${t(tech.title)}`}
-              className="group relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-[3/4] shadow-[0_20px_60px_-20px_rgba(212,175,55,0.35)] block"
-            >
-              <Image
-                src={tech.src}
-                alt={t(tech.title)}
-                fill
-                sizes="(max-width: 768px) 100vw, 500px"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <span className="absolute inset-0 grid place-items-center bg-black/20 group-hover:bg-black/40 transition-colors">
-                <span className="grid place-items-center h-16 w-16 rounded-full bg-[var(--gold)]/90 group-hover:bg-[var(--gold-bright)] text-black shadow-[0_8px_28px_rgba(0,0,0,0.6)] transition-colors">
-                  <Play className="h-7 w-7 ml-0.5" />
+          {techniques.map((tech) => {
+            const inner = (
+              <>
+                <Image
+                  src={tech.src}
+                  alt={t(tech.title)}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 grid place-items-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                  <span className="grid place-items-center h-16 w-16 rounded-full bg-[var(--gold)]/90 group-hover:bg-[var(--gold-bright)] text-black shadow-[0_8px_28px_rgba(0,0,0,0.6)] transition-colors">
+                    <Play className="h-7 w-7 ml-0.5" />
+                  </span>
                 </span>
-              </span>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-5">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-1">
-                  {t(tech.eyebrow)}
-                </p>
-                <p className="text-sm md:text-base text-white font-medium leading-snug">
-                  {t(tech.title)}
-                </p>
-                <p className="text-xs text-white/70 mt-1.5">{t(tech.body)}</p>
-              </div>
-            </Link>
-          ))}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-5 text-left">
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-1">
+                    {t(tech.eyebrow)}
+                  </p>
+                  <p className="text-sm md:text-base text-white font-medium leading-snug">
+                    {t(tech.title)}
+                  </p>
+                  <p className="text-xs text-white/70 mt-1.5">{t(tech.body)}</p>
+                </div>
+              </>
+            );
+
+            const cardClass =
+              "group relative rounded-xl overflow-hidden border border-[var(--gold)]/40 bg-[var(--surface)] aspect-[3/4] shadow-[0_20px_60px_-20px_rgba(212,175,55,0.35)] block w-full";
+
+            return tech.videoSrc ? (
+              <button
+                key={tech.eyebrow}
+                type="button"
+                onClick={() => setActiveVideo(tech.videoSrc!)}
+                aria-label={`${t("stats.watchTutorial")}: ${t(tech.title)}`}
+                className={cardClass}
+              >
+                {inner}
+              </button>
+            ) : (
+              <Link
+                key={tech.eyebrow}
+                href="/products/carblock-millonario-150ml#how-to-use"
+                aria-label={`${t("stats.watchTutorial")}: ${t(tech.title)}`}
+                className={cardClass}
+              >
+                {inner}
+              </Link>
+            );
+          })}
         </div>
 
         {/* 25 / 25 / 50 distribution row */}
@@ -144,6 +190,42 @@ export function Stats() {
           </div>
         </div>
       </div>
+
+      {/* Video modal — opens when a technique card with `videoSrc` is
+          clicked. Clicking the backdrop or pressing ESC closes it.
+          Dual <source> tags (mp4 + quicktime mime) so Safari plays the
+          .mov natively while Chrome/Firefox fall back to the second
+          source. The clip is a vertical iPhone shot so the modal box
+          uses portrait aspect with max-h-[85vh]. */}
+      {activeVideo && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setActiveVideo(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("stats.watchTutorial")}
+        >
+          <button
+            type="button"
+            onClick={() => setActiveVideo(null)}
+            aria-label="Close video"
+            className="absolute top-4 right-4 h-10 w-10 grid place-items-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <video
+            key={activeVideo}
+            autoPlay
+            controls
+            playsInline
+            className="max-h-[85vh] max-w-full w-auto h-auto rounded-xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <source src={activeVideo} type="video/mp4" />
+            <source src={activeVideo} type="video/quicktime" />
+          </video>
+        </div>
+      )}
     </section>
   );
 }
