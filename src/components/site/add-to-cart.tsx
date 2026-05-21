@@ -106,7 +106,7 @@ export function AddToCart({ product }: { product: Product }) {
                   </span>
                 </span>
                 {fullDiscountPct > 0 && (
-                  <span className="absolute -top-2 right-2 md:-top-3 md:right-3 rounded-full bg-[var(--gold)] text-black text-[8px] md:text-[11px] font-bold px-1.5 md:px-2.5 py-0.5 md:py-1 leading-none tracking-[0.04em]">
+                  <span className="absolute -top-2.5 right-2 md:-top-3 md:right-3 rounded-full bg-[var(--gold)] text-black text-[10px] md:text-sm font-extrabold px-2 md:px-3 py-1 md:py-1.5 leading-none tracking-[0.04em] shadow-[0_2px_8px_rgba(212,175,55,0.45)]">
                     -{fullDiscountPct}%
                   </span>
                 )}
