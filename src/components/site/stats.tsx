@@ -77,7 +77,7 @@ export function Stats() {
   return (
     <section
       id="how-it-works"
-      className="relative bg-black overflow-hidden border-y border-[var(--border)]"
+      className="relative bg-black overflow-hidden border-y border-[var(--border)] scroll-mt-24 md:scroll-mt-32"
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,55,0.15),transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,130,27,0.15),transparent_55%)]" />

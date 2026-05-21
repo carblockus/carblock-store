@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Truck, Clock, ShieldCheck } from "lucide-react";
+import { Truck, Clock, ShieldCheck, ChevronRight } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -146,8 +146,23 @@ export default async function ProductPage({
               ))}
             </div>
 
-            {/* Accordion details */}
-            <Accordion type="multiple" className="border-t border-[var(--border)]">
+            {/* Accordion details. The first row — "How to use it" —
+                is a plain anchor that smooth-scrolls down to the Stats
+                section (#how-it-works) instead of expanding. Only
+                rendered for the perfume product since that's where the
+                Stats block is rendered further down the page. */}
+            <div className="border-t border-[var(--border)]">
+              {product.category === "perfume" && (
+                <a
+                  href="#how-it-works"
+                  className="flex items-center justify-between w-full text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6 border-b border-[var(--border)] transition-colors font-medium"
+                >
+                  <span>How to Use It</span>
+                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 text-[var(--muted)]" />
+                </a>
+              )}
+            </div>
+            <Accordion type="multiple">
               <AccordionItem value="description" className="border-[var(--border)]">
                 <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
                   Description
