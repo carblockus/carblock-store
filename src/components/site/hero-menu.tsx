@@ -7,7 +7,6 @@ import type { TranslationKey } from "@/lib/i18n";
 const items: { key: TranslationKey; href: string }[] = [
   { key: "nav.shop", href: "/products" },
   { key: "nav.howToUse", href: "/how-to-use" },
-  { key: "nav.about", href: "/about" },
   { key: "nav.wholesale", href: "/wholesale" },
 ];
 

@@ -33,7 +33,6 @@ const cols: {
     links: [
       { labelKey: "footer.link.allProducts", href: "/products" },
       { labelKey: "footer.link.howToUse", href: "/how-to-use" },
-      { labelKey: "footer.link.about", href: "/about" },
       { labelKey: "footer.link.wholesale", href: "/wholesale" },
     ],
   },
