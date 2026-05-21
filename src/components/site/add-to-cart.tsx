@@ -156,9 +156,10 @@ export function AddToCart({ product }: { product: Product }) {
         <span className="text-[#0F1111] text-[9px] md:text-xs uppercase tracking-[0.22em] font-bold leading-none">Available</span>
       </a>
 
-      <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[var(--muted)] text-center">
-        Free shipping on all US orders
-      </p>
+      {/* The 'Free shipping on all US orders' line that used to live
+          here was removed — the trust-badge row directly below the
+          AddToCart on the product page already shows "FREE SHIPPING /
+          Every US order" so the text was duplicate. */}
     </div>
   );
 }
