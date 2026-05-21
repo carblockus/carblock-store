@@ -21,7 +21,6 @@ export const dictionaries = {
     /* ---------- Navbar ---------- */
     "nav.shop": "Shop",
     "nav.howToUse": "How to Use",
-    "nav.about": "About",
     "nav.wholesale": "Wholesale",
     "nav.contact": "Contact",
     "nav.cart": "Cart",
@@ -73,7 +72,6 @@ export const dictionaries = {
     "footer.col.legal": "Legal",
     "footer.link.allProducts": "All products",
     "footer.link.howToUse": "How to use",
-    "footer.link.about": "About",
     "footer.link.wholesale": "Wholesale",
     "footer.link.contact": "Contact us",
     "footer.link.refund": "Refund policy",
@@ -163,7 +161,6 @@ export const dictionaries = {
     /* ---------- Navbar ---------- */
     "nav.shop": "Tienda",
     "nav.howToUse": "Cómo Usar",
-    "nav.about": "Nosotros",
     "nav.wholesale": "Distribuidores",
     "nav.contact": "Contacto",
     "nav.cart": "Carrito",
@@ -215,7 +212,6 @@ export const dictionaries = {
     "footer.col.legal": "Legal",
     "footer.link.allProducts": "Todos los productos",
     "footer.link.howToUse": "Cómo usar",
-    "footer.link.about": "Nosotros",
     "footer.link.wholesale": "Distribuidores",
     "footer.link.contact": "Contáctanos",
     "footer.link.refund": "Política de reembolso",
