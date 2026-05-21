@@ -5,16 +5,19 @@ import { Send, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useT } from "@/lib/lang-context";
+import type { TranslationKey } from "@/lib/i18n";
 
-const topics = [
-  { value: "order", label: "Order question" },
-  { value: "return", label: "Return / refund" },
-  { value: "wholesale", label: "Wholesale / business" },
-  { value: "press", label: "Press / partnership" },
-  { value: "other", label: "Other" },
+const topics: { value: string; labelKey: TranslationKey }[] = [
+  { value: "order", labelKey: "contact.topic.order" },
+  { value: "return", labelKey: "contact.topic.return" },
+  { value: "wholesale", labelKey: "contact.topic.wholesale" },
+  { value: "press", labelKey: "contact.topic.press" },
+  { value: "other", labelKey: "contact.topic.other" },
 ];
 
 export function ContactForm() {
+  const t = useT();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -54,11 +57,11 @@ export function ContactForm() {
         </div>
         <div>
           <h3 className="font-display text-2xl uppercase tracking-[0.15em] text-white">
-            Message Sent
+            {t("contact.form.sent.title")}
           </h3>
           <p className="mt-2 text-sm text-[var(--muted)]">
-            Thanks for reaching out. We&apos;ll get back to you within 1
-            business day at <span className="text-white">{form.email}</span>.
+            {t("contact.form.sent.body")}{" "}
+            <span className="text-white">{form.email}</span>.
           </p>
         </div>
       </div>
@@ -70,7 +73,7 @@ export function ContactForm() {
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-            Name
+            {t("contact.form.name")}
           </Label>
           <Input
             required
@@ -81,7 +84,7 @@ export function ContactForm() {
         </div>
         <div className="space-y-2">
           <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-            Email
+            {t("contact.form.email")}
           </Label>
           <Input
             type="email"
@@ -96,23 +99,23 @@ export function ContactForm() {
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-            Topic
+            {t("contact.form.topic")}
           </Label>
           <select
             value={form.topic}
             onChange={(e) => setForm({ ...form, topic: e.target.value })}
             className="h-12 w-full bg-[var(--surface)] border border-[var(--border-strong)] text-white rounded-md px-4 cursor-pointer focus:outline-none focus:border-[var(--gold)]/70"
           >
-            {topics.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label}
+            {topics.map((topic) => (
+              <option key={topic.value} value={topic.value}>
+                {t(topic.labelKey)}
               </option>
             ))}
           </select>
         </div>
         <div className="space-y-2">
           <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-            Order # (optional)
+            {t("contact.form.orderNumber")}
           </Label>
           <Input
             value={form.orderId}
@@ -125,7 +128,7 @@ export function ContactForm() {
 
       <div className="space-y-2">
         <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-          Message
+          {t("contact.form.message")}
         </Label>
         <textarea
           required
@@ -142,15 +145,13 @@ export function ContactForm() {
         className="w-full sm:w-auto rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 px-8 disabled:opacity-50"
       >
         <Send className="h-4 w-4 mr-2" />
-        {submitting ? "Sending…" : "Send Message"}
+        {submitting ? t("contact.form.sending") : t("contact.form.send")}
       </Button>
 
-      {error && (
-        <p className="text-xs text-red-300">{error}</p>
-      )}
+      {error && <p className="text-xs text-red-300">{error}</p>}
 
       <p className="text-[10px] uppercase tracking-[0.22em] text-[var(--muted-2)]">
-        We typically respond within 1 business day
+        {t("contact.form.responseNote")}
       </p>
     </form>
   );
