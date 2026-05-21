@@ -98,13 +98,13 @@ export function ProductGallery({
           {safe.map((src, i) => (
             <div
               key={src + i}
-              // Mobile frame is slightly shorter than square (7:6) so
-              // the bottom of the screen reveals the 'Select your pack'
-              // section while keeping the product photo big enough not
-              // to feel cropped. (Tried aspect-[5/4] first — too much
-              // cover-crop on the square source PNGs.) Desktop frame
-              // stays square — see the md:block block below.
-              className="snap-center shrink-0 w-full aspect-[7/6] bg-[var(--surface)] relative"
+              // Mobile frame is square (1:1) — matches the square source
+              // PNGs exactly so cover-mode never trims any pixels off
+              // the product. We tried 5:4 and 7:6 to free up space for
+              // the pack selector, but both ate the top/bottom of the
+              // bottle. Better to scroll a touch for the selector than
+              // to show a cropped hero. Desktop frame also stays square.
+              className="snap-center shrink-0 w-full aspect-square bg-[var(--surface)] relative"
             >
               <div
                 className="absolute inset-0 bg-center bg-no-repeat"
