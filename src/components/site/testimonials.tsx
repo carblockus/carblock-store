@@ -31,7 +31,7 @@ export function Testimonials() {
       <div className="relative overflow-hidden">
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--surface)] to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--surface)] to-transparent z-10" />
-        <div className="flex gap-6 animate-marquee w-max">
+        <div className="flex gap-6 animate-marquee-slow w-max">
           {loop.map((t, i) => (
             <article
               key={`${t.name}-${i}`}

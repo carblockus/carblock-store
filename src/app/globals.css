@@ -161,13 +161,22 @@ body {
   margin: 2rem 0;
 }
 
-/* Marquee animation for testimonials */
+/* Marquee animation used by the yellow Subscribe & Save banner and
+   the testimonials strip. Two speeds:
+     - `animate-marquee`      → 40 s, default. Energetic, fits the
+                                short promo loops.
+     - `animate-marquee-slow` → 90 s, used on testimonials so visitors
+                                actually have time to read each card
+                                before it slides past. */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 .animate-marquee {
   animation: marquee 40s linear infinite;
+}
+.animate-marquee-slow {
+  animation: marquee 90s linear infinite;
 }
 
 /* "Pop" — subtle continuous pulse that scales the element slightly
