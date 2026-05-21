@@ -60,28 +60,21 @@ export default function HowToUsePage() {
           >
             <Link href="/products">{t("howto.cta.shopNow")}</Link>
           </Button>
-          {/* Prime pill rendered horizontally so the `prime` lockup and
-              the AVAILABLE word both read at a glance. Wider padding
-              (px-10/12) gives the lockup room to breathe — previously
-              the button was so narrow the user couldn't tell what it
-              said. */}
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-full border-white/30 bg-white hover:bg-white/90 text-[#0F1111] h-14 md:h-12 px-10 md:px-12"
+          {/* Prime pill — plain <a> instead of the shadcn Button so we
+              control the exact dimensions. Big and wide enough for
+              both the `prime` lockup AND the AVAILABLE word to read
+              at a glance. */}
+          <a
+            href={amazonHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-3 md:gap-4 rounded-full border border-white/30 bg-white hover:bg-white/90 h-14 md:h-16 px-10 md:px-14 transition-colors"
           >
-            <a
-              href={amazonHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3"
-            >
-              <PrimeBadge className="h-6 md:h-7 w-auto shrink-0" />
-              <span className="text-[#0F1111] text-xs md:text-sm uppercase tracking-[0.22em] font-bold leading-none">
-                {t("howto.cta.shopAmazon")}
-              </span>
-            </a>
-          </Button>
+            <PrimeBadge className="h-7 md:h-9 w-auto shrink-0" />
+            <span className="text-[#0F1111] text-sm md:text-base uppercase tracking-[0.22em] font-bold leading-none">
+              {t("howto.cta.shopAmazon")}
+            </span>
+          </a>
           <Button
             asChild
             variant="outline"
