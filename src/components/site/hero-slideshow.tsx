@@ -3,17 +3,16 @@
 import { useEffect, useState } from "react";
 
 /**
- * Each slide carries its own backgroundSize. Photos that are mostly
- * landscape with text near the edges (the marketing-style banners 1 and
- * 3) use `contain` so nothing gets cropped — readers see the full
- * "Say goodbye to unpleasant odors!" / "Car Cleaning Wipes" headlines.
- * Lifestyle / product shots use `cover` to fill the banner box.
+ * All four slides are pre-normalized to 2000×1500 (4:3) JPGs by
+ * scripts/normalize-hero.js — they already match the hero container's
+ * aspect ratio exactly, so `cover` will neither crop nor letterbox.
+ * Re-run the script after dropping new sources into "Pagina web/".
  */
 const slides: { src: string; fit: "cover" | "contain" }[] = [
-  { src: "/hero/page-1.jpg", fit: "contain" },  // "Say goodbye to unpleasant odors!"
-  { src: "/hero/page-2.png", fit: "cover" },    // lifestyle: pouring on floor
-  { src: "/hero/page-3.png", fit: "contain" },  // "Cleans Shines and Protects" + icons
-  { src: "/hero/page-4.png", fit: "contain" },  // "Cleaned vs Without WipesBlock" comparison
+  { src: "/hero/page-1.jpg", fit: "cover" },  // "Say goodbye to unpleasant odors!"
+  { src: "/hero/page-2.jpg", fit: "cover" },  // lifestyle: pouring on floor
+  { src: "/hero/page-3.jpg", fit: "cover" },  // "Cleans Shines and Protects" + icons
+  { src: "/hero/page-4.jpg", fit: "cover" },  // "Cleaned vs Without WipesBlock" comparison
 ];
 
 const FIRST_SLIDE_MS = 2000;

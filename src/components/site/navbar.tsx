@@ -26,8 +26,10 @@ export function Navbar() {
   return (
     <header className="relative z-40 bg-black border-b border-[var(--border)]">
       {/* Single row — mobile: hamburger | centered-logo | cart
-                   desktop: nav-links | centered-logo | icons */}
-      <div className="container-x relative flex h-16 md:h-20 lg:h-24 items-center">
+                   desktop: nav-links | centered-logo | icons.
+          Navbar height grows on desktop so the doubled-size logo has
+          headroom; mobile h-16 stays exactly as before. */}
+      <div className="container-x relative flex h-16 md:h-40 lg:h-48 items-center">
 
         {/* LEFT slot */}
         <div className="flex-1 flex items-center">
@@ -52,7 +54,9 @@ export function Navbar() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
           onClick={() => setMobileOpen(false)}
         >
-          <Logo imgClassName="h-[52px] md:h-16 lg:h-20" />
+          {/* Desktop logo doubled in size (md 64→128, lg 80→160).
+              Mobile stays at the original 52px height. */}
+          <Logo imgClassName="h-[52px] md:h-32 lg:h-40" />
         </Link>
 
         {/* RIGHT slot */}
