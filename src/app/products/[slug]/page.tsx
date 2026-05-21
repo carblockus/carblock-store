@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Truck, Clock, ShieldCheck, Check } from "lucide-react";
 import {
@@ -249,7 +250,16 @@ export default async function ProductPage({
                     <li>We don&apos;t ship to Alaska, Hawaii or Puerto Rico.</li>
                     <li>Orders ship within 1-2 business days.</li>
                     <li>Standard delivery: 3-7 business days.</li>
-                    <li>30-day return policy for unused products.</li>
+                    <li>
+                      30-day return{" "}
+                      <Link
+                        href="/legal/refunds"
+                        className="underline text-[var(--gold)] hover:text-[var(--gold-bright)] transition-colors"
+                      >
+                        policy
+                      </Link>{" "}
+                      for unused products.
+                    </li>
                   </ul>
                 </AccordionContent>
               </AccordionItem>
