@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { DollarSign, ShoppingBag, Users, Truck } from "lucide-react";
+import { DollarSign, ShoppingCart, Users, Truck } from "lucide-react";
 
 // Always fetch fresh — no caching for admin
 export const dynamic = "force-dynamic";
@@ -47,7 +47,7 @@ export default async function AdminDashboard() {
       ),
     },
     {
-      icon: ShoppingBag,
+      icon: ShoppingCart,
       label: "Orders (30d)",
       value: String(ordersLast30),
     },

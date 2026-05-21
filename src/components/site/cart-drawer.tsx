@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -37,7 +37,7 @@ export function CartDrawer() {
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center px-6 text-center gap-4">
             <div className="h-16 w-16 rounded-full bg-[var(--surface)] grid place-items-center">
-              <ShoppingBag className="h-7 w-7 text-[var(--gold)]" />
+              <ShoppingCart className="h-7 w-7 text-[var(--gold)]" />
             </div>
             <div>
               <p className="font-display uppercase tracking-[0.18em] text-white">

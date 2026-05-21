@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { User, ShoppingBag, Menu, X } from "lucide-react";
+import { User, ShoppingCart, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { useCart } from "@/lib/cart-context";
 import { useT } from "@/lib/lang-context";
@@ -83,7 +83,7 @@ export function Navbar() {
             onClick={() => setOpen(true)}
             className="relative p-2 md:p-3 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
-            <ShoppingBag className="h-5 w-5 md:h-10 md:w-10" />
+            <ShoppingCart className="h-5 w-5 md:h-10 md:w-10" />
             {count > 0 && (
               <span className="absolute -top-0.5 -right-0.5 md:-top-1 md:-right-1 min-w-[18px] h-[18px] md:min-w-[26px] md:h-[26px] px-1 md:px-1.5 rounded-full bg-[var(--gold)] text-black text-[10px] md:text-[14px] font-bold flex items-center justify-center">
                 {count}

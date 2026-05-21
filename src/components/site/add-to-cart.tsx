@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ShoppingBag, Check } from "lucide-react";
+import { ShoppingCart, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart-context";
 import { pixel } from "@/lib/meta-pixel";
@@ -132,7 +132,7 @@ export function AddToCart({ product }: { product: Product }) {
           </>
         ) : (
           <>
-            <ShoppingBag className="h-5 w-5 md:h-6 md:w-6 mr-2" />
+            <ShoppingCart className="h-5 w-5 md:h-6 md:w-6 mr-2" />
             <span>Add to Cart —</span>
             {hasPromo && (
               <span className="ml-2 line-through opacity-60 font-normal">
