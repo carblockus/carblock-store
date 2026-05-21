@@ -39,11 +39,16 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
       >
         <div
           className={`absolute bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105 ${
-            /* Contain-mode photos get inset from the card edges so a
-               real white frame is guaranteed around the product — even
-               when the source PNG is full-bleed (no built-in
-               whitespace). Cover-mode photos stay edge-to-edge. */
-            imageFit === "contain" ? "inset-6 md:inset-8" : "inset-0"
+            /* Contain-mode photos get a generous inset from the card
+               edges so a real white frame is guaranteed around the
+               product — even when the source PNG is full-bleed (the
+               product runs all the way to the edge of the PNG canvas
+               with no built-in whitespace). Bumped to inset-10/14 (40
+               / 56 px) after the original inset-6/8 left the wipes
+               pack visibly touching the left and right sides of the
+               card frame on /products and related-product cards.
+               Cover-mode photos stay edge-to-edge. */
+            imageFit === "contain" ? "inset-10 md:inset-14" : "inset-0"
           }`}
           style={{
             backgroundImage: `url('${image}')`,
