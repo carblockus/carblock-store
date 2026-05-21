@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { HeroSlideshow } from "./hero-slideshow";
+import { PrimeBadge, externalRetailers } from "./external-channels";
 import { useT } from "@/lib/lang-context";
 import type { TranslationKey } from "@/lib/i18n";
+
+const amazonHref = externalRetailers.find((r) => r.label === "Amazon")!.href;
 
 // Desktop nav links. Live in a strip directly below the hero, replacing the
 // per-page header menu. Hidden on mobile (hamburger drawer handles it).
@@ -73,12 +76,40 @@ export function Hero() {
         </div>
       </div>
 
+      {/* Desktop nav strip — sits directly under the navbar logo so the
+          primary categories are visible from the very first paint, before
+          the hero loads. Hidden on mobile (hamburger drawer handles it). */}
+      <div className="hidden md:block bg-black border-b border-[var(--border)]">
+        <nav className="container-x flex justify-center items-center gap-10 lg:gap-16 py-3 lg:py-4">
+          {navLinks.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="text-[11px] lg:text-[13px] tracking-[0.28em] uppercase text-white/85 hover:text-[var(--gold)] transition-colors font-semibold"
+            >
+              {t(l.key)}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
       {/* ============================================================
           DESKTOP-ONLY HERO — Chemical Guys-style split (text | photo)
+
+          Layout tuning:
+          - Container is wider (1760px cap) with tighter horizontal
+            padding so the black side gutters get cut down.
+          - Grid columns are intentionally asymmetric (1 / 1.5) so the
+            photo gets more real estate than the copy — matches the
+            visual weight in the CG reference.
+          - Right-side photo frame uses a landscape aspect (4/3) to
+            match the source hero images, which are landscape too.
+            That eliminates the heavy top/bottom letterbox the old
+            portrait frame was producing.
           ============================================================ */}
       <div className="hidden md:block bg-black border-b border-[var(--border)]">
-        <div className="container-x md:!max-w-[1600px] py-12 lg:py-16">
-          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="container-x md:!max-w-[1760px] md:!px-6 lg:!px-10 py-10 lg:py-14">
+          <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 lg:gap-10 items-center">
             {/* LEFT — copy + CTAs + trust */}
             <div className="flex flex-col items-start gap-5 lg:gap-6">
               {/* Eyebrow */}
@@ -86,26 +117,34 @@ export function Hero() {
                 {t("hero.eyebrow")}
               </span>
 
-              {/* Big subtitle — left-aligned, uppercase, prominent */}
+              {/* Big subtitle — left-aligned, uppercase, prominent.
+                  Each block forces its own line so the phrase reads as
+                  two clean rows on desktop:
+                    line 1 → IT'S NOT AN AIR FRESHENER,
+                    line 2 → IT'S A *PERFUME* FOR YOUR CAR. */}
               <h1 className="text-2xl lg:text-3xl xl:text-4xl leading-tight font-bold uppercase tracking-[0.04em] text-white">
-                {t("hero.title.line1")}{" "}
-                {t("hero.title.line2.before")}{" "}
-                <span className="text-gold-gradient italic">
-                  {t("hero.title.line2.highlight")}
-                </span>{" "}
-                {t("hero.title.line2.after")}
+                <span className="block">{t("hero.title.line1")}</span>
+                <span className="block">
+                  {t("hero.title.line2.before")}{" "}
+                  <span className="text-gold-gradient italic">
+                    {t("hero.title.line2.highlight")}
+                  </span>{" "}
+                  {t("hero.title.line2.after")}
+                </span>
               </h1>
 
-              {/* UP TO 3 MONTHS pill */}
-              <div className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] shadow-[0_4px_14px_rgba(212,175,55,0.35)] px-6 lg:px-8 py-3 lg:py-3.5">
-                <span className="font-display text-base lg:text-lg tracking-[0.16em] uppercase font-extrabold text-black">
+              {/* UP TO 3 MONTHS pill — bumped a full step bigger so it
+                  pulls the eye next to the headline. */}
+              <div className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] shadow-[0_6px_18px_rgba(212,175,55,0.4)] px-8 lg:px-10 py-4 lg:py-5">
+                <span className="font-display text-lg lg:text-2xl tracking-[0.16em] uppercase font-extrabold text-black">
                   {t("hero.pill.upto")}{" "}
                   <span className="italic">{t("hero.pill.duration")}</span>{" "}
                   {t("hero.pill.suffix")}
                 </span>
               </div>
 
-              {/* CTAs — primary gold + outline secondary, Chemical Guys-style */}
+              {/* CTAs — primary gold pill + Prime Available white pill.
+                  Same height & padding so the two read as a paired set. */}
               <div className="mt-2 flex items-center gap-3">
                 <Link
                   href="/products"
@@ -113,12 +152,17 @@ export function Hero() {
                 >
                   {t("hero.cta.shop")}
                 </Link>
-                <Link
-                  href="/how-to-use"
-                  className="inline-flex items-center justify-center rounded-full border-2 border-white/30 hover:border-[var(--gold)] hover:text-[var(--gold)] text-white font-bold tracking-[0.2em] uppercase text-xs lg:text-sm h-12 lg:h-14 px-8 lg:px-10 transition-colors"
+                <a
+                  href={amazonHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-col items-center justify-center gap-0.5 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 bg-white h-12 lg:h-14 px-8 lg:px-10 transition-colors"
                 >
-                  {t("hero.cta.learnMore")}
-                </Link>
+                  <PrimeBadge className="h-5 w-auto shrink-0" />
+                  <span className="text-[#0F1111] text-[9px] uppercase tracking-[0.22em] font-bold leading-none">
+                    {t("howto.cta.shopAmazon")}
+                  </span>
+                </a>
               </div>
 
               {/* Trust signal — 5 gold stars + line of copy */}
@@ -137,30 +181,16 @@ export function Hero() {
               </div>
             </div>
 
-            {/* RIGHT — photo slideshow */}
-            <div className="relative aspect-[4/5] lg:aspect-[5/6] overflow-hidden rounded-lg bg-black">
+            {/* RIGHT — photo slideshow. Landscape aspect (4/3) matches
+                the source hero images so each slide displays in full
+                without the portrait frame cropping the sides. */}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-black">
               <HeroSlideshow />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Desktop nav strip — sits right under the split hero so the
-          primary categories are reachable without scrolling. Hidden on
-          mobile (hamburger drawer handles navigation there). */}
-      <div className="hidden md:block bg-black border-b border-[var(--border)]">
-        <nav className="container-x flex justify-center items-center gap-10 lg:gap-16 py-3 lg:py-4">
-          {navLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-[11px] lg:text-[13px] tracking-[0.28em] uppercase text-white/85 hover:text-[var(--gold)] transition-colors font-semibold"
-            >
-              {t(l.key)}
-            </Link>
-          ))}
-        </nav>
-      </div>
     </>
   );
 }
