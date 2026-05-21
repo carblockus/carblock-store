@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ShoppingCart, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart-context";
+import { useT } from "@/lib/lang-context";
+import type { TranslationKey } from "@/lib/i18n";
 import { pixel } from "@/lib/meta-pixel";
 import type { Product } from "@/lib/mock-products";
 import { PrimeBadge, externalRetailers } from "./external-channels";
@@ -28,16 +30,23 @@ const defaultAmazonHref = externalRetailers.find((r) => r.label === "Amazon")!.h
 //   3-pack → $70.00  (3 × $30 = $90 base, saves $20 → 22.22% off)
 // Steeper discount on the 3-pack rewards bulk buying with a visibly
 // bigger savings badge.
-const PACKS = [
-  { label: "Single", qty: 1, discount: 0 },
-  { label: "2-Pack", qty: 2, discount: 0.1667 },
-  { label: "3-Pack", qty: 3, discount: 0.2222 },
-] as const;
+// Pack labels resolved via i18n keys at render time so EN/ES switching
+// re-renders the chips with the right wording.
+const PACKS: {
+  labelKey: TranslationKey;
+  qty: number;
+  discount: number;
+}[] = [
+  { labelKey: "product.pack.single", qty: 1, discount: 0 },
+  { labelKey: "product.pack.2pack", qty: 2, discount: 0.1667 },
+  { labelKey: "product.pack.3pack", qty: 3, discount: 0.2222 },
+];
 
 export function AddToCart({ product }: { product: Product }) {
   const [packIdx, setPackIdx] = useState(0);
   const [added, setAdded] = useState(false);
   const { add } = useCart();
+  const t = useT();
   const pack = PACKS[packIdx];
 
   const subtotal = product.price * pack.qty;
@@ -66,7 +75,7 @@ export function AddToCart({ product }: { product: Product }) {
     <div className="flex flex-col gap-4 md:gap-6">
       <div>
         <p className="text-[10px] md:text-xs lg:text-sm uppercase tracking-[0.22em] text-[var(--muted)] mb-2 md:mb-4">
-          Select your pack
+          {t("product.selectYourPack")}
         </p>
         <div className="grid grid-cols-3 gap-2 md:gap-3">
           {PACKS.map((p, i) => {
@@ -83,7 +92,7 @@ export function AddToCart({ product }: { product: Product }) {
               : Math.round(p.discount * 100);
             return (
               <button
-                key={p.label}
+                key={p.labelKey}
                 type="button"
                 onClick={() => setPackIdx(i)}
                 className={`relative rounded-full border h-12 md:h-20 flex flex-col items-center justify-center transition-colors ${
@@ -93,7 +102,7 @@ export function AddToCart({ product }: { product: Product }) {
                 }`}
               >
                 <span className="text-[11px] md:text-sm uppercase tracking-[0.16em] font-bold leading-none">
-                  {p.label.toUpperCase()}
+                  {t(p.labelKey).toUpperCase()}
                 </span>
                 <span className="mt-0.5 md:mt-1.5 leading-none tabular-nums flex items-baseline gap-1 md:gap-2">
                   {hasPromo && (
@@ -128,12 +137,12 @@ export function AddToCart({ product }: { product: Product }) {
         {added ? (
           <>
             <Check className="h-5 w-5 md:h-6 md:w-6 mr-2" />
-            Added to Cart
+            {t("product.addedToCart")}
           </>
         ) : (
           <>
             <ShoppingCart className="h-5 w-5 md:h-6 md:w-6 mr-2" />
-            <span>Add to Cart —</span>
+            <span>{t("product.addToCart")} —</span>
             {hasPromo && (
               <span className="ml-2 line-through opacity-60 font-normal">
                 ${originalTotal.toFixed(0)}
@@ -153,7 +162,9 @@ export function AddToCart({ product }: { product: Product }) {
         className="inline-flex flex-col items-center justify-center gap-0.5 md:gap-1 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-14 md:h-16 lg:h-[68px] bg-white transition-colors px-6 md:px-8"
       >
         <PrimeBadge className="h-5 md:h-7 w-auto shrink-0" />
-        <span className="text-[#0F1111] text-[9px] md:text-xs uppercase tracking-[0.22em] font-bold leading-none">Available</span>
+        <span className="text-[#0F1111] text-[9px] md:text-xs uppercase tracking-[0.22em] font-bold leading-none">
+          {t("product.available")}
+        </span>
       </a>
 
       {/* The 'Free shipping on all US orders' line that used to live

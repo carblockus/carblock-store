@@ -1,18 +1,30 @@
+"use client";
+
 import { testimonials } from "@/lib/mock-products";
 import { Star } from "lucide-react";
+import { useT } from "@/lib/lang-context";
 
 export function Testimonials() {
   // Duplicate for seamless marquee
   const loop = [...testimonials, ...testimonials];
+  const t = useT();
+
+  // Split the title around "100,000" so the number gets the gold
+  // gradient regardless of which language the surrounding copy is in.
+  // Works for both 'Over 100,000 satisfied drivers' and
+  // 'Más de 100,000 conductores satisfechos'.
+  const [titleBefore, titleAfter] = t("testimonials.title").split("100,000");
 
   return (
     <section className="bg-[var(--surface)] border-y border-[var(--border)] py-10 md:py-14">
       <div className="container-x text-center mb-8 md:mb-10">
         <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
-          Trusted by
+          {t("testimonials.eyebrow")}
         </span>
         <h2 className="font-display text-4xl md:text-6xl uppercase font-bold mt-3 text-white leading-tight">
-          Over <span className="text-gold-gradient">100,000</span> satisfied drivers
+          {titleBefore}
+          <span className="text-gold-gradient">100,000</span>
+          {titleAfter}
         </h2>
       </div>
 
