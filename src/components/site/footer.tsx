@@ -84,9 +84,12 @@ export function Footer() {
             <p className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[var(--gold)] mb-3 md:mb-4">
               {t("footer.findUsAlso")}
             </p>
-            <div className="flex flex-nowrap gap-2 md:gap-3 overflow-x-auto pb-1 -mx-1 px-1">
+            {/* `compact` dropped — Amazon / Walmart / TikTok Shop pills
+                now render at the same size as the SÍGUENOS row above
+                (Instagram / TikTok). */}
+            <div className="flex flex-wrap gap-2.5 md:gap-3">
               {externalRetailers.map((c) => (
-                <ChannelPill key={c.label} {...c} compact />
+                <ChannelPill key={c.label} {...c} />
               ))}
             </div>
           </div>
