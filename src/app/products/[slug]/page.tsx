@@ -73,32 +73,34 @@ export default async function ProductPage({
             imageFits={galleryFits}
           />
 
-          {/* Right — Info */}
-          <div className="flex flex-col gap-6">
+          {/* Right — Info. Desktop scale-up: every text size and spacing
+              steps up on md+/lg so the panel feels proportional to the
+              big gallery on the left and the promo/CTAs read clearly. */}
+          <div className="flex flex-col gap-6 md:gap-8">
             <div>
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)]">
+              <span className="text-[10px] md:text-xs lg:text-sm tracking-[0.3em] uppercase text-[var(--gold)]">
                 {categoryLabel}
               </span>
-              <h1 className="font-display text-3xl md:text-4xl uppercase font-bold text-white mt-2 leading-tight">
+              <h1 className="font-display text-3xl md:text-5xl lg:text-6xl uppercase font-bold text-white mt-2 md:mt-3 leading-tight">
                 {product.name}
               </h1>
             </div>
 
-            <p className="text-base text-[var(--muted)] leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--muted)] leading-relaxed">
               {product.shortDescription}
             </p>
 
             {/* Size chips */}
             {product.sizes && product.sizes.length > 0 && (
               <div>
-                <span className="block text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] mb-2">
+                <span className="block text-[10px] md:text-xs lg:text-sm tracking-[0.3em] uppercase text-[var(--muted)] mb-2 md:mb-3">
                   Size
                 </span>
-                <div className="flex gap-2">
+                <div className="flex gap-2 md:gap-3">
                   {product.sizes.map((s) => (
                     <span
                       key={s}
-                      className="px-4 py-2 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/10 text-xs uppercase tracking-[0.15em] text-white font-medium"
+                      className="px-4 md:px-6 py-2 md:py-3 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/10 text-xs md:text-sm uppercase tracking-[0.15em] text-white font-medium"
                     >
                       {s}
                     </span>
@@ -108,12 +110,12 @@ export default async function ProductPage({
             )}
 
             {/* Add to cart */}
-            <div className="border-y border-[var(--border)] py-6">
+            <div className="border-y border-[var(--border)] py-6 md:py-8">
               <AddToCart product={product} />
             </div>
 
             {/* Trust badges */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4 md:gap-6">
               {[
                 {
                   icon: Truck,
@@ -133,13 +135,13 @@ export default async function ProductPage({
               ].map(({ icon: Icon, label, sub }) => (
                 <div
                   key={label}
-                  className="flex flex-col items-center text-center gap-1.5 py-3"
+                  className="flex flex-col items-center text-center gap-1.5 md:gap-2.5 py-3 md:py-5"
                 >
-                  <Icon className="h-5 w-5 text-[var(--gold)]" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-white font-medium">
+                  <Icon className="h-5 w-5 md:h-8 md:w-8 text-[var(--gold)]" />
+                  <span className="text-[10px] md:text-sm uppercase tracking-[0.2em] text-white font-medium">
                     {label}
                   </span>
-                  <span className="text-[9px] text-[var(--muted)]">{sub}</span>
+                  <span className="text-[9px] md:text-xs text-[var(--muted)]">{sub}</span>
                 </div>
               ))}
             </div>
@@ -147,10 +149,10 @@ export default async function ProductPage({
             {/* Accordion details */}
             <Accordion type="multiple" className="border-t border-[var(--border)]">
               <AccordionItem value="description" className="border-[var(--border)]">
-                <AccordionTrigger className="text-xs uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4">
+                <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
                   Description
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-[var(--muted)] leading-relaxed pb-4">
+                <AccordionContent className="text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed pb-4 md:pb-6">
                   {product.longDescription ? (
                     <ul className="space-y-3">
                       {product.longDescription.map((d) => (
@@ -179,10 +181,10 @@ export default async function ProductPage({
               </AccordionItem>
 
               <AccordionItem value="shipping" className="border-[var(--border)]">
-                <AccordionTrigger className="text-xs uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4">
+                <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
                   Shipping & Returns
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-[var(--muted)] leading-relaxed pb-4">
+                <AccordionContent className="text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed pb-4 md:pb-6">
                   <ul className="list-disc pl-4 space-y-1.5">
                     <li>Free standard shipping on every order — no minimum.</li>
                     <li>Ships to the contiguous US (lower 48 states) only.</li>
@@ -195,10 +197,10 @@ export default async function ProductPage({
               </AccordionItem>
 
               <AccordionItem value="faq" className="border-[var(--border)]">
-                <AccordionTrigger className="text-xs uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4">
+                <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
                   FAQ
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-[var(--muted)] leading-relaxed pb-4 space-y-3">
+                <AccordionContent className="text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed pb-4 md:pb-6 space-y-3 md:space-y-5">
                   <div>
                     <p className="text-white font-medium">
                       How long does the fragrance last?

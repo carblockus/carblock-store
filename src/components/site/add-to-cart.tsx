@@ -63,12 +63,12 @@ export function AddToCart({ product }: { product: Product }) {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 md:gap-6">
       <div>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-[var(--muted)] mb-2">
+        <p className="text-[10px] md:text-xs lg:text-sm uppercase tracking-[0.22em] text-[var(--muted)] mb-2 md:mb-4">
           Select your pack
         </p>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-2 md:gap-3">
           {PACKS.map((p, i) => {
             const active = i === packIdx;
             const packSubtotal = product.price * p.qty;
@@ -86,27 +86,27 @@ export function AddToCart({ product }: { product: Product }) {
                 key={p.label}
                 type="button"
                 onClick={() => setPackIdx(i)}
-                className={`relative rounded-full border h-12 flex flex-col items-center justify-center transition-colors ${
+                className={`relative rounded-full border h-12 md:h-20 flex flex-col items-center justify-center transition-colors ${
                   active
                     ? "border-[var(--gold)] bg-[var(--gold)]/15 text-white"
                     : "border-[var(--border-strong)] bg-black/40 text-[var(--muted)] hover:border-[var(--gold)]/60"
                 }`}
               >
-                <span className="text-[11px] uppercase tracking-[0.16em] font-bold leading-none">
+                <span className="text-[11px] md:text-sm uppercase tracking-[0.16em] font-bold leading-none">
                   {p.label.toUpperCase()}
                 </span>
-                <span className="mt-0.5 leading-none tabular-nums flex items-baseline gap-1">
+                <span className="mt-0.5 md:mt-1.5 leading-none tabular-nums flex items-baseline gap-1 md:gap-2">
                   {hasPromo && (
-                    <span className="text-[9px] line-through opacity-60">
+                    <span className="text-[9px] md:text-sm line-through opacity-60">
                       ${packOriginalTotal.toFixed(0)}
                     </span>
                   )}
-                  <span className="text-[10px] font-semibold">
+                  <span className="text-[10px] md:text-base font-semibold">
                     ${packTotal.toFixed(2)}
                   </span>
                 </span>
                 {fullDiscountPct > 0 && (
-                  <span className="absolute -top-2 right-2 rounded-full bg-[var(--gold)] text-black text-[8px] font-bold px-1.5 py-0.5 leading-none tracking-[0.04em]">
+                  <span className="absolute -top-2 right-2 md:-top-3 md:right-3 rounded-full bg-[var(--gold)] text-black text-[8px] md:text-[11px] font-bold px-1.5 md:px-2.5 py-0.5 md:py-1 leading-none tracking-[0.04em]">
                     -{fullDiscountPct}%
                   </span>
                 )}
@@ -119,7 +119,7 @@ export function AddToCart({ product }: { product: Product }) {
       <Button
         size="lg"
         onClick={handleAdd}
-        className={`rounded-full h-14 text-sm uppercase tracking-[0.2em] font-semibold transition-all ${
+        className={`rounded-full h-14 md:h-16 lg:h-[68px] text-sm md:text-base lg:text-lg uppercase tracking-[0.2em] font-semibold transition-all ${
           added
             ? "bg-green-600 hover:bg-green-600 text-white"
             : "bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black"
@@ -127,12 +127,12 @@ export function AddToCart({ product }: { product: Product }) {
       >
         {added ? (
           <>
-            <Check className="h-5 w-5 mr-2" />
+            <Check className="h-5 w-5 md:h-6 md:w-6 mr-2" />
             Added to Cart
           </>
         ) : (
           <>
-            <ShoppingBag className="h-5 w-5 mr-2" />
+            <ShoppingBag className="h-5 w-5 md:h-6 md:w-6 mr-2" />
             <span>Add to Cart —</span>
             {hasPromo && (
               <span className="ml-2 line-through opacity-60 font-normal">
@@ -144,22 +144,19 @@ export function AddToCart({ product }: { product: Product }) {
         )}
       </Button>
 
-      {/* Secondary option — Prime Available CTA. Same height as the
-          primary CTA but white-pill outline style with the blue
-          checkmark "prime" lockup, signaling the listing is fulfilled
-          by Prime. Uses the product's own amazonHref when set, falls
-          back to the default CarBlock listing otherwise. */}
+      {/* Secondary option — Prime Available CTA. Matches primary CTA
+          height so the two read as a paired set. */}
       <a
         href={product.amazonHref ?? defaultAmazonHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex flex-col items-center justify-center gap-0.5 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-14 bg-white transition-colors px-6"
+        className="inline-flex flex-col items-center justify-center gap-0.5 md:gap-1 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-14 md:h-16 lg:h-[68px] bg-white transition-colors px-6 md:px-8"
       >
-        <PrimeBadge className="h-5 w-auto shrink-0" />
-        <span className="text-[#0F1111] text-[9px] uppercase tracking-[0.22em] font-bold leading-none">Available</span>
+        <PrimeBadge className="h-5 md:h-7 w-auto shrink-0" />
+        <span className="text-[#0F1111] text-[9px] md:text-xs uppercase tracking-[0.22em] font-bold leading-none">Available</span>
       </a>
 
-      <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] text-center">
+      <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[var(--muted)] text-center">
         Free shipping on all US orders
       </p>
     </div>

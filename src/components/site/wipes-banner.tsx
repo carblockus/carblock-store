@@ -6,11 +6,12 @@ import Image from "next/image";
  */
 export function WipesBanner() {
   return (
-    <section className="bg-black border-y border-[var(--border)] md:py-12 lg:py-16">
-      {/* Matches the PainPoints cap on desktop (860 / 960) so the two
-          comparison banners read at the same visual weight on the home
-          page. Mobile keeps its edge-to-edge full-width rendering. */}
-      <div className="relative w-full md:max-w-[860px] lg:max-w-[960px] md:mx-auto md:px-8">
+    <section className="bg-black border-y border-[var(--border)]">
+      {/* Full-bleed banner — no max-width, no side padding. The banner
+          stretches edge-to-edge of the viewport on every breakpoint so
+          the "WipesBlock vs Others" lockup reads as a full-screen
+          marketing slab. */}
+      <div className="relative w-full">
         <Image
           src="/products/wipes-new-6.png"
           alt="WipesBlock vs others — restores & deep cleans, zero streaks zero effort, exclusive luxury scent. WipesBlock 75 wipes vs others 30 wipes."
@@ -18,7 +19,7 @@ export function WipesBanner() {
           height={1000}
           priority={false}
           className="w-full h-auto block"
-          sizes="(min-width: 1024px) 960px, (min-width: 768px) 860px, 100vw"
+          sizes="100vw"
         />
       </div>
     </section>
