@@ -19,8 +19,8 @@ const slides: { src: string; fit: "cover" | "contain" }[] = [
   { src: "/hero/page-4.png", fit: "cover" },
 ];
 
-const FIRST_SLIDE_MS = 2000;
-const REGULAR_INTERVAL_MS = 2000;
+const FIRST_SLIDE_MS = 4000;
+const REGULAR_INTERVAL_MS = 4000;
 
 export function HeroSlideshow() {
   const [active, setActive] = useState(0);
