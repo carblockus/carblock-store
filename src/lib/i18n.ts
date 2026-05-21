@@ -104,6 +104,18 @@ export const dictionaries = {
       "How to apply the perfume for up to 3 months of fragrance.",
     "howto.bonus.wipes.body":
       "Clean, restore and deodorize leather, vinyl and fabric.",
+    /* ---------- /how-to-use top videos ---------- */
+    "howto.videos.eyebrow": "Tutorials",
+    "howto.videos.title.before": "Watch how to",
+    "howto.videos.title.highlight": "use it",
+    "howto.videos.body":
+      "Two CarBlock tutorials (English and Spanish) plus a WipesBlock demo — watch and apply in minutes.",
+    "howto.videos.carblockEn.label": "CarBlock — English",
+    "howto.videos.carblockEn.sub": "How to apply for up to 3 months of fragrance.",
+    "howto.videos.carblockEs.label": "CarBlock — Español",
+    "howto.videos.carblockEs.sub": "Cómo aplicarlo para 3 meses de fragancia.",
+    "howto.videos.wipes.label": "WipesBlock — Demo",
+    "howto.videos.wipes.sub": "Clean, restore and deodorize in seconds.",
     "howto.cta.eyebrow": "Ready to try it?",
     "howto.cta.title.before": "Get yours and",
     "howto.cta.title.highlight": "feel the difference",
@@ -244,6 +256,18 @@ export const dictionaries = {
       "Cómo aplicar el perfume para hasta 3 meses de fragancia.",
     "howto.bonus.wipes.body":
       "Limpia, restaura y desodoriza cuero, vinilo y tela.",
+    /* ---------- /how-to-use videos del inicio ---------- */
+    "howto.videos.eyebrow": "Tutoriales",
+    "howto.videos.title.before": "Mira cómo",
+    "howto.videos.title.highlight": "usarlos",
+    "howto.videos.body":
+      "Dos tutoriales de CarBlock (inglés y español) más un demo de WipesBlock — míralos y aplica en minutos.",
+    "howto.videos.carblockEn.label": "CarBlock — Inglés",
+    "howto.videos.carblockEn.sub": "How to apply for up to 3 months of fragrance.",
+    "howto.videos.carblockEs.label": "CarBlock — Español",
+    "howto.videos.carblockEs.sub": "Cómo aplicarlo para 3 meses de fragancia.",
+    "howto.videos.wipes.label": "WipesBlock — Demo",
+    "howto.videos.wipes.sub": "Limpia, restaura y desodoriza en segundos.",
     "howto.cta.eyebrow": "¿Listo para probarlo?",
     "howto.cta.title.before": "Pídelo y",
     "howto.cta.title.highlight": "siente la diferencia",

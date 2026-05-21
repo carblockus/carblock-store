@@ -37,6 +37,72 @@ export default function HowToUsePage() {
         </div>
       </div>
 
+      {/* Tutorial videos — 3-card grid: CarBlock English, CarBlock
+          Spanish, WipesBlock demo. Stacks on mobile, 3 across on
+          desktop. Each video is HTML5 with controls; .mov source is
+          served with both video/mp4 and video/quicktime types for
+          browser compatibility. */}
+      <section className="container-x md:!max-w-[1500px] py-12 md:py-20 lg:py-24">
+        <div className="text-center mb-8 md:mb-12 lg:mb-14 max-w-3xl mx-auto">
+          <span className="text-[11px] md:text-sm lg:text-base tracking-[0.3em] uppercase text-[var(--gold)] font-bold">
+            {t("howto.videos.eyebrow")}
+          </span>
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl uppercase font-bold mt-3 md:mt-5 text-white leading-tight">
+            {t("howto.videos.title.before")}{" "}
+            <span className="text-gold-gradient italic">
+              {t("howto.videos.title.highlight")}
+            </span>
+          </h2>
+          <p className="mt-4 md:mt-5 text-base md:text-lg lg:text-xl text-[var(--muted)]">
+            {t("howto.videos.body")}
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:gap-8 lg:gap-10 md:grid-cols-3">
+          {[
+            {
+              src: "/products/carblock-tutorial-en.mov",
+              label: t("howto.videos.carblockEn.label"),
+              sub: t("howto.videos.carblockEn.sub"),
+            },
+            {
+              src: "/products/carblock-tutorial-es.mov",
+              label: t("howto.videos.carblockEs.label"),
+              sub: t("howto.videos.carblockEs.sub"),
+            },
+            {
+              src: "/products/wipesblock-tutorial.mov",
+              label: t("howto.videos.wipes.label"),
+              sub: t("howto.videos.wipes.sub"),
+            },
+          ].map((v) => (
+            <div key={v.src} className="flex flex-col gap-3 md:gap-4">
+              <div className="relative aspect-[9/16] overflow-hidden rounded-lg bg-black border border-[var(--border)]">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  {/* Dual <source> so browsers that recognize quicktime
+                      can pick that, and the rest fall back to video/mp4. */}
+                  <source src={v.src} type="video/mp4" />
+                  <source src={v.src} type="video/quicktime" />
+                </video>
+              </div>
+              <div className="text-center">
+                <p className="font-display text-base md:text-lg lg:text-xl uppercase tracking-[0.14em] text-white font-bold">
+                  {v.label}
+                </p>
+                <p className="mt-1 md:mt-2 text-xs md:text-sm text-[var(--muted)] leading-relaxed">
+                  {v.sub}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Stats — How to Apply + Technique cards + 25/25/50 distribution */}
       <Stats />
 
