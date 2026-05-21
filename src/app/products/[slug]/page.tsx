@@ -259,7 +259,22 @@ export default async function ProductPage({
                 <ProductCard
                   key={p.slug}
                   product={p}
-                  imageFit={p.category === "bundle" ? "contain" : "cover"}
+                  // Match the home + /products logic: wipes and bundles
+                  // use `contain` so the product photo gets the white
+                  // frame around it instead of cropping to the card
+                  // edges. Old logic only contained the bundle —
+                  // wipes was rendering with `cover` so the pack
+                  // touched the frame.
+                  imageFit={
+                    p.category === "wipes" || p.category === "bundle"
+                      ? "contain"
+                      : "cover"
+                  }
+                  // The bundle PNG has a lot of built-in whitespace,
+                  // so plain `contain` leaves the products tiny in
+                  // the middle of the card. Scale to ~130% so the
+                  // leather pack + bottle fill more of the frame.
+                  imageScale={p.category === "bundle" ? "130% auto" : undefined}
                 />
               ))}
             </div>

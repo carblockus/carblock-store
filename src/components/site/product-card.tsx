@@ -6,9 +6,19 @@ type Props = {
   product: Product;
   /** "cover" crops (default). "contain" fits whole image. */
   imageFit?: "cover" | "contain";
+  /** Override CSS `background-size` when imageFit is "contain". Use
+   *  per-product when the source PNG's natural framing leaves either
+   *  too much whitespace (bundle) or too little (wipes). Examples:
+   *  "auto 95%" fills 95% of the height; "85% auto" fills 85% of the
+   *  width. Falls back to plain "contain". */
+  imageScale?: string;
 };
 
-export function ProductCard({ product, imageFit = "cover" }: Props) {
+export function ProductCard({
+  product,
+  imageFit = "cover",
+  imageScale,
+}: Props) {
   const { slug, name, shortDescription, price, originalPrice, badge, image, scents } =
     product;
   const hasPromo = originalPrice !== undefined && originalPrice > price;
@@ -52,7 +62,8 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
           }`}
           style={{
             backgroundImage: `url('${image}')`,
-            backgroundSize: imageFit === "contain" ? "contain" : "cover",
+            backgroundSize:
+              imageScale ?? (imageFit === "contain" ? "contain" : "cover"),
           }}
         />
         {/* Skip the bottom gradient on contain-mode cards so the white

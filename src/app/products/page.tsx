@@ -55,6 +55,10 @@ export default async function ProductsPage() {
                     ? "contain"
                     : "cover"
                 }
+                // Bundle PNG has lots of built-in whitespace — scale up
+                // so the leather pack + bottle visually fill the frame
+                // instead of sitting tiny in the middle.
+                imageScale={p.category === "bundle" ? "130% auto" : undefined}
               />
             ))}
           </div>
