@@ -146,23 +146,13 @@ export default async function ProductPage({
               ))}
             </div>
 
-            {/* Accordion details. The first row — "How to use it" —
-                is a plain anchor that smooth-scrolls down to the Stats
-                section (#how-it-works) instead of expanding. Only
-                rendered for the perfume product since that's where the
-                Stats block is rendered further down the page. */}
-            <div className="border-t border-[var(--border)]">
-              {product.category === "perfume" && (
-                <a
-                  href="#how-it-works"
-                  className="flex items-center justify-between w-full text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6 border-b border-[var(--border)] transition-colors font-medium"
-                >
-                  <span>How to Use It</span>
-                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 text-[var(--muted)]" />
-                </a>
-              )}
-            </div>
-            <Accordion type="multiple">
+            {/* Accordion details. The "How to use it" row sits between
+                Description and Shipping & Returns — it's a plain anchor
+                that smooth-scrolls down to the Stats section
+                (#how-it-works) instead of expanding like the other
+                triggers. Only rendered for the perfume product since
+                that's where the Stats block is shown further down. */}
+            <Accordion type="multiple" className="border-t border-[var(--border)]">
               <AccordionItem value="description" className="border-[var(--border)]">
                 <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
                   Description
@@ -194,6 +184,19 @@ export default async function ProductPage({
                   )}
                 </AccordionContent>
               </AccordionItem>
+
+              {/* Smooth-scroll anchor row — sits between Description and
+                  Shipping. Styled to match the accordion triggers so
+                  the list reads as one set. */}
+              {product.category === "perfume" && (
+                <a
+                  href="#how-it-works"
+                  className="flex items-center justify-between w-full text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6 border-b border-[var(--border)] transition-colors font-medium"
+                >
+                  <span>How to Use It</span>
+                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 text-[var(--muted)]" />
+                </a>
+              )}
 
               <AccordionItem value="shipping" className="border-[var(--border)]">
                 <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
