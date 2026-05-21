@@ -41,6 +41,9 @@ export const dictionaries = {
     "hero.pill.suffix": "of fragrance",
     "hero.cta.shop": "Shop Now",
     "hero.cta.howItWorks": "How it Works",
+    "hero.cta.learnMore": "Learn More",
+    /** Trust signal under the desktop hero CTAs — sits next to 5 gold stars. */
+    "hero.trust.text": "Trusted by thousands of drivers",
 
     /* ---------- Welcome popup ---------- */
     "popup.welcome": "Welcome to CarBlock",
@@ -180,6 +183,9 @@ export const dictionaries = {
     "hero.pill.suffix": "de fragancia",
     "hero.cta.shop": "Comprar",
     "hero.cta.howItWorks": "Cómo Funciona",
+    "hero.cta.learnMore": "Conocer Más",
+    /** Trust signal under the desktop hero CTAs — sits next to 5 gold stars. */
+    "hero.trust.text": "Miles de conductores ya confían",
 
     /* ---------- Welcome popup ---------- */
     "popup.welcome": "Bienvenido a CarBlock",

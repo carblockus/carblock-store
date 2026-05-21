@@ -61,10 +61,13 @@ export default function Home() {
       </section>
 
       {/* Desktop-only layout: all 3 products in a single 3-column grid
-          with the SAVE 20% marquee below. */}
+          with the SAVE 20% marquee below. Wider cap (1600px) + override the
+          default container max-width so the cards fill more of the viewport
+          and the black side gutters get cut down. Gap stays roomy so the
+          cards don't crash into each other once they're bigger. */}
       <section className="hidden md:block bg-background py-12 lg:py-16">
-        <div className="container-x">
-          <div className="grid grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+        <div className="container-x md:!max-w-[1600px]">
+          <div className="grid grid-cols-3 gap-8 lg:gap-12 max-w-[1500px] mx-auto">
             {categories.map((c) => (
               <CategoryCard
                 key={c.slug}
