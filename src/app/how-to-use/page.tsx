@@ -60,19 +60,26 @@ export default function HowToUsePage() {
           >
             <Link href="/products">{t("howto.cta.shopNow")}</Link>
           </Button>
+          {/* Prime pill rendered horizontally so the `prime` lockup and
+              the AVAILABLE word both read at a glance. Wider padding
+              (px-10/12) gives the lockup room to breathe — previously
+              the button was so narrow the user couldn't tell what it
+              said. */}
           <Button
             asChild
             variant="outline"
-            className="rounded-full border-white/30 bg-white hover:bg-white/90 text-[#0F1111] h-14 px-6"
+            className="rounded-full border-white/30 bg-white hover:bg-white/90 text-[#0F1111] h-14 md:h-12 px-10 md:px-12"
           >
             <a
               href={amazonHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex flex-col items-center justify-center gap-0.5"
+              className="inline-flex items-center justify-center gap-3"
             >
-              <PrimeBadge className="h-5 w-auto shrink-0" />
-              <span className="text-[9px] uppercase tracking-[0.22em] font-bold leading-none">{t("howto.cta.shopAmazon")}</span>
+              <PrimeBadge className="h-6 md:h-7 w-auto shrink-0" />
+              <span className="text-[#0F1111] text-xs md:text-sm uppercase tracking-[0.22em] font-bold leading-none">
+                {t("howto.cta.shopAmazon")}
+              </span>
             </a>
           </Button>
           <Button
