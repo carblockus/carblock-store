@@ -244,7 +244,10 @@ export default async function ProductPage({
       {/* Related products */}
       {related.length > 0 && (
         <section className="border-t border-[var(--border)] bg-[var(--surface)]">
-          <div className="container-x py-16">
+          {/* Wider container on desktop so the related products row
+              fills more of the viewport — was bottled into max-w-5xl
+              before, leaving big black gutters on either side. */}
+          <div className="container-x md:!max-w-[1600px] md:!px-6 lg:!px-10 py-16">
             <div className="text-center mb-10">
               <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
                 You may also like
@@ -254,7 +257,10 @@ export default async function ProductPage({
                 <span className="text-gold-gradient">Ride</span>
               </h2>
             </div>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+            {/* Grid cap removed on desktop (was max-w-5xl/1024px) so
+                cards stretch the full container width. Slightly larger
+                gap on md+ keeps them from crashing into each other. */}
+            <div className="grid gap-5 md:gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl md:!max-w-none mx-auto">
               {related.slice(0, 3).map((p) => (
                 <ProductCard
                   key={p.slug}
