@@ -12,6 +12,11 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
   const { slug, name, shortDescription, price, originalPrice, badge, image, scents } =
     product;
   const hasPromo = originalPrice !== undefined && originalPrice > price;
+  // Headline savings percentage — shown as a bright gold pill on cards
+  // that have a promo so the deal pops at a glance.
+  const discountPct = hasPromo
+    ? Math.round(((originalPrice! - price) / originalPrice!) * 100)
+    : 0;
 
   return (
     <Link
@@ -52,11 +57,11 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
         )}
       </div>
 
-      <div className="p-5 flex flex-col gap-2">
-        <h3 className="font-display text-xl uppercase tracking-[0.12em] text-white leading-tight">
+      <div className="p-5 md:p-7 flex flex-col gap-2 md:gap-3">
+        <h3 className="font-display text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.12em] text-white leading-tight">
           {name}
         </h3>
-        <p className="text-xs text-[var(--muted)] leading-relaxed min-h-[32px]">
+        <p className="text-xs md:text-sm lg:text-base text-[var(--muted)] leading-relaxed min-h-[32px]">
           {shortDescription}
         </p>
         {scents && scents.length > 0 && (
@@ -76,18 +81,23 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
             )}
           </div>
         )}
-        <div className="mt-3 flex items-center justify-between">
-          <span className="flex items-baseline gap-2">
+        <div className="mt-3 md:mt-4 flex items-center justify-between gap-3">
+          <span className="flex items-baseline gap-2 md:gap-3 flex-wrap">
             {hasPromo && (
-              <span className="text-base text-[var(--muted)] line-through font-medium">
+              <span className="text-base md:text-xl text-[var(--muted)] line-through font-medium">
                 ${originalPrice}
               </span>
             )}
-            <span className="font-display text-2xl font-bold text-white">
+            <span className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-white">
               ${price}
             </span>
+            {hasPromo && (
+              <span className="inline-flex items-center rounded-full bg-[var(--gold)] text-black text-[10px] md:text-xs font-extrabold tracking-[0.12em] uppercase px-2 md:px-3 py-1 md:py-1.5 leading-none shadow-[0_4px_12px_rgba(212,175,55,0.4)]">
+                Save {discountPct}%
+              </span>
+            )}
           </span>
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] group-hover:text-[var(--gold-bright)] transition-colors">
+          <span className="text-[10px] md:text-sm tracking-[0.25em] uppercase text-[var(--gold)] group-hover:text-[var(--gold-bright)] transition-colors font-semibold shrink-0">
             Shop →
           </span>
         </div>

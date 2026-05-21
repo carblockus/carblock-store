@@ -14,25 +14,33 @@ export default async function ProductsPage() {
 
   return (
     <div className="bg-background">
-      {/* Compact header — no breadcrumb, no toolbar. The visitor lands here
-          from a Meta ad and should see the first product almost immediately. */}
-      <section className="container-x py-5 md:py-12 text-center">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)]">
+      {/* Header — more prominent on desktop. Gold pill eyebrow + huge
+          gold-gradient title so the page feels like a real "Shop" hero
+          and not a placeholder. */}
+      <section className="container-x py-5 md:py-16 lg:py-20 text-center">
+        <span className="inline-block px-4 md:px-6 py-1.5 md:py-2 rounded-full bg-[var(--gold)]/15 border border-[var(--gold)]/40 text-[10px] md:text-sm tracking-[0.3em] uppercase text-[var(--gold)] font-bold">
           Shop
         </span>
-        <h1 className="font-display text-3xl md:text-6xl uppercase font-bold mt-2 text-white">
-          For Your <span className="text-gold-gradient">Car</span>
+        <h1 className="font-display text-3xl md:text-7xl lg:text-8xl uppercase font-bold mt-3 md:mt-5 text-white leading-tight">
+          For Your <span className="text-gold-gradient italic">Car</span>
         </h1>
+        <p className="hidden md:block mt-4 md:mt-5 text-base lg:text-lg text-[var(--muted)] max-w-2xl mx-auto">
+          Premium fragrance + interior care. Limited-time promo — save up
+          to 33% on bundles.
+        </p>
       </section>
 
-      {/* Product grid */}
-      <section className="container-x pb-20">
+      {/* Product grid — wider container (1600px cap, override the default
+          container-x max so the cards fill the viewport) + 3 columns on
+          md+ because we only have 3 products. Bigger gap so cards
+          breathe but don't waste viewport. */}
+      <section className="container-x md:!max-w-[1600px] md:!px-6 lg:!px-10 pb-20">
         {sorted.length === 0 ? (
           <div className="py-20 text-center text-[var(--muted)]">
             <p>No products available right now.</p>
           </div>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 md:gap-8 lg:gap-10 sm:grid-cols-2 md:grid-cols-3">
             {sorted.map((p) => (
               <ProductCard
                 key={p.slug}
