@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Truck, Clock, ShieldCheck, ChevronRight } from "lucide-react";
+import { Truck, Clock, ShieldCheck } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -185,17 +185,33 @@ export default async function ProductPage({
                 </AccordionContent>
               </AccordionItem>
 
-              {/* Smooth-scroll anchor row — sits between Description and
-                  Shipping. Styled to match the accordion triggers so
-                  the list reads as one set. */}
+              {/* "How to Use It" — expandable row that reveals the Audi
+                  tutorial video. Sits between Description and Shipping.
+                  Only rendered for the perfume product. */}
               {product.category === "perfume" && (
-                <a
-                  href="#how-it-works"
-                  className="flex items-center justify-between w-full text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6 border-b border-[var(--border)] transition-colors font-medium"
-                >
-                  <span>How to Use It</span>
-                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5 shrink-0 text-[var(--muted)]" />
-                </a>
+                <AccordionItem value="how-to-use" className="border-[var(--border)]">
+                  <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
+                    How to Use It
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-4 md:pb-6">
+                    {/* Vertical iPhone clip — 9:16 aspect, capped at a
+                        comfortable height so the video doesn't dominate
+                        the panel. Dual <source> tags so Safari plays
+                        the .mov natively while Chrome / Firefox treat
+                        it as mp4. */}
+                    <div className="relative aspect-[9/16] max-h-[520px] md:max-h-[600px] mx-auto overflow-hidden rounded-lg bg-black border border-[var(--border)]">
+                      <video
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      >
+                        <source src="/products/carblock-tutorial-en.mov" type="video/mp4" />
+                        <source src="/products/carblock-tutorial-en.mov" type="video/quicktime" />
+                      </video>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
               )}
 
               <AccordionItem value="shipping" className="border-[var(--border)]">
