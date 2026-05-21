@@ -179,6 +179,15 @@ body {
   animation: marquee 90s linear infinite;
 }
 
+/* Hide native scrollbars on horizontally-scrollable containers (mobile
+   product gallery uses this so the swipe carousel stays visually
+   clean — no chrome at the bottom of each photo). Works on Firefox
+   via scroll-bar properties (set inline) + on WebKit via the
+   pseudo-element below. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* "Pop" — subtle continuous pulse that scales the element slightly
    so it draws the eye without being annoying. Used on the hero
    "Up to 3 months" pill to make it stand out. */
