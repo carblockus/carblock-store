@@ -12,15 +12,17 @@ import {
   RadioGroupItem,
 } from "@/components/ui/radio-group";
 import { useCart } from "@/lib/cart-context";
+import { useT } from "@/lib/lang-context";
+import type { TranslationKey } from "@/lib/i18n";
 import { pixel } from "@/lib/meta-pixel";
 import { StripePayment } from "./stripe-payment";
 
 type Step = 1 | 2 | 3;
 
-const steps = [
-  { n: 1 as Step, label: "Shipping", icon: Truck },
-  { n: 2 as Step, label: "Payment", icon: CreditCard },
-  { n: 3 as Step, label: "Confirmation", icon: Check },
+const steps: { n: Step; labelKey: TranslationKey; icon: typeof Truck }[] = [
+  { n: 1, labelKey: "checkout.step.shipping", icon: Truck },
+  { n: 2, labelKey: "checkout.step.payment", icon: CreditCard },
+  { n: 3, labelKey: "checkout.step.confirmation", icon: Check },
 ];
 
 type PromoState =
@@ -135,11 +137,13 @@ export function CheckoutFlow() {
     setTimeout(() => clear(), 100);
   }
 
+  const t = useT();
+
   // Wait until cart hydrates from localStorage before rendering
   if (!hydrated) {
     return (
       <div className="container-x py-32 text-center text-[var(--muted)]">
-        Loading checkout…
+        {t("checkout.loading")}
       </div>
     );
   }
@@ -176,7 +180,7 @@ export function CheckoutFlow() {
                       active || done ? "text-white" : "text-[var(--muted)]"
                     }`}
                   >
-                    {s.label}
+                    {t(s.labelKey)}
                   </span>
                 </div>
                 {idx < steps.length - 1 && (
@@ -204,11 +208,11 @@ export function CheckoutFlow() {
               className="space-y-6"
             >
               <h2 className="font-display text-2xl uppercase tracking-[0.15em] text-white">
-                Shipping
+                {t("checkout.shipping.title")}
               </h2>
 
               <Field
-                label="Email"
+                label={t("checkout.shipping.email")}
                 value={ship.email}
                 onChange={(v) => setShip({ ...ship, email: v })}
                 type="email"
@@ -216,27 +220,27 @@ export function CheckoutFlow() {
               />
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field
-                  label="First name"
+                  label={t("checkout.shipping.firstName")}
                   value={ship.firstName}
                   onChange={(v) => setShip({ ...ship, firstName: v })}
                   required
                 />
                 <Field
-                  label="Last name"
+                  label={t("checkout.shipping.lastName")}
                   value={ship.lastName}
                   onChange={(v) => setShip({ ...ship, lastName: v })}
                   required
                 />
               </div>
               <Field
-                label="Address"
+                label={t("checkout.shipping.address")}
                 value={ship.address}
                 onChange={(v) => setShip({ ...ship, address: v })}
                 required
               />
               <div className="grid sm:grid-cols-3 gap-4">
                 <Field
-                  label="City"
+                  label={t("checkout.shipping.city")}
                   value={ship.city}
                   onChange={(v) => setShip({ ...ship, city: v })}
                   required
@@ -246,7 +250,7 @@ export function CheckoutFlow() {
                   onChange={(v) => setShip({ ...ship, state: v })}
                 />
                 <Field
-                  label="ZIP"
+                  label={t("checkout.shipping.zip")}
                   value={ship.zip}
                   onChange={(v) => setShip({ ...ship, zip: v })}
                   required
@@ -255,7 +259,7 @@ export function CheckoutFlow() {
 
               <div className="space-y-3 pt-2">
                 <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-                  Shipping method
+                  {t("checkout.shipping.method")}
                 </Label>
                 <RadioGroup
                   value={ship.method}
@@ -264,12 +268,12 @@ export function CheckoutFlow() {
                 >
                   <ShippingOption
                     value="standard"
-                    label="Standard (3-7 business days)"
+                    label={t("checkout.shipping.method.standard")}
                     price="Free"
                   />
                   <ShippingOption
                     value="express"
-                    label="Express (1-3 business days)"
+                    label={t("checkout.shipping.method.express")}
                     price="Free"
                   />
                 </RadioGroup>
@@ -279,7 +283,7 @@ export function CheckoutFlow() {
                 type="submit"
                 className="w-full rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12"
               >
-                Continue to Payment
+                {t("checkout.shipping.continue")}
               </Button>
             </form>
           )}
@@ -313,33 +317,34 @@ export function CheckoutFlow() {
               </div>
               <div>
                 <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
-                  Order confirmed
+                  {t("checkout.confirmation.title")}
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl uppercase font-bold text-white mt-2">
-                  Thank You
+                  {t("checkout.confirmation.heading")}
                 </h2>
               </div>
               <p className="text-[var(--muted)]">
-                Your order{" "}
+                {t("checkout.confirmation.body")}{" "}
                 <span className="text-white font-mono font-semibold">
                   {orderId}
-                </span>{" "}
-                is on its way. We sent a confirmation email to{" "}
-                <span className="text-white">{ship.email || "you"}</span>.
+                </span>
+                . <span className="text-white">{ship.email}</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                 <Button
                   asChild
                   className="rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 px-8"
                 >
-                  <Link href="/">Back to Home</Link>
+                  <Link href="/">{t("checkout.confirmation.backHome")}</Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   className="rounded-full border-white/30 bg-transparent hover:bg-white hover:text-black text-white tracking-[0.18em] uppercase text-xs h-12 px-8"
                 >
-                  <Link href="/products">Keep Shopping</Link>
+                  <Link href="/products">
+                    {t("checkout.confirmation.keepShopping")}
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -350,7 +355,7 @@ export function CheckoutFlow() {
         {step !== 3 && (
           <aside className="lg:sticky lg:top-28 self-start rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 space-y-5">
             <h3 className="font-display text-sm uppercase tracking-[0.22em] text-white border-b border-[var(--border)] pb-4">
-              Order Summary
+              {t("checkout.summary.title")}
             </h3>
             <div className="space-y-4 max-h-72 overflow-y-auto">
               {items.map((item) => (
@@ -381,25 +386,23 @@ export function CheckoutFlow() {
             </div>
             <PromoInput promo={promo} setPromo={setPromo} apply={applyPromo} remove={removePromo} />
             <div className="border-t border-[var(--border)] pt-4 space-y-2 text-sm">
-              <Row label="Subtotal" value={`$${subtotal.toFixed(2)}`} />
+              <Row label={t("checkout.summary.subtotal")} value={`$${subtotal.toFixed(2)}`} />
               {promo.status === "applied" && (
                 <Row
-                  label={`Discount (${promo.code})`}
+                  label={`${t("checkout.summary.discount")} (${promo.code})`}
                   value={`-$${(promo.discountCents / 100).toFixed(2)}`}
                   highlight
                 />
               )}
               <Row
-                label={
-                  ship.method === "express" ? "Shipping (Express)" : "Shipping"
-                }
+                label={t("checkout.summary.shipping")}
                 value="Free"
                 highlight
               />
-              <Row label="Tax (est.)" value={`$${tax.toFixed(2)}`} />
+              <Row label={t("checkout.summary.tax")} value={`$${tax.toFixed(2)}`} />
               <div className="border-t border-[var(--border)] pt-3 flex items-center justify-between">
                 <span className="text-xs uppercase tracking-[0.22em] text-white">
-                  Total
+                  {t("checkout.summary.total")}
                 </span>
                 <span className="font-display text-2xl font-bold text-white tabular-nums">
                   ${total.toFixed(2)}
@@ -482,10 +485,11 @@ function StateField({
   value: string;
   onChange: (v: string) => void;
 }) {
+  const t = useT();
   return (
     <div className="space-y-2">
       <Label className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-        State
+        {t("checkout.shipping.state")}
       </Label>
       <select
         required
@@ -493,7 +497,7 @@ function StateField({
         onChange={(e) => onChange(e.target.value)}
         className="h-12 w-full bg-[var(--surface)] border border-[var(--border-strong)] text-white rounded-md px-4 cursor-pointer focus:outline-none focus:border-[var(--gold)]/70"
       >
-        <option value="">Select…</option>
+        <option value="">{t("checkout.shipping.statePlaceholder")}</option>
         {CONTIGUOUS_STATES.map((s) => (
           <option key={s.code} value={s.code}>
             {s.code} — {s.name}
@@ -501,7 +505,7 @@ function StateField({
         ))}
       </select>
       <p className="text-[10px] text-[var(--muted-2)]">
-        We don&apos;t ship to AK, HI or PR at this time.
+        {t("checkout.shipping.stateNotice")}
       </p>
     </div>
   );
@@ -572,6 +576,7 @@ function PromoInput({
   apply: () => void;
   remove: () => void;
 }) {
+  const t = useT();
   if (promo.status === "applied") {
     return (
       <div className="rounded-md border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-3 py-2 flex items-center justify-between gap-3">
@@ -608,7 +613,7 @@ function PromoInput({
               apply();
             }
           }}
-          placeholder="Discount code"
+          placeholder={t("checkout.summary.promoLabel")}
           className="h-10 bg-[var(--surface)] border-[var(--border-strong)] text-white placeholder:text-[var(--muted-2)] rounded-md px-3 text-sm uppercase tracking-[0.12em]"
         />
         <Button
@@ -617,7 +622,7 @@ function PromoInput({
           disabled={!promo.code.trim() || validating}
           className="h-10 rounded-md bg-[var(--surface)] border border-[var(--border-strong)] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] text-white font-semibold tracking-[0.18em] uppercase text-[10px] px-4 disabled:opacity-50"
         >
-          {validating ? "…" : "Apply"}
+          {validating ? "…" : t("checkout.summary.promoApply")}
         </Button>
       </div>
       {promo.status === "error" && (
