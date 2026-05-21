@@ -108,8 +108,6 @@ export const dictionaries = {
     "howto.videos.eyebrow": "Tutorials",
     "howto.videos.title.before": "Watch how to",
     "howto.videos.title.highlight": "use it",
-    "howto.videos.body":
-      "Two CarBlock tutorials (English and Spanish) plus a WipesBlock demo — watch and apply in minutes.",
     "howto.videos.carblockEn.label": "CarBlock — English",
     "howto.videos.carblockEn.sub": "How to apply for up to 3 months of fragrance.",
     "howto.videos.carblockEs.label": "CarBlock — Español",
@@ -260,8 +258,6 @@ export const dictionaries = {
     "howto.videos.eyebrow": "Tutoriales",
     "howto.videos.title.before": "Mira cómo",
     "howto.videos.title.highlight": "usarlos",
-    "howto.videos.body":
-      "Dos tutoriales de CarBlock (inglés y español) más un demo de WipesBlock — míralos y aplica en minutos.",
     "howto.videos.carblockEn.label": "CarBlock — Inglés",
     "howto.videos.carblockEn.sub": "How to apply for up to 3 months of fragrance.",
     "howto.videos.carblockEs.label": "CarBlock — Español",

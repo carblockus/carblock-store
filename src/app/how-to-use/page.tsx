@@ -53,9 +53,6 @@ export default function HowToUsePage() {
               {t("howto.videos.title.highlight")}
             </span>
           </h2>
-          <p className="mt-4 md:mt-5 text-base md:text-lg lg:text-xl text-[var(--muted)]">
-            {t("howto.videos.body")}
-          </p>
         </div>
 
         <div className="grid gap-6 md:gap-8 lg:gap-10 md:grid-cols-3">
