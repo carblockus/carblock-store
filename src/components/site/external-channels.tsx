@@ -64,24 +64,37 @@ export function AmazonIcon({ className }: { className?: string }) {
  *  on the surrounding pill. */
 export function PrimeBadge({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 70 24" className={className} aria-hidden>
-      {/* Blue checkmark */}
+    // Real Amazon Prime lockup: orange/amber checkmark (#FF9900 — the
+    // Amazon brand orange) followed by the lowercase italic "prime"
+    // wordmark in Prime blue (#00A8E1). viewBox is sized so the slanted
+    // "e" of "prime" doesn't get clipped by the SVG bounds.
+    //
+    // The checkmark is drawn as a polyline rather than a tick path so
+    // the stroke can be uniformly weighted (matches the real Prime
+    // mark which uses a constant-width stroke).
+    <svg
+      viewBox="0 0 90 28"
+      className={className}
+      aria-hidden
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Orange checkmark — Amazon brand orange */}
       <path
-        d="M2 13 L8 19 L19 6"
-        stroke="#00A8E1"
-        strokeWidth="3.2"
+        d="M3 16 L11 23 L25 5"
+        stroke="#FF9900"
+        strokeWidth="3.6"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
-      {/* "prime" wordmark in italic */}
+      {/* "prime" wordmark in italic, Prime blue */}
       <text
-        x="24"
-        y="19"
-        fontFamily="Arial, Helvetica, sans-serif"
+        x="30"
+        y="22"
+        fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontStyle="italic"
-        fontWeight="800"
-        fontSize="17"
+        fontWeight="700"
+        fontSize="19"
         fill="#00A8E1"
         style={{ textTransform: "none" }}
       >

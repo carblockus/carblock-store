@@ -48,16 +48,12 @@ export function CategoryCard({
   return (
     <div className="group relative flex flex-col rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--gold)]/60 transition-colors">
       {/* Badge sits OUTSIDE the image frame, anchored to the top-left of
-          the whole card. */}
+          the whole card. All three badge types (BESTSELLER / NEW / BUNDLE)
+          share the same gold-on-black pill so the row of cards reads as a
+          uniform set rather than three different visual treatments. */}
       {badge && (
         <Badge
-          className={`absolute -top-4 left-3 z-10 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md ${
-            badge === "BESTSELLER"
-              ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
-              : badge === "NEW"
-                ? "bg-white text-black hover:bg-white"
-                : "bg-black text-[var(--gold)] border border-[var(--gold)] hover:bg-black"
-          }`}
+          className="absolute -top-4 left-3 z-10 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
         >
           {badge}
         </Badge>
@@ -137,10 +133,10 @@ export function CategoryCard({
             href={amazonHref ?? defaultAmazonHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 bg-white text-xs sm:text-sm uppercase tracking-[0.16em] font-semibold transition-colors whitespace-nowrap px-5"
+            className="inline-flex flex-col items-center justify-center gap-0.5 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-14 bg-white transition-colors whitespace-nowrap px-5"
           >
             <PrimeBadge className="h-5 w-auto shrink-0" />
-            <span className="text-[#0F1111]">Available</span>
+            <span className="text-[#0F1111] text-[9px] uppercase tracking-[0.22em] font-bold leading-none">Available</span>
           </a>
         </div>
       </div>

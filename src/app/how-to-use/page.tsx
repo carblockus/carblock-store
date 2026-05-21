@@ -63,16 +63,16 @@ export default function HowToUsePage() {
           <Button
             asChild
             variant="outline"
-            className="rounded-full border-white/30 bg-white hover:bg-white/90 text-[#0F1111] tracking-[0.18em] uppercase text-xs h-12 px-6"
+            className="rounded-full border-white/30 bg-white hover:bg-white/90 text-[#0F1111] h-14 px-6"
           >
             <a
               href={amazonHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
+              className="inline-flex flex-col items-center justify-center gap-0.5"
             >
-              <PrimeBadge className="h-4 w-auto shrink-0" />
-              <span>{t("howto.cta.shopAmazon")}</span>
+              <PrimeBadge className="h-5 w-auto shrink-0" />
+              <span className="text-[9px] uppercase tracking-[0.22em] font-bold leading-none">{t("howto.cta.shopAmazon")}</span>
             </a>
           </Button>
           <Button

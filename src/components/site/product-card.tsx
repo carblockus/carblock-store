@@ -9,8 +9,9 @@ type Props = {
 };
 
 export function ProductCard({ product, imageFit = "cover" }: Props) {
-  const { slug, name, shortDescription, price, badge, image, scents } =
+  const { slug, name, shortDescription, price, originalPrice, badge, image, scents } =
     product;
+  const hasPromo = originalPrice !== undefined && originalPrice > price;
 
   return (
     <Link
@@ -66,8 +67,15 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
           </div>
         )}
         <div className="mt-3 flex items-center justify-between">
-          <span className="font-display text-2xl font-bold text-white">
-            ${price}
+          <span className="flex items-baseline gap-2">
+            {hasPromo && (
+              <span className="text-base text-[var(--muted)] line-through font-medium">
+                ${originalPrice}
+              </span>
+            )}
+            <span className="font-display text-2xl font-bold text-white">
+              ${price}
+            </span>
           </span>
           <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] group-hover:text-[var(--gold-bright)] transition-colors">
             Shop →

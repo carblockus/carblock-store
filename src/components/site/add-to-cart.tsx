@@ -42,6 +42,12 @@ export function AddToCart({ product }: { product: Product }) {
 
   const subtotal = product.price * pack.qty;
   const total = +(subtotal * (1 - pack.discount)).toFixed(2);
+  // Compare-at totals — original (pre-promo) regular price × qty so the
+  // strikethrough next to each price shows the full "was" amount. Falls
+  // back to product.price when the product has no promo.
+  const unitOriginal = product.originalPrice ?? product.price;
+  const originalTotal = +(unitOriginal * pack.qty).toFixed(2);
+  const hasPromo = unitOriginal > product.price;
 
   function handleAdd() {
     add(product, pack.qty);
@@ -67,6 +73,14 @@ export function AddToCart({ product }: { product: Product }) {
             const active = i === packIdx;
             const packSubtotal = product.price * p.qty;
             const packTotal = +(packSubtotal * (1 - p.discount)).toFixed(2);
+            // Pre-promo total for this pack — used for the strikethrough.
+            const packOriginalTotal = +(unitOriginal * p.qty).toFixed(2);
+            // Combined discount % (promo + pack discount) shown on the badge,
+            // so the savings reflect the FULL difference from $35-base, not
+            // just the pack discount applied to the already-discounted price.
+            const fullDiscountPct = hasPromo
+              ? Math.round((1 - packTotal / packOriginalTotal) * 100)
+              : Math.round(p.discount * 100);
             return (
               <button
                 key={p.label}
@@ -81,12 +95,19 @@ export function AddToCart({ product }: { product: Product }) {
                 <span className="text-[11px] uppercase tracking-[0.16em] font-bold leading-none">
                   {p.label.toUpperCase()}
                 </span>
-                <span className="text-[10px] mt-0.5 leading-none tabular-nums">
-                  ${packTotal.toFixed(2)}
+                <span className="mt-0.5 leading-none tabular-nums flex items-baseline gap-1">
+                  {hasPromo && (
+                    <span className="text-[9px] line-through opacity-60">
+                      ${packOriginalTotal.toFixed(0)}
+                    </span>
+                  )}
+                  <span className="text-[10px] font-semibold">
+                    ${packTotal.toFixed(2)}
+                  </span>
                 </span>
-                {p.discount > 0 && (
+                {fullDiscountPct > 0 && (
                   <span className="absolute -top-2 right-2 rounded-full bg-[var(--gold)] text-black text-[8px] font-bold px-1.5 py-0.5 leading-none tracking-[0.04em]">
-                    -{Math.round(p.discount * 100)}%
+                    -{fullDiscountPct}%
                   </span>
                 )}
               </button>
@@ -112,7 +133,13 @@ export function AddToCart({ product }: { product: Product }) {
         ) : (
           <>
             <ShoppingBag className="h-5 w-5 mr-2" />
-            Add to Cart — ${total.toFixed(2)}
+            <span>Add to Cart —</span>
+            {hasPromo && (
+              <span className="ml-2 line-through opacity-60 font-normal">
+                ${originalTotal.toFixed(0)}
+              </span>
+            )}
+            <span className="ml-1">${total.toFixed(2)}</span>
           </>
         )}
       </Button>
@@ -126,10 +153,10 @@ export function AddToCart({ product }: { product: Product }) {
         href={product.amazonHref ?? defaultAmazonHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-12 bg-white text-xs uppercase tracking-[0.18em] font-semibold transition-colors"
+        className="inline-flex flex-col items-center justify-center gap-0.5 rounded-full border border-[var(--border-strong)] hover:border-[var(--gold)] hover:bg-[var(--gold)]/10 h-14 bg-white transition-colors px-6"
       >
         <PrimeBadge className="h-5 w-auto shrink-0" />
-        <span className="text-[#0F1111]">Available</span>
+        <span className="text-[#0F1111] text-[9px] uppercase tracking-[0.22em] font-bold leading-none">Available</span>
       </a>
 
       <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] text-center">

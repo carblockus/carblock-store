@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
+import { User, ShoppingBag, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { useCart } from "@/lib/cart-context";
 import { useT } from "@/lib/lang-context";
@@ -25,47 +25,45 @@ export function Navbar() {
 
   return (
     <header className="relative z-40 bg-black border-b border-[var(--border)]">
-      <div className="container-x relative flex h-16 md:h-24 lg:h-28 items-center justify-between gap-4 md:gap-8">
-        {/* Mobile hamburger */}
-        <button
-          aria-label={t("nav.openMenu")}
-          onClick={() => setMobileOpen(true)}
-          className="md:hidden p-2 -ml-2 text-white/80 hover:text-[var(--gold)] transition-colors"
-        >
-          <Menu className="h-5 w-5" />
-        </button>
+      {/* Single row — mobile: hamburger | centered-logo | cart
+                   desktop: nav-links | centered-logo | icons */}
+      <div className="container-x relative flex h-16 md:h-20 lg:h-24 items-center">
 
-        {/* Absolutely centered logo so it stays in the middle regardless of
-            how wide the left hamburger vs the right icon cluster end up. */}
+        {/* LEFT slot */}
+        <div className="flex-1 flex items-center">
+          {/* Mobile hamburger */}
+          <button
+            aria-label={t("nav.openMenu")}
+            onClick={() => setMobileOpen(true)}
+            className="md:hidden p-2 -ml-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+
+          {/* Desktop nav links live in the hero strip (between text and banner).
+              Nothing extra needed here — left slot is intentionally empty
+              on desktop so the logo stays centered. */}
+        </div>
+
+        {/* CENTER — absolutely positioned so it stays perfectly centered
+            regardless of how wide the left/right slots are. */}
         <Link
           href="/"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
           onClick={() => setMobileOpen(false)}
         >
-          <Logo imgClassName="h-[52px] md:h-20 lg:h-24" />
+          <Logo imgClassName="h-[52px] md:h-16 lg:h-20" />
         </Link>
 
-        {/* Desktop nav links used to sit beside the logo here. They moved to
-            a dedicated row below the logo (see the second <nav> further
-            down) so the logo is centered on its own line with the menu
-            underneath — cleaner, more boutique. Mobile is unaffected; it
-            still uses the hamburger drawer. */}
-
-        <div className="flex items-center gap-1">
-          <button
-            aria-label={t("nav.search")}
-            className="hidden md:inline-flex p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
-          >
-            <Search className="h-5 w-5" />
-          </button>
+        {/* RIGHT slot */}
+        <div className="flex-1 flex items-center justify-end gap-1">
           <button
             aria-label={t("nav.account")}
             className="hidden md:inline-flex p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
             <User className="h-5 w-5" />
           </button>
-          {/* Quick shortcut to the Amazon listing — alongside the on-site cart
-              so visitors who prefer Amazon don't have to scroll to the footer. */}
+          {/* Quick shortcut to the Amazon listing */}
           <a
             href={amazonHref}
             target="_blank"
@@ -90,30 +88,14 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Desktop-only secondary nav row — sits directly below the logo so
-          the SHOP / HOW TO USE / ABOUT / WHOLESALE links read as their own
-          boutique menu line. Hidden on mobile (which uses the hamburger
-          drawer instead). */}
-      <nav className="hidden md:flex justify-center items-center gap-10 lg:gap-14 pt-1 pb-3 lg:pb-4">
-        {navLinks.map((l) => (
-          <Link
-            key={l.href}
-            href={l.href}
-            className="text-[11px] lg:text-xs tracking-[0.28em] uppercase text-white/85 hover:text-[var(--gold)] transition-colors"
-          >
-            {t(l.key)}
-          </Link>
-        ))}
-      </nav>
-
-      {/* Mobile drawer */}
+      {/* Mobile drawer — unchanged */}
       {mobileOpen && (
         <div
           className="md:hidden fixed inset-0 z-50 bg-black"
           onClick={() => setMobileOpen(false)}
         >
           <div
-            className="container-x flex h-16 md:h-24 lg:h-28 items-center justify-between border-b border-[var(--border)]"
+            className="container-x flex h-16 items-center justify-between border-b border-[var(--border)]"
             onClick={(e) => e.stopPropagation()}
           >
             <Logo />

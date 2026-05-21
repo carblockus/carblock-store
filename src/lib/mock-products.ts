@@ -10,7 +10,12 @@ export type Product = {
    *  Each entry becomes a paragraph or bullet. Falls back to a generic
    *  description if not provided. */
   longDescription?: { title: string; body: string }[];
+  /** Current sale price the customer actually pays. */
   price: number;
+  /** Optional "regular" / pre-discount price. When set, components render
+   *  it as strikethrough next to `price` so the discount is visible
+   *  (e.g. $35 → $30). Omit for products with no promo. */
+  originalPrice?: number;
   badge?: "NEW" | "BESTSELLER" | "BUNDLE";
   /** Primary image used in cards. */
   image: string;
@@ -34,6 +39,7 @@ export const categories = [
     // Promo: regular $35 → sale $30. Bundle dropped to $50 (was $60).
     // Multi-pack discounts in add-to-cart.tsx scale off this base.
     price: 30,
+    originalPrice: 35,
     // Deep-links directly to the product detail page so the home → detail
     // → checkout path is 3 clicks max (Shop Now → Add to Cart → Pay).
     href: "/products/carblock-millonario-150ml",
@@ -46,6 +52,7 @@ export const categories = [
     image: "/products/wipes-new-1.png",
     badge: "NEW" as const,
     price: 30,
+    originalPrice: 35,
     href: "/products/wipesblock-interior-60",
     amazonHref: "https://www.amazon.com/dp/B0GX7QF3TT",
   },
@@ -57,6 +64,7 @@ export const categories = [
     image: "/products/bundle-kit.png",
     badge: "BUNDLE" as const,
     price: 50,
+    originalPrice: 60,
     href: "/products/carblock-bundle-kit",
   },
 ];
@@ -91,6 +99,7 @@ export const products: Product[] = [
       },
     ],
     price: 30,
+    originalPrice: 35,
     badge: "BESTSELLER",
     image: "/products/carblock-new-1.png",
     gallery: [
@@ -131,6 +140,7 @@ export const products: Product[] = [
       },
     ],
     price: 30,
+    originalPrice: 35,
     badge: "NEW",
     amazonHref: "https://www.amazon.com/dp/B0GX7QF3TT",
     image: "/products/wipes-new-1.png",
@@ -152,6 +162,7 @@ export const products: Product[] = [
     shortDescription:
       "CarBlock perfume + WipesBlock interior wipes.",
     price: 50,
+    originalPrice: 60,
     badge: "BUNDLE",
     image: "/products/bundle-kit.png",
     gallery: [
