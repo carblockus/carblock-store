@@ -83,16 +83,24 @@ export function Stats() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,130,27,0.15),transparent_55%)]" />
 
       <div className="container-x relative z-10 py-10 md:py-14">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
-          <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
+        {/* Desktop bumps:
+            - eyebrow text-sm/base + bold
+            - title text-5xl → text-6xl/text-7xl and forced to a single
+              line on md+ (whitespace-nowrap)
+            - subtitle forced to one line on md+ too, and the max-width
+              cap is lifted so the line can stretch.
+            Mobile keeps the existing wrapping treatment so the long
+            phrase still fits on small screens. */}
+        <div className="text-center max-w-3xl mx-auto md:!max-w-none mb-8 md:mb-10">
+          <span className="inline-block text-[11px] md:text-sm lg:text-base tracking-[0.3em] uppercase text-[var(--gold)] md:font-bold">
             {t("stats.eyebrow")}
           </span>
-          <h2 className="font-display text-3xl md:text-5xl uppercase font-bold text-white leading-tight mt-3">
+          <h2 className="font-display text-3xl md:text-6xl lg:text-7xl uppercase font-bold text-white leading-tight mt-3 md:mt-5 md:whitespace-nowrap">
             {t("stats.title.before")}{" "}
             <span className="text-gold-gradient">{t("stats.title.duration")}</span>{" "}
             {t("stats.title.after")}
           </h2>
-          <p className="mt-4 text-[var(--muted)] max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+          <p className="mt-4 md:mt-5 text-[var(--muted)] max-w-xl md:!max-w-none mx-auto text-sm md:text-base lg:text-lg leading-relaxed md:whitespace-nowrap">
             {t("stats.body.before")}{" "}
             <span className="text-white font-semibold">{t("stats.body.under")}</span>
             {t("stats.body.middle")}{" "}
