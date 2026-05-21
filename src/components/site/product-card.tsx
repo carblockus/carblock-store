@@ -18,28 +18,38 @@ export function ProductCard({ product, imageFit = "cover" }: Props) {
       href={`/products/${slug}`}
       className="group relative flex flex-col rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--gold)]/60 transition-all duration-300 hover:-translate-y-0.5"
     >
+      {/* Uniform gold-on-black badge — matches the home page treatment so
+          all 3 badge types (BESTSELLER / NEW / BUNDLE) read as one set. */}
       {badge && (
         <Badge
-          className={`absolute -top-4 left-3 z-10 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md ${
-            badge === "BESTSELLER"
-              ? "bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
-              : badge === "NEW"
-                ? "bg-white text-black hover:bg-white"
-                : "bg-black text-[var(--gold)] border border-[var(--gold)] hover:bg-black"
-          }`}
+          className="absolute -top-4 left-3 z-10 rounded-sm px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold shadow-md bg-[var(--gold)] text-black hover:bg-[var(--gold)]"
         >
           {badge}
         </Badge>
       )}
-      <div className="relative aspect-[4/5] overflow-hidden rounded-t-lg bg-white/[0.02]">
+      <div
+        className={`relative aspect-[4/5] overflow-hidden rounded-t-lg ${
+          imageFit === "contain" ? "bg-white" : "bg-white/[0.02]"
+        }`}
+      >
         <div
-          className="absolute inset-0 bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+          className={`absolute bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105 ${
+            /* Contain-mode photos get inset from the card edges so a
+               real white frame is guaranteed around the product — even
+               when the source PNG is full-bleed (no built-in
+               whitespace). Cover-mode photos stay edge-to-edge. */
+            imageFit === "contain" ? "inset-6 md:inset-8" : "inset-0"
+          }`}
           style={{
             backgroundImage: `url('${image}')`,
             backgroundSize: imageFit === "contain" ? "contain" : "cover",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        {/* Skip the bottom gradient on contain-mode cards so the white
+            backdrop stays uniformly white. */}
+        {imageFit !== "contain" && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        )}
       </div>
 
       <div className="p-5 flex flex-col gap-2">

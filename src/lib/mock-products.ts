@@ -105,9 +105,10 @@ export const products: Product[] = [
     gallery: [
       "/products/carblock-new-2.jpg",
       "/products/carblock-new-3.png",
-      "/products/carblock-new-4.png",
+      "/products/carblock-new-4.jpg",
       "/products/carblock-new-5.png",
-      "/products/carblock-new-6.jpg",
+      "/products/carblock-new-6.png",
+      "/products/carblock-new-7.jpg",
     ],
     sizes: ["150ml"],
   },

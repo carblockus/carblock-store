@@ -37,8 +37,12 @@ export default async function ProductsPage() {
               <ProductCard
                 key={p.slug}
                 product={p}
+                // Match the home-page logic: wipes + bundles use `contain`
+                // (centered photo with a white frame so the product
+                // doesn't touch the card edges); CarBlock keeps `cover`.
                 imageFit={
-                  p.slug === "carblock-bundle-kit" ||
+                  p.category === "wipes" ||
+                  p.category === "bundle" ||
                   p.slug === "carblock-2-pack"
                     ? "contain"
                     : "cover"
