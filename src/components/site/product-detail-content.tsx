@@ -95,8 +95,8 @@ export function ProductDetailContent({ product }: { product: Product }) {
         price={product.price}
       />
 
-      <section className="container-x py-4 md:py-16 md:!max-w-[1600px]">
-        <div className="grid md:grid-cols-2 gap-4 md:gap-20 lg:gap-24 items-start">
+      <section className="container-x py-3 md:py-16 md:!max-w-[1600px]">
+        <div className="grid md:grid-cols-2 gap-3 md:gap-20 lg:gap-24 items-start">
           <ProductGallery
             images={galleryImages}
             alt={product.name}
@@ -105,29 +105,31 @@ export function ProductDetailContent({ product }: { product: Product }) {
             imageFits={galleryFits}
           />
 
-          {/* Mobile gets tighter gaps so image + title + bullets +
-              size + Add-to-Cart all fit in a single phone viewport. */}
-          <div className="flex flex-col gap-3 md:gap-8">
+          {/* Mobile gets ULTRA tight gaps so image + eyebrow + title +
+              5 bullets + size + Add-to-Cart all sit close together and
+              the 'Selecciona tu pack' selector moves up into the
+              first viewport. */}
+          <div className="flex flex-col gap-2 md:gap-8">
             <div>
-              <span className="text-[10px] md:text-xs lg:text-sm tracking-[0.3em] uppercase text-[var(--gold)]">
+              <span className="text-[9px] md:text-xs lg:text-sm tracking-[0.3em] uppercase text-[var(--gold)]">
                 {categoryLabel}
               </span>
-              <h1 className="font-display text-2xl md:text-5xl lg:text-6xl uppercase font-bold text-white mt-1 md:mt-3 leading-tight">
+              <h1 className="font-display text-xl md:text-5xl lg:text-6xl uppercase font-bold text-white mt-0.5 md:mt-3 leading-tight">
                 {product.name}
               </h1>
             </div>
 
-            {/* Bullets — smaller text + tighter spacing on mobile so the
-                five lines + everything else fits in one screen. */}
+            {/* Bullets — compact on mobile: text-xs, tight gaps, small
+                checks. Desktop keeps its big lg:text-xl treatment. */}
             {product.category === "perfume" ? (
-              <ul className="flex flex-col gap-1.5 md:gap-3.5 text-[13px] md:text-lg lg:text-xl text-white">
+              <ul className="flex flex-col gap-1 md:gap-3.5 text-xs md:text-lg lg:text-xl text-white">
                 {carblockBullets.map((bullet) => (
                   <li
                     key={bullet}
-                    className="flex items-start gap-2 md:gap-3 leading-snug"
+                    className="flex items-start gap-1.5 md:gap-3 leading-snug"
                   >
                     <Check
-                      className="h-4 w-4 md:h-6 md:w-6 text-[var(--gold)] shrink-0 mt-0.5"
+                      className="h-3.5 w-3.5 md:h-6 md:w-6 text-[var(--gold)] shrink-0 mt-0.5"
                       strokeWidth={3}
                     />
                     <span>{bullet}</span>
@@ -135,22 +137,22 @@ export function ProductDetailContent({ product }: { product: Product }) {
                 ))}
               </ul>
             ) : (
-              <p className="text-sm md:text-lg lg:text-xl text-[var(--muted)] leading-relaxed">
+              <p className="text-xs md:text-lg lg:text-xl text-[var(--muted)] leading-relaxed">
                 {fallbackDescription}
               </p>
             )}
 
-            {/* Size chips */}
+            {/* Size chips — compact on mobile */}
             {product.sizes && product.sizes.length > 0 && (
               <div>
-                <span className="block text-[9px] md:text-xs lg:text-sm tracking-[0.3em] uppercase text-[var(--muted)] mb-1.5 md:mb-3">
+                <span className="block text-[8px] md:text-xs lg:text-sm tracking-[0.3em] uppercase text-[var(--muted)] mb-1 md:mb-3">
                   {t("product.size")}
                 </span>
                 <div className="flex gap-2 md:gap-3">
                   {product.sizes.map((s) => (
                     <span
                       key={s}
-                      className="px-3 md:px-6 py-1.5 md:py-3 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/10 text-[11px] md:text-sm uppercase tracking-[0.15em] text-white font-medium"
+                      className="px-2.5 md:px-6 py-1 md:py-3 rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/10 text-[10px] md:text-sm uppercase tracking-[0.15em] text-white font-medium"
                     >
                       {s}
                     </span>
@@ -161,7 +163,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
 
             {/* Add to cart — tighter mobile vertical padding to keep the
                 primary CTA above the fold. */}
-            <div className="border-y border-[var(--border)] py-4 md:py-8">
+            <div className="border-y border-[var(--border)] py-3 md:py-8">
               <AddToCart product={product} />
             </div>
 
