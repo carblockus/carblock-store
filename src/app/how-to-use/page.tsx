@@ -40,18 +40,21 @@ export default function HowToUsePage() {
       {/* Stats — How to Apply + Technique cards + 25/25/50 distribution */}
       <Stats />
 
-      {/* CTA */}
-      <section className="container-x py-16 md:py-20 max-w-3xl text-center">
-        <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)]">
+      {/* CTA — desktop scale-up so the eyebrow, the big title and the
+          subheadline match the visual weight of the rest of the page. */}
+      <section className="container-x py-16 md:py-24 lg:py-28 max-w-3xl md:!max-w-5xl text-center">
+        <span className="text-[11px] md:text-sm lg:text-base tracking-[0.3em] uppercase text-[var(--gold)] font-bold">
           {t("howto.cta.eyebrow")}
         </span>
-        <h2 className="font-display text-3xl md:text-4xl uppercase font-bold mt-3 text-white">
+        <h2 className="font-display text-3xl md:text-6xl lg:text-7xl uppercase font-bold mt-3 md:mt-5 text-white leading-tight">
           {t("howto.cta.title.before")}{" "}
           <span className="text-gold-gradient">
             {t("howto.cta.title.highlight")}
           </span>
         </h2>
-        <p className="mt-4 text-[var(--muted)]">{t("howto.cta.body")}</p>
+        <p className="mt-4 md:mt-6 text-base md:text-xl lg:text-2xl text-[var(--muted)]">
+          {t("howto.cta.body")}
+        </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
           {/* All three CTAs share the same height (h-14 md:h-16) and
               padding so they read as a paired set. Plain <a>/<Link>
