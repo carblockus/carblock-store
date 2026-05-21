@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Stats } from "@/components/site/stats";
 import {
   PrimeBadge,
@@ -54,16 +53,16 @@ export default function HowToUsePage() {
         </h2>
         <p className="mt-4 text-[var(--muted)]">{t("howto.cta.body")}</p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
-          <Button
-            asChild
-            className="rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-xs h-12 px-8"
+          {/* All three CTAs share the same height (h-14 md:h-16) and
+              padding so they read as a paired set. Plain <a>/<Link>
+              instead of the shadcn Button on every one — gives us
+              consistent control over the dimensions. */}
+          <Link
+            href="/products"
+            className="inline-flex items-center justify-center rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-semibold tracking-[0.18em] uppercase text-sm md:text-base h-14 md:h-16 px-10 md:px-14 transition-colors"
           >
-            <Link href="/products">{t("howto.cta.shopNow")}</Link>
-          </Button>
-          {/* Prime pill — plain <a> instead of the shadcn Button so we
-              control the exact dimensions. Big and wide enough for
-              both the `prime` lockup AND the AVAILABLE word to read
-              at a glance. */}
+            {t("howto.cta.shopNow")}
+          </Link>
           <a
             href={amazonHref}
             target="_blank"
@@ -75,13 +74,12 @@ export default function HowToUsePage() {
               {t("howto.cta.shopAmazon")}
             </span>
           </a>
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-full border-white/30 bg-transparent hover:bg-white hover:text-black text-white tracking-[0.18em] uppercase text-xs h-12 px-8"
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent hover:bg-white hover:text-black text-white font-semibold tracking-[0.18em] uppercase text-sm md:text-base h-14 md:h-16 px-10 md:px-14 transition-colors"
           >
-            <Link href="/contact">{t("howto.cta.contact")}</Link>
-          </Button>
+            {t("howto.cta.contact")}
+          </Link>
         </div>
       </section>
     </div>
