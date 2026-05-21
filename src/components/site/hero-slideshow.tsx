@@ -3,16 +3,20 @@
 import { useEffect, useState } from "react";
 
 /**
- * All four slides are pre-normalized to 2000×1500 (4:3) JPGs by
- * scripts/normalize-hero.js — they already match the hero container's
- * aspect ratio exactly, so `cover` will neither crop nor letterbox.
- * Re-run the script after dropping new sources into "Pagina web/".
+ * All four hero photos are pre-authored at 2000×1500 (4:3) — the user
+ * exports them ready-to-use into "Pagina web/" and we copy them in
+ * verbatim (no resize, no recompression) so they keep their original
+ * quality. PNG is kept for the three infographic-style banners (text
+ * stays crisp); JPG for the photographic slide.
+ *
+ * Because source and hero container share the 4:3 aspect, `cover`
+ * renders 1:1 — no crop, no letterbox.
  */
 const slides: { src: string; fit: "cover" | "contain" }[] = [
-  { src: "/hero/page-1.jpg", fit: "cover" },  // "Say goodbye to unpleasant odors!"
-  { src: "/hero/page-2.jpg", fit: "cover" },  // lifestyle: pouring on floor
-  { src: "/hero/page-3.jpg", fit: "cover" },  // "Cleans Shines and Protects" + icons
-  { src: "/hero/page-4.jpg", fit: "cover" },  // "Cleaned vs Without WipesBlock" comparison
+  { src: "/hero/page-1.jpg", fit: "cover" },
+  { src: "/hero/page-2.png", fit: "cover" },
+  { src: "/hero/page-3.png", fit: "cover" },
+  { src: "/hero/page-4.png", fit: "cover" },
 ];
 
 const FIRST_SLIDE_MS = 2000;
