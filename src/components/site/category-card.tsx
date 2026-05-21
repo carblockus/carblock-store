@@ -40,6 +40,7 @@ export function CategoryCard({
   description,
   image,
   badge,
+  price,
   href,
   imageFit = "cover",
   imageScale,
@@ -127,7 +128,14 @@ export function CategoryCard({
             href={href}
             className="flex items-center justify-center rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] h-12 text-black text-xs sm:text-sm uppercase tracking-[0.18em] font-bold transition-colors px-5"
           >
-            Shop Now
+            {/* Mobile stays as 'Shop Now' to keep the pill compact in
+                the 1-col layout. Desktop adds the price next to it so
+                the home grid surfaces pricing without forcing a click
+                into the detail page. */}
+            <span className="md:hidden">Shop Now</span>
+            <span className="hidden md:inline">
+              Shop Now — ${price}
+            </span>
           </Link>
           <a
             href={amazonHref ?? defaultAmazonHref}
