@@ -59,13 +59,15 @@ export function Navbar() {
           <Logo imgClassName="h-[52px] md:h-32 lg:h-40" />
         </Link>
 
-        {/* RIGHT slot */}
-        <div className="flex-1 flex items-center justify-end gap-1">
+        {/* RIGHT slot. Icons get a 2x bump on desktop (md+) so they
+            balance the doubled-size logo. Mobile sizes (h-5, h-7) stay
+            exactly as before — the md: prefixes are additive only. */}
+        <div className="flex-1 flex items-center justify-end gap-1 md:gap-3">
           <button
             aria-label={t("nav.account")}
-            className="hidden md:inline-flex p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+            className="hidden md:inline-flex p-2 md:p-3 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
-            <User className="h-5 w-5" />
+            <User className="h-5 w-5 md:h-10 md:w-10" />
           </button>
           {/* Quick shortcut to the Amazon listing */}
           <a
@@ -73,18 +75,18 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Shop on Amazon"
-            className="p-1.5 text-white/85 hover:text-[var(--gold)] transition-colors"
+            className="p-1.5 md:p-3 text-white/85 hover:text-[var(--gold)] transition-colors"
           >
-            <AmazonIcon className="h-7 w-7" />
+            <AmazonIcon className="h-7 w-7 md:h-14 md:w-14" />
           </a>
           <button
             aria-label={t("nav.cart")}
             onClick={() => setOpen(true)}
-            className="relative p-2 text-white/80 hover:text-[var(--gold)] transition-colors"
+            className="relative p-2 md:p-3 text-white/80 hover:text-[var(--gold)] transition-colors"
           >
-            <ShoppingBag className="h-5 w-5" />
+            <ShoppingBag className="h-5 w-5 md:h-10 md:w-10" />
             {count > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--gold)] text-black text-[10px] font-bold flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 md:-top-1 md:-right-1 min-w-[18px] h-[18px] md:min-w-[26px] md:h-[26px] px-1 md:px-1.5 rounded-full bg-[var(--gold)] text-black text-[10px] md:text-[14px] font-bold flex items-center justify-center">
                 {count}
               </span>
             )}

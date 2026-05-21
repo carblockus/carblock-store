@@ -107,8 +107,26 @@ export function Hero() {
             That eliminates the heavy top/bottom letterbox the old
             portrait frame was producing.
           ============================================================ */}
-      <div className="hidden md:block bg-black border-b border-[var(--border)]">
-        <div className="container-x md:!max-w-[1760px] md:!px-6 lg:!px-10 pt-4 lg:pt-6 pb-10 lg:pb-14">
+      <div className="hidden md:block bg-black border-b border-[var(--border)] relative overflow-hidden">
+        {/* Subtle gold ambient — three soft radial blurs in the corners
+            wash the hero with a warm, premium feel without overpowering
+            the copy or the photo. Pointer-events-none so they never
+            interfere with clicks. Opacity is kept low (6–10%) per the
+            user's note "un aire un poco dorado sin saturar". */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-40 -left-40 w-[640px] h-[640px] rounded-full bg-[var(--gold)] opacity-[0.10] blur-[140px]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-40 -right-40 w-[720px] h-[720px] rounded-full bg-[var(--gold)] opacity-[0.07] blur-[160px]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-1/2 -translate-y-1/2 left-[40%] w-[520px] h-[520px] rounded-full bg-[var(--gold)] opacity-[0.04] blur-[180px]"
+        />
+
+        <div className="relative z-10 container-x md:!max-w-[1760px] md:!px-6 lg:!px-10 pt-4 lg:pt-6 pb-10 lg:pb-14">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 lg:gap-10 items-center">
             {/* LEFT — copy + CTAs + trust */}
             <div className="flex flex-col items-start gap-5 lg:gap-6">

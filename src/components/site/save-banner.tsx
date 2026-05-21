@@ -13,24 +13,30 @@ import Link from "next/link";
  * translateX(-50%) loop is seamless.
  */
 export function SaveBanner() {
-  // One "block" of copy that we repeat so the loop has no visible seam.
-  const items = [
-    "Save 20%",
-    "Subscribe & Save",
-    "Delivered Every 6 Weeks",
-    "Free Shipping",
-    "Cancel Anytime",
-  ];
+  // Just two phrases the user asked to keep.
+  const items = ["Subscribe & Save", "Cancel Anytime"];
+
+  // Two short phrases on their own wouldn't fill a wide monitor in one
+  // block, which would leave a big yellow gap at the end of the
+  // marquee loop. Repeating the pair several times inside each block
+  // guarantees the rendered block is wider than any viewport — so the
+  // strip always reads as continuous text, never as an empty bar.
+  const REPEAT_PER_BLOCK = 6;
   const block = (
     <>
-      {items.map((it, i) => (
-        <span key={i} className="inline-flex items-center gap-6 px-6">
-          <span className="font-display text-sm md:text-lg lg:text-xl tracking-[0.22em] uppercase font-bold whitespace-nowrap">
-            {it}
+      {Array.from({ length: REPEAT_PER_BLOCK }).flatMap((_, n) =>
+        items.map((it, i) => (
+          <span
+            key={`${n}-${i}`}
+            className="inline-flex items-center gap-6 px-6"
+          >
+            <span className="font-display text-sm md:text-lg lg:text-xl tracking-[0.22em] uppercase font-bold whitespace-nowrap">
+              {it}
+            </span>
+            <span className="text-black/50 text-xs">★</span>
           </span>
-          <span className="text-black/50 text-xs">★</span>
-        </span>
-      ))}
+        )),
+      )}
     </>
   );
 
