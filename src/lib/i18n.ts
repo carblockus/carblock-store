@@ -151,6 +151,221 @@ export const dictionaries = {
     "stats.dist.rear.where": "On rear mats, seat edges & floor",
     "stats.watchTutorial": "Watch tutorial",
 
+    /* ---------- Product detail page (/products/[slug]) ---------- */
+    "product.size": "Size",
+    "product.selectYourPack": "Select your pack",
+    "product.pack.single": "Single",
+    "product.pack.2pack": "2-Pack",
+    "product.pack.3pack": "3-Pack",
+    "product.addToCart": "Add to Cart",
+    "product.addedToCart": "Added to Cart",
+    "product.available": "Available",
+    "product.trust.shipping.label": "Free Shipping",
+    "product.trust.shipping.sub": "Every US order",
+    "product.trust.duration.label": "Lasts 3 Months",
+    "product.trust.duration.sub": "Single application",
+    "product.trust.guaranteed.label": "Guaranteed",
+    "product.trust.guaranteed.sub": "Premium quality",
+    "product.accordion.description": "Description",
+    "product.accordion.howToUse": "How to Use It",
+    "product.accordion.shipping": "Shipping & Returns",
+    "product.accordion.faq": "FAQ",
+    "product.shipping.bullet1": "Free standard shipping on every order — no minimum.",
+    "product.shipping.bullet2": "Ships to the contiguous US (lower 48 states) only.",
+    "product.shipping.bullet3": "We don't ship to Alaska, Hawaii or Puerto Rico.",
+    "product.shipping.bullet4": "Orders ship within 1-2 business days.",
+    "product.shipping.bullet5": "Standard delivery: 3-7 business days.",
+    "product.shipping.bullet6.before": "30-day return",
+    "product.shipping.bullet6.linkText": "policy",
+    "product.shipping.bullet6.after": "for unused products.",
+    "product.faq.q1": "How long does the fragrance last?",
+    "product.faq.a1":
+      "Up to 3 months with a single application when applied correctly on floor mats, seat edges and the floor.",
+    "product.faq.q2": "Is it safe for leather seats?",
+    "product.faq.a2":
+      "Yes. Apply on the floor mats and floor — not directly on leather surfaces. The fragrance diffuses naturally throughout the interior.",
+    "product.faq.q3": "Does it eliminate odors or just cover them?",
+    "product.faq.a3":
+      "CarBlock eliminates smoke, pet, mildew and food odors — not just masks them.",
+    "product.related.eyebrow": "You may also like",
+    "product.related.title.before": "Complete Your",
+    "product.related.title.highlight": "Ride",
+    "product.carblock.bullet1":
+      "Premium perfume-grade fragrance — not a cheap car scent",
+    "product.carblock.bullet2": "Eliminates smoke, pet & humidity odors",
+    "product.carblock.bullet3":
+      "Long-lasting — up to 90 days per application",
+    "product.carblock.bullet4":
+      "Apply on carpets / mats to fragrance the entire cabin",
+    "product.carblock.bullet5": "Won't stain carpets or floor mats",
+    "product.wipes.shortDescription":
+      "Premium extra-thick wipes that clean every interior surface and restore deep black on leather, vinyl & plastic. 75 wipes per pack.",
+    "product.bundle.shortDescription":
+      "CarBlock perfume + WipesBlock interior wipes.",
+    /* ---------- /products shop page ---------- */
+    "shop.eyebrow": "Shop",
+    "shop.title.before": "For Your",
+    "shop.title.highlight": "Car",
+    "shop.subtitle":
+      "Premium fragrance + interior care. Limited-time promo — save up to 33% on bundles.",
+    "shop.empty": "No products available right now.",
+    "shop.retailers.eyebrow": "Prefer your favorite marketplace?",
+    "shop.retailers.title": "Also available on",
+    "shop.retailers.body":
+      "Find CarBlock and WipesBlock through our official storefronts.",
+    "shop.retailers.open": "Open",
+    "shop.card.shop": "Shop",
+    "shop.card.save": "Save",
+    /* ---------- Testimonials ---------- */
+    "testimonials.eyebrow": "Trusted by",
+    "testimonials.title": "Over 100,000 satisfied drivers",
+    /* ---------- /subscribe-and-save ---------- */
+    "subscribe.eyebrow": "Subscribe & Save",
+    "subscribe.title": "Save 20% on every order",
+    "subscribe.body":
+      "CarBlock delivered to your door every 6 weeks. Always 20% off. Free shipping. Cancel anytime.",
+    "subscribe.perks.save.title": "Save 20%",
+    "subscribe.perks.save.body": "Every order, automatically.",
+    "subscribe.perks.delivered.title": "Delivered every 6 weeks",
+    "subscribe.perks.delivered.body": "Set it and forget it.",
+    "subscribe.perks.shipping.title": "Free shipping",
+    "subscribe.perks.shipping.body": "On every recurring order.",
+    "subscribe.perks.cancel.title": "Cancel anytime",
+    "subscribe.perks.cancel.body": "No long-term commitment.",
+    /* ---------- Contact page (/contact) ---------- */
+    "contact.breadcrumb.home": "Home",
+    "contact.breadcrumb.current": "Contact",
+    "contact.eyebrow": "Get in touch",
+    "contact.title": "We're Here to Help",
+    "contact.subtitle":
+      "Questions about your order, our products or wholesale? Send us a message and we'll get back within one business day.",
+    "contact.form.eyebrow": "Send a message",
+    "contact.form.intro":
+      "Use the form below or write to us directly at any of the addresses on the right.",
+    "contact.form.name": "Name",
+    "contact.form.email": "Email",
+    "contact.form.topic": "Topic",
+    "contact.form.orderNumber": "Order # (optional)",
+    "contact.form.message": "Message",
+    "contact.form.send": "Send Message",
+    "contact.form.sending": "Sending…",
+    "contact.form.sent.title": "Message Sent",
+    "contact.form.sent.body":
+      "Thanks for reaching out. We'll get back to you within 1 business day at",
+    "contact.form.responseNote": "We typically respond within 1 business day",
+    "contact.topic.order": "Order question",
+    "contact.topic.return": "Return / refund",
+    "contact.topic.wholesale": "Wholesale / business",
+    "contact.topic.press": "Press / partnership",
+    "contact.topic.other": "Other",
+    "contact.sidebar.emailUs": "Email Us",
+    "contact.sidebar.hours": "Hours",
+    "contact.sidebar.hoursValue.line1": "Monday – Friday",
+    "contact.sidebar.hoursValue.line2": "10:00 AM – 7:00 PM EST",
+    "contact.sidebar.operatedBy": "Operated By",
+    "contact.sidebar.operatedByValue.line1":
+      "Registered company in New Jersey, USA",
+    "contact.sidebar.operatedByValue.line2": "Englewood, NJ — United States",
+    "contact.faq.eyebrow": "Quick answers",
+    "contact.faq.title": "Frequently Asked",
+    "contact.faq.q1": "How long does CarBlock fragrance last?",
+    "contact.faq.a1":
+      "Up to 3 months with a single application when applied correctly on floor mats, seat edges and the floor.",
+    "contact.faq.q2": "Where do you ship?",
+    "contact.faq.a2":
+      "We ship to the contiguous US (lower 48 states) — no Alaska, Hawaii or Puerto Rico. Free standard shipping on every order.",
+    "contact.faq.q3": "What's your return policy?",
+    "contact.faq.a3":
+      "30-day money-back guarantee on unused, unopened products. Email us with your order number and we'll send a return label.",
+    "contact.faq.q4": "Do you offer wholesale?",
+    "contact.faq.a4":
+      "Yes. 100-unit minimum, no Amazon or Walmart resale, marketing assets included. See the Wholesale page or write us through this form.",
+    /* ---------- Wholesale page (/wholesale) ---------- */
+    "wholesale.breadcrumb.home": "Home",
+    "wholesale.breadcrumb.current": "Wholesale",
+    "wholesale.eyebrow": "Distributors program",
+    "wholesale.title.before": "Sell CarBlock in your",
+    "wholesale.title.highlight": "market",
+    "wholesale.subtitle":
+      "Carry the brand drivers love — premium car perfume + premium interior wipes — with marketing assets included.",
+    "wholesale.rules.eyebrow": "Read this first",
+    "wholesale.rules.title": "Program rules",
+    "wholesale.rules.intro":
+      "Plain and simple. Apply only if all of them work for your business — this saves you and us time.",
+    "wholesale.rule1.title": "100-unit minimum",
+    "wholesale.rule1.body":
+      "Each order starts at 100 units. Mix CarBlock and WipesBlock as you wish.",
+    "wholesale.rule2.title": "No Amazon or Walmart resale",
+    "wholesale.rule2.body":
+      "Distributors cannot resell on Amazon or Walmart — those marketplaces are reserved for our own listings.",
+    "wholesale.rule3.title": "Respect the MAP policy",
+    "wholesale.rule3.body":
+      "Stick to our Minimum Advertised Price. Selling below it breaks the agreement and ends the partnership.",
+    "wholesale.rule4.title": "Distributor pays shipping",
+    "wholesale.rule4.body":
+      "Shipping is on your side. We quote it before the invoice based on volume and destination.",
+    "wholesale.rule5.title": "Creatives & videos included",
+    "wholesale.rule5.body":
+      "Marketing kit included with every order: hero photos, social videos, A+ banners and ad copy.",
+    "wholesale.fit.eyebrow": "Quick fit check",
+    "wholesale.fit.title": "Apply if all of them are true",
+    "wholesale.fit.item1": "Have a real selling channel (store, online, social)",
+    "wholesale.fit.item2": "Comfortable starting at 100 units",
+    "wholesale.fit.item3": "Willing to skip Amazon and Walmart channels",
+    "wholesale.fit.item4":
+      "Will respect the MAP (minimum advertised price) policy",
+    "wholesale.fit.item5": "Excited to grow CarBlock in your market",
+    "wholesale.apply.eyebrow": "Apply now",
+    "wholesale.apply.title": "Tell us about your business",
+    "wholesale.apply.subtitle":
+      "We respond within 2 business days with pricing, shipping quote and the marketing pack.",
+    "wholesale.apply.form.name": "Your name",
+    "wholesale.apply.form.email": "Email",
+    "wholesale.apply.form.business": "Business name",
+    "wholesale.apply.form.country": "Country / market",
+    "wholesale.apply.form.channel": "Selling channel",
+    "wholesale.apply.form.volume": "Estimated monthly volume",
+    "wholesale.apply.form.notes": "Anything else (optional)",
+    "wholesale.apply.form.submit": "Send application",
+    "wholesale.apply.form.submitting": "Sending…",
+    "wholesale.apply.form.sent.title": "Application received",
+    "wholesale.apply.form.sent.body":
+      "Thanks! We'll respond within 2 business days at the email you provided.",
+    /* ---------- Checkout flow ---------- */
+    "checkout.loading": "Loading checkout…",
+    "checkout.step.shipping": "Shipping",
+    "checkout.step.payment": "Payment",
+    "checkout.step.confirmation": "Confirmation",
+    "checkout.shipping.title": "Shipping",
+    "checkout.shipping.email": "Email",
+    "checkout.shipping.firstName": "First name",
+    "checkout.shipping.lastName": "Last name",
+    "checkout.shipping.address": "Address",
+    "checkout.shipping.city": "City",
+    "checkout.shipping.state": "State",
+    "checkout.shipping.statePlaceholder": "Select…",
+    "checkout.shipping.zip": "ZIP",
+    "checkout.shipping.stateNotice":
+      "We don't ship to AK, HI or PR at this time.",
+    "checkout.shipping.method": "Shipping method",
+    "checkout.shipping.method.standard": "Standard (3-7 business days)",
+    "checkout.shipping.method.express": "Express (1-3 business days)",
+    "checkout.shipping.continue": "Continue to Payment",
+    "checkout.confirmation.title": "Order confirmed",
+    "checkout.confirmation.heading": "Thank You",
+    "checkout.confirmation.body":
+      "Your order is on its way. We sent a confirmation email to",
+    "checkout.confirmation.backHome": "Back to Home",
+    "checkout.confirmation.keepShopping": "Keep Shopping",
+    "checkout.summary.title": "Order Summary",
+    "checkout.summary.subtotal": "Subtotal",
+    "checkout.summary.discount": "Discount",
+    "checkout.summary.shipping": "Shipping",
+    "checkout.summary.tax": "Tax (est.)",
+    "checkout.summary.total": "Total",
+    "checkout.summary.promoLabel": "Discount code",
+    "checkout.summary.promoApply": "Apply",
+
     /* ---------- HowToUse video component ---------- */
     "htuse.title": "How to Use",
     "htuse.step1.title": "Open the bottle",
@@ -313,6 +528,236 @@ export const dictionaries = {
     "htuse.step2.title": "Vierte en tapetes y bordes",
     "htuse.step2.body":
       "Distribuye a lo largo de los bordes del piso del auto y debajo de los tapetes. La fragancia se libera lentamente hasta por 3 meses.",
+
+    /* ---------- Página de detalle de producto ---------- */
+    "product.size": "Tamaño",
+    "product.selectYourPack": "Selecciona tu pack",
+    "product.pack.single": "Individual",
+    "product.pack.2pack": "Pack de 2",
+    "product.pack.3pack": "Pack de 3",
+    "product.addToCart": "Agregar al carrito",
+    "product.addedToCart": "Agregado al carrito",
+    "product.available": "Disponible",
+    "product.trust.shipping.label": "Envío Gratis",
+    "product.trust.shipping.sub": "En toda orden de EE. UU.",
+    "product.trust.duration.label": "Dura 3 Meses",
+    "product.trust.duration.sub": "Una sola aplicación",
+    "product.trust.guaranteed.label": "Garantizado",
+    "product.trust.guaranteed.sub": "Calidad premium",
+    "product.accordion.description": "Descripción",
+    "product.accordion.howToUse": "Cómo usarlo",
+    "product.accordion.shipping": "Envío y devoluciones",
+    "product.accordion.faq": "Preguntas frecuentes",
+    "product.shipping.bullet1":
+      "Envío estándar gratis en toda orden — sin mínimo.",
+    "product.shipping.bullet2":
+      "Solo enviamos a los 48 estados contiguos de EE. UU.",
+    "product.shipping.bullet3": "No enviamos a Alaska, Hawái ni Puerto Rico.",
+    "product.shipping.bullet4":
+      "Las órdenes se despachan dentro de 1-2 días hábiles.",
+    "product.shipping.bullet5": "Entrega estándar: 3-7 días hábiles.",
+    "product.shipping.bullet6.before": "Devolución de 30 días — consulta la",
+    "product.shipping.bullet6.linkText": "política",
+    "product.shipping.bullet6.after": "para productos sin usar.",
+    "product.faq.q1": "¿Cuánto dura la fragancia?",
+    "product.faq.a1":
+      "Hasta 3 meses con una sola aplicación, aplicada correctamente en los tapetes, los bordes de los asientos y el piso.",
+    "product.faq.q2": "¿Es seguro para asientos de cuero?",
+    "product.faq.a2":
+      "Sí. Se aplica sobre los tapetes y el piso, no directamente sobre el cuero. La fragancia se difunde naturalmente por todo el interior.",
+    "product.faq.q3": "¿Elimina los olores o solo los enmascara?",
+    "product.faq.a3":
+      "CarBlock elimina olores a humo, mascotas, humedad y comida — no se limita a enmascararlos.",
+    "product.related.eyebrow": "También te puede gustar",
+    "product.related.title.before": "Completa tu",
+    "product.related.title.highlight": "estilo",
+    "product.carblock.bullet1":
+      "Fragancia premium tipo perfume, no aroma barato de auto",
+    "product.carblock.bullet2":
+      "Elimina olores de humo, mascotas y humedad",
+    "product.carblock.bullet3":
+      "Larga duración — hasta 90 días por aplicación",
+    "product.carblock.bullet4":
+      "Se aplica en los tapetes para aromatizar todo el interior",
+    "product.carblock.bullet5": "No mancha los tapetes ni el piso",
+    "product.wipes.shortDescription":
+      "Toallitas premium extra-gruesas que limpian cada superficie interior y restauran el negro profundo en cuero, vinilo y plástico. 75 toallitas por paquete.",
+    "product.bundle.shortDescription":
+      "Perfume CarBlock + toallitas interiores WipesBlock.",
+
+    /* ---------- Página de tienda /products ---------- */
+    "shop.eyebrow": "Tienda",
+    "shop.title.before": "Para tu",
+    "shop.title.highlight": "Auto",
+    "shop.subtitle":
+      "Fragancia premium + cuidado interior. Promoción por tiempo limitado — ahorra hasta 33% en bundles.",
+    "shop.empty": "No hay productos disponibles en este momento.",
+    "shop.retailers.eyebrow": "¿Prefieres tu marketplace favorito?",
+    "shop.retailers.title": "También disponible en",
+    "shop.retailers.body":
+      "Encuentra CarBlock y WipesBlock en nuestras tiendas oficiales.",
+    "shop.retailers.open": "Abrir",
+    "shop.card.shop": "Ver",
+    "shop.card.save": "Ahorra",
+
+    /* ---------- Testimonios ---------- */
+    "testimonials.eyebrow": "Confían en nosotros",
+    "testimonials.title": "Más de 100,000 conductores satisfechos",
+
+    /* ---------- /subscribe-and-save ---------- */
+    "subscribe.eyebrow": "Suscríbete y Ahorra",
+    "subscribe.title": "Ahorra 20% en cada pedido",
+    "subscribe.body":
+      "CarBlock entregado en tu puerta cada 6 semanas. Siempre 20% de descuento. Envío gratis. Cancela cuando quieras.",
+    "subscribe.perks.save.title": "Ahorra 20%",
+    "subscribe.perks.save.body": "En cada pedido, automáticamente.",
+    "subscribe.perks.delivered.title": "Entrega cada 6 semanas",
+    "subscribe.perks.delivered.body": "Configúralo una vez y olvídate.",
+    "subscribe.perks.shipping.title": "Envío gratis",
+    "subscribe.perks.shipping.body": "En cada pedido recurrente.",
+    "subscribe.perks.cancel.title": "Cancela cuando quieras",
+    "subscribe.perks.cancel.body": "Sin compromiso a largo plazo.",
+
+    /* ---------- Página de contacto (/contact) ---------- */
+    "contact.breadcrumb.home": "Inicio",
+    "contact.breadcrumb.current": "Contacto",
+    "contact.eyebrow": "Contáctanos",
+    "contact.title": "Estamos para ayudarte",
+    "contact.subtitle":
+      "¿Preguntas sobre tu pedido, nuestros productos o ventas al por mayor? Envíanos un mensaje y te respondemos en un día hábil.",
+    "contact.form.eyebrow": "Envía un mensaje",
+    "contact.form.intro":
+      "Usa el formulario o escríbenos directamente a cualquiera de los datos de la derecha.",
+    "contact.form.name": "Nombre",
+    "contact.form.email": "Correo electrónico",
+    "contact.form.topic": "Asunto",
+    "contact.form.orderNumber": "N.º de orden (opcional)",
+    "contact.form.message": "Mensaje",
+    "contact.form.send": "Enviar mensaje",
+    "contact.form.sending": "Enviando…",
+    "contact.form.sent.title": "Mensaje enviado",
+    "contact.form.sent.body":
+      "Gracias por escribirnos. Te respondemos en 1 día hábil a",
+    "contact.form.responseNote":
+      "Normalmente respondemos en 1 día hábil",
+    "contact.topic.order": "Consulta sobre pedido",
+    "contact.topic.return": "Devolución / reembolso",
+    "contact.topic.wholesale": "Distribución / mayorista",
+    "contact.topic.press": "Prensa / colaboración",
+    "contact.topic.other": "Otro",
+    "contact.sidebar.emailUs": "Escríbenos",
+    "contact.sidebar.hours": "Horario",
+    "contact.sidebar.hoursValue.line1": "Lunes a viernes",
+    "contact.sidebar.hoursValue.line2": "10:00 AM – 7:00 PM (EST)",
+    "contact.sidebar.operatedBy": "Operado por",
+    "contact.sidebar.operatedByValue.line1":
+      "Empresa registrada en Nueva Jersey, EE. UU.",
+    "contact.sidebar.operatedByValue.line2":
+      "Englewood, NJ — Estados Unidos",
+    "contact.faq.eyebrow": "Respuestas rápidas",
+    "contact.faq.title": "Preguntas frecuentes",
+    "contact.faq.q1": "¿Cuánto dura la fragancia de CarBlock?",
+    "contact.faq.a1":
+      "Hasta 3 meses con una sola aplicación, aplicada correctamente en los tapetes, los bordes de los asientos y el piso.",
+    "contact.faq.q2": "¿A dónde envían?",
+    "contact.faq.a2":
+      "Enviamos a los 48 estados contiguos de EE. UU. — sin Alaska, Hawái ni Puerto Rico. Envío estándar gratis en toda orden.",
+    "contact.faq.q3": "¿Cuál es la política de devolución?",
+    "contact.faq.a3":
+      "Garantía de devolución de 30 días en productos sin usar y sin abrir. Escríbenos con el número de pedido y te enviamos la etiqueta de devolución.",
+    "contact.faq.q4": "¿Ofrecen ventas al por mayor?",
+    "contact.faq.a4":
+      "Sí. Mínimo de 100 unidades, sin reventa en Amazon o Walmart, incluye paquete de marketing. Mira la página de Distribuidores o escríbenos por este formulario.",
+
+    /* ---------- Página /wholesale ---------- */
+    "wholesale.breadcrumb.home": "Inicio",
+    "wholesale.breadcrumb.current": "Distribuidores",
+    "wholesale.eyebrow": "Programa de distribuidores",
+    "wholesale.title.before": "Vende CarBlock en tu",
+    "wholesale.title.highlight": "mercado",
+    "wholesale.subtitle":
+      "Lleva la marca que los conductores aman — perfume para auto premium + toallitas interiores premium — con material de marketing incluido.",
+    "wholesale.rules.eyebrow": "Lee esto primero",
+    "wholesale.rules.title": "Reglas del programa",
+    "wholesale.rules.intro":
+      "Claras y directas. Postula solo si todas funcionan para tu negocio — nos ahorra tiempo a ambos.",
+    "wholesale.rule1.title": "Mínimo de 100 unidades",
+    "wholesale.rule1.body":
+      "Cada orden arranca en 100 unidades. Combina CarBlock y WipesBlock como prefieras.",
+    "wholesale.rule2.title": "Sin reventa en Amazon ni Walmart",
+    "wholesale.rule2.body":
+      "Los distribuidores no pueden revender en Amazon ni Walmart — esos marketplaces están reservados a nuestras propias listas.",
+    "wholesale.rule3.title": "Respeta la política MAP",
+    "wholesale.rule3.body":
+      "Sigue nuestro Precio Mínimo Anunciado. Vender por debajo rompe el acuerdo y termina la relación.",
+    "wholesale.rule4.title": "El distribuidor paga el envío",
+    "wholesale.rule4.body":
+      "El envío corre por tu cuenta. Lo cotizamos antes de la factura según el volumen y el destino.",
+    "wholesale.rule5.title": "Creativos y videos incluidos",
+    "wholesale.rule5.body":
+      "Kit de marketing incluido en cada orden: fotos hero, videos para redes, banners A+ y copys de anuncios.",
+    "wholesale.fit.eyebrow": "Chequeo rápido",
+    "wholesale.fit.title": "Postula si todas son ciertas",
+    "wholesale.fit.item1":
+      "Tienes un canal de venta real (tienda, online, redes)",
+    "wholesale.fit.item2": "Cómodo arrancando con 100 unidades",
+    "wholesale.fit.item3":
+      "Dispuesto a no vender en los canales de Amazon ni Walmart",
+    "wholesale.fit.item4":
+      "Respetarás la política MAP (precio mínimo anunciado)",
+    "wholesale.fit.item5":
+      "Te entusiasma hacer crecer CarBlock en tu mercado",
+    "wholesale.apply.eyebrow": "Postula ahora",
+    "wholesale.apply.title": "Cuéntanos sobre tu negocio",
+    "wholesale.apply.subtitle":
+      "Respondemos en 2 días hábiles con precios, cotización de envío y el paquete de marketing.",
+    "wholesale.apply.form.name": "Tu nombre",
+    "wholesale.apply.form.email": "Correo electrónico",
+    "wholesale.apply.form.business": "Nombre del negocio",
+    "wholesale.apply.form.country": "País / mercado",
+    "wholesale.apply.form.channel": "Canal de venta",
+    "wholesale.apply.form.volume": "Volumen mensual estimado",
+    "wholesale.apply.form.notes": "Algo más (opcional)",
+    "wholesale.apply.form.submit": "Enviar postulación",
+    "wholesale.apply.form.submitting": "Enviando…",
+    "wholesale.apply.form.sent.title": "Postulación recibida",
+    "wholesale.apply.form.sent.body":
+      "¡Gracias! Te respondemos en 2 días hábiles al correo que dejaste.",
+
+    /* ---------- Checkout ---------- */
+    "checkout.loading": "Cargando checkout…",
+    "checkout.step.shipping": "Envío",
+    "checkout.step.payment": "Pago",
+    "checkout.step.confirmation": "Confirmación",
+    "checkout.shipping.title": "Envío",
+    "checkout.shipping.email": "Correo electrónico",
+    "checkout.shipping.firstName": "Nombre",
+    "checkout.shipping.lastName": "Apellido",
+    "checkout.shipping.address": "Dirección",
+    "checkout.shipping.city": "Ciudad",
+    "checkout.shipping.state": "Estado",
+    "checkout.shipping.statePlaceholder": "Selecciona…",
+    "checkout.shipping.zip": "Código postal",
+    "checkout.shipping.stateNotice":
+      "Por ahora no enviamos a AK, HI ni PR.",
+    "checkout.shipping.method": "Método de envío",
+    "checkout.shipping.method.standard": "Estándar (3-7 días hábiles)",
+    "checkout.shipping.method.express": "Exprés (1-3 días hábiles)",
+    "checkout.shipping.continue": "Continuar al pago",
+    "checkout.confirmation.title": "Pedido confirmado",
+    "checkout.confirmation.heading": "Gracias",
+    "checkout.confirmation.body":
+      "Tu pedido va en camino. Te enviamos un correo de confirmación a",
+    "checkout.confirmation.backHome": "Volver al inicio",
+    "checkout.confirmation.keepShopping": "Seguir comprando",
+    "checkout.summary.title": "Resumen del pedido",
+    "checkout.summary.subtotal": "Subtotal",
+    "checkout.summary.discount": "Descuento",
+    "checkout.summary.shipping": "Envío",
+    "checkout.summary.tax": "Impuestos (est.)",
+    "checkout.summary.total": "Total",
+    "checkout.summary.promoLabel": "Código de descuento",
+    "checkout.summary.promoApply": "Aplicar",
   },
 } as const;
 
