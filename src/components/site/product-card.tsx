@@ -58,7 +58,12 @@ export function ProductCard({
                pack visibly touching the left and right sides of the
                card frame on /products and related-product cards.
                Cover-mode photos stay edge-to-edge. */
-            imageFit === "contain" ? "inset-10 md:inset-14" : "inset-0"
+            /* Desktop inset trimmed from inset-14 (56 px) to inset-8
+               (32 px) so the wipes pack and the bundle photo read
+               noticeably bigger on md+ — they were getting lost in
+               too much whitespace. Mobile inset (inset-10 / 40 px)
+               stays put as the user liked that framing on phones. */
+            imageFit === "contain" ? "inset-10 md:inset-8" : "inset-0"
           }`}
           style={{
             backgroundImage: `url('${image}')`,
