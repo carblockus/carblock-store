@@ -80,29 +80,32 @@ export function ChatWidget() {
 
   return (
     <>
-      {/* Floating bubble */}
+      {/* Floating bubble — bigger on desktop (md:h-16, lg:h-20) so it
+          reads clearly on wide viewports. Mobile size stays h-14. */}
       {!open && (
         <button
           type="button"
           aria-label="Open chat help"
           onClick={() => setOpen(true)}
-          className="fixed bottom-4 right-4 z-30 grid place-items-center h-14 w-14 rounded-full bg-[var(--gold)] text-black shadow-[0_10px_28px_rgba(0,0,0,0.55)] hover:bg-[var(--gold-bright)] transition-colors"
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-30 grid place-items-center h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded-full bg-[var(--gold)] text-black shadow-[0_10px_28px_rgba(0,0,0,0.55)] hover:bg-[var(--gold-bright)] transition-colors"
         >
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="h-6 w-6 md:h-7 md:w-7 lg:h-9 lg:w-9" />
         </button>
       )}
 
-      {/* Panel */}
+      {/* Panel — desktop scales up (width, height, inner text sizes) so
+          the chat feels prominent on big monitors instead of cramped.
+          Mobile width/height untouched. */}
       {open && (
         <div
           role="dialog"
           aria-label="CarBlock customer help"
-          className="fixed bottom-4 right-4 left-4 sm:left-auto sm:w-[360px] z-30 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] text-white shadow-[0_18px_40px_rgba(0,0,0,0.65)] flex flex-col max-h-[min(560px,calc(100vh-32px))]"
+          className="fixed bottom-4 right-4 left-4 sm:left-auto sm:w-[360px] md:w-[440px] lg:w-[500px] md:bottom-6 md:right-6 z-30 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] text-white shadow-[0_18px_40px_rgba(0,0,0,0.65)] flex flex-col max-h-[min(560px,calc(100vh-32px))] md:max-h-[min(720px,calc(100vh-48px))]"
         >
-          <header className="flex items-center justify-between gap-3 px-4 py-3 border-b border-[var(--border)]">
+          <header className="flex items-center justify-between gap-3 px-4 md:px-5 py-3 md:py-4 border-b border-[var(--border)]">
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="font-display text-xs uppercase tracking-[0.22em]">
+              <span className="h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="font-display text-xs md:text-sm uppercase tracking-[0.22em]">
                 CarBlock Helper
               </span>
             </div>
@@ -112,13 +115,13 @@ export function ChatWidget() {
               onClick={() => setOpen(false)}
               className="text-[var(--muted)] hover:text-white"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4 md:h-5 md:w-5" />
             </button>
           </header>
 
           <div
             ref={scrollRef}
-            className="flex-1 overflow-y-auto p-4 space-y-3 text-sm"
+            className="flex-1 overflow-y-auto p-4 md:p-5 space-y-3 md:space-y-4 text-sm md:text-base"
           >
             {messages.map((m) => (
               <div
@@ -126,7 +129,7 @@ export function ChatWidget() {
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <p
-                  className={`max-w-[85%] rounded-2xl px-3 py-2 leading-snug ${
+                  className={`max-w-[85%] rounded-2xl px-3 md:px-4 py-2 md:py-2.5 leading-snug ${
                     m.role === "user"
                       ? "bg-[var(--gold)] text-black rounded-br-sm"
                       : "bg-black/40 border border-[var(--border)] text-white rounded-bl-sm"
@@ -150,7 +153,7 @@ export function ChatWidget() {
                     key={q}
                     type="button"
                     onClick={() => quickReply(q)}
-                    className="text-[11px] uppercase tracking-[0.14em] rounded-full border border-[var(--border-strong)] px-3 py-1.5 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    className="text-[11px] md:text-[12px] uppercase tracking-[0.14em] rounded-full border border-[var(--border-strong)] px-3 md:px-3.5 py-1.5 md:py-2 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
                   >
                     {q}
                   </button>
@@ -164,21 +167,21 @@ export function ChatWidget() {
               e.preventDefault();
               send(input);
             }}
-            className="border-t border-[var(--border)] p-3 flex items-center gap-2"
+            className="border-t border-[var(--border)] p-3 md:p-4 flex items-center gap-2"
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your question…"
-              className="flex-1 h-10 bg-black/40 border border-[var(--border-strong)] rounded-full px-4 text-sm text-white placeholder:text-[var(--muted-2)] focus:outline-none focus:border-[var(--gold)]/70"
+              className="flex-1 h-10 md:h-12 bg-black/40 border border-[var(--border-strong)] rounded-full px-4 md:px-5 text-sm md:text-base text-white placeholder:text-[var(--muted-2)] focus:outline-none focus:border-[var(--gold)]/70"
             />
             <button
               type="submit"
               aria-label="Send"
-              className="grid place-items-center h-10 w-10 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black shrink-0 transition-colors"
+              className="grid place-items-center h-10 w-10 md:h-12 md:w-12 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black shrink-0 transition-colors"
             >
-              <Send className="h-4 w-4" />
+              <Send className="h-4 w-4 md:h-5 md:w-5" />
             </button>
           </form>
         </div>

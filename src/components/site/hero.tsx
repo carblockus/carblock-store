@@ -108,7 +108,7 @@ export function Hero() {
             portrait frame was producing.
           ============================================================ */}
       <div className="hidden md:block bg-black border-b border-[var(--border)]">
-        <div className="container-x md:!max-w-[1760px] md:!px-6 lg:!px-10 py-10 lg:py-14">
+        <div className="container-x md:!max-w-[1760px] md:!px-6 lg:!px-10 pt-4 lg:pt-6 pb-10 lg:pb-14">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 lg:gap-10 items-center">
             {/* LEFT — copy + CTAs + trust */}
             <div className="flex flex-col items-start gap-5 lg:gap-6">
