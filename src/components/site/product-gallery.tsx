@@ -98,7 +98,11 @@ export function ProductGallery({
           {safe.map((src, i) => (
             <div
               key={src + i}
-              className="snap-center shrink-0 w-full aspect-square bg-[var(--surface)] relative"
+              // Mobile frame is slightly shorter than square (5:4) so
+              // the 'Select your pack' selector below shows up in the
+              // first viewport without scrolling. Desktop frame stays
+              // square (see md:block block further down).
+              className="snap-center shrink-0 w-full aspect-[5/4] bg-[var(--surface)] relative"
             >
               <div
                 className="absolute inset-0 bg-center bg-no-repeat"
