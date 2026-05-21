@@ -118,7 +118,11 @@ export function ProductCard({
               </span>
             )}
           </span>
-          <span className="text-[10px] md:text-sm tracking-[0.25em] uppercase text-[var(--gold)] group-hover:text-[var(--gold-bright)] transition-colors font-semibold shrink-0">
+          {/* SHOP pill — solid gold with black text, matching the
+              chunky CTA style used on the home cards and the hero
+              "SHOP NOW" button. Stays inside the card-wide <Link>, so
+              no separate href is needed — visual only. */}
+          <span className="inline-flex items-center justify-center rounded-full bg-[var(--gold)] group-hover:bg-[var(--gold-bright)] text-black font-bold tracking-[0.18em] uppercase text-[10px] md:text-xs h-9 md:h-11 px-4 md:px-6 transition-colors shrink-0">
             Shop →
           </span>
         </div>
