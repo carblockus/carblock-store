@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Truck, Clock, ShieldCheck } from "lucide-react";
+import { Truck, Clock, ShieldCheck, Check } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -86,9 +86,33 @@ export default async function ProductPage({
               </h1>
             </div>
 
-            <p className="text-base md:text-lg lg:text-xl text-[var(--muted)] leading-relaxed">
-              {product.shortDescription}
-            </p>
+            {/* For CarBlock (perfume) the short paragraph is replaced
+                with a five-bullet selling-points list — clearer scan
+                and stronger conversion. Other products keep the
+                regular shortDescription paragraph. */}
+            {product.category === "perfume" ? (
+              <ul className="flex flex-col gap-2.5 md:gap-3.5 text-base md:text-lg lg:text-xl text-white">
+                {[
+                  "Premium perfume-grade fragrance — not a cheap car scent",
+                  "Eliminates smoke, pet & humidity odors",
+                  "Long-lasting — up to 90 days per application",
+                  "Apply on carpets / mats to fragrance the entire cabin",
+                  "Won't stain carpets or floor mats",
+                ].map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2.5 md:gap-3 leading-snug">
+                    <Check
+                      className="h-5 w-5 md:h-6 md:w-6 text-[var(--gold)] shrink-0 mt-0.5"
+                      strokeWidth={3}
+                    />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-base md:text-lg lg:text-xl text-[var(--muted)] leading-relaxed">
+                {product.shortDescription}
+              </p>
+            )}
 
             {/* Size chips */}
             {product.sizes && product.sizes.length > 0 && (
