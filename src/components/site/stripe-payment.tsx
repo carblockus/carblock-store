@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import {
   Elements,
+  ExpressCheckoutElement,
   PaymentElement,
   useElements,
   useStripe,
@@ -242,8 +243,55 @@ function PaymentForm({
     }
   }
 
+  // Apple Pay / Google Pay / Link confirmation flow — same
+  // confirmPayment under the hood, just triggered from the
+  // ExpressCheckoutElement instead of the card form submit.
+  async function handleExpressConfirm() {
+    if (!stripe || !elements) return;
+    setError(null);
+    const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: `${window.location.origin}/checkout?stripe_return=1`,
+        receipt_email: email || undefined,
+      },
+      redirect: "if_required",
+    });
+    if (confirmError) {
+      setError(confirmError.message ?? "Payment failed");
+      return;
+    }
+    if (paymentIntent && paymentIntent.status === "succeeded") {
+      onSucceeded(paymentIntent.id);
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Express checkout — renders Apple Pay (iOS/macOS Safari),
+          Google Pay (Chrome/Android) and Link buttons at the top when
+          available on the visitor's device. One tap to pay, no card
+          form needed. The PaymentElement below stays as the fallback
+          for users without a wallet. */}
+      <ExpressCheckoutElement
+        onConfirm={handleExpressConfirm}
+        options={{
+          buttonHeight: 48,
+          buttonTheme: { applePay: "black", googlePay: "black" },
+        }}
+      />
+
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t border-[var(--border)]" />
+        </div>
+        <div className="relative flex justify-center">
+          <span className="bg-[var(--background)] px-3 text-[10px] uppercase tracking-[0.22em] text-[var(--muted)]">
+            or pay with card
+          </span>
+        </div>
+      </div>
+
       <PaymentElement options={{ layout: "tabs" }} />
 
       {error && (
