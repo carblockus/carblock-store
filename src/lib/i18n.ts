@@ -178,15 +178,27 @@ export const dictionaries = {
     "product.shipping.bullet6.before": "30-day return",
     "product.shipping.bullet6.linkText": "policy",
     "product.shipping.bullet6.after": "for unused products.",
-    "product.faq.q1": "How long does the fragrance last?",
+    /* ---------- FAQ module (product detail — CarBlock only) ---------- */
+    "product.faq.section.eyebrow": "Frequently asked",
+    "product.faq.section.title": "Questions & Answers",
+    "product.faq.q1": "Does it stain carpets or leave residue?",
     "product.faq.a1":
-      "Up to 3 months with a single application when applied correctly on floor mats, seat edges and the floor.",
-    "product.faq.q2": "Is it safe for leather seats?",
+      "No. The liquid absorbs into the carpet fibers as it falls and dries clean, with no residue and no stains.",
+    "product.faq.q2": "How long does the fragrance last?",
     "product.faq.a2":
-      "Yes. Apply on the floor mats and floor — not directly on leather surfaces. The fragrance diffuses naturally throughout the interior.",
-    "product.faq.q3": "Does it eliminate odors or just cover them?",
+      "Up to 3 months from one full bottle. Customers report the scent returns even stronger after vacuuming.",
+    "product.faq.q3": "Does it work on smoke and pet odors?",
     "product.faq.a3":
-      "CarBlock eliminates smoke, pet, mildew and food odors — not just masks them.",
+      "Yes. It neutralizes odors from smoke, pets, humidity and food instead of masking them.",
+    "product.faq.q4": "How do I apply it?",
+    "product.faq.a4":
+      "Uncap the bottle and pour the liquid over all your floor mats, front and back, with a light touch along the edges of the seats. No need to lift the mats — it spreads and absorbs on its own.",
+    "product.faq.q5": "What does it smell like?",
+    "product.faq.a5":
+      "A unique blend of citrus oils. Fresh and elegant, with a neutral character that is neither masculine nor feminine.",
+    "product.faq.q6": "Do I use the whole bottle at once?",
+    "product.faq.a6":
+      "Yes. One full 150 ml application gives complete coverage and up to 3 months of fragrance.",
     "product.related.eyebrow": "You may also like",
     "product.related.title.before": "Complete Your",
     "product.related.title.highlight": "Ride",
@@ -559,15 +571,27 @@ export const dictionaries = {
     "product.shipping.bullet6.before": "Devolución de 30 días — consulta la",
     "product.shipping.bullet6.linkText": "política",
     "product.shipping.bullet6.after": "para productos sin usar.",
-    "product.faq.q1": "¿Cuánto dura la fragancia?",
+    /* ---------- Módulo FAQ (detalle de producto — solo CarBlock) ---------- */
+    "product.faq.section.eyebrow": "Preguntas frecuentes",
+    "product.faq.section.title": "Preguntas y respuestas",
+    "product.faq.q1": "¿Mancha los tapetes o deja residuo?",
     "product.faq.a1":
-      "Hasta 3 meses con una sola aplicación, aplicada correctamente en los tapetes, los bordes de los asientos y el piso.",
-    "product.faq.q2": "¿Es seguro para asientos de cuero?",
+      "No. El líquido se absorbe en las fibras del tapete al caer y se seca limpio, sin residuo ni manchas.",
+    "product.faq.q2": "¿Cuánto dura la fragancia?",
     "product.faq.a2":
-      "Sí. Se aplica sobre los tapetes y el piso, no directamente sobre el cuero. La fragancia se difunde naturalmente por todo el interior.",
-    "product.faq.q3": "¿Elimina los olores o solo los enmascara?",
+      "Hasta 3 meses con una botella completa. Los clientes reportan que el aroma vuelve incluso más fuerte después de aspirar.",
+    "product.faq.q3": "¿Funciona contra olores a humo y mascotas?",
     "product.faq.a3":
-      "CarBlock elimina olores a humo, mascotas, humedad y comida — no se limita a enmascararlos.",
+      "Sí. Neutraliza olores de humo, mascotas, humedad y comida en lugar de solo enmascararlos.",
+    "product.faq.q4": "¿Cómo lo aplico?",
+    "product.faq.a4":
+      "Destapa la botella y vierte el líquido sobre todos los tapetes del auto, adelante y atrás, con un toque ligero a lo largo de los bordes de los asientos. No necesitas levantar los tapetes — se esparce y absorbe solo.",
+    "product.faq.q5": "¿A qué huele?",
+    "product.faq.a5":
+      "A una mezcla única de aceites cítricos. Fresco y elegante, con un carácter neutro que no es ni masculino ni femenino.",
+    "product.faq.q6": "¿Uso toda la botella de una vez?",
+    "product.faq.a6":
+      "Sí. Una aplicación completa de 150 ml da cobertura total y hasta 3 meses de fragancia.",
     "product.related.eyebrow": "También te puede gustar",
     "product.related.title.before": "Completa tu",
     "product.related.title.highlight": "estilo",

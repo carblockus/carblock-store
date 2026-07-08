@@ -78,6 +78,18 @@ export function ProductDetailContent({ product }: { product: Product }) {
     t("product.shipping.bullet5"),
   ];
 
+  // Product FAQ — six Q&A rendered as a dedicated module further down
+  // the page (CarBlock only). Each entry is a pair of i18n keys so both
+  // languages swap together via useT().
+  const productFaq = [
+    { q: t("product.faq.q1"), a: t("product.faq.a1") },
+    { q: t("product.faq.q2"), a: t("product.faq.a2") },
+    { q: t("product.faq.q3"), a: t("product.faq.a3") },
+    { q: t("product.faq.q4"), a: t("product.faq.a4") },
+    { q: t("product.faq.q5"), a: t("product.faq.a5") },
+    { q: t("product.faq.q6"), a: t("product.faq.a6") },
+  ];
+
   // Fallback descriptions for products that don't have a longDescription
   // array (wipes, bundle). Translated via i18n keys so the language
   // toggle works here too.
@@ -275,31 +287,8 @@ export function ProductDetailContent({ product }: { product: Product }) {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="faq" className="border-[var(--border)]">
-                <AccordionTrigger className="text-xs md:text-base lg:text-lg uppercase tracking-[0.2em] text-white hover:text-[var(--gold)] py-4 md:py-6">
-                  {t("product.accordion.faq")}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed pb-4 md:pb-6 space-y-3 md:space-y-5">
-                  <div>
-                    <p className="text-white font-medium">
-                      {t("product.faq.q1")}
-                    </p>
-                    <p>{t("product.faq.a1")}</p>
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">
-                      {t("product.faq.q2")}
-                    </p>
-                    <p>{t("product.faq.a2")}</p>
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">
-                      {t("product.faq.q3")}
-                    </p>
-                    <p>{t("product.faq.a3")}</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
+              {/* Note: the old inline 'FAQ' accordion item was moved out
+                  of this panel — see the dedicated FAQ module below. */}
             </Accordion>
           </div>
         </div>
@@ -307,6 +296,50 @@ export function ProductDetailContent({ product }: { product: Product }) {
 
       {/* Stats (only perfume) */}
       {product.category === "perfume" && <Stats />}
+
+      {/* -------- Product FAQ module (CarBlock only) --------
+          Six most-asked questions rendered as an expandable list. Sits
+          between the Stats block and the related-products row so it
+          reads as a real section on the page (not hidden inside the
+          right-panel accordion). SEO-friendly — the Q&A text is
+          server-visible to crawlers. */}
+      {product.category === "perfume" && (
+        <section
+          id="faq"
+          className="border-t border-[var(--border)] bg-black scroll-mt-24 md:scroll-mt-32"
+        >
+          <div className="container-x md:!max-w-[1100px] py-14 md:py-20 lg:py-24">
+            <div className="text-center mb-8 md:mb-12">
+              <span className="text-[11px] md:text-sm lg:text-base tracking-[0.3em] uppercase text-[var(--gold)] font-bold">
+                {t("product.faq.section.eyebrow")}
+              </span>
+              <h2 className="font-display text-3xl md:text-5xl lg:text-6xl uppercase font-bold mt-3 md:mt-5 text-white leading-tight">
+                {t("product.faq.section.title")}
+              </h2>
+            </div>
+
+            <Accordion
+              type="multiple"
+              className="border-t border-[var(--border)]"
+            >
+              {productFaq.map((item, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="border-[var(--border)]"
+                >
+                  <AccordionTrigger className="text-sm md:text-base lg:text-lg text-white hover:text-[var(--gold)] py-5 md:py-6 text-left font-semibold">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed pb-5 md:pb-6">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+      )}
 
       {/* Related products */}
       {related.length > 0 && (
