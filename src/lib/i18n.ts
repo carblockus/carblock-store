@@ -151,6 +151,23 @@ export const dictionaries = {
     "stats.dist.rear.where": "On rear mats, seat edges & floor",
     "stats.watchTutorial": "Watch tutorial",
 
+    /* ---------- Gift landing page (/gift25) ---------- */
+    "gift25.eyebrow": "Thank you",
+    "gift25.title.before": "Thank you for being one of our",
+    "gift25.title.highlight": "customers",
+    "gift25.subtitle":
+      "We have a gift for you: 25% off your next order. Redeem it right now.",
+    "gift25.card.eyebrow": "Your gift code",
+    "gift25.card.discount": "25% OFF",
+    "gift25.card.instruction":
+      "Copy this code and paste it at checkout.",
+    "gift25.card.copy": "Copy code",
+    "gift25.card.copied": "Copied!",
+    "gift25.catalog.eyebrow": "Add to cart",
+    "gift25.catalog.title.before": "Apply",
+    "gift25.catalog.title.highlight": "GIFT25",
+    "gift25.catalog.title.after": "at checkout",
+
     /* ---------- Product detail page (/products/[slug]) ---------- */
     "product.size": "Size",
     "product.selectYourPack": "Select your pack",
@@ -540,6 +557,23 @@ export const dictionaries = {
     "htuse.step2.title": "Vierte en tapetes y bordes",
     "htuse.step2.body":
       "Distribuye a lo largo de los bordes del piso del auto y debajo de los tapetes. La fragancia se libera lentamente hasta por 3 meses.",
+
+    /* ---------- Landing de regalo /gift25 ---------- */
+    "gift25.eyebrow": "Gracias",
+    "gift25.title.before": "Gracias por ser uno de nuestros",
+    "gift25.title.highlight": "clientes",
+    "gift25.subtitle":
+      "Tenemos un regalo para ti: 25% de descuento en tu próxima compra. Redímelo ahora mismo.",
+    "gift25.card.eyebrow": "Tu código de regalo",
+    "gift25.card.discount": "25% DE DESCUENTO",
+    "gift25.card.instruction":
+      "Copia este código y pégalo al pagar.",
+    "gift25.card.copy": "Copiar código",
+    "gift25.card.copied": "¡Copiado!",
+    "gift25.catalog.eyebrow": "Agrega al carrito",
+    "gift25.catalog.title.before": "Aplica",
+    "gift25.catalog.title.highlight": "GIFT25",
+    "gift25.catalog.title.after": "al pagar",
 
     /* ---------- Página de detalle de producto ---------- */
     "product.size": "Tamaño",
