@@ -53,7 +53,7 @@ export async function POST(req: Request) {
             Use this code at checkout:
           </p>
           <div style="background:#141414;border:1px solid #d4af37;border-radius:8px;padding:24px;text-align:center;margin:0 0 24px;">
-            <p style="font-family:monospace;font-size:24px;color:#f2c94c;letter-spacing:0.2em;margin:0;">WELCOME15</p>
+            <p style="font-family:monospace;font-size:28px;color:#f2c94c;letter-spacing:0.35em;margin:0;font-weight:700;">W15</p>
           </div>
           <p style="color:#a1a1a1;font-size:14px;line-height:1.6;">
             One application of CarBlock lasts up to 3 months. Premium
